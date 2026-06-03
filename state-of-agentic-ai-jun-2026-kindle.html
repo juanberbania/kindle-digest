@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The State of Agentic AI — June 2026</title>
+<style>
+  /* Kindle-tuned CSS. No external resources. System fonts only. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fafaf7;
+    color: #1a1a1a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 22px 80px 22px;
+  }
+  .doc-meta {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 8px 0 6px 0;
+    color: #111;
+    font-weight: 700;
+  }
+  .subtitle {
+    font-style: italic;
+    color: #555;
+    margin: 0 0 24px 0;
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 36px 0 12px 0;
+    padding-top: 8px;
+    border-top: 2px solid #1a1a1a;
+    color: #111;
+  }
+  h3 {
+    font-size: 18px;
+    margin: 22px 0 8px 0;
+    color: #222;
+  }
+  p { margin: 0 0 14px 0; }
+  ul, ol { padding-left: 24px; margin: 0 0 14px 0; }
+  li { margin-bottom: 4px; }
+  strong { color: #111; }
+  em { color: #444; }
+  blockquote {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: #f0ebe0;
+    border-left: 4px solid #b08968;
+    font-style: italic;
+    color: #2a2a2a;
+    border-radius: 2px;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 14px;
+    color: #666;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px 0;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  th, td {
+    border: 1px solid #d0d0d0;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #ece6d6;
+    font-weight: 600;
+  }
+  tr:nth-child(even) td { background: #f7f3e9; }
+  .pullbox {
+    background: #1a1a1a;
+    color: #fafaf7;
+    padding: 18px 20px;
+    border-radius: 4px;
+    margin: 24px 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .pullbox h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #d4af7a;
+  }
+  .pullbox ul { margin: 0; padding-left: 20px; }
+  .pullbox li { margin-bottom: 6px; }
+  .caflag {
+    background: #fff7e6;
+    border-left: 4px solid #d4af7a;
+    padding: 12px 16px;
+    margin: 18px 0;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    border-radius: 2px;
+  }
+  .caflag-title {
+    display: block;
+    font-weight: 700;
+    color: #8a5a2b;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .footer {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid #d0d0d0;
+    font-size: 13px;
+    color: #888;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
+  }
+  .num-list li {
+    list-style-type: decimal;
+  }
+  dl { margin: 0 0 18px 0; }
+  dt { font-weight: 700; color: #111; margin-top: 10px; }
+  dd { margin: 4px 0 0 0; padding-left: 8px; color: #333; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="doc-meta">Strategic Briefing · June 2026</div>
+<h1>The State of Agentic AI</h1>
+<p class="subtitle">Domain Expertise, Trigger Architectures, and the Index-as-Model Shift</p>
+
+<p>This synthesis covers the structural shifts in agentic AI through June 2026. The lens is operational, not promotional: not "what can the model do" but "what does it take to make the model do something reliably in production." We treat competitive advantage as a function of the harness — context, plumbing, evaluation, and validation — not of raw model access, which is now broadly commoditized.</p>
+
+<h2>TL;DR</h2>
+
+<p>Agentic AI in mid-2026 is no longer about who has the smartest model — it's about who controls the ground truth, the trigger plumbing, and the evaluation harness. Five threads define the year so far:</p>
+
+<ol>
+  <li><strong>Domain expertise is the new moat.</strong> As agents commoditize code transcription, the engineer without the "oracle" for correctness is being eclipsed by the actuary, dispatcher, or compliance lead who does.</li>
+  <li><strong>Trigger architectures are load-bearing.</strong> Naive webhooks break under agent workloads. The production standard is a webhook-plus-polling hybrid backed by an idempotency store, often run on durable-execution runtimes like Temporal or LangGraph.</li>
+  <li><strong>Evaluation is the silent killer.</strong> Data agents operate in "cursed" domains where bugs are subtle. Hex's "Shoebox" methodology and synthetic businesses like Shorelane Commerce are emerging as the only credible testing grounds.</li>
+  <li><strong>Index-as-Model is the architectural shift.</strong> Meta's SilverTorch collapses microservices into a single PyTorch model with fused GPU retrieval — a 23.7x throughput gain that signals a broader industry pivot.</li>
+  <li><strong>Design and code are merging.</strong> Figma's production-integrated editing means designers can now ship to a Git branch directly, collapsing the design-to-engineering handoff that defined the last fifteen years.</li>
+</ol>
+
+<p>The throughline: competitive advantage is moving from "what model can you call" to "what context, plumbing, and validation you control." The harness <em>is</em> the product. Capital that flowed into model-layer differentiation in 2023-2024 is now flowing into evaluation infrastructure, semantic layers, and synthetic test environments. The shape of the next twelve months will be set less by model releases than by the operational discipline of the teams that ship them.</p>
+
+<h2>1. The Value Shift: Domain Expertise as the Primary Moat</h2>
+
+<p>For most of software's history, building a product required two skills in the same head: understanding the domain (payroll, transit, radiology, regulatory filings) and translating that understanding into working code. Agentic AI has severed that link. The model now handles the transcription. The binding constraint is no longer "can you build it" — it is "can you tell whether it is right."</p>
+
+<h3>Why the domain expert wins</h3>
+
+<p>An actuary can look at an agent's output for a novel insurance product and instantly flag a deduction that violates a tax treaty she has spent twenty years working with. A logistics dispatcher can scan a generated driver schedule and recognize that the algorithm has put a team on a road that was closed by a municipal order last Tuesday. A compliance lead can review a regulatory filing draft and identify a clause that conflicts with a guidance letter the regulator published three weeks ago — guidance that is not yet in any model training set.</p>
+
+<p>These are not "code review" tasks. They are <em>ground-truth</em> tasks — the kind of tacit knowledge that cannot be reverse-engineered from a spec, a test, or a documentation page. The expert's value is not that they can write better code. It is that they can recognize correctness at a glance, the way a native speaker recognizes a grammatically correct sentence without parsing the rules.</p>
+
+<div class="caflag">
+  <span class="caflag-title">Counter-argument flag</span>
+  This framing assumes the domain expert has time to review agent output line by line. In practice, the bottleneck shifts to <em>reviewing the review</em> — and platform players (e.g., big consultancies, vertical SaaS aggregators) may win by orchestrating many experts at once. The "lone expert with an agent" thesis may underweight the value of cross-domain scale and standardized review playbooks.
+</div>
+
+<h3>The generalist engineer risk</h3>
+
+<p>A strong generalist engineer can produce a system that is well-architected, well-tested, and well-deployed — and <em>subtly, expensively incorrect</em>. They lack the oracle. The agent's logic might pass every unit test and still produce schedules that violate union rules, contracts that miss jurisdiction-specific clauses, or medical claims that get rejected by a payer's unpublished policy. The bug is silent. The cost is real, and it surfaces months later in a way that is almost impossible to attribute back to the agent's reasoning path.</p>
+
+<p>The most dangerous failure mode is the one that looks like success in the room where the decision is made. The demo runs. The output is plausible. The integration test passes. Only the domain expert — who is rarely in that room, because we have not yet built the muscle of including them — would have caught the error. By the time the regulator or the customer catches it, the team has shipped a hundred more like it.</p>
+
+<h3>The new career path</h3>
+
+<p>The most valuable professionals in this era will not be pure engineers or pure domain experts. They will be the people who can hold both — mechanical software skill <em>and</em> a deep, verified mental model of a real domain (a regulatory regime, a physical process, a specific industry). Hiring rubrics, compensation bands, and career ladders are all about to be rewritten around this hybrid. The generalist who cannot demonstrate domain depth is about to be reclassified, and the specialist who cannot demonstrate engineering depth is about to be unbundled by the next agentic workflow that codifies their tacit knowledge into a semantic layer.</p>
+
+<h2>2. Infrastructure Foundations: Trigger Architectures for Agents</h2>
+
+<p>Trigger layers are the load-bearing infrastructure of agentic systems, yet they are routinely treated as an afterthought. Most agent systems fail in production not because the model is wrong but because the trigger architecture is too brittle for the non-deterministic nature of AI. The same webhook that delivers a notification to a human reliably will quietly drop, duplicate, or reorder events when the downstream is an agent that runs for minutes, retries on ambiguity, and has no human to absorb the inconsistency.</p>
+
+<h3>The four delivery mechanisms</h3>
+
+<table>
+  <thead>
+    <tr><th>Mechanism</th><th>Description</th><th>Key Characteristics</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Webhooks</strong></td><td>HTTP POST callbacks from providers.</td><td>At-least-once delivery; unordered; best-effort; data can be stale on retry.</td></tr>
+    <tr><td><strong>Log-based CDC</strong></td><td>Reading database transaction logs (e.g., Debezium).</td><td>Captures all states (including deletes); ordered per partition; high ops investment.</td></tr>
+    <tr><td><strong>Message-Bus Subscriptions</strong></td><td>Durable systems like Kafka, Pulsar, AWS EventBridge.</td><td>Replayable; durable; exactly-once is rare and bounded.</td></tr>
+    <tr><td><strong>Scheduled Polling</strong></td><td>Client-initiated pull via conditional GET.</td><td>Universal fallback; linear cost; rate-limit risk.</td></tr>
+  </tbody>
+</table>
+
+<p>Each mechanism has its evangelists. Webhooks are easiest to implement and ship first. CDC gives the strongest correctness guarantees at the cost of a dedicated operational team. Message buses offer replayability and are the natural fit for event-sourced systems. Polling is the universal fallback that everyone returns to at 2 AM when a more sophisticated approach breaks.</p>
+
+<h3>The hybrid production standard</h3>
+
+<p>Mature agent systems assume that events <em>will</em> be missed. The industry-standard approach for reliability is a three-part composition:</p>
+
+<ul>
+  <li><strong>Fast-path events:</strong> Webhooks for real-time response. Best-effort, fire-and-forget from the provider's perspective, but the agent system treats them as hints.</li>
+  <li><strong>Reconciliation polling:</strong> A 24-hour safety-net poll to catch missed events. Cheap to operate when the system is idle, expensive to ignore when it is not.</li>
+  <li><strong>Idempotency store:</strong> A structural-key deduplication layer at the write boundary to prevent duplicate actions — duplicate emails, duplicate payments, duplicate shipments — caused by at-least-once delivery. The structural key is typically a hash of the input or a content-derived ID, not a counter or timestamp.</li>
+</ul>
+
+<div class="caflag">
+  <span class="caflag-title">Counter-argument flag</span>
+  The hybrid model assumes you can afford the operational complexity. For small teams shipping narrow workflows, serverless webhook-first designs (with platform-managed retries and event source mapping) may dominate precisely because they avoid the reconciliation layer entirely. "Production standard" is a function of scale, not absolute truth. A two-person team shipping a Slack-based approval workflow does not need a Temporal cluster.
+</div>
+
+<h3>Durable execution</h3>
+
+<p>Agents are not traditional request handlers. They may wait hours for human approval. They may spend minutes on a single LLM call. They may branch into dozens of parallel sub-agents and need to merge their outputs. Without a <em>durable execution</em> runtime — Temporal, Inngest, or LangGraph for the agent-native option — agents risk "token re-burning": re-invoking successful steps during a retry, doubling cost and corrupting downstream state.</p>
+
+<p>The pattern is straightforward in principle: persist the agent's state at every step, and on retry, resume from the last checkpoint rather than re-executing from the start. In practice, the choice of runtime constrains the entire agent architecture. A team that picks a non-durable runtime early will hit a wall within months and rewrite; a team that picks a durable runtime early pays an upfront complexity tax that compounds favorably as the agent grows. The choice of runtime is no longer separable from the choice of model.</p>
+
+<h2>3. The Evaluation Crisis in Agentic Analytics</h2>
+
+<p>Evaluating data agents is uniquely hard because easy questions can look hard and subtle bugs are often silent. Performance is more a function of the context stores (semantic models, guides, prior queries) an agent has access to than of its system prompt or model choice. A weaker model with great context will outperform a stronger model with no context, every time, on real workloads.</p>
+
+<h3>The Hex "Shoebox" methodology</h3>
+
+<p>To attack this, the analytics platform Hex built "The Shoebox," a lab bench for agent observability that prioritizes <em>pairwise experiments</em>:</p>
+
+<ul>
+  <li><strong>Candidate vs. Baseline:</strong> Every change is tested against a shared production baseline. No more comparing today's agent to last month's number — comparisons are always apples-to-apples, against a known-good configuration.</li>
+  <li><strong>Custom Rubrics:</strong> Evaluation extends beyond accuracy. Hex scores on ToolEfficiency (how many calls did the agent need?), SemanticLayerUsage (did it use the documented metric definitions?), and WorkspaceGuideAdherence (did it follow the team's documented conventions?).</li>
+  <li><strong>LLM Judges:</strong> Hybrid rubrics use LLM judges with access to ground truth and post-run metadata — speed, cost, tool sequence — to grade agent trajectories rather than just final answers.</li>
+</ul>
+
+<p>The key insight is that an agent trajectory — the path of tool calls, the order of reasoning steps, the way it consulted a guide — is more diagnostic than the final answer. Two agents can produce the same correct answer via wildly different paths, and one of those paths is going to break in production in a way the answer-only evaluation never sees.</p>
+
+<h3>Why synthetic businesses matter</h3>
+
+<p>Public benchmarks (Spider, BIRD) are "demo-shaped" — clean schemas, unambiguous questions, no real mess. Production data is messy. To test agents against this mess, the industry is building <em>synthetic businesses</em>: realistic environments that look like real companies but with known ground truth.</p>
+
+<p>The leading example is <strong>Shorelane Commerce</strong>, a synthetic retailer that features:</p>
+
+<ul>
+  <li><strong>Realistic data debt:</strong> Migration errors, unmerged acquisition data, inconsistent naming conventions, the kind of mess that takes a new analyst six months to map in their head.</li>
+  <li><strong>Conflicting stakeholders:</strong> Finance, marketing, and operations all define "revenue" differently. The agent has to pick a definition and justify it from the documented semantic layer.</li>
+  <li><strong>Semantic layers:</strong> Documentation and guides the agent is <em>required</em> to consult to break ties between plausible but incorrect answers. A model that skips the guide gets a lower score, even if its answer is technically right.</li>
+</ul>
+
+<div class="caflag">
+  <span class="caflag-title">Counter-argument flag</span>
+  Synthetic benchmarks are designed by definition — they encode the biases of their designers. Shorelane Commerce tests the kinds of mess its creators anticipated. Real production data has failure modes no synthetic builder would think to model. Treat synthetic environments as necessary for iteration, not sufficient for production sign-off. The last 5% of messiness only shows up in the wild.
+</div>
+
+<h2>4. Architectural Evolution: Index as Model</h2>
+
+<p>Meta's <strong>SilverTorch</strong> represents a paradigm shift in retrieval: from microservice-based indices to a unified model-based system. The implications extend well beyond recommendations — and the architecture is more general than its first deployment suggests.</p>
+
+<h3>Why microservices lose</h3>
+
+<p>Traditional recommendation stacks are meshes of microservices: a user-tower model here, an item index there, a scoring service in between, a re-ranker downstream. They have served the industry well for a decade. They suffer from three structural problems:</p>
+
+<ul>
+  <li><strong>Data movement latency:</strong> Serialization and network hops consume the sub-100ms retrieval budget. Every hop is a tax on the user-visible latency floor.</li>
+  <li><strong>Version inconsistency:</strong> Independent update cycles for models and indices create quality gaps. The user-tower at version 47 is paired with an item index at version 52, and the gap produces subtly wrong scores for a week until the next sync.</li>
+  <li><strong>Siloed environments:</strong> The friction between ML engineers (PyTorch, comfortable with gradient math) and infrastructure engineers (C++/Rust, comfortable with cache lines) slows iteration. Every cross-team change is a project.</li>
+</ul>
+
+<h3>What SilverTorch does</h3>
+
+<p>SilverTorch expresses every retrieval component — item index, eligibility filters, scoring layers, re-ranker — as a tensor or operator inside a single PyTorch model:</p>
+
+<ul>
+  <li><strong>GPU-optimized indices:</strong> Bloom filters and fused Int8 Approximate Nearest Neighbor (ANN) search designed for GPU memory behavior, replacing CPU-heavy inverted indices. The win is not just throughput; it is the elimination of an entire data-transfer stage.</li>
+  <li><strong>Throughput gains:</strong> 23.7x more requests per second than traditional multi-service baselines, on equivalent hardware. The number is the headline; the underlying gain is the removal of inter-service communication.</li>
+  <li><strong>Intelligence at scale:</strong> "Neural reranking" and multi-task scoring now happen early in the retrieval funnel, not as a post-filter — enabling more sophisticated engagement modeling within tight latency budgets.</li>
+  <li><strong>Streaming updates:</strong> Index freshness is decoupled from the full model publish cycle. Targeted updates apply in-place to tensors in the in-memory model, so the system can absorb new items in seconds rather than hours.</li>
+</ul>
+
+<div class="caflag">
+  <span class="caflag-title">Counter-argument flag</span>
+  23.7x is a Meta result, on Meta's workload, on Meta's hardware. The lift may not transfer to smaller stacks, where the engineering cost of rewriting retrieval as model ops exceeds the throughput gain. The architecture is proven; the universality is not. Teams should pilot the pattern in a non-critical path before betting the stack on it.
+</div>
+
+<h3>Why this matters beyond recommendations</h3>
+
+<p>If retrieval can be expressed as model ops, so can filtering, eligibility, and ranking — the bread and butter of any enterprise system. We should expect a wave of "Index as Model" rewrites across search, fraud detection, ad serving, and compliance screening over the next 18 months. The teams that move first will inherit the operational moat; the teams that wait will be paying for both the old infrastructure and the migration.</p>
+
+<h2>5. Bridging the Design-Code Gap</h2>
+
+<p>The integration of agentic AI is collapsing the boundary between design tools and production codebases. The traditional handoff — designer creates, engineer implements, both argue about fidelity for a sprint, and a final review reconciles the inevitable drift — is being replaced by a direct pipeline. The question is no longer whether designers and engineers will share a workflow, but how deeply the workflow integrates.</p>
+
+<h3>Figma Make and production integration</h3>
+
+<p>New capabilities in tools like Figma allow designers to interact directly with the production codebase:</p>
+
+<ul>
+  <li><strong>Visual editing to code:</strong> Designers make visual changes (a layout, a color, a font) and an agent identifies and edits the corresponding code in the production repo. The agent's job is the boring 80% of CSS changes that consume an engineer's afternoon.</li>
+  <li><strong>Contextual annotations:</strong> Designers describe interaction logic or animations via annotations on the canvas, which the agent uses to generate code. The annotation is the spec; the agent is the implementer.</li>
+  <li><strong>Git-backed workflows:</strong> Changes are stored as local commits and pushed as Pull Requests, ensuring AI-generated changes follow standard engineering review processes. The PR is the review surface; the agent is invisible inside it.</li>
+  <li><strong>Closing the loop:</strong> A bidirectional system where changes in the codebase are reflected back onto the design canvas for commenting, then returned to code. The design file is a live view of the production system, not a static snapshot.</li>
+</ul>
+
+<div class="caflag">
+  <span class="caflag-title">Counter-argument flag</span>
+  Most designers do not read code, and most engineers do not design. The bidirectional loop sounds elegant in a demo; in practice it requires both parties to operate in a shared mental model they often do not share. Adoption will cluster in product-led organizations where design and engineering already collaborate tightly. Mainstream rollout is slower than the headline suggests, and the teams that do adopt it will need a new shared vocabulary for what "design" and "code" mean in the merged workflow.
+</div>
+
+<h2>6. Critical Insights and Quotes</h2>
+
+<blockquote>
+  "The binding constraint is no longer 'can you build it.' It is 'can you tell whether it is right.' The team that controls the ground truth controls the product."
+  <cite>— The shift to domain-expert validation</cite>
+</blockquote>
+
+<blockquote>
+  "Treat events as hints. Treat reconciliation as the source of truth. Treat idempotency as the price of admission."
+  <cite>— The hybrid trigger pattern</cite>
+</blockquote>
+
+<blockquote>
+  "The agent trajectory is more diagnostic than the final answer. Two paths to the same correct output; one of them is going to break in production."
+  <cite>— Hex's Shoebox methodology</cite>
+</blockquote>
+
+<blockquote>
+  "Synthetic businesses are not a substitute for production. They are a necessary precondition for the iteration speed that production requires."
+  <cite>— The evaluation gap</cite>
+</blockquote>
+
+<blockquote>
+  "If retrieval can be expressed as model ops, so can filtering, eligibility, and ranking. The next 18 months are about collapsing microservices into tensors."
+  <cite>— The Index-as-Model shift</cite>
+</blockquote>
+
+<blockquote>
+  "The handoff is the bottleneck. The team that eliminates the handoff ships twice as fast and argues half as much."
+  <cite>— Design-to-prod integration</cite>
+</blockquote>
+
+<h2>What to Watch</h2>
+
+<p>Six signals to monitor over the rest of 2026:</p>
+
+<ol>
+  <li><strong>Agentic uptime incidents.</strong> As agents move into revenue paths (billing, scheduling, compliance), the first major outage traced to a trigger architecture failure will become the canonical postmortem. Watch the incident reports from vertical SaaS vendors — and watch whether they cite idempotency stores, reconciliation polling, or both.</li>
+  <li><strong>Synthetic business adoption.</strong> Shorelane Commerce and its successors are the early signal. When the first public benchmark uses a synthetic business as its primary evaluation surface, evaluation practice has shifted. When the second one does, the shift is permanent.</li>
+  <li><strong>Index-as-Model beyond Meta.</strong> If two more organizations publish "X-as-Model" rewrites with double-digit throughput gains, the architectural shift is real. If Meta remains the only public case at year-end, treat it as an outlier — a strong one, but an outlier.</li>
+  <li><strong>Domain-expert hiring premiums.</strong> Watch compensation data for hybrid roles (engineer-plus-actuary, engineer-plus-radiologist, engineer-plus-compliance-lead). A widening premium validates the moat thesis; a flat premium means the market has not yet repriced the role.</li>
+  <li><strong>Figma-to-prod adoption.</strong> Look for design-to-prod PRs in public repos at companies with mature design systems. Volume, review-approval rates, and revert rates will tell us whether the loop actually works in practice. High volume with low revert is the success signal.</li>
+  <li><strong>Durable-execution runtime consolidation.</strong> Watch whether Temporal, Inngest, and LangGraph start to specialize (Temporal for traditional workflows, LangGraph for graph-shaped agent topologies, Inngest for event-driven fan-out) or whether one of them wins outright. The agent runtimes are the new application servers; the consolidation pattern will mirror the web framework wars of the 2010s.</li>
+</ol>
+
+<h2>Mini-Glossary</h2>
+
+<dl>
+  <dt><strong>Agent</strong></dt>
+  <dd>An LLM-driven system that operates in a loop: it reasons, calls a tool, observes the result, and decides whether to continue. Distinguished from a plain LLM by the presence of tools and persistence across turns.</dd>
+
+  <dt><strong>Agent trajectory</strong></dt>
+  <dd>The path of tool calls, reasoning steps, and intermediate outputs an agent takes to reach a final answer. Used in evaluation to diagnose failures that final-answer accuracy metrics miss.</dd>
+
+  <dt><strong>CDC (Change Data Capture)</strong></dt>
+  <dd>A pattern for streaming database changes (inserts, updates, deletes) by reading the transaction log directly, rather than polling tables.</dd>
+
+  <dt><strong>Counter-argument flag</strong></dt>
+  <dd>An inline callout marking a claim that is one-sided — where the cited evidence or sources all lean the same direction and the reader should know. Used in this synthesis to mark claims worth skepticism.</dd>
+
+  <dt><strong>Domain expert</strong></dt>
+  <dd>A person with deep, verified knowledge of a specific real-world domain (regulation, physical process, industry practice) who can act as the ground-truth oracle for agent outputs in that domain.</dd>
+
+  <dt><strong>Durable execution</strong></dt>
+  <dd>A runtime pattern (Temporal, Inngest, LangGraph) that lets long-running workflows resume from checkpoints after a crash, without re-executing successful steps.</dd>
+
+  <dt><strong>Ground truth</strong></dt>
+  <dd>The authoritative answer to whether something is correct, typically held by a domain expert rather than derivable from the system itself. The moat that protects agent outputs from silent error.</dd>
+
+  <dt><strong>Harness</strong></dt>
+  <dd>The surrounding system that makes a model useful in production: context retrieval, tool registry, orchestration, state, sandboxing, observability, model routing.</dd>
+
+  <dt><strong>Idempotency store</strong></dt>
+  <dd>A deduplication layer that uses a structural key (a request signature, an order ID, a content hash) to ensure the same action is not executed twice despite at-least-once event delivery.</dd>
+
+  <dt><strong>Index as Model</strong></dt>
+  <dd>An architecture (exemplified by Meta's SilverTorch) where retrieval components — indices, filters, scoring — are expressed as tensors or operators inside a single neural model, rather than as separate microservices.</dd>
+
+  <dt><strong>LLM Judge</strong></dt>
+  <dd>An LLM used to evaluate the output of another LLM, typically against a rubric (accuracy, tool efficiency, adherence to a guide). Combined with access to ground truth and post-run metadata for trajectory-level scoring.</dd>
+
+  <dt><strong>MCP (Model Context Protocol)</strong></dt>
+  <dd>An open protocol for tool discovery and invocation. Lets agents call tools from external servers (GitHub, Slack, Postgres) without hardcoded integrations. The "USB-C for tools" of the agent era.</dd>
+
+  <dt><strong>ReAct</strong></dt>
+  <dd>The "Reason + Act" pattern, the dominant agent loop. The model thinks, calls a tool, observes, and decides whether to continue or return a final answer. The loop is what distinguishes an agent from a chat model.</dd>
+
+  <dt><strong>Reconciliation polling</strong></dt>
+  <dd>A periodic safety-net poll that re-fetches state from the source of truth to catch events that were missed by faster mechanisms (webhooks, CDC). Typically runs every 24 hours as a defense-in-depth measure.</dd>
+
+  <dt><strong>Semantic layer</strong></dt>
+  <dd>Documentation and business definitions that sit between raw data and queries — the canonical "what does revenue mean" answer a team has agreed on. Agents that use it correctly are dramatically more accurate.</dd>
+
+  <dt><strong>Synthetic business</strong></dt>
+  <dd>A realistic but fabricated environment (a fake company with realistic data debt and stakeholder conflict) used to test agents against real-world mess with known ground truth. Shorelane Commerce is the leading example.</dd>
+
+  <dt><strong>Trigger</strong></dt>
+  <dd>The mechanism that initiates an agent run: a webhook from an upstream system, a CDC event, a message-bus subscription, or a scheduled poll. The load-bearing layer most teams underestimate.</dd>
+</dl>
+
+<div class="footer">
+  Compiled from a strategic synthesis · ~4,200 words · ~17 min read · Rendered for Kindle · 2026-06-02
+</div>
+
+</div>
+</body>
+</html>
