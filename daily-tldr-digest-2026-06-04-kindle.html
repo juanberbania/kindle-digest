@@ -55,7 +55,8 @@
   }
   p { margin: 0 0 14px 0; }
   ul, ol { padding-left: 24px; margin: 0 0 14px 0; }
-  li { margin-bottom: 8px; }
+  li { margin-bottom: 4px; }
+  .content strong { color: #111; }
   em { color: #444; }
   blockquote {
     margin: 18px 0;
@@ -66,6 +67,28 @@
     color: #2a2a2a;
     border-radius: 2px;
   }
+  blockquote cite {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 14px;
+    color: #666;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px 0;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  th, td {
+    border: 1px solid #d0d0d0;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #ece6d6; font-weight: 600; }
+  tr:nth-child(even) td { background: #f7f3e9; }
   .pullbox {
     background: #1a1a1a;
     color: #fafaf7;
@@ -88,30 +111,81 @@
   .pullbox h4 { color: #d4af7a; }
   .pullbox ul { margin: 0; padding-left: 20px; }
   .pullbox li { margin-bottom: 6px; }
-  .pullbox a { color: #d4af7a; }
-  .sources {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .caflag {
+    background: #fff7e6;
+    border-left: 4px solid #d4af7a;
+    padding: 12px 16px;
+    margin: 18px 0;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    border-radius: 2px;
   }
-  .sources li {
-    border-top: 1px solid #e0dccc;
-    padding: 12px 0;
-    font-size: 16px;
+  .caflag-title {
+    display: block;
+    font-weight: 700;
+    color: #8a5a2b;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
   }
-  .sources li:last-child { border-bottom: 1px solid #e0dccc; }
-  .source-title {
-    font-weight: 600;
-    color: #1a1a1a;
+  .figure {
+    margin: 22px 0;
+    padding: 14px;
+    background: #fdfcf8;
+    border: 1px solid #e6dfcc;
+    border-radius: 4px;
+    text-align: center;
   }
-  .source-domain {
+  .figure svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .figure svg text { fill: #1a1a1a !important; }
+  .figure svg text.legend-text { fill: #444 !important; }
+  .figure svg text.title-text { fill: #111 !important; }
+  .figure svg text.box-text { fill: #222 !important; }
+  .figure svg text.result-text { fill: #222 !important; }
+  .figure svg text.dim-text { fill: #444 !important; }
+  .figure svg text.col-header { fill: #666 !important; }
+  .figure-caption {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+    font-style: italic;
+  }
+  .footnotes {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 2px solid #1a1a1a;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 13px;
-    color: #888;
-    margin-top: 2px;
+    color: #444;
   }
-  .source-domain a { color: #8a5a2b; text-decoration: none; }
-  .source-domain a:hover { text-decoration: underline; }
+  .footnotes h2 {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 14px 0;
+    padding: 0;
+    border: none;
+  }
+  .footnotes ol {
+    padding-left: 20px;
+  }
+  .footnotes li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .footnotes a {
+    color: #8a5a2b;
+    text-decoration: none;
+    word-break: break-all;
+  }
   .footer {
     margin-top: 32px;
     padding-top: 18px;
@@ -123,6 +197,8 @@
   }
   .footer a { color: #8a5a2b; text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
+  sup { font-size: 11px; color: #8a5a2b; }
+  sup a { text-decoration: none; color: #8a5a2b; }
   .audio-cta {
     display: inline-block;
     margin: 8px 0 0 0;
@@ -136,96 +212,166 @@
     letter-spacing: 0.5px;
   }
   .audio-cta:hover { background: #333; }
-  .summary-box {
-    background: #fff7e6;
-    border-left: 4px solid #d4af7a;
-    padding: 14px 18px;
-    margin: 18px 0;
-    font-size: 16px;
-    line-height: 1.6;
-    border-radius: 2px;
-  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <div class="doc-meta">Daily Digest · June 4, 2026</div>
-<h1>Medium, Video &amp; TLDR Digest</h1>
-<p class="subtitle">AI agents go native. Microsoft ships an "executive assistant." PostHog finds a 3-year-old bug. The token bill comes due.</p>
+<h1>The Bifurcation</h1>
+<p class="subtitle">Agent-native software has arrived. So has the bill. Eleven sources on the most consequential day in 2026 so far.</p>
 
-<div class="summary-box">
-<strong>The throughline.</strong> The 2026 shift toward agent-native software is no longer announced — it's deployed. Microsoft launches Scout, an "autonomous executive AI assistant." GitHub ships the Copilot desktop app, repositioning chat interfaces as control centers. Y Combinator reveals its internal agent infrastructure, treating meeting transcripts as a "shared organizational brain." PostHog's Karpathy collaboration found a 3-year-old bug in their query engine. Behind the demos, the enterprise is hitting the "token reckoning" — operational costs forcing a pivot to narrow "primitive wedges."
-</div>
+<p>The 2026 literature that crossed my desk today describes an industry at a clean bifurcation point. On one side, the technological story is unambiguous: the software development paradigm has shifted from passive, single-player "copilots" to autonomous, multi-agent organizational systems. GitHub's new Copilot app introduces "Canvases" so multiple agents can work in parallel without stepping on each other. Microsoft ships Scout, an "autonomous executive AI assistant" that runs always-on and negotiates calendar conflicts with its own identity. Y Combinator reveals its internal agent stack — a centralized tool registry, shared organizational brain, and a "homebrew computer club" ethos — and credits it with automating finance workflows that used to eat engineering time. PostHog ships an autonomous research loop that found a three-year-old timezone bug in their query engine and reduced data-granules scanned by 62%.</p>
 
-<h2>Tonight's listen</h2>
-<p>The Deep Dive audio overview covers all 11 sources in ~10 minutes — a good run before sleep if reading isn't your thing.</p>
-<p><a class="audio-cta" href="https://www.youtube.com/watch?v=B246K_G7mHU&loop=1&playlist=B246K_G7mHU">▶ Play "The shift to autonomous AI agents" — 10 min</a></p>
+<p>On the other side, the economic story is brutal. The Token Reckoning piece puts a number on what most teams already feel: for every $1 spent on AI compute, 82 cents are wasted on bug fixes, rewrites, and hallucination correction, and only 18 cents result in shipped product. Surveys cited in The AI Bubble piece show that nearly 90% of C-suite executives report zero impact on employment or productivity over the past three years. The AI sector has generated over $1.2 trillion in AAA-rated debt to finance its infrastructure buildout — debt the author compares to the 2008 subprime mortgage crisis, because the underlying technology is currently failing to generate the macroeconomic productivity required to service it. The frontier-model oligopoly (OpenAI, Anthropic) is consolidating into a high-margin Apple-and-Microsoft structure, while open-source models commoditize on volume. The interesting work is no longer in the model. It is in the primitives around the model — secure execution, verification, context plumbing, and the narrow, dependable capabilities that turn a stochastic generation into something you can ship.</p>
 
-<h2>The 11 sources</h2>
-<p>Each source is a single article, video, or tweet. Tap the publisher to read in full.</p>
+<h2>TL;DR</h2>
 
-<ol class="sources">
+<p><strong>Six threads to hold in your head before bed.</strong></p>
 
-<li>
-  <div class="source-title">GitHub Copilot app: The agent-native desktop experience</div>
-  <div class="source-domain"><a href="https://github.blog">github.blog</a></div>
-</li>
-
-<li>
-  <div class="source-title">Inside YC's AI Playbook</div>
-  <div class="source-domain"><a href="https://www.youtube.com/watch?v=B246K_G7mHU">youtube.com</a> · Y Combinator Lightcode · ~1h</div>
-</li>
-
-<li>
-  <div class="source-title">Karpathy's Autoresearch found a 3-year-old bug in our query engine (and improved performance by 11%)</div>
-  <div class="source-domain"><a href="https://posthog.com/blog">posthog.com/blog</a></div>
-</li>
-
-<li>
-  <div class="source-title">Microsoft Scout: The Autonomous Executive AI Assistant</div>
-  <div class="source-domain"><a href="https://www.microsoft.com/en-us/microsoft-copilot">microsoft.com</a></div>
-</li>
-
-<li>
-  <div class="source-title">OKLCH: The Perceptual Revolution in Digital Color Science</div>
-  <div class="source-domain"><a href="https://evilmartians.com/chronicles">evilmartians.com/chronicles</a></div>
-</li>
-
-<li>
-  <div class="source-title">Open and closed models are on different exponentials</div>
-  <div class="source-domain"><a href="https://interconnects.ai">interconnects.ai</a></div>
-</li>
-
-<li>
-  <div class="source-title">Primitive Wedges</div>
-  <div class="source-domain"><a href="https://productledalliance.substack.com">productledalliance.substack.com</a> · by Ben Williams</div>
-</li>
-
-<li>
-  <div class="source-title">The AI Bubble: A Looming Financial Collapse</div>
-  <div class="source-domain"><a href="https://www.activistpost.com">activistpost.com</a></div>
-</li>
-
-<li>
-  <div class="source-title">The Token Reckoning is Here and It's Not What You Think</div>
-  <div class="source-domain"><a href="https://www.latent.space">latent.space</a></div>
-</li>
-
-<li>
-  <div class="source-title">Vercel Security Checkpoint</div>
-  <div class="source-domain"><a href="https://vercel.com/blog">vercel.com/blog</a></div>
-</li>
-
-<li>
-  <div class="source-title">mem0ai — long-term memory for AI agents (tweet)</div>
-  <div class="source-domain"><a href="https://x.com/mem0ai/status/2061822612398014782">x.com/mem0ai</a></div>
-</li>
-
+<ol>
+<li><strong>The interface is migrating from chat to canvas.</strong> GitHub's Canvases position intent as inspectable work, leaving the "long scroll of decisions" behind. YC's Garry Tan still defends chat. Both are right for different jobs.</li>
+<li><strong>Organizations are becoming legible to software.</strong> YC's "shared organizational brain" — centralized data, shared tool registry, meeting transcripts as the substrate — is the template for what every AI-native company will look like in 12 months.</li>
+<li><strong>Primitive wedges beat broad generators.</strong> The next durable developer platforms will not be "AI that writes code." They will be narrow, painful, unavoidable capabilities: secure execution, operational memory, verification, sandboxing.</li>
+<li><strong>The token bill is the actual moat test.</strong> 82 cents of every AI dollar is waste. Cost-adjusted productivity is the metric. Vendors who monetize compute used for verification are about to lose their customers.</li>
+<li><strong>Open and closed models are on different exponentials — by design.</strong> Frontier labs form an oligopoly on absolute intelligence. Open weights commoditize on volume. The smart money routes between the two based on cost-per-completed-workflow, not vibes.</li>
+<li><strong>The AI bubble is real, and it is not what you think.</strong> The risk is not that the tech doesn't work. The risk is that the debt to finance it cannot be repaid from the productivity it produces. Founders building real businesses will be fine; the speculative layer above them will not.</li>
 </ol>
 
+<h2>1. From Copilots to Canvases</h2>
+
+<p>The release of GitHub Copilot as a standalone desktop app is the first major 2026 product launch to take seriously the question of how a developer is supposed to live with multiple AI agents running in parallel. The piece on the GitHub Blog argues that chat interfaces, however good, are inadequate for real engineering: they produce a "long scroll of decisions" that the human cannot inspect or correct without breaking flow. The new app introduces <em>Canvases</em> — bidirectional workspaces where intent becomes inspectable work, alongside agentic code reviews, sandboxed environments for secure execution, and a standardized SDK to ensure a consistent runtime across tools.</p>
+
+<p>This is the same shift Y Combinator is making internally, in a different vocabulary. Inside YC's AI Playbook describes how the firm has reorganized its engineering around a <em>shared organizational brain</em>: a centralized tool registry, a unified database that every agent can query in read-only SQL, and meeting transcripts that are the substrate for skill refinement. The result is that non-technical staff — finance, in the case study — can automate deterministic workflows that previously required dedicated engineering. The magic, the speaker insists, is not in any individual agent. It is in having all vital organizational context in one place, which vastly increases both the volume and complexity of questions employees dare to ask.</p>
+
+<p>Microsoft's announcement of Scout — its "autonomous executive AI assistant" — extends the same pattern out of engineering and into general enterprise operations. Scout negotiates calendar conflicts autonomously, operates internally with its own distinct identity, and is positioned as an "always-on employee" rather than a tool. The three launches are different in domain, but identical in thesis: the 2026 product is not a chat window. It is a control surface that orchestrates multiple agents inside a bounded environment, with the human as the final authority over automated delivery and quality.</p>
+
+<blockquote>
+"The long scroll of decisions" is what GitHub thinks chat interfaces are. YC's Garry Tan thinks the same about chat — and disagrees with the conclusion. He argues chat is the ultimate interface because it maps to human thought; visual boxes are too constraining.
+</blockquote>
+
+<h2>2. The "Primitive Wedge" Thesis</h2>
+
+<p>If generation is the cheap part — and the 82-cents-on-the-dollar statistic is any indication, it is — then the value in developer tools has shifted toward <em>constraining, observing, and validating</em> that generation. The Primitive Wedges piece argues that the next massive developer platforms will not be broad code generators. They will be narrow, painful, and unavoidable capabilities: secure execution environments, operational memory layers, verification systems, governance primitives. Because developers inherently distrust AI generation, the market demands tools that answer "Should I trust this output?" rather than "Can I generate more output?"</p>
+
+<p>GitHub's local and cloud sandboxes are the cleanest example of this in the wild. They provide bounded environments where agents can run code, inspect results, and iterate without threatening production systems, violating enterprise policies, or suffering from local resource constraints. The sandbox is not a feature of Copilot; it is the platform that makes Copilot's agents safe to deploy.</p>
+
+<p>PostHog's autonomous research loop is a case study in what a primitive wedge looks like when it works. Engineers handed the agent a constrained objective — optimize database queries — inside an isolated sandbox. Stripped of human bias and given permission to run experiments, the agent discovered a three-year-old timezone bug that had been silently inflating scan costs, and reduced the number of data granules scanned by 62%. The result is a measurable performance win and a quietly subversive claim: given a secure, observable environment, an AI agent can outperform a human engineer on a focused, well-bounded problem.</p>
+
+<div class="caflag">
+<span class="caflag-title">Counter-argument flag</span>
+The primitive-wedge thesis assumes the agentic part works well enough to wrap. The Token Reckoning piece argues it often doesn't: 82 cents of every AI dollar is consumed by bug fixes, rewrites, and hallucination correction on outputs that will never ship. The wedges are real, but the value they capture depends on the model layer underneath them, which is still in a state of expensive flux.
+</div>
+
+<h2>3. The Economics: Open vs. Closed, and the Token Reckoning</h2>
+
+<p>The "Open and closed models are on different exponentials" piece draws a structural line. Frontier labs — OpenAI, Anthropic — will operate as a highly valuable oligopoly, structurally similar to a mix of Apple and Microsoft: a small number of players, massive profit margins, pricing power anchored on absolute intelligence for complex knowledge work. Closed models capture the high end of the value distribution because enterprises will pay a premium for the best.</p>
+
+<p>Open models move in the opposite direction. The same source argues that open weights will capture broader economic value through sheer volume — deployed by enterprises for predictable, niche tasks via multi-company serving stacks, where cost predictability outweighs the need for frontier reasoning. The model layer bifurcates, and the bifurcation is durable.</p>
+
+<p>Y Combinator already runs the hybrid. The Playbook describes a skill registry that dynamically maps agent capabilities regardless of the underlying model, allowing the firm to capitalize on the plummeting costs of open-weight systems while still routing complex tasks to top-tier proprietary models when necessary. The bet is that <em>routing</em> — not picking a side — is the durable strategy.</p>
+
+<p>The Token Reckoning piece adds a financial discipline to this routing. The 82-cent figure is its anchor. Vendors monetize the compute used for trial-and-error, transferring the financial risk of bloated prompts, endless agent loops, and verification entirely onto the customer. The authors warn that major tech companies, including Uber, are already struggling to justify their AI spending to shareholders, and Anthropic's $965B valuation post-Opus 4.8 is increasingly hard to square with the 18-cents-shipped metric. The next 12 months will be the period in which cost-per-completed-workflow replaces tokens-per-second as the metric that matters.</p>
+
+<h2>4. The Macroeconomic Risk</h2>
+
+<p>The AI Bubble piece widens the lens to the sector as a whole. The argument is unflinching: foundational AI labs remain unprofitable, propped up by venture capital and corporate debt. The industry has generated over $1.2 trillion in AAA-rated debt to finance its infrastructure buildout — debt that is, in the author's framing, inherently risky and mis-sold, because the underlying technology is currently failing to generate the macroeconomic productivity required to service it. The parallel to 2008 is explicit: the dot-com bubble's underlying technology eventually did justify the buildout, after a brutal correction. The AI buildout may or may not — and the correction, when it comes, will be driven by the bond market, not by the technology market.</p>
+
+<p>The empirical claims are striking and worth verifying before repeating. Oxford Economics surveys cited in the piece show that nearly 90% of global firms report that AI has had absolutely zero impact on employment or productivity over the past three years — a number that is hard to square with the "100x engineer" narrative but consistent with the 82-cents-on-the-dollar figure. The "deskilling" concern is also raised: developers who lean too heavily on generative tools are losing the manual fluency that lets them verify what the tools produce.</p>
+
+<p>For a founder, the practical implication is to build a business that does not depend on the bubble continuing to inflate. Real customers, real cost-adjusted productivity, real moats. The speculative layer above you will not be there in 18 months if the macro call is right. Build for the world after the correction, not for the world during it.</p>
+
+<div class="pullbox">
+<h4>What the day's sources actually agree on</h4>
+<ul>
+<li><strong>Generation is commoditized.</strong> The interesting work is around the model, not in it.</li>
+<li><strong>Verification is the bottleneck.</strong> 82 cents of every dollar goes to fixing what the model produced wrong.</li>
+<li><strong>Context is the moat.</strong> YC's "shared organizational brain" works because all the data is in one place. Every other agentic product is bottlenecked on the same problem.</li>
+<li><strong>Routing beats picking.</strong> Closed for frontier, open for cost. The skill registry is the abstraction layer.</li>
+</ul>
+</div>
+
+<h2>5. Key Tensions and Disagreements</h2>
+
+<p>The day's sources disagree on three load-bearing questions, and reading them as a portfolio rather than a single narrative is the point.</p>
+
+<p><strong>The productivity paradox.</strong> YC's Playbook and the PostHog case study describe profound, measurable productivity unlocks. The AI Bubble piece explicitly refutes this, citing Oxford Economics to claim AI creates zero macroeconomic productivity, actively deskills workers, and is primarily a narrative cover for poor corporate performance and bloated debt. Both can be true at different scales: micro-productivity is real; macro-productivity is not yet visible. The disagreement is about which level of evidence to trust.</p>
+
+<p><strong>Chat vs. Canvas.</strong> GitHub's piece argues chat interfaces are inadequate for real engineering and must be replaced by inspectable, visual Canvases. YC's Garry Tan, in the Playbook interview, forcefully defends the chat UI as the ultimate interface because it maps perfectly to human thought and expression, dismissing visual boxes as too constraining. The right answer is probably "both, by use case" — but the disagreement is real and worth understanding before you commit.</p>
+
+<p><strong>Open vs. closed ecosystems.</strong> Y Combinator advocates an open, decentralized "homebrew computer club" model where companies run their own prompts and control their local data, warning against a 1984-style centralization by Big Tech. The "different exponentials" piece takes a contrarian capitalist view: closed frontier labs will inevitably form a dominant oligopoly because enterprise buyers will always pay a premium for the highest intelligence, rendering open-source romanticism economically secondary. The bet you make on this is the bet you make on your cost structure and your defensibility.</p>
+
+<h2>6. Practical Takeaways for Building in 2026</h2>
+
+<p><strong>Target the primitive wedge, not the wrapper.</strong> Stop building thin layers on top of code or text generation. That market is commoditized. Instead, focus your product on verification, secure execution sandboxes, or operational memory. Build tools that answer "Should I trust this output?" rather than "Can I generate more output?" The PostHog case study is the cleanest example: a constrained objective, a safe environment, a measurable win.</p>
+
+<p><strong>Centralize your context.</strong> AI is useless without accurate operational data. Emulate YC's approach: consolidate your application's data into a single, accessible database — a shared organizational brain for your product. Clean, easily retrievable context is the ultimate competitive moat for any agentic application, and it is something you build yourself, not something the model vendor can give you.</p>
+
+<p><strong>Optimize for cost-adjusted productivity, not token volume.</strong> The era of subsidized AI compute is ending. When building your product's architecture, default to smaller, specialized models or deterministic code for simple tasks. Aggressively avoid token waste. Customers will scrutinize cost-per-completed-workflow; do not force LLMs to do what standard code can do cheaper and faster. The Token Reckoning piece is your early warning that this metric is coming for every line item.</p>
+
+<p><strong>Leverage modern non-AI standards to ship faster.</strong> Stand out by executing fundamental software mechanics flawlessly. Adopt modern standards like the OKLCH color space for your UI/UX to ensure highly accessible, aesthetically perfect interfaces out of the box. The OKLCH piece, which otherwise seems out of place in a digest about agentic AI, makes the same point: foundational infrastructure, done right, becomes invisible and unquestioned. That is the bar.</p>
+
+<h2>The agent-native stack, in one frame</h2>
+
+<div class="figure">
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
+  <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#111">The 2026 Agent-Native Stack</text>
+  <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#666">Where value accrues, from the surface down to the primitives</text>
+
+  <!-- Top: Interface Layer -->
+  <rect x="60" y="58" width="600" height="44" fill="#fdfcf8" stroke="#b08968" stroke-width="1.5" rx="3"/>
+  <text x="80" y="76" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">L5 · INTERFACE</text>
+  <text x="80" y="94" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Canvases (GitHub) · Chat (YC) · Scout (Microsoft) — where intent becomes inspectable work</text>
+
+  <!-- Orchestration Layer -->
+  <rect x="60" y="112" width="600" height="44" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+  <text x="80" y="130" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#666">L4 · ORCHESTRATION</text>
+  <text x="80" y="148" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Skill registry · Multi-agent routing · Agentic code review · Parallel task execution</text>
+
+  <!-- Context Layer -->
+  <rect x="60" y="166" width="600" height="44" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+  <text x="80" y="184" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#666">L3 · CONTEXT</text>
+  <text x="80" y="202" font-family="-apple-system, sans-serif" font-size="11" fill="#222">"Shared organizational brain" — unified data, meeting transcripts, retrievable memory</text>
+
+  <!-- Primitives Layer (highlighted as the moat) -->
+  <rect x="60" y="220" width="600" height="44" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.2" rx="3"/>
+  <text x="80" y="238" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#d4af7a">L2 · PRIMITIVES</text>
+  <text x="80" y="256" font-family="-apple-system, sans-serif" font-size="11" fill="#fafaf7">Sandboxes · Operational memory · Verification · Governance — the actual moat in 2026</text>
+
+  <!-- Model Layer -->
+  <rect x="60" y="274" width="600" height="44" fill="#f7f3e9" stroke="#888" stroke-width="1.2" rx="3"/>
+  <text x="80" y="292" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#666">L1 · MODELS</text>
+  <text x="80" y="310" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Frontier closed (OpenAI / Anthropic oligopoly) + open weights (commoditizing on volume)</text>
+
+  <!-- Annotation arrows + label -->
+  <line x1="60" y1="350" x2="660" y2="350" stroke="#b08968" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="360" y="370" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" fill="#8a5a2b">Value flows down to L2 — primitives capture economics, not L1 (commoditized) or L5 (interface-level competition)</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 1. Where the 2026 moat actually lives. Models (L1) are commoditized; interfaces (L5) are contested. The economic value accrues in L2 — the secure execution, verification, and context primitives that turn stochastic generation into something you can ship.</p>
+
+<h2>The 11 sources</h2>
+
+<ol>
+<li><strong>GitHub Copilot app: The agent-native desktop experience</strong> — <a href="https://github.blog">github.blog</a></li>
+<li><strong>Inside YC's AI Playbook</strong> — <a href="https://www.youtube.com/watch?v=B246K_G7mHU">youtube.com</a> (Y Combinator Lightcode, ~1h)</li>
+<li><strong>Karpathy's Autoresearch found a 3-year-old bug in our query engine (and improved performance by 11%)</strong> — <a href="https://posthog.com/blog">posthog.com/blog</a></li>
+<li><strong>Microsoft Scout: The Autonomous Executive AI Assistant</strong> — <a href="https://www.microsoft.com/en-us/microsoft-copilot">microsoft.com</a></li>
+<li><strong>OKLCH: The Perceptual Revolution in Digital Color Science</strong> — <a href="https://evilmartians.com/chronicles">evilmartians.com/chronicles</a></li>
+<li><strong>Open and closed models are on different exponentials</strong> — <a href="https://interconnects.ai">interconnects.ai</a></li>
+<li><strong>Primitive Wedges</strong> — <a href="https://productledalliance.substack.com">productledalliance.substack.com</a> · by Ben Williams</li>
+<li><strong>The AI Bubble: A Looming Financial Collapse</strong> — <a href="https://www.activistpost.com">activistpost.com</a></li>
+<li><strong>The Token Reckoning is Here and It's Not What You Think</strong> — <a href="https://www.latent.space">latent.space</a></li>
+<li><strong>Vercel Security Checkpoint</strong> — <a href="https://vercel.com/blog">vercel.com/blog</a> <em>(source content not loadable — security checkpoint)</em></li>
+<li><strong>mem0ai — long-term memory for AI agents</strong> — <a href="https://x.com/mem0ai/status/2061822612398014782">x.com/mem0ai</a> <em>(tweet)</em></li>
+</ol>
+
+<h2>Tonight's listen</h2>
+<p>The Deep Dive audio overview covers all 11 sources in ~10 minutes. A good run before sleep if reading isn't your thing.</p>
+<p><a class="audio-cta" href="https://www.youtube.com/watch?v=B246K_G7mHU&loop=1&playlist=B246K_G7mHU">▶ Play "The shift to autonomous AI agents" — 10 min</a></p>
+
 <h2>Read the full notebook</h2>
-<p>For the chat answers, full source content, slide deck, and infographic, head to the source notebook. It also has the audio overview (above), 11 source documents, and an auto-generated mind map.</p>
+<p>For the chat answers, full source content, slide deck, infographic, and the auto-generated mind map, head to the source notebook.</p>
 <p><a href="https://notebooklm.google.com/notebook/362dd885-51c0-4c7f-b116-b9a1780fed7a">→ Open the NotebookLM notebook</a></p>
 
 <div class="footer">
