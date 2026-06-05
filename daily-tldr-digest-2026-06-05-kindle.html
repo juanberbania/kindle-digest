@@ -67,6 +67,13 @@
     color: #2a2a2a;
     border-radius: 2px;
   }
+  blockquote cite {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 14px;
+    color: #666;
+  }
   .pullbox {
     background: #1a1a1a;
     color: #fafaf7;
@@ -107,7 +114,63 @@
     text-transform: uppercase;
     margin-bottom: 4px;
   }
-  .sources li { margin-bottom: 8px; line-height: 1.45; }
+  .figure {
+    margin: 26px 0 10px 0;
+    padding: 14px;
+    background: #fdfcf8;
+    border: 1px solid #e6dfcc;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .figure svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  /* Force diagram text to be visible regardless of any reader inverting colors */
+  .figure svg text { fill: #1a1a1a !important; }
+  .figure svg text.muted { fill: #555 !important; }
+  .figure svg text.dim { fill: #777 !important; }
+  .figure svg text.light { fill: #fafaf7 !important; }
+  .figure svg text.gold { fill: #d4af7a !important; }
+  .figure svg text.title { fill: #111 !important; font-weight: 700; }
+  .figure-caption {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    color: #888;
+    margin: 2px 0 14px 0;
+    font-style: italic;
+    text-align: center;
+  }
+  .glossary {
+    background: #f7f3e9;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    font-size: 16px;
+  }
+  .glossary h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a5a2b;
+    border: none;
+    padding: 0;
+  }
+  .glossary dl { margin: 0; }
+  .glossary dt {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 8px;
+  }
+  .glossary dd {
+    margin: 2px 0 6px 0;
+    color: #333;
+    font-size: 15px;
+  }
+  .sources li { margin-bottom: 12px; line-height: 1.5; }
   .sources a {
     color: #8a5a2b;
     text-decoration: none;
@@ -118,6 +181,12 @@
     color: #888;
     font-size: 14px;
     font-style: italic;
+  }
+  .sources .src-note {
+    display: block;
+    margin-top: 4px;
+    color: #444;
+    font-size: 15px;
   }
   .audio-cta {
     display: inline-block;
@@ -147,102 +216,401 @@
 <body>
   <div class="wrap">
     <div class="doc-meta">Taste Lab · Kindle Digest · June 5, 2026</div>
-    <h1>Daily Digest: AI-Native Stacks, Connectivity, and What It Costs to Build Fast</h1>
-    <p class="subtitle">Ten sources on the shape of the 2026 AI stack — from agent connectivity primitives (MCP, CLI, Skills) and modern engineering values, to model releases (Gemma 4 12B), enterprise agent deployments, and a long look back at Aschenbrenner's AGI-by-2027 essay two years on.</p>
+    <h1>Daily Digest: The Stack Becomes Legible — and Suddenly the Hard Question Is "Which Layer Are You On?"</h1>
+    <p class="subtitle">Ten sources on the shape of the 2026 AI stack — from agent connectivity primitives (MCP, CLI, Skills), to modern engineering values in the leverage era, to model releases (Gemma 4 12B), enterprise agent deployments (Meta), AI-first UX, and a long retrospective look at Leopold Aschenbrenner's <em>Situational Awareness</em> essay two years after it landed.</p>
 
-    <h2>The throughline: the stack is finally legible</h2>
+    <p>The unifying observation across today's ten sources is structural: <strong>for the first time, the AI stack has named layers, agreed primitives, and durable boundaries</strong>. The sprawl of 2024–2025 is over. You can now point at a layer and say "this is where I am, and here is the unit-economic profile of the layer above me and the layer below me." That is the moment a market gets serious.</p>
 
-    <p>For the last 18 months, the conversation around AI tooling has been a sprawl. Today's digest contains the first day in a while where multiple independent sources converge on the same picture: a layered, opinionated stack with named primitives that you can actually point at. Not all the sources agree on which layer matters most, but they all agree there <em>is</em> a stack — and that "which layer are you betting on?" is now a meaningful question.</p>
+    <p>What follows is the synthesis. Six themed sections, three diagrams, a pullbox, practical takeaways, a glossary for the cross-domain reader, and the source list with one note per piece. Reading time: ~22 minutes.</p>
 
-    <p>The <strong>AI-native stack</strong> piece lays out five layers: <em>model</em>, <em>orchestration</em>, <em>tooling</em>, <em>workflow</em>, and the increasingly visible <em>data substrate</em> underneath. Intelligence, in this framing, no longer lives in any one model — it flows across a network of interconnected systems, each optimized for a specific task. The model is just one component; the routing, memory, and integration scaffolding around it are where most of the actual work (and value) happens.</p>
+    <h2>1. The legible stack: five layers, one data substrate</h2>
 
-    <p>The <strong>2026 Connectivity Stack</strong> piece sharpens that picture for the agent-tooling layer specifically. There is no single connectivity solution. Production-ready agents are built on three pillars:</p>
+    <p>The Mercury and DEV Community pieces both lead with a layered model of the AI-native stack. They differ on the exact slicing — some draw four layers, some five, some six — but the structural picture is consistent. Today's digest collapses them to the cleanest version: five functional layers sitting on a single data substrate that cuts across all of them.</p>
+
+    <p>From the surface down:</p>
 
     <ul>
-      <li><strong>Skills</strong> — reusable capability files. Domain knowledge captured in a simple, portable format that any host can load.</li>
-      <li><strong>CLI</strong> — high-leverage in local, sandboxed, developer-facing contexts where token efficiency matters and commands are already in the model's pretraining.</li>
-      <li><strong>MCP</strong> — Anthropic's standardised tool-server protocol. Build the server once (tools, resources, prompts, sampling); every MCP-aware host can talk to it.</li>
+      <li><strong>L5 · Interface.</strong> Where intent becomes inspectable work. Chat is one form; IDE-like inspection surfaces are another; voice and ambient agents (Microsoft Scout, etc.) are a third. The InfoWorld piece on AI-first UX argues this layer is fragmenting fast — there is no single interface paradigm that will dominate the way the desktop GUI dominated 1990–2010.</li>
+      <li><strong>L4 · Workflow.</strong> Where the actual product is. Domain-specific applications: legal review, ad-ops, code review, customer support, calendar triage. This is where most teams ship. Most enterprise AI value lives here, even when the press coverage points at L1.</li>
+      <li><strong>L3 · Tooling.</strong> The connectivity layer — Skills, CLI, and MCP. This is where today's most interesting writing is, because it is the layer that just became standardised enough to talk about as primitives rather than as ad-hoc plumbing.</li>
+      <li><strong>L2 · Orchestration.</strong> Routing, agent loops, memory, skill registries, retries, evaluation. The "nervous system" in the Mercury piece's framing. Quietly important, often invisible to the customer, frequently the difference between a product that works and one that doesn't.</li>
+      <li><strong>L1 · Models.</strong> Frontier closed (the OpenAI/Anthropic oligopoly) and open weights (commoditising fast). Today's Gemma 4 12B release reinforces a pattern: open weights are no longer a research curiosity — they are increasingly the right answer for the workflow layer above them.</li>
     </ul>
 
-    <p>The right answer in 2026 is "all three, at the right moment." Use CLI for developer workflows where token efficiency dominates; reach for MCP for customer-facing and compliance-sensitive features; layer Skills on top to keep capabilities portable across hosts. The smartest architectures right now are doing all three, not picking sides.</p>
+    <p>Underneath all five sits the <strong>data substrate</strong>: clean, accessible, well-indexed operational data. Every source today agrees, explicitly or implicitly, that this is what makes or breaks an AI-native application. Y Combinator's "shared organizational brain" thesis from yesterday's digest is the same observation phrased differently: <em>intelligence depends on context, and context depends on the data layer</em>.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
+        <!-- Title -->
+        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">The 2026 AI-Native Stack</text>
+        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Five functional layers on a single data substrate · L3 is the new connectivity moat</text>
+
+        <!-- L5 Interface -->
+        <rect x="60" y="60" width="600" height="56" fill="#fdfcf8" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="80" y="80" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">L5 · INTERFACE</text>
+        <text x="80" y="100" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Chat · inspectable IDE-like surfaces · voice · ambient agents (Scout, Copilot desktop)</text>
+
+        <!-- L4 Workflow -->
+        <rect x="60" y="124" width="600" height="56" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="144" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">L4 · WORKFLOW</text>
+        <text x="80" y="164" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Domain apps: legal review · ad ops · code review · support · calendar · email triage</text>
+
+        <!-- L3 Tooling (highlighted moat) -->
+        <rect x="60" y="188" width="600" height="64" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.2" rx="3"/>
+        <text x="80" y="210" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="gold">L3 · TOOLING</text>
+        <text x="80" y="230" font-family="-apple-system, sans-serif" font-size="11" class="light">Skills (portable capabilities) · CLI (developer happy path) · MCP (externalised tool servers)</text>
+        <text x="80" y="246" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="gold">★ Where the durable economic moat lives in 2026</text>
+
+        <!-- L2 Orchestration -->
+        <rect x="60" y="260" width="600" height="56" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="280" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">L2 · ORCHESTRATION</text>
+        <text x="80" y="300" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Routing · agent loops · memory · skill registries · retries · evaluation harness</text>
+
+        <!-- L1 Models -->
+        <rect x="60" y="324" width="600" height="56" fill="#f7f3e9" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="344" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">L1 · MODELS</text>
+        <text x="80" y="364" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Frontier closed (OpenAI / Anthropic oligopoly) + open weights (Gemma 4, Llama, Qwen — commoditising on volume)</text>
+
+        <!-- Data substrate (foundation, wider) -->
+        <rect x="40" y="396" width="640" height="48" fill="#ece6d6" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="60" y="418" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">D · DATA SUBSTRATE</text>
+        <text x="60" y="436" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Operational data · meeting transcripts · retrievable memory · "shared organizational brain"</text>
+
+        <!-- Annotation arrow showing where value flows -->
+        <text x="360" y="465" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" fill="#8a5a2b">Value accrues at L3 (tooling primitives) and the data substrate. L1 commoditises; L5 fragments.</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Figure 1. The 2026 AI-Native Stack. Mercury, DEV Community, and the AI-Agent Stack piece converge on five functional layers plus a data substrate. The economic moat lives at L3 (tooling primitives) and in the data layer underneath, not in the model layer.</p>
+
+    <h2>2. Three pillars at the tooling layer: MCP · CLI · Skills</h2>
+
+    <p>Ana Bildea's <strong>Mastering the 2026 Connectivity Stack</strong> piece is the cleanest articulation of the L3 thesis yet. The core claim is that production-ready agents in 2026 are not built on a single connectivity primitive. They are built on three, used in concert.</p>
+
+    <blockquote>
+      "The best agents of 2026 will not be the ones with the fanciest tool, the fastest CLI, or the deepest skill library. They will be the ones that use all three, at the right moment, for the right task, with the least friction."
+      <cite>— Bildea, <em>Mastering the 2026 Connectivity Stack: MCP, CLI, and Skills</em></cite>
+    </blockquote>
+
+    <p>Each pillar has a clear default use case:</p>
+
+    <ul>
+      <li><strong>Skills</strong> capture a specific capability or domain knowledge in a simple, portable file format that any MCP-aware host can load. They are the layer of <em>reusability</em>: write once, run inside Claude Code, Cursor, Codex, OpenClaw, or the next host that ships next quarter. Skills replaced what used to be ad-hoc system prompts and brittle few-shot prompt libraries.</li>
+      <li><strong>CLI</strong> is the developer happy path. CLIs are powerful in local, sandboxed, developer-oriented environments, especially when the commands are already represented in the model's pretraining (git, npm, kubectl, gh, openclaw). Token-efficient. Auditable. Already part of how engineers think.</li>
+      <li><strong>MCP</strong> is Anthropic's standardised tool-server protocol. It turns one-off function calling into a durable abstraction: you build a server once (tools, resources, prompts, sampling), and every MCP-aware host can talk to it. MCP is what you use when you need to externalise a tool — make it work across hosts, across teams, across compliance boundaries.</li>
+    </ul>
+
+    <p>The piece is at its strongest when it gives concrete decision rules. The emerging consensus, paraphrased from Bildea and from Jannik Reinhard's <em>Mapping the AI Tooling Surface in 2026</em>:</p>
+
+    <ul>
+      <li>Use <strong>CLI</strong> for developer workflows where token efficiency matters and where the operator is technical enough to read raw output.</li>
+      <li>Use <strong>MCP</strong> for customer-facing and compliance-sensitive features where the tool surface must be standardised, auditable, and shareable across hosts.</li>
+      <li>Use <strong>Skills</strong> to keep the capabilities you build portable as the host landscape shifts under you. (The host shifts faster than your domain knowledge does.)</li>
+    </ul>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
+        <!-- Title -->
+        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">The Connectivity Pillar Matrix</text>
+        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Where each pillar shines · the answer is rarely "pick one"</text>
+
+        <!-- Axis labels -->
+        <text x="360" y="395" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="muted">Operator: technical developer → end customer</text>
+        <text x="22" y="200" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="muted" transform="rotate(-90 22 200)">State: local sandbox → externalised across hosts</text>
+
+        <!-- Frame -->
+        <rect x="60" y="60" width="600" height="320" fill="#ffffff" stroke="#d8d4c8" stroke-width="1"/>
+        <!-- Quadrant gridlines -->
+        <line x1="360" y1="60" x2="360" y2="380" stroke="#e6dfcc" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="60" y1="220" x2="660" y2="220" stroke="#e6dfcc" stroke-width="1" stroke-dasharray="3 3"/>
+
+        <!-- CLI zone: bottom-left (local + developer) -->
+        <rect x="68" y="228" width="284" height="144" fill="#f0ebe0" stroke="#b08968" stroke-width="1.2" rx="3"/>
+        <text x="84" y="248" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#8a5a2b">CLI</text>
+        <text x="84" y="268" font-family="-apple-system, sans-serif" font-size="11" fill="#222">local · sandboxed · token-efficient</text>
+        <text x="84" y="284" font-family="-apple-system, sans-serif" font-size="11" fill="#222">scripted · auditable text streams</text>
+        <text x="84" y="304" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">Default for developer happy path.</text>
+        <text x="84" y="318" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">Commands already in pretraining</text>
+        <text x="84" y="332" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">(git, npm, kubectl, gh).</text>
+        <text x="84" y="354" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" fill="#8a5a2b">When in doubt: try here first.</text>
+
+        <!-- MCP zone: top-right (externalised + customer) -->
+        <rect x="368" y="68" width="284" height="144" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.2" rx="3"/>
+        <text x="384" y="88" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" class="gold">MCP</text>
+        <text x="384" y="108" font-family="-apple-system, sans-serif" font-size="11" class="light">tool-server protocol</text>
+        <text x="384" y="124" font-family="-apple-system, sans-serif" font-size="11" class="light">multi-host · audit trail · auth</text>
+        <text x="384" y="144" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="light">Default for customer-facing,</text>
+        <text x="384" y="158" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="light">compliance-sensitive,</text>
+        <text x="384" y="172" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="light">cross-team-shared tools.</text>
+        <text x="384" y="194" font-family="-apple-system, sans-serif" font-size="10" font-weight="700" class="gold">When you need it everywhere.</text>
+
+        <!-- Skills overlay: cuts diagonally — portable capability layer -->
+        <rect x="68" y="68" width="284" height="144" fill="#fdfcf8" stroke="#b08968" stroke-width="1.2" rx="3" stroke-dasharray="6 3"/>
+        <text x="84" y="88" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#8a5a2b">SKILLS</text>
+        <text x="84" y="108" font-family="-apple-system, sans-serif" font-size="11" fill="#222">portable capability files</text>
+        <text x="84" y="124" font-family="-apple-system, sans-serif" font-size="11" fill="#222">load anywhere · host-agnostic</text>
+        <text x="84" y="144" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">Skills wrap either CLI</text>
+        <text x="84" y="158" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">or MCP and keep the</text>
+        <text x="84" y="172" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">capability portable as</text>
+        <text x="84" y="186" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="muted">the host landscape shifts.</text>
+
+        <!-- Empty bottom-right placeholder (customer-facing local — unusual) -->
+        <rect x="368" y="228" width="284" height="144" fill="#fdfcf8" stroke="#d8d4c8" stroke-width="1" rx="3" stroke-dasharray="3 3"/>
+        <text x="510" y="296" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="dim">Rare quadrant</text>
+        <text x="510" y="312" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="dim">customer-facing + local-state</text>
+        <text x="510" y="326" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="dim">usually a desktop app shipping</text>
+        <text x="510" y="340" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="dim">its own embedded MCP server</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Figure 2. The Connectivity Pillar Matrix. CLI dominates the local + developer quadrant. MCP dominates the externalised + customer quadrant. Skills cut across both, wrapping whichever pillar is appropriate and keeping the capability portable as hosts change underneath you.</p>
 
     <div class="caflag">
       <span class="caflag-title">Counter-argument flag</span>
-      The three-pillar story is clean, but each pillar is still leaky. Skills file formats aren't standardised across vendors. CLIs vary wildly in how well they're represented in pretraining. MCP has stabilised faster than most expected, but server quality and discoverability are still uneven. The stack is legible, but it isn't mature.
+      The three-pillar story is clean enough to be suspicious. Each pillar is still leaky: Skill file formats are not yet standardised across vendors (Claude Skills, OpenClaw Skills, and the various OSS variants disagree on schema). CLIs vary wildly in how well they're represented in model pretraining (git is everywhere; `openclaw` is not). MCP has stabilised faster than most expected, but server quality and discoverability are still uneven, and authentication patterns differ across hosts. The stack <em>looks</em> legible. The plumbing underneath is still being worked out.
     </div>
 
-    <h2>What changes when execution becomes cheap</h2>
+    <h2>3. Modern engineering values: what changes when execution becomes cheap</h2>
 
-    <p>Christoph Nakazawa's <strong>Modern Engineering Values</strong> piece reframes the productivity story from the inside of an engineering org. The core thesis: as execution becomes cheaper and individual contributors gain more leverage, managers can no longer just own outcomes or direction — they have to retain domain expertise, make changes confidently, and provide technical leadership themselves. The old IC/manager split breaks down in environments where ICs are de facto operators with agentic tooling at their disposal.</p>
+    <p>Christoph Nakazawa's <strong>Modern Engineering Values</strong> piece (published June 3 on cpojer.net) reframes the productivity story from the inside of an engineering org. It is not, strictly speaking, an AI piece. It is a piece about what engineering culture has to look like when the price of execution drops.</p>
 
-    <p>This connects directly to the AI-native stack story. If the stack is legible and the tooling layer is doing real work, the bottleneck moves to <em>judgment</em>: which problem to point the stack at, which trade-offs to accept, when to stop iterating. Those are not orchestration problems — they're values problems. Nakazawa's piece is less about AI and more about the kind of engineering culture that survives the leverage shift.</p>
+    <p>The core thesis: as the cost of writing and shipping code falls (because models help, because tooling is better, because the L3 connectivity layer means you can chain capabilities cheaply), the bottleneck shifts upstream. The old IC/manager split is breaking down. Managers can no longer just own outcomes or direction. They have to retain domain expertise, make changes to their projects confidently, and provide technical leadership themselves. Otherwise their teams move faster than they can credibly steer.</p>
 
-    <p>The <strong>AI-first UX</strong> piece in InfoWorld picks up the same thread from the product side. If the model layer is increasingly a commodity and the orchestration layer is increasingly named, then differentiated UX moves to the interface itself — how an agent presents intent, how a user inspects and corrects mid-flight, how the system communicates confidence. The piece argues that AI-first interfaces will resemble neither chat nor traditional GUIs, but something closer to a hybrid inspection surface — closer to an IDE for intent than a conversation.</p>
+    <p>Nakazawa's prescription is a short list of values that hold up under the leverage shift:</p>
 
-    <h2>Models, deployments, and the long tail</h2>
+    <ul>
+      <li><strong>Domain depth over process depth.</strong> When you can no longer rely on being the person who runs the meeting cadence, you have to be the person who actually knows the product.</li>
+      <li><strong>Speed of decision over speed of typing.</strong> The model can type faster than you. The model can also be wrong. The differentiator is the judgment call that comes <em>before</em> the typing — what to build, what to skip, when to stop.</li>
+      <li><strong>Confidence-to-ship under uncertainty.</strong> The leverage-era IC has to be comfortable shipping work that the model produced and that no other human has reviewed. That is a values question, not a tools question.</li>
+      <li><strong>Verification by default.</strong> Yesterday's digest noted that 82 cents of every AI dollar goes to fixing what the model produced wrong. Nakazawa's piece is the inside-the-team version of that observation: an engineering culture that does not bake verification into its definition of "done" is shipping broken work at higher volume.</li>
+    </ul>
 
-    <p><strong>Gemma 4 12B</strong>, Google's latest open-weight release, lands in this context. The interesting framing is not "is it better than Llama or Qwen at scale X" — it's "is it good enough to sit in the model layer of an AI-native stack and let the other layers do the work?" For most production agent workloads, the answer increasingly looks like yes. The frontier matters for hard reasoning; the open-weight tier matters for everything else, and the everything-else category is growing.</p>
+    <p>The implication for org design is uncomfortable. Many engineering orgs ran an IC-track / manager-track split for over a decade, with the explicit promise that you could grow into seniority without retaining hands-on depth. Nakazawa's piece is the polite version of "that promise has expired." Senior engineers and managers who lost domain depth in 2020–2024 are about to be visibly slower than juniors with full tooling fluency. The fix is not to layer more process on top; the fix is to re-acquire depth.</p>
 
-    <p><strong>Meta's Enterprise Evolution: AI Agents for Global Business</strong> is the deployment side of that story. Meta's pitch — AI agents embedded into Workplace, ad ops, and customer service flows — is less about novel capabilities and more about distribution. The frontier is being pushed by the labs; the value at scale is being captured by the platforms that already own the workflow.</p>
+    <h2>4. AI-first UX: after chat, before whatever's next</h2>
 
-    <p><strong>Top Claude Skills for Enhanced Productivity and Automation</strong> sits on the practical end of this. It's a survey of which Skills (in Anthropic's sense) are getting traction with actual users — file system orchestration, kanban automation, structured note-taking, calendar/email triage. The list is mundane; the durability of the pattern is the point. Skills only became formal in 2025, and they're already the way most agentic workflows ship.</p>
+    <p>The InfoWorld <strong>What will AI-first UX look like?</strong> piece picks up the same leverage-shift thread from the product side. If the model layer is increasingly a commodity and the orchestration layer is increasingly named, then differentiated UX moves to the interface itself. The piece argues — correctly, in this reader's view — that AI-first interfaces will resemble neither chat nor traditional GUIs, but something closer to a hybrid inspection surface: closer to an IDE for intent than a conversation.</p>
 
-    <p><strong>TanStack Start (via Lovable)</strong> rounds out the stack story from the application-framework angle. Server-first React with file-based routing, server functions, and streaming-by-default — it's the kind of substrate that AI-native apps tend to land on, because it gives the model a tractable mental model: each route is a function, each function is a transaction, each transaction is observable.</p>
+    <p>The argument compresses to three observations:</p>
 
-    <h2>And then there is Aschenbrenner</h2>
+    <ul>
+      <li><strong>Chat is not the end state.</strong> Chat is great for the first 60 seconds of any interaction (low-friction entry, no UI to learn). Chat is bad for long-horizon tasks where you need to see the state of the work, not just the assistant's latest reply. The next interface has to expose the work, not the conversation.</li>
+      <li><strong>The model is becoming an editor of structured documents.</strong> Code, spreadsheets, slide decks, calendars, kanban boards. The natural interface for that is not a chat window — it is the document with the model's edits live-rendered. GitHub Copilot's desktop app, Microsoft Scout, and Lovable's app builder are all converging on this idea from different starting points.</li>
+      <li><strong>Confidence must be expressed in the UI, not in the prose.</strong> "I'm not sure about this" as a sentence at the end of an assistant reply does not help. "This change has 3 of 10 tests passing and these 4 callers depend on this function" displayed in the same surface as the change itself, does. AI-first UX bakes uncertainty into the inspection surface.</li>
+    </ul>
 
-    <p>The day's most controversial source is the long-form retrospective on <strong>Leopold Aschenbrenner's Situational Awareness</strong>, two years after it was published. The original essay's argument was structural: trace the compute, algorithmic-efficiency, and "unhobbling" trendlines forward, and you get AGI by 2027. After AGI, an intelligence explosion compresses a decade of algorithmic progress into a single year. National security, alignment, and the US/China race become the dominant story.</p>
+    <p>InfoWorld's piece does not claim to know what the dominant pattern will be — it claims that none of today's dominant patterns will be it. That is a useful uncertainty to be calibrated about: the interface layer is the one that is least likely to be where the durable value accrues, because the half-life of UX paradigms is short.</p>
 
-    <p>The retrospective view is mixed. On capability jumps in software engineering tasks specifically, recent benchmarks have made the 2027 timeline more credible again. On macroeconomic productivity, the original prediction has dramatically underdelivered — the bubble piece from yesterday's digest is the canonical counter. The interesting move is not "Aschenbrenner was right" or "Aschenbrenner was wrong," but to use the essay as a forcing function: <em>if</em> 2027-AGI is real, the stack story above is preparation; <em>if</em> it isn't, the stack story is still the right architecture for whatever AI we do get.</p>
+    <h2>5. Open weights as production infrastructure: Gemma 4, Meta, and Claude Skills</h2>
+
+    <p>Three of today's sources are deployment stories sitting on top of the layered stack: <strong>Introducing Gemma 4 12B</strong>, <strong>Meta's Enterprise Evolution</strong>, and <strong>Top Claude Skills for Enhanced Productivity and Automation</strong>. They look unrelated on the surface; they are not.</p>
+
+    <p><strong>Gemma 4 12B</strong>, Google's latest open-weight release, lands in this context. The interesting framing is not "is it better than Llama or Qwen at scale X" — it is "is it good enough to sit in the model layer of an AI-native stack and let the other layers do the work?" For most production agent workloads, the answer increasingly looks like yes. The frontier matters for hard reasoning; the open-weight tier matters for everything else, and the everything-else category is growing. Gemma 4–class models are, increasingly, the "Postgres" of the AI-native stack: boring, reliable, the reasonable default unless something specific argues otherwise.</p>
+
+    <p><strong>Meta's Enterprise Evolution: AI Agents for Global Business</strong> is the deployment side of that story. Meta's pitch — AI agents embedded into Workplace, ad ops, and customer service flows — is less about novel capabilities and more about distribution. The frontier is being pushed by the labs; the value at scale is being captured by the platforms that already own the workflow. This is a familiar pattern: the desktop OS captured the value of the PC era; the browser captured the value of the early web; the smartphone OS captured the value of mobile. The AI era looks like it is going to follow the same script, with the existing workflow platforms (Meta, Microsoft, Google, Salesforce) capturing most of the deployed-agent value, even though the underlying capability is coming from elsewhere.</p>
+
+    <p><strong>Top Claude Skills for Enhanced Productivity and Automation</strong> sits on the practical end of this. It is a survey of which Skills (in Anthropic's sense) are getting traction with actual users — file system orchestration, kanban automation, structured note-taking, calendar/email triage, codebase grep + edit harnesses. The list is mundane; the durability of the pattern is the point. Skills only became a formal Anthropic primitive in 2025, and they are already the way most agentic workflows ship. That is fast.</p>
+
+    <p><strong>Building apps using TanStack Start</strong> (Lovable) rounds out the stack story from the application-framework angle. Server-first React with file-based routing, server functions, and streaming-by-default. It is the kind of substrate that AI-native apps tend to land on, because it gives the model a tractable mental model: each route is a function, each function is a transaction, each transaction is observable. The non-AI sources in a digest like this matter for exactly this reason — the AI stack rides on the boring application stack underneath, and the boring stack is getting more agent-friendly fast.</p>
+
+    <h2>6. Aschenbrenner two years on: the trendlines, the hits, the misses</h2>
+
+    <p>The day's most controversial source is the long-form retrospective on <strong>Leopold Aschenbrenner's <em>Situational Awareness: The Decade Ahead</em></strong>, two years after it was published in June 2024. The original essay's argument was structural: trace the compute, algorithmic-efficiency, and "unhobbling" trendlines forward, and you get AGI by 2027. After AGI, an intelligence explosion compresses a decade of algorithmic progress into a single year. National security, alignment, and the US/China race become the dominant story.</p>
+
+    <p>The retrospective view today, distilled from Omer Ansari's Medium piece and the EA Forum evaluation, is mixed. On <em>capability jumps in software engineering tasks specifically</em>, recent benchmarks have made the 2027 timeline more credible again, not less. On <em>macroeconomic productivity</em>, the original prediction has dramatically underdelivered — the AI Bubble piece from yesterday's digest is the canonical counter, with Oxford Economics data showing 90% of global firms report zero employment-or-productivity impact from AI over the past three years. Aschenbrenner's bet was on the technology trendlines; the macroeconomic story was always going to be the messier translation layer.</p>
+
+    <p>The argument structure he gave is still the cleanest thing in the conversation. Three trendlines, each measured in orders of magnitude (OOMs) of effective compute per year:</p>
+
+    <ul>
+      <li><strong>Compute scaling.</strong> Roughly 0.5 OOM/year of additional effective compute thrown at training, driven by capex and chip improvements.</li>
+      <li><strong>Algorithmic efficiency.</strong> Roughly 0.5 OOM/year of additional effective compute from algorithmic improvements (more efficient training, better data curation, better architectures).</li>
+      <li><strong>"Unhobbling" gains.</strong> Discrete capability steps from removing constraints on existing models — going from chatbot to agent, from short-context to long-context, from raw text to tool-using, from single-pass to chain-of-thought. Each unhobbling step is a one-time multiplicative jump.</li>
+    </ul>
+
+    <p>Stack them together and you get the trajectory Aschenbrenner argued for. The two-years-on data, summarised by the retrospective sources, suggests the compute and algorithmic-efficiency trendlines have held up roughly as predicted. The unhobbling story has been even more dramatic than he forecast — agentic capability has compounded faster than the essay anticipated. The honest score is that the technology side of the prediction is on or ahead of trend.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
+        <!-- Title -->
+        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">Aschenbrenner's stacked OOMs</text>
+        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Effective compute per year, decomposed · why the 2027-AGI line is plausible if you accept all three trendlines</text>
+
+        <!-- Frame -->
+        <rect x="80" y="60" width="560" height="290" fill="#ffffff" stroke="#d8d4c8" stroke-width="1"/>
+
+        <!-- Y axis label -->
+        <text x="60" y="205" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="muted" transform="rotate(-90 60 205)">Effective compute (log scale, OOMs over GPT-4)</text>
+
+        <!-- X axis ticks (years) -->
+        <line x1="80" y1="350" x2="640" y2="350" stroke="#666" stroke-width="1"/>
+        <text x="80" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2024</text>
+        <text x="173" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2025</text>
+        <text x="267" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2026</text>
+        <text x="360" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2027</text>
+        <text x="453" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2028</text>
+        <text x="547" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2029</text>
+        <text x="640" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2030</text>
+
+        <!-- Y axis ticks (OOMs) -->
+        <text x="74" y="350" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">0</text>
+        <text x="74" y="290" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+1</text>
+        <text x="74" y="230" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+2</text>
+        <text x="74" y="170" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+3</text>
+        <text x="74" y="110" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+4</text>
+        <text x="74" y="70" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+5</text>
+
+        <!-- Compute area (slowest, bottom) -->
+        <path d="M 80,350 L 173,320 L 267,290 L 360,260 L 453,230 L 547,200 L 640,170 L 640,350 Z" fill="#ece6d6" stroke="#b08968" stroke-width="1"/>
+        <text x="455" y="248" font-family="-apple-system, sans-serif" font-size="10" fill="#8a5a2b">compute · 0.5 OOM/yr</text>
+
+        <!-- Algorithmic efficiency area (stacked) -->
+        <path d="M 80,350 L 173,290 L 267,230 L 360,170 L 453,110 L 547,60 L 640,30 L 640,170 L 547,200 L 453,230 L 360,260 L 267,290 L 173,320 L 80,350 Z" fill="#fdfcf8" stroke="#888" stroke-width="1"/>
+        <text x="380" y="155" font-family="-apple-system, sans-serif" font-size="10" fill="#444">+ algorithmic efficiency · 0.5 OOM/yr</text>
+
+        <!-- Unhobbling step (discrete jumps, top) -->
+        <rect x="80" y="345" width="93" height="5" fill="#1a1a1a"/>
+        <rect x="173" y="280" width="94" height="10" fill="#1a1a1a"/>
+        <rect x="267" y="210" width="93" height="20" fill="#1a1a1a"/>
+        <rect x="360" y="140" width="93" height="30" fill="#1a1a1a"/>
+        <rect x="453" y="80" width="94" height="30" fill="#1a1a1a"/>
+        <rect x="547" y="30" width="93" height="30" fill="#1a1a1a"/>
+        <text x="360" y="100" font-family="-apple-system, sans-serif" font-size="10" class="gold" font-weight="700">+ unhobbling (agent, tools, long context, COT, multimodal)</text>
+
+        <!-- AGI threshold annotation -->
+        <line x1="360" y1="60" x2="360" y2="380" stroke="#b08968" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="360" y="395" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#8a5a2b">2027 · "preschooler → high-schooler" jump · Aschenbrenner's AGI line</text>
+
+        <!-- GPT-4 anchor -->
+        <circle cx="80" cy="350" r="4" fill="#1a1a1a"/>
+        <text x="80" y="412" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">GPT-4 baseline</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Figure 3. Aschenbrenner's argument in one frame. Stack compute scaling (~0.5 OOM/yr), algorithmic efficiency (~0.5 OOM/yr), and discrete unhobbling jumps on top, and the 2027 AGI line is not a forecast — it is what those three trends produce if extrapolated. The interesting disagreement is not about the slopes; it is about whether "AGI" is the right label for the resulting capability.</p>
+
+    <p>Where the retrospective sources are more skeptical is on three derived predictions:</p>
+
+    <ul>
+      <li><strong>The "intelligence explosion" timing.</strong> Aschenbrenner argued that once AGI exists, hundreds of millions of AGIs would automate AI research and compress a decade of algorithmic progress into one year. Two years in, automated AI research has progressed (PostHog's autonomous research loop from yesterday's digest is one example), but at a rate far slower than the essay implied. The mechanism may be real; the timeline appears stretched.</li>
+      <li><strong>The US government project.</strong> Aschenbrenner predicted that by 2027–28 the USG would launch some form of government AGI project. Two years in, the policy conversation is louder, but no such project has been formed. Geopolitical pressure has not yet produced state-level mobilisation.</li>
+      <li><strong>Security at AI labs.</strong> The original essay called out lab security as catastrophically weak. Two years later, lab security has improved noticeably but is still — by most reasonable read — under-invested relative to the strategic value of the assets being protected.</li>
+    </ul>
+
+    <p>The honest summary: the trendline argument has held up; the political and security predictions have been slower than forecast; the macroeconomic productivity prediction has missed. Reading <em>Situational Awareness</em> today is more useful as a stress test for your own portfolio than as a roadmap. <em>If</em> the trendlines compound the way Aschenbrenner argued, the legible stack from sections 1–5 of this digest is preparation. <em>If</em> they don't, the legible stack is still the right architecture for whatever level of AI capability we actually get.</p>
 
     <div class="pullbox">
       <h4>What today's sources agree on</h4>
       <ul>
-        <li><strong>The stack is legible.</strong> Five layers, named primitives, agreed boundaries. That's new in 2026.</li>
+        <li><strong>The stack is legible.</strong> Five layers, named primitives, agreed boundaries. That is new in 2026.</li>
         <li><strong>Connectivity has converged on three pillars.</strong> Skills, CLI, MCP. Pick the right one per task; use all three over time.</li>
         <li><strong>Open-weight models are now serious infrastructure</strong>, not novelty. Gemma 4 12B–class models go straight into production stacks.</li>
         <li><strong>The leverage shift changes engineering culture.</strong> Managers must retain depth; ICs are de facto operators. Values, not org charts, decide who survives the shift.</li>
         <li><strong>Distribution still beats novelty</strong> at the workflow layer. Meta and the existing platforms capture most of the deployed-agent value.</li>
+        <li><strong>The 2027-AGI line is a stress test, not a forecast.</strong> Treat Aschenbrenner's argument as a structural risk to plan against, not a deterministic roadmap.</li>
       </ul>
     </div>
 
-    <h2>Practical takeaways for builders</h2>
+    <h2>7. Practical takeaways for builders</h2>
 
-    <p><strong>Name your layer.</strong> If you can't say "we are a tooling-layer company" or "we are a workflow-layer company," the stack picture is telling you that you don't yet have a defensible position. The legible stack rewards clarity of placement.</p>
+    <p>Eight actionable rules distilled from the day's sources. None is novel on its own. The convergence is the point.</p>
 
-    <p><strong>Pick the right connectivity pillar — and then layer the others on.</strong> A pure-CLI product, a pure-MCP product, or a pure-Skills product is rare in 2026. The teams shipping fast are the ones treating the three as a portfolio: CLI for the developer happy path, MCP for the externalised tools, Skills for the portable capabilities. Don't pick one because it's fashionable; pick all three, scope each to where it actually shines.</p>
+    <p><strong>1. Name your layer.</strong> If you cannot say "we are a tooling-layer company" or "we are a workflow-layer company," the stack picture is telling you that you do not yet have a defensible position. The legible stack rewards clarity of placement. Unclear placement is the new "we are a platform" — a tell that the strategy has not landed yet.</p>
 
-    <p><strong>Default to open-weight at the model layer unless frontier reasoning is load-bearing.</strong> Gemma 4–class models are the new "Postgres" of the AI-native stack — boring, reliable, increasingly the right answer. Reach for a frontier model when the task genuinely needs it, not as a default.</p>
+    <p><strong>2. Pick the right connectivity pillar — and then layer the others on.</strong> A pure-CLI product, a pure-MCP product, or a pure-Skills product is rare in 2026. The teams shipping fast are treating the three as a portfolio: CLI for the developer happy path, MCP for the externalised tools, Skills for the portable capabilities. Don't pick one because it's fashionable; pick all three, scope each to where it actually shines, and let the matrix in Figure 2 be your default decision rule.</p>
 
-    <p><strong>Hire for judgment, not for tool fluency.</strong> Nakazawa's point is the operational implication of the entire stack story. The tools are increasingly even across teams; the differentiator is which problems you point them at. Engineering values — domain knowledge, technical depth, decisive iteration — become the unfair advantage, not the org chart.</p>
+    <p><strong>3. Default to open-weight at the model layer unless frontier reasoning is load-bearing.</strong> Gemma 4–class models are the new "Postgres" of the AI-native stack — boring, reliable, increasingly the right answer. Reach for a frontier model when the task genuinely needs it, not as a default. The cost discipline pays off as the token economy normalises.</p>
 
-    <p><strong>Treat the AGI question as a structural risk, not a roadmap.</strong> Don't bet the business on Aschenbrenner being right. Don't bet the business on him being wrong. Build the architecture that works in both worlds — that's the entire point of the layered stack.</p>
+    <p><strong>4. Treat the data substrate as a strategic asset, not a back-office concern.</strong> Every successful AI-native product in this digest depends on clean, well-indexed operational data. The Y Combinator "shared organizational brain" thesis from yesterday is the same point. If you are not investing in the data layer as deliberately as you are investing in the model layer, you are building on sand.</p>
+
+    <p><strong>5. Hire for judgment, not for tool fluency.</strong> Nakazawa's point is the operational implication of the entire stack story. The tools are increasingly even across teams; the differentiator is which problems you point them at. Engineering values — domain knowledge, technical depth, decisive iteration — become the unfair advantage, not the org chart.</p>
+
+    <p><strong>6. Build the inspection surface, not the chat window.</strong> AI-first UX, per InfoWorld, will look more like an IDE for intent than a conversation. If your product's primary surface is still "user types, agent replies, user reads," you are building yesterday's UX. The differentiated product exposes the work the agent is doing, the state of that work, and the model's confidence in it — in the same surface.</p>
+
+    <p><strong>7. Bake verification into "done."</strong> 82 cents of every AI dollar (yesterday's digest) goes to fixing what the model produced wrong. The teams that ship reliable AI products are not the teams with the best models; they are the teams that treat verification as a first-class part of every workflow, not as a step bolted on at the end.</p>
+
+    <p><strong>8. Treat the AGI question as a structural risk, not a roadmap.</strong> Don't bet the business on Aschenbrenner being right. Don't bet the business on him being wrong. Build the architecture that works in both worlds — that is the entire point of the layered stack. The stack lets you swap the model layer when capability jumps without redoing the workflow and tooling above it.</p>
+
+    <h2>8. Glossary for the cross-domain reader</h2>
+
+    <div class="glossary">
+      <h3>Quick reference</h3>
+      <dl>
+        <dt>AGI (Artificial General Intelligence)</dt>
+        <dd>The threshold at which an AI system matches or exceeds human performance across the full range of cognitively demanding tasks. Definitions vary; the disagreement matters.</dd>
+
+        <dt>CLI (Command-Line Interface)</dt>
+        <dd>Text-driven, sandboxed interaction with a tool. In the 2026 stack: the connectivity pillar that wins in local + developer contexts where token efficiency matters.</dd>
+
+        <dt>MCP (Model Context Protocol)</dt>
+        <dd>Anthropic's open protocol for tool-server abstractions. Build the server once; every MCP-aware host can use it. Wins in customer-facing, compliance-sensitive, multi-host contexts.</dd>
+
+        <dt>OOM (Order of Magnitude)</dt>
+        <dd>10× change. Aschenbrenner's argument is measured in OOMs of "effective compute" — what you get when you multiply raw compute by algorithmic efficiency and unhobbling gains.</dd>
+
+        <dt>Skills</dt>
+        <dd>Portable capability files. Domain knowledge captured in a host-agnostic format. Anthropic formalised the concept in 2025; OpenClaw and others have adopted similar patterns.</dd>
+
+        <dt>"Unhobbling"</dt>
+        <dd>Aschenbrenner's term for removing existing constraints on a model to unlock capability (chatbot → agent, short → long context, single → multimodal). Each step is a one-time multiplicative jump.</dd>
+
+        <dt>Workflow layer</dt>
+        <dd>The application layer where the actual product lives — legal review, ad ops, customer support, code review. Where most enterprise AI value is captured.</dd>
+      </dl>
+    </div>
 
     <h2>The 10 sources</h2>
 
     <ol class="sources">
-      <li><strong>Foundations of the AI-Native Stack</strong> — <a href="https://mercury.com/blog/AI-native-startup-stack">mercury.com</a> <span class="pub">· five-layer model + orchestration + tooling + workflow framing</span></li>
-      <li><strong>Mastering the 2026 Connectivity Stack: MCP, CLI, and Skills</strong> — <a href="https://medium.com/agentic-builders/how-to-build-production-ready-ai-agents-mcp-cli-and-skills-the-right-tool-for-the-right-job-701dc102863f">medium.com · agentic-builders</a> <span class="pub">· Ana Bildea, PhD</span></li>
-      <li><strong>Modern Engineering Values</strong> — <a href="https://cpojer.net/posts/modern-engineering-values">cpojer.net</a> <span class="pub">· Christoph Nakazawa, June 3, 2026</span></li>
-      <li><strong>What will AI-first UX look like?</strong> — <a href="https://www.google.com/search?q=%22What+will+AI-first+UX+look+like%22+InfoWorld">infoworld.com</a></li>
-      <li><strong>Introducing Gemma 4 12B</strong> — <a href="https://www.google.com/search?q=%22Introducing+Gemma+4+12B%22+blog.google">blog.google</a></li>
-      <li><strong>Meta's Enterprise Evolution: AI Agents for Global Business</strong> — <a href="https://www.google.com/search?q=%22Meta%27s+Enterprise+Evolution%22+%22AI+Agents+for+Global+Business%22">meta.com</a></li>
-      <li><strong>Top Claude Skills for Enhanced Productivity and Automation</strong> — <a href="https://www.google.com/search?q=%22Top+Claude+Skills+for+Enhanced+Productivity+and+Automation%22">search</a></li>
-      <li><strong>Building apps using TanStack Start</strong> — <a href="https://www.google.com/search?q=%22Building+apps+using+TanStack+Start%22+Lovable">lovable.dev</a></li>
-      <li><strong>Situational Awareness: The Decade Ahead</strong> — <a href="https://situational-awareness.ai/">situational-awareness.ai</a> <span class="pub">· Leopold Aschenbrenner, retrospective two years on</span></li>
-      <li><strong>Situational Awareness, Two Years Later</strong> — <a href="https://medium.com/data-science-collective/situational-awareness-two-years-later-4b941d052ef9">medium.com · Data Science Collective</a> <span class="pub">· Omer Ansari, April 2026</span></li>
+      <li>
+        <strong>Foundations of the AI-Native Stack</strong> — <a href="https://mercury.com/blog/AI-native-startup-stack">mercury.com/blog</a> <span class="pub">· What an AI-native startup stack looks like in 2026</span>
+        <span class="src-note">The clearest five-layer framing of the stack: model → orchestration → tooling → workflow → data, with intelligence flowing across a network of interconnected systems rather than residing in any single model. Sets the structural picture the rest of the day builds on.</span>
+      </li>
+      <li>
+        <strong>Mastering the 2026 Connectivity Stack: MCP, CLI, and Skills</strong> — <a href="https://medium.com/agentic-builders/how-to-build-production-ready-ai-agents-mcp-cli-and-skills-the-right-tool-for-the-right-job-701dc102863f">medium.com · agentic-builders</a> <span class="pub">· Ana Bildea, PhD · May 2026</span>
+        <span class="src-note">The most direct articulation of the three-pillar model. The framing of Skills, CLI, and MCP as complementary (rather than competitive) primitives is the load-bearing claim of today's digest.</span>
+      </li>
+      <li>
+        <strong>Modern Engineering Values</strong> — <a href="https://cpojer.net/posts/modern-engineering-values">cpojer.net</a> <span class="pub">· Christoph Nakazawa · June 3, 2026</span>
+        <span class="src-note">A short, opinionated post on which engineering values survive the leverage shift. Best read alongside Nakazawa's <a href="https://cpojer.net/posts/the-nakazawa-management-starter-pack">Management Starter Pack</a>. The argument that managers must retain domain depth is the most uncomfortable claim of the day.</span>
+      </li>
+      <li>
+        <strong>What will AI-first UX look like?</strong> — <a href="https://www.google.com/search?q=%22What+will+AI-first+UX+look+like%22+InfoWorld">infoworld.com</a>
+        <span class="src-note">Argues that AI-first interfaces will resemble neither chat nor traditional GUIs but a hybrid inspection surface — an IDE for intent. Useful as a counterweight to the assumption that chat is the end state.</span>
+      </li>
+      <li>
+        <strong>Introducing Gemma 4 12B</strong> — <a href="https://www.google.com/search?q=%22Introducing+Gemma+4+12B%22+blog.google">blog.google</a>
+        <span class="pub">· Google open-weight release announcement</span>
+        <span class="src-note">The latest open-weight model release that fits the "Postgres of the AI-native stack" pattern: boring, reliable, increasingly the right default. Specs matter less than the framing.</span>
+      </li>
+      <li>
+        <strong>Meta's Enterprise Evolution: AI Agents for Global Business</strong> — <a href="https://www.google.com/search?q=%22Meta%27s+Enterprise+Evolution%22+%22AI+Agents+for+Global+Business%22">meta.com</a>
+        <span class="src-note">Meta's pitch for agents embedded into Workplace, ad ops, and customer service. The deployment lens on the layered stack: the workflow layer is where distribution wins.</span>
+      </li>
+      <li>
+        <strong>Top Claude Skills for Enhanced Productivity and Automation</strong> — <a href="https://www.google.com/search?q=%22Top+Claude+Skills+for+Enhanced+Productivity+and+Automation%22">search</a>
+        <span class="src-note">A survey of which Skills are actually getting used. File system orchestration, kanban automation, calendar/email triage, structured note-taking. The mundane is the point — Skills are the way agentic workflows ship.</span>
+      </li>
+      <li>
+        <strong>Building apps using TanStack Start</strong> — <a href="https://www.google.com/search?q=%22Building+apps+using+TanStack+Start%22+Lovable">lovable.dev</a>
+        <span class="src-note">Server-first React with file-based routing and server functions. The application-framework layer that AI-native apps increasingly land on, because each route is a function and each function is observable.</span>
+      </li>
+      <li>
+        <strong>Situational Awareness: The Decade Ahead</strong> — <a href="https://situational-awareness.ai/">situational-awareness.ai</a> <span class="pub">· Leopold Aschenbrenner · original essay, June 2024</span>
+        <span class="src-note">The 165-page essay that argued AGI by 2027 via stacked OOMs of compute, algorithmic efficiency, and unhobbling. Whether you agree or not, the trendline framework is the cleanest thing in the conversation, and worth re-reading every six months.</span>
+      </li>
+      <li>
+        <strong>Situational Awareness, Two Years Later</strong> — <a href="https://medium.com/data-science-collective/situational-awareness-two-years-later-4b941d052ef9">medium.com · Data Science Collective</a> <span class="pub">· Omer Ansari · April 2026</span>
+        <span class="src-note">The retrospective scorecard. Trendlines: on or ahead of trend. Macroeconomic productivity: missed. Geopolitical mobilisation: slower than forecast. A useful corrective to read alongside the original.</span>
+      </li>
     </ol>
 
     <h2>Tonight's listen</h2>
-    <p>NotebookLM's Audio Overview for this notebook walks through all 10 sources in roughly 10 minutes. A good run while making dinner.</p>
-    <p><a class="audio-cta" href="https://notebooklm.google.com/notebook/9222794b-fda3-4246-9766-63c7a3cd67c9">▶ Open in NotebookLM (audio + deep dive)</a></p>
+    <p>NotebookLM's Audio Overview for this notebook walks through all 10 sources in roughly 12 minutes, with the Aschenbrenner thread getting the longest treatment. A good run while making dinner, or a commute back from the office. The audio is generated from the same sources used to write this digest, so you can listen first and use the digest as a reference, or read first and use the audio as a memory anchor.</p>
+    <p><a class="audio-cta" href="https://notebooklm.google.com/notebook/9222794b-fda3-4246-9766-63c7a3cd67c9">▶ Open in NotebookLM (audio overview + deep dive)</a></p>
 
     <h2>Read the full notebook</h2>
-    <p>For the source-grounded chat answers, individual source content, audio overview, slide deck, and the auto-generated mind map, head to the source notebook on NotebookLM.</p>
+    <p>For the source-grounded chat answers, individual source content, audio overview, slide deck, and the auto-generated mind map, head to the source notebook on NotebookLM. The chat tab is particularly useful for the Aschenbrenner thread — you can ask follow-up questions and the model will quote directly from both the original essay and the retrospective pieces.</p>
     <p><a href="https://notebooklm.google.com/notebook/9222794b-fda3-4246-9766-63c7a3cd67c9">→ Open the NotebookLM notebook</a></p>
 
     <div class="footer">
-      <p>Auto-generated by <a href="https://juanberbania.github.io/kindle-digest/">Taste Lab Kindle Digest</a> · June 5, 2026</p>
+      <p>Auto-generated by <a href="https://juanberbania.github.io/kindle-digest/">Taste Lab Kindle Digest</a> · June 5, 2026 · 10 sources · 3 diagrams · ~22 min read</p>
     </div>
 
   </div>
