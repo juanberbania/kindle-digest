@@ -142,6 +142,22 @@
   dl { margin: 0 0 18px 0; }
   dt { font-weight: 700; color: #111; margin-top: 10px; }
   dd { margin: 4px 0 0 0; padding-left: 8px; color: #333; }
+  /* Dark-bg safety: force all text to light, override global strong/em dark defaults */
+  .pullbox, .pullbox li, .pullbox p, .pullbox strong, .pullbox em, .pullbox b, .pullbox i {
+    color: #fafaf7;
+  }
+  .pullbox h4 { color: #d4af7a; }
+  .prev-ref {
+    display: inline;
+    margin-left: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #888;
+    font-style: italic;
+  }
+  .prev-ref a { color: #8a5a2b; text-decoration: none; border-bottom: 1px dotted #d4af7a; }
+  .prev-ref a:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
 </style>
 </head>
 <body>
@@ -152,6 +168,19 @@
 <p class="subtitle">Domain Expertise, Trigger Architectures, and the Index-as-Model Shift</p>
 
 <p>This synthesis covers the structural shifts in agentic AI through June 2026. The lens is operational, not promotional: not "what can the model do" but "what does it take to make the model do something reliably in production." We treat competitive advantage as a function of the harness — context, plumbing, evaluation, and validation — not of raw model access, which is now broadly commoditized.</p>
+
+<p><em>If raw model access is now a commodity, where does competitive advantage actually live — and how do we tell whether a team has it?</em></p>
+
+<div class="pullbox">
+<h4>What the synthesis agrees on</h4>
+<ul>
+<li><strong>Domain expertise is the new moat.</strong> The bottleneck shifts from "can you build it" to "can you tell whether it's right" — and only the actuary, dispatcher, or compliance lead can.</li>
+<li><strong>Trigger architectures are load-bearing infrastructure.</strong> Webhooks alone fail under agent workloads. Production = webhook + reconciliation polling + idempotency store, on a durable-execution runtime.</li>
+<li><strong>Evaluation is the silent killer.</strong> Data agents operate in "cursed" domains where bugs are subtle. Pairwise rubrics + synthetic businesses (Shorelane Commerce) are the only credible testing grounds.</li>
+<li><strong>Index-as-Model is the architectural shift.</strong> Meta's SilverTorch collapses microservices into a single PyTorch model with 23.7x throughput. Expect the pattern to spread to search, fraud, ad serving, compliance.</li>
+<li><strong>Design and code are merging.</strong> Figma Make ships directly to git branches. The design-to-engineering handoff that defined the last fifteen years is being deleted.</li>
+</ul>
+</div>
 
 <h2>TL;DR</h2>
 

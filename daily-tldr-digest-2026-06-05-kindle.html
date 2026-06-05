@@ -211,6 +211,17 @@
     text-align: center;
   }
   .footer a { color: #8a5a2b; text-decoration: none; }
+  .prev-ref {
+    display: inline;
+    margin-left: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #888;
+    font-style: italic;
+  }
+  .prev-ref a { color: #8a5a2b; text-decoration: none; border-bottom: 1px dotted #d4af7a; }
+  .prev-ref a:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
 </style>
 </head>
 <body>
@@ -219,9 +230,21 @@
     <h1>Daily Digest: The Stack Becomes Legible — and Suddenly the Hard Question Is "Which Layer Are You On?"</h1>
     <p class="subtitle">Ten sources on the shape of the 2026 AI stack — from agent connectivity primitives (MCP, CLI, Skills), to modern engineering values in the leverage era, to model releases (Gemma 4 12B), enterprise agent deployments (Meta), AI-first UX, and a long retrospective look at Leopold Aschenbrenner's <em>Situational Awareness</em> essay two years after it landed.</p>
 
-    <p>The unifying observation across today's ten sources is structural: <strong>for the first time, the AI stack has named layers, agreed primitives, and durable boundaries</strong>. The sprawl of 2024–2025 is over. You can now point at a layer and say "this is where I am, and here is the unit-economic profile of the layer above me and the layer below me." That is the moment a market gets serious.</p>
+    <p>The unifying observation across today's ten sources is structural: <strong>for the first time, the AI stack has named layers, agreed primitives, and durable boundaries</strong>. The sprawl of 2024–2025 is over. You can now point at a layer and say "this is where I am, here is the unit-economic profile of the layer above me, and here is the moat of the layer below me." That is the moment a market gets serious.</p>
 
-    <p>What follows is the synthesis. Six themed sections, three diagrams, a pullbox, practical takeaways, a glossary for the cross-domain reader, and the source list with one note per piece. Reading time: ~22 minutes.</p>
+    <p><em>Six months after yesterday's "agent-native stack" framing — what does the new stack model actually agree on, and where are its load-bearing disagreements?</em></p>
+
+    <div class="pullbox">
+      <h4>What today's sources agree on</h4>
+      <ul>
+        <li><strong>The stack is legible.</strong> Five layers, named primitives, agreed boundaries. That is new in 2026.</li>
+        <li><strong>Connectivity has converged on three pillars.</strong> Skills, CLI, MCP. Pick the right one per task; use all three over time.</li>
+        <li><strong>Open-weight models are now serious infrastructure</strong>, not novelty. Gemma 4 12B–class models go straight into production stacks.</li>
+        <li><strong>The leverage shift changes engineering culture.</strong> Managers must retain depth; ICs are de facto operators. Values, not org charts, decide who survives the shift.</li>
+        <li><strong>Distribution still beats novelty</strong> at the workflow layer. Meta and the existing platforms capture most of the deployed-agent value.</li>
+        <li><strong>The 2027-AGI line is a stress test, not a forecast.</strong> Treat Aschenbrenner's argument as a structural risk to plan against, not a deterministic roadmap.</li>
+      </ul>
+    </div>
 
     <h2>1. The legible stack: five layers, one data substrate</h2>
 
@@ -430,60 +453,37 @@
     <div class="figure">
       <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
         <!-- Title -->
-        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">Aschenbrenner's stacked OOMs</text>
-        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Effective compute per year, decomposed · why the 2027-AGI line is plausible if you accept all three trendlines</text>
+        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">Aschenbrenner's stacked OOMs · by 2027</text>
+        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Three contributions to "effective compute," summed not multiplied · each labelled with its magnitude</text>
 
-        <!-- Frame -->
-        <rect x="80" y="60" width="560" height="290" fill="#ffffff" stroke="#d8d4c8" stroke-width="1"/>
+        <!-- Contribution 1: COMPUTE -->
+        <rect x="60" y="58" width="600" height="74" fill="#fdfcf8" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="80" y="80" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">COMPUTE SCALING</text>
+        <text x="80" y="100" font-family="-apple-system, sans-serif" font-size="11" fill="#222">~0.5 OOM/yr · capex-driven · chip and cluster improvements</text>
+        <text x="80" y="118" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#222">By 2027: ≈ +1.5 OOMs over GPT-4 baseline</text>
 
-        <!-- Y axis label -->
-        <text x="60" y="205" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="muted" transform="rotate(-90 60 205)">Effective compute (log scale, OOMs over GPT-4)</text>
+        <!-- Contribution 2: ALGORITHMIC EFFICIENCY -->
+        <rect x="60" y="140" width="600" height="74" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="162" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">ALGORITHMIC EFFICIENCY</text>
+        <text x="80" y="182" font-family="-apple-system, sans-serif" font-size="11" fill="#222">~0.5 OOM/yr · better training · better architectures · better data curation</text>
+        <text x="80" y="200" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#222">By 2027: ≈ +1.5 OOMs · stacks on top of compute</text>
 
-        <!-- X axis ticks (years) -->
-        <line x1="80" y1="350" x2="640" y2="350" stroke="#666" stroke-width="1"/>
-        <text x="80" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2024</text>
-        <text x="173" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2025</text>
-        <text x="267" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2026</text>
-        <text x="360" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2027</text>
-        <text x="453" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2028</text>
-        <text x="547" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2029</text>
-        <text x="640" y="368" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">2030</text>
+        <!-- Contribution 3: UNHOBBLING (highlighted as the wild card) -->
+        <rect x="60" y="222" width="600" height="74" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.2" rx="3"/>
+        <text x="80" y="244" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="gold">UNHOBBLING — the wild card</text>
+        <text x="80" y="264" font-family="-apple-system, sans-serif" font-size="11" class="light">Discrete capability steps: chatbot → agent → long context → tool use → multimodal → CoT</text>
+        <text x="80" y="282" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" class="gold">By 2027: empirically ahead of forecast · each step multiplicative · hardest to bound</text>
 
-        <!-- Y axis ticks (OOMs) -->
-        <text x="74" y="350" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">0</text>
-        <text x="74" y="290" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+1</text>
-        <text x="74" y="230" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+2</text>
-        <text x="74" y="170" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+3</text>
-        <text x="74" y="110" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+4</text>
-        <text x="74" y="70" text-anchor="end" font-family="-apple-system, sans-serif" font-size="10" class="muted">+5</text>
+        <!-- Sum band -->
+        <rect x="40" y="312" width="640" height="56" fill="#ece6d6" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="60" y="334" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">= EFFECTIVE COMPUTE BY 2027</text>
+        <text x="60" y="354" font-family="-apple-system, sans-serif" font-size="11" fill="#222">≈ 3+ OOMs over GPT-4 · "preschooler → high-schooler" capability jump · Aschenbrenner's AGI line</text>
 
-        <!-- Compute area (slowest, bottom) -->
-        <path d="M 80,350 L 173,320 L 267,290 L 360,260 L 453,230 L 547,200 L 640,170 L 640,350 Z" fill="#ece6d6" stroke="#b08968" stroke-width="1"/>
-        <text x="455" y="248" font-family="-apple-system, sans-serif" font-size="10" fill="#8a5a2b">compute · 0.5 OOM/yr</text>
-
-        <!-- Algorithmic efficiency area (stacked) -->
-        <path d="M 80,350 L 173,290 L 267,230 L 360,170 L 453,110 L 547,60 L 640,30 L 640,170 L 547,200 L 453,230 L 360,260 L 267,290 L 173,320 L 80,350 Z" fill="#fdfcf8" stroke="#888" stroke-width="1"/>
-        <text x="380" y="155" font-family="-apple-system, sans-serif" font-size="10" fill="#444">+ algorithmic efficiency · 0.5 OOM/yr</text>
-
-        <!-- Unhobbling step (discrete jumps, top) -->
-        <rect x="80" y="345" width="93" height="5" fill="#1a1a1a"/>
-        <rect x="173" y="280" width="94" height="10" fill="#1a1a1a"/>
-        <rect x="267" y="210" width="93" height="20" fill="#1a1a1a"/>
-        <rect x="360" y="140" width="93" height="30" fill="#1a1a1a"/>
-        <rect x="453" y="80" width="94" height="30" fill="#1a1a1a"/>
-        <rect x="547" y="30" width="93" height="30" fill="#1a1a1a"/>
-        <text x="360" y="100" font-family="-apple-system, sans-serif" font-size="10" class="gold" font-weight="700">+ unhobbling (agent, tools, long context, COT, multimodal)</text>
-
-        <!-- AGI threshold annotation -->
-        <line x1="360" y1="60" x2="360" y2="380" stroke="#b08968" stroke-width="1" stroke-dasharray="4 3"/>
-        <text x="360" y="395" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#8a5a2b">2027 · "preschooler → high-schooler" jump · Aschenbrenner's AGI line</text>
-
-        <!-- GPT-4 anchor -->
-        <circle cx="80" cy="350" r="4" fill="#1a1a1a"/>
-        <text x="80" y="412" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10" class="muted">GPT-4 baseline</text>
+        <!-- Footnote / annotation -->
+        <text x="360" y="395" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" fill="#8a5a2b">The interesting disagreement is not about the magnitudes — it is whether "AGI" is the right label for what they sum to.</text>
       </svg>
     </div>
-    <p class="figure-caption">Figure 3. Aschenbrenner's argument in one frame. Stack compute scaling (~0.5 OOM/yr), algorithmic efficiency (~0.5 OOM/yr), and discrete unhobbling jumps on top, and the 2027 AGI line is not a forecast — it is what those three trends produce if extrapolated. The interesting disagreement is not about the slopes; it is about whether "AGI" is the right label for the resulting capability.</p>
+    <p class="figure-caption">Figure 3. Aschenbrenner's argument in one frame. Stack three contributions — compute scaling (~0.5 OOM/yr), algorithmic efficiency (~0.5 OOM/yr), and discrete unhobbling jumps — and the 2027 line is not a forecast but a consequence. The interesting dispute is the label, not the arithmetic.</p>
 
     <p>Where the retrospective sources are more skeptical is on three derived predictions:</p>
 
@@ -494,18 +494,6 @@
     </ul>
 
     <p>The honest summary: the trendline argument has held up; the political and security predictions have been slower than forecast; the macroeconomic productivity prediction has missed. Reading <em>Situational Awareness</em> today is more useful as a stress test for your own portfolio than as a roadmap. <em>If</em> the trendlines compound the way Aschenbrenner argued, the legible stack from sections 1–5 of this digest is preparation. <em>If</em> they don't, the legible stack is still the right architecture for whatever level of AI capability we actually get.</p>
-
-    <div class="pullbox">
-      <h4>What today's sources agree on</h4>
-      <ul>
-        <li><strong>The stack is legible.</strong> Five layers, named primitives, agreed boundaries. That is new in 2026.</li>
-        <li><strong>Connectivity has converged on three pillars.</strong> Skills, CLI, MCP. Pick the right one per task; use all three over time.</li>
-        <li><strong>Open-weight models are now serious infrastructure</strong>, not novelty. Gemma 4 12B–class models go straight into production stacks.</li>
-        <li><strong>The leverage shift changes engineering culture.</strong> Managers must retain depth; ICs are de facto operators. Values, not org charts, decide who survives the shift.</li>
-        <li><strong>Distribution still beats novelty</strong> at the workflow layer. Meta and the existing platforms capture most of the deployed-agent value.</li>
-        <li><strong>The 2027-AGI line is a stress test, not a forecast.</strong> Treat Aschenbrenner's argument as a structural risk to plan against, not a deterministic roadmap.</li>
-      </ul>
-    </div>
 
     <h2>7. Practical takeaways for builders</h2>
 

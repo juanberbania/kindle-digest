@@ -212,6 +212,17 @@
     letter-spacing: 0.5px;
   }
   .audio-cta:hover { background: #333; }
+  .prev-ref {
+    display: inline;
+    margin-left: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #888;
+    font-style: italic;
+  }
+  .prev-ref a { color: #8a5a2b; text-decoration: none; border-bottom: 1px dotted #d4af7a; }
+  .prev-ref a:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
 </style>
 </head>
 <body>
@@ -224,6 +235,18 @@
 <p>The 2026 literature that crossed my desk today describes an industry at a clean bifurcation point. On one side, the technological story is unambiguous: the software development paradigm has shifted from passive, single-player "copilots" to autonomous, multi-agent organizational systems. GitHub's new Copilot app introduces "Canvases" so multiple agents can work in parallel without stepping on each other. Microsoft ships Scout, an "autonomous executive AI assistant" that runs always-on and negotiates calendar conflicts with its own identity. Y Combinator reveals its internal agent stack — a centralized tool registry, shared organizational brain, and a "homebrew computer club" ethos — and credits it with automating finance workflows that used to eat engineering time. PostHog ships an autonomous research loop that found a three-year-old timezone bug in their query engine and reduced data-granules scanned by 62%.</p>
 
 <p>On the other side, the economic story is brutal. The Token Reckoning piece puts a number on what most teams already feel: for every $1 spent on AI compute, 82 cents are wasted on bug fixes, rewrites, and hallucination correction, and only 18 cents result in shipped product. Surveys cited in The AI Bubble piece show that nearly 90% of C-suite executives report zero impact on employment or productivity over the past three years. The AI sector has generated over $1.2 trillion in AAA-rated debt to finance its infrastructure buildout — debt the author compares to the 2008 subprime mortgage crisis, because the underlying technology is currently failing to generate the macroeconomic productivity required to service it. The frontier-model oligopoly (OpenAI, Anthropic) is consolidating into a high-margin Apple-and-Microsoft structure, while open-source models commoditize on volume. The interesting work is no longer in the model. It is in the primitives around the model — secure execution, verification, context plumbing, and the narrow, dependable capabilities that turn a stochastic generation into something you can ship.</p>
+
+<p><em>If generation is now cheap and verification is now expensive, where does the durable moat live in 2026?</em></p>
+
+<div class="pullbox">
+<h4>What the day's sources actually agree on</h4>
+<ul>
+<li><strong>Generation is commoditized.</strong> The interesting work is around the model, not in it.</li>
+<li><strong>Verification is the bottleneck.</strong> 82 cents of every dollar goes to fixing what the model produced wrong.</li>
+<li><strong>Context is the moat.</strong> YC's "shared organizational brain" works because all the data is in one place. Every other agentic product is bottlenecked on the same problem.</li>
+<li><strong>Routing beats picking.</strong> Closed for frontier, open for cost. The skill registry is the abstraction layer.</li>
+</ul>
+</div>
 
 <h2>TL;DR</h2>
 
@@ -280,16 +303,6 @@ The primitive-wedge thesis assumes the agentic part works well enough to wrap. T
 <p>The empirical claims are striking and worth verifying before repeating. Oxford Economics surveys cited in the piece show that nearly 90% of global firms report that AI has had absolutely zero impact on employment or productivity over the past three years — a number that is hard to square with the "100x engineer" narrative but consistent with the 82-cents-on-the-dollar figure. The "deskilling" concern is also raised: developers who lean too heavily on generative tools are losing the manual fluency that lets them verify what the tools produce.</p>
 
 <p>For a founder, the practical implication is to build a business that does not depend on the bubble continuing to inflate. Real customers, real cost-adjusted productivity, real moats. The speculative layer above you will not be there in 18 months if the macro call is right. Build for the world after the correction, not for the world during it.</p>
-
-<div class="pullbox">
-<h4>What the day's sources actually agree on</h4>
-<ul>
-<li><strong>Generation is commoditized.</strong> The interesting work is around the model, not in it.</li>
-<li><strong>Verification is the bottleneck.</strong> 82 cents of every dollar goes to fixing what the model produced wrong.</li>
-<li><strong>Context is the moat.</strong> YC's "shared organizational brain" works because all the data is in one place. Every other agentic product is bottlenecked on the same problem.</li>
-<li><strong>Routing beats picking.</strong> Closed for frontier, open for cost. The skill registry is the abstraction layer.</li>
-</ul>
-</div>
 
 <h2>5. Key Tensions and Disagreements</h2>
 

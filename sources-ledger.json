@@ -1,0 +1,303 @@
+{
+  "version": 1,
+  "bootstrapped_at": "2026-06-05",
+  "bootstrapped_from": [
+    "state-of-agentic-ai-jun-2026-kindle.html (2026-06-02)",
+    "ai-industrial-shift-2026-06-kindle.html (2026-06-03)",
+    "daily-tldr-digest-2026-06-04-kindle.html (2026-06-04)",
+    "daily-tldr-digest-2026-06-05-kindle.html (2026-06-05)"
+  ],
+  "sources": [
+    {
+      "key": "hex-shoebox-methodology",
+      "title": "Hex Shoebox: agent observability with pairwise experiments",
+      "publisher": "Hex",
+      "url": "https://hex.tech/blog",
+      "first_cited": "2026-06-02",
+      "citations": [
+        { "date": "2026-06-02", "context": "evaluation crisis · ToolEfficiency · SemanticLayerUsage rubric" }
+      ]
+    },
+    {
+      "key": "shorelane-commerce-synthetic-business",
+      "title": "Shorelane Commerce — synthetic retailer for agent benchmarks",
+      "publisher": "Shorelane",
+      "url": "https://shorelane.com",
+      "first_cited": "2026-06-02",
+      "citations": [
+        { "date": "2026-06-02", "context": "realistic data debt, conflicting stakeholders, semantic layers" }
+      ]
+    },
+    {
+      "key": "meta-silvertorch-index-as-model",
+      "title": "Meta SilverTorch — Index as Model architecture",
+      "publisher": "Meta AI",
+      "url": "https://ai.meta.com/blog/silvertorch",
+      "first_cited": "2026-06-02",
+      "citations": [
+        { "date": "2026-06-02", "context": "23.7x throughput · GPU ANN · streaming index updates" }
+      ]
+    },
+    {
+      "key": "figma-make-design-to-prod",
+      "title": "Figma Make — production-integrated design editing",
+      "publisher": "Figma",
+      "url": "https://www.figma.com",
+      "first_cited": "2026-06-02",
+      "citations": [
+        { "date": "2026-06-02", "context": "visual editing to code, git-backed designer PRs" }
+      ]
+    },
+    {
+      "key": "temporal-inngest-langgraph-durable-execution",
+      "title": "Durable execution runtimes — Temporal, Inngest, LangGraph",
+      "publisher": "multiple",
+      "url": "https://temporal.io",
+      "first_cited": "2026-06-02",
+      "citations": [
+        { "date": "2026-06-02", "context": "checkpoint-resume · token re-burning prevention" }
+      ]
+    },
+    {
+      "key": "perplexity-search-as-code",
+      "title": "Rethinking Search as Code Generation",
+      "publisher": "Perplexity Research",
+      "url": "https://research.perplexity.ai/articles/rethinking-search-as-code-generation",
+      "first_cited": "2026-06-03",
+      "citations": [
+        { "date": "2026-06-03", "context": "100% accuracy · 85% token reduction · WANDR 2.5x" }
+      ]
+    },
+    {
+      "key": "anthropic-opus-4-8-effort-controls",
+      "title": "Anthropic Claude Opus 4.8 — effort control + dynamic workflows",
+      "publisher": "Anthropic / gHacks coverage",
+      "url": "https://www.anthropic.com",
+      "first_cited": "2026-06-03",
+      "citations": [
+        { "date": "2026-06-03", "context": "L1/L3/L4 harness absorption · effort-control dials" }
+      ]
+    },
+    {
+      "key": "nvidia-rtx-spark-agentic-pc",
+      "title": "Nvidia RTX Spark — agentic PC platform",
+      "publisher": "Nvidia / Windows Blog / Arm Newsroom",
+      "url": "https://www.nvidia.com/en-us/products/rtx-spark/",
+      "first_cited": "2026-06-03",
+      "citations": [
+        { "date": "2026-06-03", "context": "1 petaflop · Blackwell + Grace · OpenShell sandbox" }
+      ]
+    },
+    {
+      "key": "github-copilot-app-canvases",
+      "title": "GitHub Copilot app — the agent-native desktop experience",
+      "publisher": "github.blog",
+      "url": "https://github.blog",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "Canvases as inspectable workspaces · long scroll of decisions" }
+      ]
+    },
+    {
+      "key": "yc-ai-playbook",
+      "title": "Inside YC's AI Playbook",
+      "publisher": "Y Combinator (YouTube Lightcode)",
+      "url": "https://www.youtube.com/watch?v=B246K_G7mHU",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "shared organizational brain · skill registry · routing strategy" }
+      ]
+    },
+    {
+      "key": "posthog-autonomous-research-3yr-bug",
+      "title": "PostHog autonomous research found a 3-year-old query-engine bug",
+      "publisher": "posthog.com/blog",
+      "url": "https://posthog.com/blog",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "timezone bug · 62% data-granules reduction · primitive wedge case study" }
+      ]
+    },
+    {
+      "key": "microsoft-scout-autonomous-executive",
+      "title": "Microsoft Scout: autonomous executive AI assistant",
+      "publisher": "microsoft.com",
+      "url": "https://www.microsoft.com/en-us/microsoft-copilot",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "always-on agent identity · calendar negotiation · always-on employee framing" }
+      ]
+    },
+    {
+      "key": "oklch-perceptual-color",
+      "title": "OKLCH: the perceptual revolution in digital color science",
+      "publisher": "evilmartians.com/chronicles",
+      "url": "https://evilmartians.com/chronicles",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "non-AI standards · foundational infrastructure invisibility" }
+      ]
+    },
+    {
+      "key": "open-closed-models-different-exponentials",
+      "title": "Open and closed models are on different exponentials",
+      "publisher": "interconnects.ai",
+      "url": "https://interconnects.ai",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "frontier oligopoly Apple-and-Microsoft analogy · open weights commoditizing on volume" }
+      ]
+    },
+    {
+      "key": "primitive-wedges-ben-williams",
+      "title": "Primitive Wedges",
+      "publisher": "productledalliance.substack.com",
+      "url": "https://productledalliance.substack.com",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "narrow painful unavoidable capabilities · should-I-trust > can-I-generate" }
+      ]
+    },
+    {
+      "key": "ai-bubble-financial-collapse",
+      "title": "The AI Bubble: a looming financial collapse",
+      "publisher": "activistpost.com",
+      "url": "https://www.activistpost.com",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "$1.2T AAA debt · Oxford Economics 90% zero impact · 2008 parallel" }
+      ]
+    },
+    {
+      "key": "token-reckoning-latent-space",
+      "title": "The Token Reckoning is Here and It's Not What You Think",
+      "publisher": "latent.space",
+      "url": "https://www.latent.space",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "82 cents of every AI dollar wasted · cost-per-completed-workflow metric" },
+        { "date": "2026-06-05", "context": "back-referenced as the verification economics anchor" }
+      ]
+    },
+    {
+      "key": "vercel-security-checkpoint",
+      "title": "Vercel Security Checkpoint",
+      "publisher": "vercel.com/blog",
+      "url": "https://vercel.com/blog",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "source content not loadable; cited as agent infrastructure datapoint" }
+      ]
+    },
+    {
+      "key": "mem0ai-long-term-memory",
+      "title": "mem0ai — long-term memory for AI agents",
+      "publisher": "x.com/mem0ai",
+      "url": "https://x.com/mem0ai/status/2061822612398014782",
+      "first_cited": "2026-06-04",
+      "citations": [
+        { "date": "2026-06-04", "context": "tweet · agent memory primitive" }
+      ]
+    },
+    {
+      "key": "mercury-ai-native-stack",
+      "title": "Foundations of the AI-Native Stack (mercury.com)",
+      "publisher": "Mercury",
+      "url": "https://mercury.com/blog/AI-native-startup-stack",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "five-layer stack: model · orchestration · tooling · workflow · data" }
+      ]
+    },
+    {
+      "key": "bildea-mcp-cli-skills-connectivity",
+      "title": "Mastering the 2026 Connectivity Stack: MCP, CLI, and Skills",
+      "publisher": "medium.com/agentic-builders",
+      "url": "https://medium.com/agentic-builders/how-to-build-production-ready-ai-agents-mcp-cli-and-skills-the-right-tool-for-the-right-job-701dc102863f",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "three-pillar model · use-all-three-at-the-right-moment" }
+      ]
+    },
+    {
+      "key": "nakazawa-modern-engineering-values",
+      "title": "Modern Engineering Values",
+      "publisher": "cpojer.net",
+      "url": "https://cpojer.net/posts/modern-engineering-values",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "manager domain depth · IC-as-operator implication of leverage shift" }
+      ]
+    },
+    {
+      "key": "infoworld-ai-first-ux",
+      "title": "What will AI-first UX look like?",
+      "publisher": "infoworld.com",
+      "url": "https://www.google.com/search?q=%22What+will+AI-first+UX+look+like%22+InfoWorld",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "post-chat inspection surface · IDE-for-intent framing" }
+      ]
+    },
+    {
+      "key": "google-gemma-4-12b",
+      "title": "Introducing Gemma 4 12B",
+      "publisher": "blog.google",
+      "url": "https://www.google.com/search?q=%22Introducing+Gemma+4+12B%22+blog.google",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "open-weight as Postgres-of-the-stack default" }
+      ]
+    },
+    {
+      "key": "meta-enterprise-evolution-ai-agents",
+      "title": "Meta's Enterprise Evolution: AI Agents for Global Business",
+      "publisher": "meta.com",
+      "url": "https://www.google.com/search?q=%22Meta%27s+Enterprise+Evolution%22+%22AI+Agents+for+Global+Business%22",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "Workplace / ad-ops / support agents · distribution > novelty" }
+      ]
+    },
+    {
+      "key": "top-claude-skills-productivity-automation",
+      "title": "Top Claude Skills for Enhanced Productivity and Automation",
+      "publisher": "anthropic ecosystem coverage",
+      "url": "https://www.google.com/search?q=%22Top+Claude+Skills+for+Enhanced+Productivity+and+Automation%22",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "filesystem · kanban · note-taking · calendar/email triage" }
+      ]
+    },
+    {
+      "key": "tanstack-start-lovable",
+      "title": "Building apps using TanStack Start",
+      "publisher": "Lovable",
+      "url": "https://www.google.com/search?q=%22Building+apps+using+TanStack+Start%22+Lovable",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "server-first React · agent-friendly substrate" }
+      ]
+    },
+    {
+      "key": "aschenbrenner-situational-awareness-original",
+      "title": "Situational Awareness: The Decade Ahead",
+      "publisher": "situational-awareness.ai",
+      "url": "https://situational-awareness.ai/",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "original 165-page essay · stacked OOMs argument · 2027 AGI line" }
+      ]
+    },
+    {
+      "key": "ansari-situational-awareness-two-years-later",
+      "title": "Situational Awareness, Two Years Later",
+      "publisher": "medium.com / Data Science Collective",
+      "url": "https://medium.com/data-science-collective/situational-awareness-two-years-later-4b941d052ef9",
+      "first_cited": "2026-06-05",
+      "citations": [
+        { "date": "2026-06-05", "context": "trendlines on/ahead · macro productivity miss · gov project not formed" }
+      ]
+    }
+  ]
+}
