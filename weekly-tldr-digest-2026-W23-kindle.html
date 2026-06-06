@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Digest — Week of June 1, 2026</title>
+<style>
+  /* Kindle-tuned CSS. No external resources. System fonts only. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fafaf7;
+    color: #1a1a1a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 22px 80px 22px;
+  }
+  .doc-meta {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 8px 0 6px 0;
+    color: #111;
+    font-weight: 700;
+  }
+  .subtitle {
+    font-style: italic;
+    color: #555;
+    margin: 0 0 24px 0;
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 36px 0 12px 0;
+    padding-top: 8px;
+    border-top: 2px solid #1a1a1a;
+    color: #111;
+  }
+  h3 {
+    font-size: 18px;
+    margin: 22px 0 8px 0;
+    color: #222;
+  }
+  p { margin: 0 0 14px 0; }
+  ul, ol { padding-left: 24px; margin: 0 0 14px 0; }
+  li { margin-bottom: 4px; }
+  strong { color: #111; }
+  em { color: #444; }
+  blockquote {
+    margin: 18px 0;
+    padding: 14px 18px;
+    background: #f0ebe0;
+    border-left: 4px solid #b08968;
+    font-style: italic;
+    color: #2a2a2a;
+    border-radius: 2px;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 14px;
+    color: #666;
+  }
+  .pullbox {
+    background: #1a1a1a;
+    color: #fafaf7;
+    padding: 18px 20px;
+    border-radius: 4px;
+    margin: 24px 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .pullbox h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #d4af7a;
+  }
+  .pullbox, .pullbox li, .pullbox p, .pullbox strong, .pullbox em, .pullbox b, .pullbox i {
+    color: #fafaf7;
+  }
+  .pullbox h4 { color: #d4af7a; }
+  .pullbox ul { margin: 0; padding-left: 20px; }
+  .pullbox li { margin-bottom: 6px; }
+  .caflag {
+    background: #fff7e6;
+    border-left: 4px solid #d4af7a;
+    padding: 12px 16px;
+    margin: 18px 0;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    border-radius: 2px;
+  }
+  .caflag-title {
+    display: block;
+    font-weight: 700;
+    color: #8a5a2b;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .figure {
+    margin: 26px 0 10px 0;
+    padding: 14px;
+    background: #fdfcf8;
+    border: 1px solid #e6dfcc;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .figure svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .figure svg text { fill: #1a1a1a !important; }
+  .figure svg text.muted { fill: #555 !important; }
+  .figure svg text.dim { fill: #777 !important; }
+  .figure svg text.light { fill: #fafaf7 !important; }
+  .figure svg text.gold { fill: #d4af7a !important; }
+  .figure svg text.title { fill: #111 !important; font-weight: 700; }
+  .figure-caption {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    color: #888;
+    margin: 2px 0 14px 0;
+    font-style: italic;
+    text-align: center;
+  }
+  .glossary {
+    background: #f7f3e9;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    font-size: 16px;
+  }
+  .glossary h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a5a2b;
+    border: none;
+    padding: 0;
+  }
+  .glossary dl { margin: 0; }
+  .glossary dt {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 8px;
+  }
+  .glossary dd {
+    margin: 2px 0 6px 0;
+    color: #333;
+    font-size: 15px;
+  }
+  .sources h3 {
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8a5a2b;
+    margin: 22px 0 8px 0;
+    padding-top: 8px;
+    border-top: 1px solid #d8d4c8;
+  }
+  .sources ol {
+    padding-left: 24px;
+    margin: 0 0 12px 0;
+  }
+  .sources li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .sources a {
+    color: #8a5a2b;
+    text-decoration: none;
+    border-bottom: 1px solid #d4af7a;
+  }
+  .sources a:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+  .sources .pub {
+    color: #888;
+    font-size: 14px;
+    font-style: italic;
+  }
+  .sources .src-note {
+    display: block;
+    margin-top: 3px;
+    color: #444;
+    font-size: 15px;
+  }
+  .daily-refs {
+    background: #fdfcf8;
+    border: 1px solid #e6dfcc;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 22px 0;
+  }
+  .daily-refs h3 {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a5a2b;
+    margin: 0 0 10px 0;
+    padding: 0;
+    border: none;
+  }
+  .daily-refs .day {
+    margin-bottom: 12px;
+  }
+  .daily-refs .day-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888;
+    margin-right: 8px;
+  }
+  .daily-refs a {
+    color: #8a5a2b;
+    text-decoration: none;
+    border-bottom: 1px solid #d4af7a;
+    font-weight: 700;
+  }
+  .daily-refs a:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+  .audio-cta {
+    display: inline-block;
+    margin: 10px 0 4px 0;
+    padding: 10px 16px;
+    background: #1a1a1a;
+    color: #d4af7a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+  }
+  .audio-cta:hover { color: #fafaf7; }
+  .footer {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid #d0d0d0;
+    font-size: 13px;
+    color: #888;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
+  }
+  .footer a { color: #8a5a2b; text-decoration: none; }
+  .prev-ref {
+    display: inline;
+    margin-left: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #888;
+    font-style: italic;
+  }
+  .prev-ref a { color: #8a5a2b; text-decoration: none; border-bottom: 1px dotted #d4af7a; }
+  .prev-ref a:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="doc-meta">Kindle Digest · Weekly Summary · June 1–5, 2026</div>
+    <h1>The Moat Migration</h1>
+    <p class="subtitle">50 sources across a single working week, in which the AI moat finished moving — away from the model layer, through the stack's named primitives, into context, validation, and the durable parts of an organization that hold judgment.</p>
+
+    <p>The week of June 1, 2026 was the one where the new stack vocabulary stopped being a debate and became the working consensus. The model layer is a commodity. The interesting work is the layer above and the substrate below. What that means for builders, operators, and organizations was the subject every one of the week's 50 sources circled in some form.</p>
+
+    <p><em>If this is the week the model layer commoditised in earnest, where did the moat actually move — and how do you know whether your team has caught up?</em></p>
+
+    <div class="pullbox">
+      <h4>What the week's 50 sources collectively agree on</h4>
+      <ul>
+        <li><strong>Generation is over as a moat.</strong> Open-weight + frontier-closed bifurcation is durable. The model layer has settled into oligopoly-plus-commodity; competing there is no longer a viable wedge.</li>
+        <li><strong>Verification is the new bill.</strong> 82 cents of every AI dollar is consumed by bug fixes and hallucination correction. Whoever owns the verification primitives owns the customer.</li>
+        <li><strong>Domain expertise is the new prerequisite, not the optional input.</strong> The actuary, dispatcher, compliance lead, or seasoned engineer who can spot a silent wrong answer is the constraint the market is hiring around.</li>
+        <li><strong>The stack got names — and the names are sticking.</strong> L1 Models · L2 Orchestration · L3 Tooling (Skills, CLI, MCP) · L4 Workflow · L5 Interface. "Which layer are you on?" is now a coherent question with a coherent answer.</li>
+        <li><strong>The organization is becoming legible to software</strong> — through recorded conversations, shared context substrates, and tool registries. Middle management is being deleted, not augmented.</li>
+        <li><strong>The bubble debate has stereo channels now.</strong> Micro-productivity (PostHog, YC, Figma) is real and measurable. Macro-productivity (Oxford Economics, $1.2T debt) is still missing. Both can be true at different scales — and you cannot bet a business on the macro story converging on the micro one.</li>
+      </ul>
+    </div>
+
+    <h2>1. The model layer commoditised — and nobody mourned</h2>
+
+    <p>If there was a single structural claim that recurred across every day of the week, it was that <strong>frontier-model differentiation no longer drives the unit economics of an AI product</strong>. Anthropic shipped Opus 4.8 with effort controls. Google shipped Gemma 4 12B as an open-weight workhorse. Meta layered AI agents into Workplace and ad ops as a distribution play. The Interconnects piece on "open and closed models are on different exponentials" made the structural argument explicit: frontier labs form an Apple-and-Microsoft-style oligopoly on the high end; open weights commoditise on volume; routing between them is the only durable model-layer strategy.</p>
+
+    <p>This is the week the "we're a model company" pitch became unfundable for any team not in the oligopoly. The interesting strategic question is no longer which model you call. It is what you do <em>above</em> the model, and what you control <em>below</em> it.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
+        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">The Moat Migration Across the Week</text>
+        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Value flow up the stack · what each layer was worth in 2024 vs. 2026</text>
+
+        <!-- L5 Interface -->
+        <rect x="60" y="58" width="600" height="54" fill="#fdfcf8" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="80" y="78" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">L5 · INTERFACE</text>
+        <text x="80" y="96" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Canvases · inspectable IDE-like surfaces · agentic PCs (RTX Spark, Scout, Copilot desktop)</text>
+        <text x="540" y="96" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#8a5a2b">contested</text>
+
+        <!-- L4 Workflow -->
+        <rect x="60" y="120" width="600" height="54" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="140" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">L4 · WORKFLOW</text>
+        <text x="80" y="158" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Vertical apps · Meta enterprise agents · Figma-to-prod · YC Playbook · skills library</text>
+        <text x="540" y="158" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#555">distribution-led</text>
+
+        <!-- L3 Tooling - the moat -->
+        <rect x="60" y="182" width="600" height="64" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.2" rx="3"/>
+        <text x="80" y="204" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="gold">L3 · TOOLING (MCP · CLI · Skills)</text>
+        <text x="80" y="224" font-family="-apple-system, sans-serif" font-size="11" class="light">Connectivity primitives · sandboxes · verification harnesses · Search as Code</text>
+        <text x="80" y="240" font-family="-apple-system, sans-serif" font-size="10" font-style="italic" class="gold">★ The moat finished arriving here this week</text>
+
+        <!-- L2 Orchestration -->
+        <rect x="60" y="254" width="600" height="54" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="274" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">L2 · ORCHESTRATION</text>
+        <text x="80" y="292" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Routing · durable execution (Temporal / LangGraph) · skill registries · evaluation</text>
+        <text x="540" y="292" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#555">supporting</text>
+
+        <!-- L1 Models -->
+        <rect x="60" y="316" width="600" height="54" fill="#f7f3e9" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="336" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">L1 · MODELS</text>
+        <text x="80" y="354" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Frontier closed (Opus 4.8) · open weights (Gemma 4 12B) · Search as Code at the API</text>
+        <text x="540" y="354" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#888">commodity</text>
+
+        <!-- Data substrate -->
+        <rect x="40" y="386" width="640" height="48" fill="#ece6d6" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="60" y="408" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">D · DATA SUBSTRATE</text>
+        <text x="60" y="426" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Recorded operational substrate · "shared organizational brain" · the second moat</text>
+
+        <text x="360" y="455" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" fill="#8a5a2b">Value flows up to L3 and down to D · L1 is commodity · L5 fragments · the middle holds judgment</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Figure 1. The moat finished migrating this week. Multiple sources independently arrived at the same five-layer model; the dispute about L1 ended (it's commodity); the convergence centred on L3 (tooling primitives) and the data substrate. The week's compounding evidence: vendor-absorbed harness layers (Opus 4.8), open-weight production releases (Gemma 4), and standardised connectivity (MCP / CLI / Skills).</p>
+
+    <h2>2. Verification is the new bottleneck — and the new pricing model</h2>
+
+    <p>The Token Reckoning piece from mid-week supplied the load-bearing number: <strong>82 cents of every AI dollar is consumed by bug fixes, rewrites, and hallucination correction</strong>. Only 18 cents result in shipped product. The number is uncomfortable; the framing is durable. The industry has spent two years optimising for tokens-per-second and is about to spend the next two optimising for cost-per-completed-workflow.</p>
+
+    <p>The week's evidence for this came from multiple angles. PostHog's autonomous research loop found a three-year-old timezone bug inside a constrained sandbox and reduced data-granules scanned by 62% — a clean example of what happens when the verification environment is right. Hex's "Shoebox" methodology for evaluating data agents made the inverse point: in unconstrained environments, agents look correct and quietly aren't. The Vercel Security Checkpoint piece and the broader "Primitive Wedges" thesis both argued that the next durable developer platforms will not be code generators — they will be the constrained, painful, unavoidable capabilities that turn stochastic generation into something you can ship.</p>
+
+    <blockquote>
+      "The market demands tools that answer 'Should I trust this output?' rather than 'Can I generate more output?'"
+      <cite>— synthesising Bildea's connectivity piece and the Primitive Wedges thesis</cite>
+    </blockquote>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-width:720px;">
+        <text x="360" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" class="title">The week's 50 sources, clustered by theme</text>
+        <text x="360" y="40" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" class="muted">Approximate source counts per theme · convergence patterns across Mon–Fri</text>
+
+        <!-- Theme 1 -->
+        <rect x="60" y="58" width="600" height="48" fill="#fdfcf8" stroke="#b08968" stroke-width="1.5" rx="3"/>
+        <text x="80" y="80" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">THE STACK GETS NAMED</text>
+        <text x="80" y="98" font-family="-apple-system, sans-serif" font-size="11" fill="#222">5-layer model · MCP / CLI / Skills · open-weight Gemma 4 · Opus 4.8 absorption</text>
+        <text x="620" y="86" text-anchor="end" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#8a5a2b">~11</text>
+
+        <!-- Theme 2 -->
+        <rect x="60" y="114" width="600" height="48" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.2" rx="3"/>
+        <text x="80" y="136" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="gold">VERIFICATION ECONOMICS</text>
+        <text x="80" y="154" font-family="-apple-system, sans-serif" font-size="11" class="light">82-cent token reckoning · PostHog research loop · Hex Shoebox · primitive wedges</text>
+        <text x="620" y="142" text-anchor="end" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" class="gold">~10</text>
+
+        <!-- Theme 3 -->
+        <rect x="60" y="170" width="600" height="48" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="192" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">DOMAIN EXPERTISE + JUDGMENT</text>
+        <text x="80" y="210" font-family="-apple-system, sans-serif" font-size="11" fill="#222">Nakazawa engineering values · domain-as-oracle · 100x problem · deskilling watch</text>
+        <text x="620" y="198" text-anchor="end" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" class="muted">~8</text>
+
+        <!-- Theme 4 -->
+        <rect x="60" y="226" width="600" height="48" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="248" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">AGENT-NATIVE PRODUCT SURFACES</text>
+        <text x="80" y="266" font-family="-apple-system, sans-serif" font-size="11" fill="#222">GitHub Canvases · Microsoft Scout · Figma to prod · TanStack Start · Lovable</text>
+        <text x="620" y="254" text-anchor="end" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" class="muted">~8</text>
+
+        <!-- Theme 5 -->
+        <rect x="60" y="282" width="600" height="48" fill="#ffffff" stroke="#888" stroke-width="1.2" rx="3"/>
+        <text x="80" y="304" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" class="muted">RECORDED ORG · SELF-IMPROVING LOOPS</text>
+        <text x="80" y="322" font-family="-apple-system, sans-serif" font-size="11" fill="#222">YC shared org brain · recorded substrate · DRI model · agentic ops loops</text>
+        <text x="620" y="310" text-anchor="end" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" class="muted">~7</text>
+
+        <!-- Theme 6 -->
+        <rect x="60" y="338" width="600" height="48" fill="#f7f3e9" stroke="#b08968" stroke-width="1.2" rx="3"/>
+        <text x="80" y="360" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8a5a2b">BUBBLE / MACRO DEBATE</text>
+        <text x="80" y="378" font-family="-apple-system, sans-serif" font-size="11" fill="#222">$1.2T AAA debt · Oxford 90%-zero-impact · Aschenbrenner trendlines + 2-yr-on</text>
+        <text x="620" y="366" text-anchor="end" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#8a5a2b">~6</text>
+
+        <text x="360" y="412" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="muted">Themes are ordered by source weight · the dark band is the week's load-bearing thesis.</text>
+        <text x="360" y="428" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-style="italic" class="muted">Total ≈ 50 sources · clusters approximate · some sources span two themes.</text>
+      </svg>
+    </div>
+    <p class="figure-caption">Figure 2. The week's 50 sources clustered into six themes. The verification-economics cluster is the load-bearing one — both because it carries the most quantitative argument (the 82-cent figure) and because every other cluster ends up depending on it. The bubble cluster is the contrarian fringe and worth reading as such.</p>
+
+    <div class="caflag">
+      <span class="caflag-title">Counter-argument flag</span>
+      The "verification is the new bill" framing assumes verification can actually be priced. In practice, the cost of a missed hallucination in a regulated workflow is not a token-count; it is a fine, a recall, or a regulator's attention. The 82-cent figure is a useful headline. The actual unit of account in regulated industries is closer to "incidents per quarter, weighted by severity," and the verification market that captures that will look more like insurance than like an AI tool.
+    </div>
+
+    <h2>3. Domain expertise is the prerequisite, not the input</h2>
+
+    <p>The most uncomfortable claim of the week came from the Modern Engineering Values piece on cpojer.net, and it reverberated through everything else: as execution becomes cheaper, the bottleneck moves to judgment. Managers can no longer just own outcomes or direction — they have to retain domain expertise and provide technical leadership themselves. The IC/manager split that defined the last fifteen years of engineering org design is breaking down.</p>
+
+    <p>This is the same observation the State of Agentic AI piece made from a different angle in the Tuesday digest. The binding constraint is no longer "can you build it" — it is "can you tell whether it is right." The actuary, the dispatcher, the compliance lead, the seasoned engineer who can recognise a subtly wrong output at a glance — these are the people the market is hiring around. The generalist engineer who could ship reliable code without domain depth in 2022 is being out-shipped in 2026 by a domain expert with a coding agent.</p>
+
+    <p>The implication for org design is genuinely uncomfortable. Many engineering cultures spent a decade promising that you could grow into seniority without retaining hands-on depth. That promise has expired. Senior engineers who lost domain depth in 2020–2024 are about to be visibly slower than juniors with full tooling fluency and the same domain access. The fix is not more process. The fix is re-acquiring depth.</p>
+
+    <h2>4. The stack got named — and the names are sticking</h2>
+
+    <p>For 18 months the AI tooling conversation was a vocabulary problem. Vendors used their own terms; analysts coined competing ones; readers had to triangulate. This was the week the naming stopped. Five layers, named primitives at each, agreed boundaries:</p>
+
+    <ul>
+      <li><strong>L5 Interface.</strong> Chat is one form; inspectable IDE-style surfaces are the next; voice and ambient agents are a third. The Microsoft Scout / GitHub Canvases / Figma-to-prod stories all live here.</li>
+      <li><strong>L4 Workflow.</strong> Vertical apps. Where the product is. Where Meta and the existing platforms capture most of the deployed-agent value.</li>
+      <li><strong>L3 Tooling.</strong> Skills, CLI, MCP — the three pillars from Bildea's piece. The connectivity layer that just became standardised enough to talk about as primitives. <em>This is where the moat is in 2026.</em></li>
+      <li><strong>L2 Orchestration.</strong> Routing, durable execution (Temporal, Inngest, LangGraph), skill registries, retries, evaluation. The nervous system that is increasingly invisible to the customer and frequently the difference between products that work and products that don't.</li>
+      <li><strong>L1 Models.</strong> Frontier closed (Opus 4.8) and open weights (Gemma 4 12B). Commoditising on volume. The right answer for most workloads is increasingly open-weight; reach for frontier only when the task genuinely needs it.</li>
+    </ul>
+
+    <p>Underneath all of this sits the data substrate: clean, accessible, well-indexed operational data. Y Combinator's "shared organizational brain" is the cleanest articulation, but the observation is universal. <strong>Intelligence depends on context, and context depends on the data layer.</strong></p>
+
+    <h2>5. The organization becomes legible to software</h2>
+
+    <p>The AI Industrial Shift piece from Wednesday made the boldest claim of the week: <em>the structural shift is not about software getting cheaper — it is about the organization becoming legible to software</em>. Y Combinator's playbook is the operating example. A centralised tool registry, a unified database every agent can query, meeting transcripts as the substrate for skill refinement, and an explicit reorganisation around the "IC as Operator" model — these are the moves a company makes when it has internalised the shift.</p>
+
+    <p>The hard prerequisite is recording. Every email, every Slack message, every meeting must be recorded for the organization's intelligence to act on it. If a decision happens in an unmarked room, it is invisible to the system. The companies that have made this transition fastest already had a recording culture (engineering with PR history, customer support with logged tickets, sales with CRM discipline). The laggards are the ones whose most important decisions still happen in conversations no one writes down.</p>
+
+    <p>What this collapses, in practice, is middle management. The information layer that used to move through humans now moves through the recorded substrate. The shape that survives is the <strong>Directly Responsible Individual</strong> (one named human owns each decision end-to-end) plus the <strong>Edge Interface</strong> (humans at the boundary of the company brain handling high-emotion, high-stakes, or novel situations). The middle is being deleted, not augmented. This is the part of the shift the management consulting industry is not ready for.</p>
+
+    <h2>6. The bubble debate, in stereo</h2>
+
+    <p>The week's contrarian thread came from two directions and they were in genuine tension. The micro-productivity evidence is real and measurable: PostHog finding a three-year-old bug, YC automating finance workflows that used to require dedicated engineers, Figma collapsing the design-to-prod handoff. The macro-productivity evidence is missing: Oxford Economics surveys showing 90% of global firms report zero employment-or-productivity impact from AI over three years, the AI Bubble piece's $1.2 trillion AAA debt argument, and a sector valuation that increasingly assumes a productivity translation that has not yet materialised at scale.</p>
+
+    <p>Both are evidently true. The disagreement is which level of evidence to trust as the leading indicator. The honest reading is that the micro story is local and observable; the macro story is structural and might still resolve to the micro story's direction — but it has not yet, and a business plan that depends on the macro story arriving on schedule is taking on translation risk it should price explicitly.</p>
+
+    <p>The Aschenbrenner retrospective from Friday is the long-form version of the same observation. The technology trendlines have held up; the macroeconomic translation has not. The 2027-AGI line is a stress test for your portfolio, not a roadmap. The team that builds an architecture that works regardless of whether the trendlines compound on schedule is the team that survives the resolution either way.</p>
+
+    <div class="daily-refs">
+      <h3>From this week's daily digests</h3>
+      <div class="day">
+        <span class="day-label">Tue · June 2</span>
+        <a href="state-of-agentic-ai-jun-2026-kindle.html">The State of Agentic AI</a> — the "harness is the product" thesis, the trigger architectures piece, the Shorelane Commerce synthetic-business framing, and Meta's SilverTorch as the index-as-model case study. The week's foundational structural piece.<span class="prev-ref"><a href="state-of-agentic-ai-jun-2026-kindle.html">archive ↗</a></span>
+      </div>
+      <div class="day">
+        <span class="day-label">Wed · June 3</span>
+        <a href="ai-industrial-shift-2026-06-kindle.html">The AI Industrial Shift</a> — the 100x engineering problem, distribution as the primary moat, Search as Code (Perplexity), the shrinking harness (Opus 4.8), the self-improving company, and the probabilistic definition of done.<span class="prev-ref"><a href="ai-industrial-shift-2026-06-kindle.html">archive ↗</a></span>
+      </div>
+      <div class="day">
+        <span class="day-label">Thu · June 4</span>
+        <a href="daily-tldr-digest-2026-06-04-kindle.html">The Bifurcation</a> — copilots-to-canvases (GitHub), the primitive-wedge thesis, the Token Reckoning's 82-cent anchor, the open-vs-closed exponentials, and the AI Bubble piece. Where the verification economics cluster crystallised.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">archive ↗</a></span>
+      </div>
+      <div class="day">
+        <span class="day-label">Fri · June 5</span>
+        <a href="daily-tldr-digest-2026-06-05-kindle.html">The Legible Stack</a> — the five-layer framing, the three connectivity pillars (Skills · CLI · MCP), Nakazawa's modern engineering values, Gemma 4 12B as the open-weight workhorse, Meta's enterprise agents, and the Aschenbrenner two-years-on retrospective.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">archive ↗</a></span>
+      </div>
+      <p style="margin: 8px 0 0 0; font-size: 14px; color: #666; font-style: italic;">No daily digest for Monday June 1 — the week opened on a quiet Monday and the week's structural thesis began landing on Tuesday.</p>
+    </div>
+
+    <h2>7. Practical takeaways for the next week</h2>
+
+    <p><strong>1. Name your layer — out loud, in the next leadership meeting.</strong> If your team cannot say "we are an L3 company" or "we are an L4 vertical workflow company," the legibility revolution has not reached you yet. Unclear placement is the new "we are a platform" — a tell that the strategy has not landed.</p>
+
+    <p><strong>2. Default to open-weight unless frontier reasoning is load-bearing.</strong> Gemma 4–class models are the new Postgres of the AI-native stack. The cost discipline you build now compounds as the token economy normalises.</p>
+
+    <p><strong>3. Pick the right connectivity pillar — and layer the others.</strong> Skills, CLI, MCP. CLI for the developer happy path; MCP for externalised, customer-facing, compliance-sensitive tools; Skills to keep capabilities portable as hosts shift underneath you. The matrix is in <a href="daily-tldr-digest-2026-06-05-kindle.html">Friday's piece</a>.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></p>
+
+    <p><strong>4. Make verification a first-class line item.</strong> Whoever lets verification stay invisible in the budget loses 82 cents of every dollar to invisible rework. Whoever exposes it on the P&L can manage it. Whoever sells primitives that reduce it captures the next decade.</p>
+
+    <p><strong>5. Treat the data substrate as a strategic asset, not back-office work.</strong> Every winning AI-native product this week depended on operational data being clean, indexed, and accessible. The companies that win in 2027 are the ones that started investing in the substrate in 2026.</p>
+
+    <p><strong>6. Hire for judgment, not for tool fluency.</strong> The tools are increasingly even across teams. The differentiator is which problems you point them at. Domain depth, technical depth, decisive iteration — the unfair advantage. Re-read Nakazawa's piece before your next hiring round.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></p>
+
+    <p><strong>7. Build the inspection surface, not the chat window.</strong> AI-first UX is going to be more IDE-for-intent than conversation. If your product is still "user types, agent replies, user reads," you are building yesterday's UX. The differentiated product exposes the work, the state of the work, and the agent's confidence in it — in the same surface.</p>
+
+    <p><strong>8. Treat the AGI debate as a portfolio stress test, not a roadmap.</strong> Don't bet on Aschenbrenner being right. Don't bet on him being wrong. Build the architecture that works in either world — that is the entire payoff of the layered stack you just spent the week reading about.</p>
+
+    <h2>8. Glossary</h2>
+
+    <div class="glossary">
+      <h3>Quick reference</h3>
+      <dl>
+        <dt>Agent-native</dt>
+        <dd>A product, surface, or workflow designed around the assumption that the primary user is (or includes) an autonomous agent, not a human typing into a chat. GitHub Canvases, Microsoft Scout, and Figma-to-prod are this week's canonical examples.</dd>
+
+        <dt>Durable execution</dt>
+        <dd>A runtime pattern (Temporal, Inngest, LangGraph) that lets long-running agent workflows resume from checkpoints after a crash, without re-executing successful steps. Prevents "token re-burning" in agent loops.</dd>
+
+        <dt>Harness</dt>
+        <dd>The layers around the model that turn it into something productionable — context retrieval, tool registry, orchestration, sandboxing, observability. As of this week, vendor-absorbed at L1/L3/L4; remaining moats at L2 (context) and L5 (lifecycle judgment).</dd>
+
+        <dt>L1–L5 stack</dt>
+        <dd>The five-layer model that ended the vocabulary debate: Models · Orchestration · Tooling · Workflow · Interface. Below all five sits the data substrate (recorded operational context, "shared organizational brain").</dd>
+
+        <dt>MCP / CLI / Skills</dt>
+        <dd>The three connectivity pillars at L3 (Tooling). MCP for externalised tool-server protocols; CLI for the local developer happy path; Skills for portable, host-agnostic capability files. Production agents use all three, scoped per task.</dd>
+
+        <dt>Primitive wedge</dt>
+        <dd>A narrow, painful, unavoidable capability that turns stochastic model output into something you can ship — secure execution sandbox, verification harness, operational memory layer, governance system. The opposite of a "broad code generator."</dd>
+
+        <dt>Recorded substrate</dt>
+        <dd>The operational data layer that makes an organization legible to AI agents. Every email, message, meeting, decision, ticket. The prerequisite for the self-improving company model. If the decision is not recorded, it does not exist for the system's intelligence.</dd>
+
+        <dt>Token reckoning</dt>
+        <dd>The thesis (Latent Space) that 82 cents of every AI dollar is spent on bug fixes, rewrites, and hallucination correction; only 18 cents results in shipped product. The pricing-model implication: cost-per-completed-workflow replaces tokens-per-second as the metric that matters.</dd>
+      </dl>
+    </div>
+
+    <h2>The 50 sources, by theme</h2>
+
+    <p>The notebook contains 50 sources. The list below covers the sources cited in the four daily digests for this week — they make up the majority of the notebook's load-bearing content. Additional sources covered in the notebook but not picked up in any daily are acknowledged at the end of each cluster.</p>
+
+    <div class="sources">
+
+      <h3>Theme 1 · The stack gets named</h3>
+      <ol>
+        <li>
+          <strong>Foundations of the AI-Native Stack</strong> — <a href="https://mercury.com/blog/AI-native-startup-stack">mercury.com</a>
+          <span class="src-note">The clearest five-layer framing of the stack. The structural anchor for Friday's piece.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Mastering the 2026 Connectivity Stack: MCP, CLI, and Skills</strong> — <a href="https://medium.com/agentic-builders/how-to-build-production-ready-ai-agents-mcp-cli-and-skills-the-right-tool-for-the-right-job-701dc102863f">medium.com · agentic-builders</a>
+          <span class="src-note">Ana Bildea's three-pillar piece. The load-bearing claim of the week at the connectivity layer.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Introducing Gemma 4 12B</strong> — <a href="https://www.google.com/search?q=%22Introducing+Gemma+4+12B%22+blog.google">blog.google</a>
+          <span class="src-note">The week's open-weight reference release. Specs less interesting than the framing: this is the Postgres of the AI-native stack.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Open and closed models are on different exponentials</strong> — <a href="https://interconnects.ai">interconnects.ai</a>
+          <span class="src-note">The structural argument for why the model-layer split is durable.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>Building apps using TanStack Start</strong> — <a href="https://www.google.com/search?q=%22Building+apps+using+TanStack+Start%22+Lovable">lovable.dev</a>
+          <span class="src-note">Server-first React with file-based routing. The application substrate that AI-native apps tend to land on.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Top Claude Skills for Enhanced Productivity and Automation</strong> — <a href="https://www.google.com/search?q=%22Top+Claude+Skills+for+Enhanced+Productivity+and+Automation%22">search</a>
+          <span class="src-note">Survey of which Skills get traction in practice. Mundane list; durable pattern.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+      </ol>
+      <p style="font-size: 14px; color: #666; font-style: italic; margin-top: 6px;">+ ~5 additional sources in the notebook on stack-naming / connectivity not picked up in any daily.</p>
+
+      <h3>Theme 2 · Verification economics</h3>
+      <ol>
+        <li>
+          <strong>The Token Reckoning is Here and It's Not What You Think</strong> — <a href="https://www.latent.space">latent.space</a>
+          <span class="src-note">The 82-cent figure is the week's load-bearing number. Cost-per-completed-workflow as the new pricing primitive.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>Primitive Wedges</strong> — <a href="https://productledalliance.substack.com">productledalliance.substack.com</a> <span class="pub">· Ben Williams</span>
+          <span class="src-note">"Should I trust this output?" is the question that wins the next decade of developer tools, not "Can I generate more output?"<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>PostHog autonomous research found a 3-year-old query-engine bug</strong> — <a href="https://posthog.com/blog">posthog.com/blog</a>
+          <span class="src-note">The cleanest case study of a primitive wedge working as advertised — constrained objective, secure sandbox, measurable win.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>Hex Shoebox · methodology for agent observability</strong> — <a href="https://hex.tech">hex.tech</a>
+          <span class="src-note">The inverse case: unconstrained agent environments hide bugs in trajectories, not in answers.<span class="prev-ref"><a href="state-of-agentic-ai-jun-2026-kindle.html">prev: Tue 2026-06-02</a></span></span>
+        </li>
+        <li>
+          <strong>Shorelane Commerce · synthetic retailer for agent benchmarks</strong> — <a href="https://shorelane.com">shorelane.com</a>
+          <span class="src-note">Realistic data debt + conflicting stakeholders. Synthetic environments are necessary for iteration, never sufficient for production.<span class="prev-ref"><a href="state-of-agentic-ai-jun-2026-kindle.html">prev: Tue 2026-06-02</a></span></span>
+        </li>
+        <li>
+          <strong>Durable execution runtimes — Temporal, Inngest, LangGraph</strong> — <a href="https://temporal.io">temporal.io</a>
+          <span class="src-note">Checkpoint-resume runtimes that prevent token re-burning. The choice of runtime is no longer separable from the choice of model.<span class="prev-ref"><a href="state-of-agentic-ai-jun-2026-kindle.html">prev: Tue 2026-06-02</a></span></span>
+        </li>
+      </ol>
+      <p style="font-size: 14px; color: #666; font-style: italic; margin-top: 6px;">+ ~4 additional sources in the notebook on evaluation, sandboxing, observability not picked up in any daily.</p>
+
+      <h3>Theme 3 · Domain expertise + judgment</h3>
+      <ol>
+        <li>
+          <strong>Modern Engineering Values</strong> — <a href="https://cpojer.net/posts/modern-engineering-values">cpojer.net</a> <span class="pub">· Christoph Nakazawa</span>
+          <span class="src-note">The week's most uncomfortable claim. Managers must retain depth; the IC/manager split is over. Re-read before your next hiring decision.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>The State of Agentic AI · Domain expertise as the new moat</strong> — internal synthesis cited Tuesday
+          <span class="src-note">The actuary, the dispatcher, the compliance lead — the people who can recognise a silent wrong answer at a glance.<span class="prev-ref"><a href="state-of-agentic-ai-jun-2026-kindle.html">prev: Tue 2026-06-02</a></span></span>
+        </li>
+        <li>
+          <strong>The 100x engineering problem</strong> — synthesised across Wed's piece
+          <span class="src-note">100x code generation hits a flat customer-bandwidth ceiling. Positioning, distribution, audience — the scarce resources.<span class="prev-ref"><a href="ai-industrial-shift-2026-06-kindle.html">prev: Wed 2026-06-03</a></span></span>
+        </li>
+        <li>
+          <strong>The deskilling watch</strong> — referenced in the AI Bubble piece
+          <span class="src-note">Developers who lean too heavily on generative tools are losing the manual fluency that lets them verify what the tools produce. The structural risk.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+      </ol>
+      <p style="font-size: 14px; color: #666; font-style: italic; margin-top: 6px;">+ ~4 additional sources in the notebook on engineering culture, training, and skill atrophy not picked up in any daily.</p>
+
+      <h3>Theme 4 · Agent-native product surfaces</h3>
+      <ol>
+        <li>
+          <strong>GitHub Copilot app · the agent-native desktop experience</strong> — <a href="https://github.blog">github.blog</a>
+          <span class="src-note">Canvases as inspectable workspaces. Chat is "the long scroll of decisions"; canvases let multiple agents work in parallel without stepping on each other.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>Microsoft Scout · autonomous executive AI assistant</strong> — <a href="https://www.microsoft.com/en-us/microsoft-copilot">microsoft.com</a>
+          <span class="src-note">Always-on agent identity. The "always-on employee" framing extends agents from engineering into general enterprise operations.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>What will AI-first UX look like?</strong> — <a href="https://www.google.com/search?q=%22What+will+AI-first+UX+look+like%22+InfoWorld">infoworld.com</a>
+          <span class="src-note">Chat is not the end state. The next surface is an inspection surface — IDE for intent, not conversation.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Nvidia RTX Spark · the agentic PC</strong> — <a href="https://www.nvidia.com/en-us/products/rtx-spark/">nvidia.com</a>
+          <span class="src-note">1 petaflop on a laptop. The agent moves out of the data centre and into the user's hands. First wave of OEM hardware Fall 2026.<span class="prev-ref"><a href="ai-industrial-shift-2026-06-kindle.html">prev: Wed 2026-06-03</a></span></span>
+        </li>
+        <li>
+          <strong>Figma Make · production-integrated design editing</strong> — <a href="https://www.figma.com">figma.com</a>
+          <span class="src-note">Visual edits ship to git branches. The design-to-engineering handoff that defined the last fifteen years is being deleted, not augmented.<span class="prev-ref"><a href="state-of-agentic-ai-jun-2026-kindle.html">prev: Tue 2026-06-02</a></span></span>
+        </li>
+        <li>
+          <strong>Meta's Enterprise Evolution: AI Agents for Global Business</strong> — <a href="https://www.google.com/search?q=%22Meta%27s+Enterprise+Evolution%22+%22AI+Agents+for+Global+Business%22">meta.com</a>
+          <span class="src-note">Agents embedded into Workplace, ad ops, customer support. Distribution beats novelty at the workflow layer.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+      </ol>
+      <p style="font-size: 14px; color: #666; font-style: italic; margin-top: 6px;">+ ~2 additional sources in the notebook on agentic product surfaces not picked up in any daily.</p>
+
+      <h3>Theme 5 · Recorded organization · self-improving loops</h3>
+      <ol>
+        <li>
+          <strong>Inside YC's AI Playbook</strong> — <a href="https://www.youtube.com/watch?v=B246K_G7mHU">youtube.com</a> <span class="pub">· Y Combinator Lightcode</span>
+          <span class="src-note">The "shared organizational brain" pattern in practice. Centralised tool registry; shared database; meeting transcripts as the substrate. Template for the AI-native company.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>The Self-Improving Company</strong> — synthesised in Wed's piece from multiple sources
+          <span class="src-note">Recursive AI loops: sensor → policy → tool → learning mechanism. The fourth layer (overnight self-fix) was a 2024 research demo; it's table stakes now.<span class="prev-ref"><a href="ai-industrial-shift-2026-06-kindle.html">prev: Wed 2026-06-03</a></span></span>
+        </li>
+        <li>
+          <strong>Anthropic Claude Opus 4.8 · effort controls + dynamic workflows</strong> — <a href="https://www.anthropic.com">anthropic.com</a>
+          <span class="src-note">Constraint (L1), execution (L3), and verification (L4) absorbed into the platform. Context (L2) and lifecycle (L5) are what remain to defend.<span class="prev-ref"><a href="ai-industrial-shift-2026-06-kindle.html">prev: Wed 2026-06-03</a></span></span>
+        </li>
+        <li>
+          <strong>mem0ai · long-term memory for AI agents</strong> — <a href="https://x.com/mem0ai/status/2061822612398014782">x.com/mem0ai</a>
+          <span class="src-note">Agent memory primitive. The L2 orchestration layer's quietest critical component.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+      </ol>
+      <p style="font-size: 14px; color: #666; font-style: italic; margin-top: 6px;">+ ~3 additional sources in the notebook on org design, recorded workflows, and management restructuring not picked up in any daily.</p>
+
+      <h3>Theme 6 · Bubble / macro debate</h3>
+      <ol>
+        <li>
+          <strong>The AI Bubble: A Looming Financial Collapse</strong> — <a href="https://www.activistpost.com">activistpost.com</a>
+          <span class="src-note">$1.2T AAA debt · Oxford Economics 90%-zero-impact · 2008 parallel. The contrarian fringe, read seriously.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-04-kindle.html">prev: Thu 2026-06-04</a></span></span>
+        </li>
+        <li>
+          <strong>Situational Awareness: The Decade Ahead</strong> — <a href="https://situational-awareness.ai/">situational-awareness.ai</a> <span class="pub">· Leopold Aschenbrenner · original essay</span>
+          <span class="src-note">The stacked-OOMs argument. AGI by 2027 if you accept all three trendlines. Worth re-reading every six months.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Situational Awareness, Two Years Later</strong> — <a href="https://medium.com/data-science-collective/situational-awareness-two-years-later-4b941d052ef9">medium.com · Data Science Collective</a> <span class="pub">· Omer Ansari</span>
+          <span class="src-note">The retrospective scorecard. Trendlines on/ahead; macro productivity missed; gov project not formed. A useful corrective.<span class="prev-ref"><a href="daily-tldr-digest-2026-06-05-kindle.html">prev: Fri 2026-06-05</a></span></span>
+        </li>
+        <li>
+          <strong>Perplexity Search as Code</strong> — <a href="https://research.perplexity.ai/articles/rethinking-search-as-code-generation">research.perplexity.ai</a>
+          <span class="src-note">100% accuracy with 85% fewer tokens by atomising retrieval. Search becomes orchestration code, not a single query. The architectural piece of the puzzle.<span class="prev-ref"><a href="ai-industrial-shift-2026-06-kindle.html">prev: Wed 2026-06-03</a></span></span>
+        </li>
+      </ol>
+      <p style="font-size: 14px; color: #666; font-style: italic; margin-top: 6px;">+ ~3 additional sources in the notebook on bond markets, valuation discipline, and frontier-lab security not picked up in any daily.</p>
+
+    </div>
+
+    <h2>Tonight's listen</h2>
+    <p>NotebookLM's audio overview for this weekly walks through the 50 sources in roughly 14–16 minutes, weighted toward the verification-economics cluster (the load-bearing one). A good Saturday morning listen with coffee, or a long-walk companion before the next week opens.</p>
+    <p><a class="audio-cta" href="https://notebooklm.google.com/notebook/41c54472-4d59-4e14-8e21-ea2c37155e2d">▶ Open in NotebookLM (audio + deep dive)</a></p>
+
+    <h2>Read the full notebook</h2>
+    <p>For the source-grounded chat answers, individual source content, audio overview, slide deck, and the auto-generated mind map — and the 17 sources from this week that didn't make any of the daily digests but are still in the notebook — head to the source notebook on NotebookLM.</p>
+    <p><a href="https://notebooklm.google.com/notebook/41c54472-4d59-4e14-8e21-ea2c37155e2d">→ Open the NotebookLM notebook</a></p>
+
+    <div class="footer">
+      <p>Auto-generated by <a href="https://juanberbania.github.io/kindle-digest/">Kindle Digest</a> · Weekly Summary · June 1–5, 2026 · 50 sources · 2 diagrams · ~28 min read</p>
+    </div>
+
+  </div>
+</body>
+</html>
