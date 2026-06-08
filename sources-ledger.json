@@ -15,7 +15,10 @@
       "url": "https://hex.tech/blog",
       "first_cited": "2026-06-02",
       "citations": [
-        { "date": "2026-06-02", "context": "evaluation crisis · ToolEfficiency · SemanticLayerUsage rubric" }
+        {
+          "date": "2026-06-02",
+          "context": "evaluation crisis · ToolEfficiency · SemanticLayerUsage rubric"
+        }
       ]
     },
     {
@@ -25,7 +28,10 @@
       "url": "https://shorelane.com",
       "first_cited": "2026-06-02",
       "citations": [
-        { "date": "2026-06-02", "context": "realistic data debt, conflicting stakeholders, semantic layers" }
+        {
+          "date": "2026-06-02",
+          "context": "realistic data debt, conflicting stakeholders, semantic layers"
+        }
       ]
     },
     {
@@ -35,7 +41,10 @@
       "url": "https://ai.meta.com/blog/silvertorch",
       "first_cited": "2026-06-02",
       "citations": [
-        { "date": "2026-06-02", "context": "23.7x throughput · GPU ANN · streaming index updates" }
+        {
+          "date": "2026-06-02",
+          "context": "23.7x throughput · GPU ANN · streaming index updates"
+        }
       ]
     },
     {
@@ -45,7 +54,10 @@
       "url": "https://www.figma.com",
       "first_cited": "2026-06-02",
       "citations": [
-        { "date": "2026-06-02", "context": "visual editing to code, git-backed designer PRs" }
+        {
+          "date": "2026-06-02",
+          "context": "visual editing to code, git-backed designer PRs"
+        }
       ]
     },
     {
@@ -55,7 +67,10 @@
       "url": "https://temporal.io",
       "first_cited": "2026-06-02",
       "citations": [
-        { "date": "2026-06-02", "context": "checkpoint-resume · token re-burning prevention" }
+        {
+          "date": "2026-06-02",
+          "context": "checkpoint-resume · token re-burning prevention"
+        }
       ]
     },
     {
@@ -65,7 +80,10 @@
       "url": "https://research.perplexity.ai/articles/rethinking-search-as-code-generation",
       "first_cited": "2026-06-03",
       "citations": [
-        { "date": "2026-06-03", "context": "100% accuracy · 85% token reduction · WANDR 2.5x" }
+        {
+          "date": "2026-06-03",
+          "context": "100% accuracy · 85% token reduction · WANDR 2.5x"
+        }
       ]
     },
     {
@@ -75,7 +93,10 @@
       "url": "https://www.anthropic.com",
       "first_cited": "2026-06-03",
       "citations": [
-        { "date": "2026-06-03", "context": "L1/L3/L4 harness absorption · effort-control dials" }
+        {
+          "date": "2026-06-03",
+          "context": "L1/L3/L4 harness absorption · effort-control dials"
+        }
       ]
     },
     {
@@ -85,7 +106,10 @@
       "url": "https://www.nvidia.com/en-us/products/rtx-spark/",
       "first_cited": "2026-06-03",
       "citations": [
-        { "date": "2026-06-03", "context": "1 petaflop · Blackwell + Grace · OpenShell sandbox" }
+        {
+          "date": "2026-06-03",
+          "context": "1 petaflop · Blackwell + Grace · OpenShell sandbox"
+        }
       ]
     },
     {
@@ -95,7 +119,10 @@
       "url": "https://github.blog",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "Canvases as inspectable workspaces · long scroll of decisions" }
+        {
+          "date": "2026-06-04",
+          "context": "Canvases as inspectable workspaces · long scroll of decisions"
+        }
       ]
     },
     {
@@ -105,7 +132,10 @@
       "url": "https://www.youtube.com/watch?v=B246K_G7mHU",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "shared organizational brain · skill registry · routing strategy" }
+        {
+          "date": "2026-06-04",
+          "context": "shared organizational brain · skill registry · routing strategy"
+        }
       ]
     },
     {
@@ -115,7 +145,10 @@
       "url": "https://posthog.com/blog",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "timezone bug · 62% data-granules reduction · primitive wedge case study" }
+        {
+          "date": "2026-06-04",
+          "context": "timezone bug · 62% data-granules reduction · primitive wedge case study"
+        }
       ]
     },
     {
@@ -125,7 +158,10 @@
       "url": "https://www.microsoft.com/en-us/microsoft-copilot",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "always-on agent identity · calendar negotiation · always-on employee framing" }
+        {
+          "date": "2026-06-04",
+          "context": "always-on agent identity · calendar negotiation · always-on employee framing"
+        }
       ]
     },
     {
@@ -135,7 +171,10 @@
       "url": "https://evilmartians.com/chronicles",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "non-AI standards · foundational infrastructure invisibility" }
+        {
+          "date": "2026-06-04",
+          "context": "non-AI standards · foundational infrastructure invisibility"
+        }
       ]
     },
     {
@@ -145,7 +184,10 @@
       "url": "https://interconnects.ai",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "frontier oligopoly Apple-and-Microsoft analogy · open weights commoditizing on volume" }
+        {
+          "date": "2026-06-04",
+          "context": "frontier oligopoly Apple-and-Microsoft analogy · open weights commoditizing on volume"
+        }
       ]
     },
     {
@@ -155,7 +197,10 @@
       "url": "https://productledalliance.substack.com",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "narrow painful unavoidable capabilities · should-I-trust > can-I-generate" }
+        {
+          "date": "2026-06-04",
+          "context": "narrow painful unavoidable capabilities · should-I-trust > can-I-generate"
+        }
       ]
     },
     {
@@ -165,7 +210,10 @@
       "url": "https://www.activistpost.com",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "$1.2T AAA debt · Oxford Economics 90% zero impact · 2008 parallel" }
+        {
+          "date": "2026-06-04",
+          "context": "$1.2T AAA debt · Oxford Economics 90% zero impact · 2008 parallel"
+        }
       ]
     },
     {
@@ -175,8 +223,14 @@
       "url": "https://www.latent.space",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "82 cents of every AI dollar wasted · cost-per-completed-workflow metric" },
-        { "date": "2026-06-05", "context": "back-referenced as the verification economics anchor" }
+        {
+          "date": "2026-06-04",
+          "context": "82 cents of every AI dollar wasted · cost-per-completed-workflow metric"
+        },
+        {
+          "date": "2026-06-05",
+          "context": "back-referenced as the verification economics anchor"
+        }
       ]
     },
     {
@@ -186,7 +240,13 @@
       "url": "https://vercel.com/blog",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "source content not loadable; cited as agent infrastructure datapoint" }
+        {
+          "date": "2026-06-04",
+          "context": "source content not loadable; cited as agent infrastructure datapoint"
+        }
+      ],
+      "cited_again": [
+        "2026-06-08"
       ]
     },
     {
@@ -196,7 +256,10 @@
       "url": "https://x.com/mem0ai/status/2061822612398014782",
       "first_cited": "2026-06-04",
       "citations": [
-        { "date": "2026-06-04", "context": "tweet · agent memory primitive" }
+        {
+          "date": "2026-06-04",
+          "context": "tweet · agent memory primitive"
+        }
       ]
     },
     {
@@ -206,7 +269,10 @@
       "url": "https://mercury.com/blog/AI-native-startup-stack",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "five-layer stack: model · orchestration · tooling · workflow · data" }
+        {
+          "date": "2026-06-05",
+          "context": "five-layer stack: model · orchestration · tooling · workflow · data"
+        }
       ]
     },
     {
@@ -216,7 +282,10 @@
       "url": "https://medium.com/agentic-builders/how-to-build-production-ready-ai-agents-mcp-cli-and-skills-the-right-tool-for-the-right-job-701dc102863f",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "three-pillar model · use-all-three-at-the-right-moment" }
+        {
+          "date": "2026-06-05",
+          "context": "three-pillar model · use-all-three-at-the-right-moment"
+        }
       ]
     },
     {
@@ -226,7 +295,10 @@
       "url": "https://cpojer.net/posts/modern-engineering-values",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "manager domain depth · IC-as-operator implication of leverage shift" }
+        {
+          "date": "2026-06-05",
+          "context": "manager domain depth · IC-as-operator implication of leverage shift"
+        }
       ]
     },
     {
@@ -236,7 +308,10 @@
       "url": "https://www.google.com/search?q=%22What+will+AI-first+UX+look+like%22+InfoWorld",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "post-chat inspection surface · IDE-for-intent framing" }
+        {
+          "date": "2026-06-05",
+          "context": "post-chat inspection surface · IDE-for-intent framing"
+        }
       ]
     },
     {
@@ -246,7 +321,10 @@
       "url": "https://www.google.com/search?q=%22Introducing+Gemma+4+12B%22+blog.google",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "open-weight as Postgres-of-the-stack default" }
+        {
+          "date": "2026-06-05",
+          "context": "open-weight as Postgres-of-the-stack default"
+        }
       ]
     },
     {
@@ -256,7 +334,10 @@
       "url": "https://www.google.com/search?q=%22Meta%27s+Enterprise+Evolution%22+%22AI+Agents+for+Global+Business%22",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "Workplace / ad-ops / support agents · distribution > novelty" }
+        {
+          "date": "2026-06-05",
+          "context": "Workplace / ad-ops / support agents · distribution > novelty"
+        }
       ]
     },
     {
@@ -266,7 +347,10 @@
       "url": "https://www.google.com/search?q=%22Top+Claude+Skills+for+Enhanced+Productivity+and+Automation%22",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "filesystem · kanban · note-taking · calendar/email triage" }
+        {
+          "date": "2026-06-05",
+          "context": "filesystem · kanban · note-taking · calendar/email triage"
+        }
       ]
     },
     {
@@ -276,7 +360,10 @@
       "url": "https://www.google.com/search?q=%22Building+apps+using+TanStack+Start%22+Lovable",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "server-first React · agent-friendly substrate" }
+        {
+          "date": "2026-06-05",
+          "context": "server-first React · agent-friendly substrate"
+        }
       ]
     },
     {
@@ -286,7 +373,10 @@
       "url": "https://situational-awareness.ai/",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "original 165-page essay · stacked OOMs argument · 2027 AGI line" }
+        {
+          "date": "2026-06-05",
+          "context": "original 165-page essay · stacked OOMs argument · 2027 AGI line"
+        }
       ]
     },
     {
@@ -296,8 +386,88 @@
       "url": "https://medium.com/data-science-collective/situational-awareness-two-years-later-4b941d052ef9",
       "first_cited": "2026-06-05",
       "citations": [
-        { "date": "2026-06-05", "context": "trendlines on/ahead · macro productivity miss · gov project not formed" }
+        {
+          "date": "2026-06-05",
+          "context": "trendlines on/ahead · macro productivity miss · gov project not formed"
+        }
       ]
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "being-an-ai-native-designer-isn-t-what-you-think-it-is",
+      "title": "Being an AI-native designer isn't what you think it is",
+      "publication": "UX · Essay",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "github-for-ai-product-managers",
+      "title": "GitHub for AI Product Managers",
+      "publication": "Product · Essay",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "how-to-build-an-ai-native-services-company",
+      "title": "How to Build an AI-Native Services Company",
+      "publication": "Video · YouTube",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "how-to-build-an-outcome-based-pricing-plan",
+      "title": "How to Build an Outcome-Based Pricing Plan",
+      "publication": "SaaS · The SaaS CFO",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "the-code-as-content-era-by-m-uhan",
+      "title": "The Code-as-Content Era — by máuhan",
+      "publication": "Substack · Essay",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "the-high-cost-of-the-ai-copyright-illusion",
+      "title": "The High Cost of the AI Copyright Illusion",
+      "publication": "Essay · Markdown",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "the-idearium-a-sanctuary-for-your-restless-thoughts",
+      "title": "The Idearium: A Sanctuary for Your Restless Thoughts",
+      "publication": "Product · The Idearium",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "the-retrieval-layer-between-your-data-and-your-ai-outputs-is",
+      "title": "The Retrieval Layer between Your Data and Your AI Outputs is a Product Decision",
+      "publication": "Engineering · Essay",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "voidzero-is-joining-cloudflare",
+      "title": "VoidZero is joining Cloudflare",
+      "publication": "Infrastructure · Announcement",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "why-visual-storytelling-in-ux-matters-more-than-ever",
+      "title": "Why Visual Storytelling in UX Matters More Than Ever",
+      "publication": "UX · UXPin",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-08",
+      "slug": "tetherto-qvac-qvac-local-ai-sdk",
+      "title": "tetherto/qvac — QVAC local AI SDK",
+      "publication": "Infrastructure · GitHub",
+      "first_seen_in": "daily-tldr-digest-2026-06-08-kindle.html"
     }
   ]
 }
