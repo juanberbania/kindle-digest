@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 9, 2026</title>
+<style>
+  :root {
+    --cream:    #f5efe2;
+    --paper:    #faf6ec;
+    --ink:      #231a14;
+    --ink-soft: #3a2d22;
+    --quiet:    #5a4636;
+    --ochre:    #9c5818;
+    --ochre-dk: #6e3c0d;
+    --rule:     #c8b693;
+    --rule-soft:#e2d5b6;
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 9, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 39</div>
+    <div class="rhs">Tuesday · 9 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Engineering Reckoning</p>
+  <h1>The Discipline Gap</h1>
+  <p class="subtitle">Nine sources, one quiet argument: the leverage AI gives an engineer is the leverage AI gives an undisciplined engineer too, and the gap between those two outcomes is now the most important variable on the team.</p>
+
+  <div class="byline">
+    <span><b>9 sources</b> · 2 diagrams · ~22 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The reckoning is methodological</h2>
+
+    <p class="lead">Wes McKinney, in this week's most-quoted interview, draws a line that most of the day's other pieces also draw but in different vocabularies. On one side: <em>vibe coding</em> — the use of AI to ship code without an examined relationship to architecture, testing, or what is actually true about the system. On the other: <em>agentic engineering</em> — the use of the same AI under the discipline of an engineer who still owns the design, the eval, and the consequences.</p>
+
+    <p>The reason this distinction has gone from a stylistic preference to a load-bearing one is mechanical. Both modes ship more code than the 2024 baseline. Both look the same in a sprint review. The first compounds debt at the speed of the agent; the second compounds capability at the speed of the agent. After six months, those two compounding curves are not in the same building anymore.</p>
+
+    <p>What today's reading does well is refuse to leave that line at the rhetorical level. Each piece picks a domain — software architecture, product UX, developer measurement, internal analytics tooling, AI personalisation, platform strategy, ecosystem maturity — and shows where the discipline gap actually opens up in practice. The unifying claim is that discipline is no longer something you compete on by going slower; it is something you compete on by being able to go faster <em>without</em> losing the ability to know what you shipped.</p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Three signals from today's reading</h4>
+    <ol>
+      <li><strong>Complexity, not generation, is the new ceiling.</strong> Once the codegen bottleneck disappears, the next constraint is the team's ability to hold a coherent design in its head. The pieces converge on this: AI didn't remove the limit, it just moved it upstream.</li>
+      <li><strong>Codified judgment is the new dotfile.</strong> Markdown profile files, prompt repos, eval suites, internal Skills — these are 2026's equivalent of the <em>.vimrc</em>: small text artefacts that carry an engineer's taste into every agent invocation. The discipline gap is, in part, who has them.</li>
+      <li><strong>Your vendor is your competitor, on a clock.</strong> Every platform you build on is hiring a team to do what you do, with privileged access to the substrate. The strategic discipline of 2026 is choosing which of those bets you are willing to live inside, and which require an exit.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 PRAXIS =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · Praxis</span>Vibe coding, agentic engineering, and the ceiling</h2>
+
+    <p>The Wes McKinney conversation and the <em>Complexity is the ceiling</em> essay are best read as a pair. McKinney's case, distilled, is that the engineer's job description has not actually changed — design carefully, write tests, understand the system — and the engineers who treat AI as a force multiplier on those habits get a real and durable speedup. Engineers who treat AI as a substitute for those habits get a real and brittle speedup. The interview's most quotable line — that vibe coding is "the most expensive way to write disposable software" — is sharper than it sounds.</p>
+
+    <p>The <em>Complexity is the ceiling</em> piece supplies the structural explanation. When generation was the bottleneck, the engineering team's job was throughput. With generation effectively free, the bottleneck shifts to <strong>the cognitive load of a coherent system design</strong>: knowing what abstractions exist, what they promise, what they break, and how to evolve them without entropy taking over. AI does not help with this — it accelerates whatever discipline (or lack of it) is already in place.</p>
+
+    <blockquote>
+      Vibe coding is the most expensive way to write disposable software.
+      <cite>— Wes McKinney, on the discipline gap</cite>
+    </blockquote>
+
+    <p>The implication for hiring and team design is uncomfortable: the gap between a senior engineer with strong architectural taste and a generalist who has learned to prompt well is widening, not narrowing. The same agent in two different pairs of hands produces different organisations after a year. <span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-08-kindle.html">Jun 8 — The Recipe Layer</a>'s point that recipes (prompts + evals + retrieval policy) are the new unit of engineering work. McKinney's "agentic engineering" <em>is</em> recipe-layer engineering with a methodological floor.</span></p>
+  </section>
+
+  <!-- =================== §3 CODIFICATION =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Codification</span>Markdown profile files and the new dotfile</h2>
+
+    <p>The <em>Mastering Your AI Voice With Markdown Profile Files</em> piece would have read as fringe a year ago and reads as obvious now. The argument: if you are going to delegate writing, coding, summarising, and review to an agent, the agent needs an explicit, versioned, plain-text description of your voice, your standards, your refusals, and your defaults. Anything less and the agent regresses to the mean of its training data — which is to say, to a flattened, blander, more agreeable version of you.</p>
+
+    <p>What makes this more than a productivity tip is its analogue: the markdown profile file is the new <em>.vimrc</em>, the new <em>.bashrc</em>, the new <em>.editorconfig</em>. It is the small, portable, text-based artefact that carries an engineer's accumulated taste from one tool to the next without re-teaching. Teams that treat these files as first-class — review them, share them, version them, ship them with their repos — get an institutional voice. Teams that don't get whichever vendor they happen to be standing next to.</p>
+
+    <p>The Anthropic case study (<em>How Anthropic enables self-service data analytics with Claude</em>) is the same pattern at organisational scale. The interesting move is not that Anthropic's analysts use Claude — every analytics team does, by now — but that they have built a disciplined surface around it: scoped data access, a curated set of internal Skills, evaluation harnesses, and an enforced separation between "exploration" and "shippable answer." That is the recipe layer with a governance layer on top, which is what a self-service analytics platform actually is in 2026. <span class="prev-ref">Reinforces <a href="daily-tldr-digest-2026-06-05-kindle.html">Jun 5 — The Legible Stack</a>'s MCP/CLI/Skills three-pillar model: Skills <em>are</em> codified judgment with a callable interface.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked panels comparing vibe-coding velocity to agentic-engineering velocity over time">
+      <rect x="0" y="0" width="660" height="360" fill="#faf6ec"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#231a14" letter-spacing="2">FIGURE 1 · TWO COMPOUNDING CURVES</text>
+
+      <!-- LEFT PANEL: Vibe coding -->
+      <rect x="30" y="56" width="295" height="280" fill="#f5efe2" stroke="#c8b693" stroke-width="1.4"/>
+      <text x="48" y="84" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#6e3c0d" letter-spacing="2">PANEL A · VIBE CODING</text>
+      <text x="48" y="106" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#231a14">Output grows. Capability does not.</text>
+
+      <!-- 4 stacked blocks showing growing OUTPUT but flat CAPABILITY -->
+      <rect x="48" y="130" width="80"  height="22" fill="#9c5818"/>
+      <text x="138" y="146" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 1 · sprint feels fast</text>
+
+      <rect x="48" y="160" width="130" height="22" fill="#9c5818"/>
+      <text x="188" y="176" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 2 · onboarding stalls</text>
+
+      <rect x="48" y="190" width="180" height="22" fill="#9c5818"/>
+      <text x="48" y="228" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 4 · refactor cycle begins</text>
+
+      <rect x="48" y="240" width="240" height="22" fill="#6e3c0d"/>
+      <text x="48" y="278" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 6 · "we don't know what we shipped"</text>
+
+      <rect x="48" y="290" width="265" height="22" fill="#231a14"/>
+      <text x="48" y="328" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#231a14">M 9 · debt service exceeds new work</text>
+
+      <!-- RIGHT PANEL: Agentic engineering -->
+      <rect x="335" y="56" width="295" height="280" fill="#f5efe2" stroke="#c8b693" stroke-width="1.4"/>
+      <text x="353" y="84" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#6e3c0d" letter-spacing="2">PANEL B · AGENTIC ENGINEERING</text>
+      <text x="353" y="106" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#231a14">Output and capability both grow.</text>
+
+      <rect x="353" y="130" width="70"  height="22" fill="#c8b693"/>
+      <text x="433" y="146" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 1 · slower start (recipes built)</text>
+
+      <rect x="353" y="160" width="110" height="22" fill="#9c5818"/>
+      <text x="473" y="176" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 2 · evals catch regressions</text>
+
+      <rect x="353" y="190" width="160" height="22" fill="#9c5818"/>
+      <text x="353" y="228" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 4 · new contributors ramp fast</text>
+
+      <rect x="353" y="240" width="210" height="22" fill="#6e3c0d"/>
+      <text x="353" y="278" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 6 · system grows, debt does not</text>
+
+      <rect x="353" y="290" width="265" height="22" fill="#231a14"/>
+      <text x="353" y="328" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#231a14">M 9 · compounding into capability</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Two teams. Same agent. The difference between months 1 and 9 is whether the engineer kept ownership of design, eval, and consequence — McKinney's distinction made operational.</div>
+  </div>
+
+  <!-- =================== §4 DEFAULTS =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Defaults</span>"Maybe later" was a feature</h2>
+
+    <p>Arnór Heiðar Sigurðsson's <em>"maybe later" was a feature</em> is the day's most economical piece and worth reading twice. The argument is small: the modal that gives a user "Yes" and "Not now" — not "No," not "Never ask again," but "Not now" — has been quietly excised from most modern product surfaces in the name of conversion, urgency, and engagement metrics. The result is that defaulting on user time is now a routine cost of using software.</p>
+
+    <p>Why this belongs in a digest about engineering discipline: the same metric pressures that erased "maybe later" from end-user products are the ones that, inside an engineering org, erase tactical patience from the workflow. A "maybe later" affordance for a user maps almost perfectly to a "defer this decision, write down why" affordance for an engineer. Both are <em>restraint as a first-class feature</em>. Both are early casualties in a culture that measures only forward motion.</p>
+
+    <p>The piece's quietly subversive implication: a product that respects deferral signals competence to its users, and a team that respects deferral signals competence to itself. The opposite — forced engagement, forced decisions, forced shipping — is what high-energy panic looks like.</p>
+  </section>
+
+  <!-- =================== §5 MEASUREMENT =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Measurement</span>What Cursor's habits data quietly reveals</h2>
+
+    <p>Cursor's <em>Developer Habits Report</em> is, on its surface, a marketing artefact — a survey of how Cursor's user base writes, edits, and ships. Read past the headline numbers and three structural observations stick:</p>
+
+    <ol>
+      <li><strong>The median user is now using the agent for nearly half of all edits, not all of them.</strong> The composition of "human-written" and "agent-written" code has stabilised in a hybrid range, not collapsed to one extreme. Whatever the discourse, the actual behaviour is mixed-by-design.</li>
+      <li><strong>Top-quartile users disproportionately invest in tooling-of-tooling.</strong> Custom rules, shared prompt libraries, and team-level conventions correlate hard with throughput. The Markdown-profile-file argument (§3) shows up here as data.</li>
+      <li><strong>The gap between novice and expert agent users is widening, not narrowing.</strong> This is the most quietly significant finding. The dream that AI flattens the engineering skill curve does not survive contact with the habits data. It steepens it.</li>
+    </ol>
+
+    <p>That third point is the discipline gap surfaced as a histogram. Cursor will not say it in those terms — they have to sell to both halves of the curve — but the data is unambiguous. The same instrument, the same access, different outcomes.</p>
+  </section>
+
+  <!-- =================== §6 OPERATIONS =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · Operations</span>The agent-ops layer comes into focus</h2>
+
+    <p>Andrew Busse's interview on <em>Hyperagent's AI Operations</em> is the operations-side companion to the Cursor data. Busse's framing — that the new SRE-shaped role is "agent operations," a discipline that covers eval pipelines, recipe versioning, retrieval health, rate-limit budgets, hallucination triage, and post-incident review of agent decisions — has the unmistakable feel of a job description that didn't exist eighteen months ago and will be standard eighteen months from now.</p>
+
+    <p>The interview's most operationally useful idea is the <em>incident review for agent decisions</em>: a structured retrospective applied not to a service outage but to a wrong agent answer that made it to a customer. The artefacts it produces (which prompt, which retrieval policy, which eval gap, which review-by-human step was skipped) are exactly the inputs that let a team raise its discipline floor over time. Without something like it, every wrong answer is just bad luck.</p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six labelled bands showing the layers of the emerging agent-ops discipline">
+      <rect x="0" y="0" width="660" height="380" fill="#faf6ec"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#231a14" letter-spacing="2">FIGURE 2 · THE AGENT-OPS STACK</text>
+
+      <!-- 6 bands, top = strategic / bottom = tactical -->
+      <rect x="30" y="56" width="600" height="48" fill="#231a14"/>
+      <text x="50" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#f5efe2" letter-spacing="2">LAYER 6 · STRATEGY</text>
+      <text x="50" y="96" font-family="Georgia,serif" font-size="14" fill="#f5efe2">Vendor / build / partner choices · platform-risk accounting</text>
+
+      <rect x="30" y="108" width="600" height="48" fill="#6e3c0d"/>
+      <text x="50" y="130" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#faf6ec" letter-spacing="2">LAYER 5 · GOVERNANCE</text>
+      <text x="50" y="148" font-family="Georgia,serif" font-size="14" fill="#faf6ec">Scope, refusals, data boundaries, audit trail, legal posture</text>
+
+      <rect x="30" y="160" width="600" height="48" fill="#9c5818"/>
+      <text x="50" y="182" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#faf6ec" letter-spacing="2">LAYER 4 · RECIPES</text>
+      <text x="50" y="200" font-family="Georgia,serif" font-size="14" fill="#faf6ec">Prompts · profile files · Skills · retrieval policy · tool grants</text>
+
+      <rect x="30" y="212" width="600" height="48" fill="#c8b693"/>
+      <text x="50" y="234" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#231a14" letter-spacing="2">LAYER 3 · EVALUATION</text>
+      <text x="50" y="252" font-family="Georgia,serif" font-size="14" fill="#231a14">Offline eval suites · online probes · drift detection · regression gates</text>
+
+      <rect x="30" y="264" width="600" height="48" fill="#e2d5b6"/>
+      <text x="50" y="286" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#231a14" letter-spacing="2">LAYER 2 · OBSERVABILITY</text>
+      <text x="50" y="304" font-family="Georgia,serif" font-size="14" fill="#231a14">Traces · cost &amp; latency budgets · hallucination triage · incident review</text>
+
+      <rect x="30" y="316" width="600" height="48" fill="#f5efe2" stroke="#c8b693" stroke-width="1.2"/>
+      <text x="50" y="338" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#231a14" letter-spacing="2">LAYER 1 · RUNTIME</text>
+      <text x="50" y="356" font-family="Georgia,serif" font-size="14" fill="#231a14">Model access · vector store · queues · rate limits · failover</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · Six layers, bottom-up. The discipline gap is not at the runtime layer (everyone has the same APIs); it is at layers 3, 4, and 5 — eval, recipes, and governance — where Busse argues the new operations role actually lives.</div>
+  </div>
+
+  <!-- =================== §7 STRATEGY =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · Strategy</span>Your vendor is your competitor</h2>
+
+    <p>The <em>Your Vendor Is Your Competitor</em> piece, paired with Apple's <em>$1.4 trillion App Store ecosystem</em> announcement, gives the day its strategic spine. The first is a warning; the second is a worked example of the warning's payoff.</p>
+
+    <p>The warning, made bluntly: in 2026, every platform you ship on is staffing a team to build what you build, with privileged access to the substrate, lower marginal cost, and the option to deprecate your wrapper into a built-in. This was always the platform game — Sherlocking is older than the App Store — but agentic systems compress the timeline. A vendor can replicate a recipe-layer wrapper in days when it used to take quarters.</p>
+
+    <p>Apple's $1.4T number is the other side of the same coin. Yes, the ecosystem is enormous and growing. But the growth accrues to the platform owner first, to a small number of category winners second, and to a long tail of healthily-paid-but-not-platformed developers third. The discipline the piece prescribes — pick which platform-substrate bets you are willing to live inside, and pre-design the exits for the ones you are not — is not pessimism. It is the only strategic posture that survives the timeline compression. <span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-04-kindle.html">Jun 4 — The Bifurcation</a>'s "primitive wedges beat monolithic plays" thesis: the vendors win the monolith, so the durable bets are on primitives the vendor can't subsume.</span></p>
+  </section>
+
+  <!-- =================== §8 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Practical takeaways</span>If you only do five things this week</h2>
+
+    <ol>
+      <li><strong>Write your markdown profile file.</strong> One page. Voice, defaults, refusals, what you will never delegate. Commit it to a repo your tools can read.</li>
+      <li><strong>Do one agent-decision incident review.</strong> Pick the wrong answer your agent gave that you most regret this month. Reconstruct prompt, retrieval, eval gap, missed human checkpoint. Write it up like a postmortem. Repeat monthly.</li>
+      <li><strong>Audit your "maybe later" surfaces.</strong> Find one place — in your product or in your team's process — where deferral has been removed in the name of velocity. Add it back. Watch what changes.</li>
+      <li><strong>Map your six layers.</strong> Using Figure 2 as a template, write down who owns each layer on your team and which one has the weakest investment. That is your discipline gap, named.</li>
+      <li><strong>List your top three platform dependencies and pre-mortem each one.</strong> For each, write the two-line answer to: <em>what do we do the week our vendor ships our feature as a built-in?</em> If the answer is "we don't know," you don't have a strategy yet.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §9 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Vibe coding</dt>
+        <dd>Using AI tools to ship code without the underlying engineering discipline — architecture, evals, testing, design review — that determines whether the code compounds or rots. McKinney's coinage; meant as a critique.</dd>
+
+        <dt>Agentic engineering</dt>
+        <dd>Using AI tools as a force multiplier on existing engineering discipline rather than as a substitute for it. The engineer still owns design, eval, and consequence; the agent handles execution at speed.</dd>
+
+        <dt>Markdown profile file</dt>
+        <dd>A small, versioned, plain-text document describing voice, defaults, refusals, and judgment criteria that an AI can read at the start of any task. The 2026 equivalent of a .vimrc or .editorconfig for prose and prompts.</dd>
+
+        <dt>Agent operations (Agent-Ops)</dt>
+        <dd>The emerging SRE-shaped discipline that covers eval pipelines, recipe versioning, retrieval health, cost budgets, hallucination triage, and incident review for agent decisions. Currently a hat worn by senior engineers; rapidly becoming a dedicated role.</dd>
+
+        <dt>Sherlocking</dt>
+        <dd>Apple-originated term for a platform replacing a third-party app with a built-in version. Generalises in 2026 to any vendor replicating a recipe-layer wrapper built on top of its substrate.</dd>
+
+        <dt>Defer affordance</dt>
+        <dd>A first-class "not now" option in an interface — for a user, or for an engineer in a workflow — that lets a decision wait without forcing acceptance or rejection. Arnór's "maybe later" pattern.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (June 9, 2026)</em> · 9 sources, available with audio overview in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The nine pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Interview · Podcast</span>
+        <span class="src-title">Vibe Coding Is Dangerous, Agentic Engineering Isn't · ft. Wes McKinney</span>
+        <span class="src-note">The interview that names the day's thesis. McKinney's seniority (Pandas, Apache Arrow) gives the critique weight it would not have from a less load-bearing source. Read or listen first; the rest of the digest sits underneath it.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Architecture</span>
+        <span class="src-title">Complexity is the ceiling: software design in the age of AI coding</span>
+        <span class="src-note">The structural argument behind McKinney's vibe. With generation effectively free, the bottleneck is the cognitive load of a coherent system. The cleanest one-line summary of why senior engineers are getting more valuable, not less, in 2026.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Personal site (arnorhs.dev)</span>
+        <span class="src-title">"maybe later" was a feature</span>
+        <span class="src-note">Short, sharp, ages well. The discipline-of-deferral thesis in a UX wrapper. Quote it in product reviews — it lands faster than a long argument about engagement metrics.</span>
+      </li>
+      <li>
+        <span class="pub">Report · Cursor</span>
+        <span class="src-title">Cursor · Developer Habits Report</span>
+        <span class="src-note">Marketing-shaped survey, but the structural observations underneath it are genuinely useful: a stabilised hybrid edit ratio, tooling-of-tooling correlating with throughput, and a widening (not narrowing) novice-expert gap. Skim the prose, read the tables.</span>
+      </li>
+      <li>
+        <span class="pub">Case study · Anthropic</span>
+        <span class="src-title">How Anthropic enables self-service data analytics with Claude</span>
+        <span class="src-note">The recipe-layer-with-governance pattern at organisational scale. Useful as a reference architecture even if you don't run analytics; the separation between exploration and shippable answer is the transferable idea.</span>
+      </li>
+      <li>
+        <span class="pub">Interview · Operations</span>
+        <span class="src-title">Hyperagent's AI Operations · Andrew Busse Interview</span>
+        <span class="src-note">First substantive job-description piece I've seen for "agent operations" as a discrete role. The incident-review-for-agent-decisions idea is worth stealing immediately. Some sales scaffolding around it; ignore that.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Markdown</span>
+        <span class="src-title">Mastering Your AI Voice With Markdown Profile Files</span>
+        <span class="src-note">The .vimrc-for-prompts argument made compactly. The piece undersells how much of a team's collective voice can be carried by a shared profile file; that is the bigger story than the personal-productivity framing.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Strategy</span>
+        <span class="src-title">Your Vendor Is Your Competitor</span>
+        <span class="src-note">Not a new idea — Sherlocking is older than most readers — but the agent-platform timeline compression makes it new again. Take seriously the pre-mortem exercise; the exercise itself is the value, even if your conclusion is "we live inside this bet."</span>
+      </li>
+      <li>
+        <span class="pub">Press release · Apple</span>
+        <span class="src-title">App Store ecosystem reaches $1.4 trillion as developers thrive globally</span>
+        <span class="src-note">Read as a primary source about how the platform owner narrates its share of an ecosystem's value, not as analysis. The number is real; the framing ("developers thrive") earns its scare quotes when read against piece 8.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 39 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>
