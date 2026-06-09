@@ -6,15 +6,21 @@
 <title>Daily Digest — June 9, 2026</title>
 <style>
   :root {
-    --cream:    #f5efe2;
-    --paper:    #faf6ec;
-    --ink:      #231a14;
-    --ink-soft: #3a2d22;
-    --quiet:    #5a4636;
-    --ochre:    #9c5818;
-    --ochre-dk: #6e3c0d;
-    --rule:     #c8b693;
-    --rule-soft:#e2d5b6;
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
     --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
     --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
@@ -477,49 +483,49 @@
   <!-- =================== FIGURE 1 =================== -->
   <div class="figure">
     <svg viewBox="0 0 660 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked panels comparing vibe-coding velocity to agentic-engineering velocity over time">
-      <rect x="0" y="0" width="660" height="360" fill="#faf6ec"/>
-      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#231a14" letter-spacing="2">FIGURE 1 · TWO COMPOUNDING CURVES</text>
+      <rect x="0" y="0" width="660" height="360" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · TWO COMPOUNDING CURVES</text>
 
       <!-- LEFT PANEL: Vibe coding -->
-      <rect x="30" y="56" width="295" height="280" fill="#f5efe2" stroke="#c8b693" stroke-width="1.4"/>
-      <text x="48" y="84" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#6e3c0d" letter-spacing="2">PANEL A · VIBE CODING</text>
-      <text x="48" y="106" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#231a14">Output grows. Capability does not.</text>
+      <rect x="30" y="56" width="295" height="280" fill="#f1f1f1" stroke="#000000" stroke-width="1.4"/>
+      <text x="48" y="84" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PANEL A · VIBE CODING</text>
+      <text x="48" y="106" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#000000">Output grows. Capability does not.</text>
 
-      <!-- 4 stacked blocks showing growing OUTPUT but flat CAPABILITY -->
-      <rect x="48" y="130" width="80"  height="22" fill="#9c5818"/>
-      <text x="138" y="146" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 1 · sprint feels fast</text>
+      <!-- 4 stacked blocks showing growing OUTPUT but flat CAPABILITY: light → dark for time -->
+      <rect x="48" y="130" width="80"  height="22" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="138" y="146" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 1 · sprint feels fast</text>
 
-      <rect x="48" y="160" width="130" height="22" fill="#9c5818"/>
-      <text x="188" y="176" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 2 · onboarding stalls</text>
+      <rect x="48" y="160" width="130" height="22" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="188" y="176" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 2 · onboarding stalls</text>
 
-      <rect x="48" y="190" width="180" height="22" fill="#9c5818"/>
-      <text x="48" y="228" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 4 · refactor cycle begins</text>
+      <rect x="48" y="190" width="180" height="22" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="228" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 4 · refactor cycle begins</text>
 
-      <rect x="48" y="240" width="240" height="22" fill="#6e3c0d"/>
-      <text x="48" y="278" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 6 · "we don't know what we shipped"</text>
+      <rect x="48" y="240" width="240" height="22" fill="#3a3a3a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="278" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 6 · "we don't know what we shipped"</text>
 
-      <rect x="48" y="290" width="265" height="22" fill="#231a14"/>
-      <text x="48" y="328" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#231a14">M 9 · debt service exceeds new work</text>
+      <rect x="48" y="290" width="265" height="22" fill="#000000"/>
+      <text x="48" y="328" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#000000">M 9 · debt service exceeds new work</text>
 
       <!-- RIGHT PANEL: Agentic engineering -->
-      <rect x="335" y="56" width="295" height="280" fill="#f5efe2" stroke="#c8b693" stroke-width="1.4"/>
-      <text x="353" y="84" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#6e3c0d" letter-spacing="2">PANEL B · AGENTIC ENGINEERING</text>
-      <text x="353" y="106" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#231a14">Output and capability both grow.</text>
+      <rect x="335" y="56" width="295" height="280" fill="#f1f1f1" stroke="#000000" stroke-width="1.4"/>
+      <text x="353" y="84" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PANEL B · AGENTIC ENGINEERING</text>
+      <text x="353" y="106" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#000000">Output and capability both grow.</text>
 
-      <rect x="353" y="130" width="70"  height="22" fill="#c8b693"/>
-      <text x="433" y="146" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 1 · slower start (recipes built)</text>
+      <rect x="353" y="130" width="70"  height="22" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="433" y="146" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 1 · slower start (recipes built)</text>
 
-      <rect x="353" y="160" width="110" height="22" fill="#9c5818"/>
-      <text x="473" y="176" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 2 · evals catch regressions</text>
+      <rect x="353" y="160" width="110" height="22" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="473" y="176" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 2 · evals catch regressions</text>
 
-      <rect x="353" y="190" width="160" height="22" fill="#9c5818"/>
-      <text x="353" y="228" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 4 · new contributors ramp fast</text>
+      <rect x="353" y="190" width="160" height="22" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="353" y="228" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 4 · new contributors ramp fast</text>
 
-      <rect x="353" y="240" width="210" height="22" fill="#6e3c0d"/>
-      <text x="353" y="278" font-family="-apple-system,sans-serif" font-size="11" fill="#231a14">M 6 · system grows, debt does not</text>
+      <rect x="353" y="240" width="210" height="22" fill="#3a3a3a" stroke="#000000" stroke-width="0.6"/>
+      <text x="353" y="278" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">M 6 · system grows, debt does not</text>
 
-      <rect x="353" y="290" width="265" height="22" fill="#231a14"/>
-      <text x="353" y="328" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#231a14">M 9 · compounding into capability</text>
+      <rect x="353" y="290" width="265" height="22" fill="#000000"/>
+      <text x="353" y="328" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#000000">M 9 · compounding into capability</text>
     </svg>
     <div class="figure-caption"><b>Figure 1</b> · Two teams. Same agent. The difference between months 1 and 9 is whether the engineer kept ownership of design, eval, and consequence — McKinney's distinction made operational.</div>
   </div>
@@ -562,33 +568,33 @@
   <!-- =================== FIGURE 2 =================== -->
   <div class="figure">
     <svg viewBox="0 0 660 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six labelled bands showing the layers of the emerging agent-ops discipline">
-      <rect x="0" y="0" width="660" height="380" fill="#faf6ec"/>
-      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#231a14" letter-spacing="2">FIGURE 2 · THE AGENT-OPS STACK</text>
+      <rect x="0" y="0" width="660" height="380" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THE AGENT-OPS STACK</text>
 
-      <!-- 6 bands, top = strategic / bottom = tactical -->
-      <rect x="30" y="56" width="600" height="48" fill="#231a14"/>
-      <text x="50" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#f5efe2" letter-spacing="2">LAYER 6 · STRATEGY</text>
-      <text x="50" y="96" font-family="Georgia,serif" font-size="14" fill="#f5efe2">Vendor / build / partner choices · platform-risk accounting</text>
+      <!-- 6 bands, top = strategic / bottom = tactical. Stepped grayscale: heaviest at top -->
+      <rect x="30" y="56" width="600" height="48" fill="#000000"/>
+      <text x="50" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">LAYER 6 · STRATEGY</text>
+      <text x="50" y="96" font-family="Georgia,serif" font-size="14" fill="#ffffff">Vendor / build / partner choices · platform-risk accounting</text>
 
-      <rect x="30" y="108" width="600" height="48" fill="#6e3c0d"/>
-      <text x="50" y="130" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#faf6ec" letter-spacing="2">LAYER 5 · GOVERNANCE</text>
-      <text x="50" y="148" font-family="Georgia,serif" font-size="14" fill="#faf6ec">Scope, refusals, data boundaries, audit trail, legal posture</text>
+      <rect x="30" y="108" width="600" height="48" fill="#2a2a2a"/>
+      <text x="50" y="130" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">LAYER 5 · GOVERNANCE</text>
+      <text x="50" y="148" font-family="Georgia,serif" font-size="14" fill="#ffffff">Scope, refusals, data boundaries, audit trail, legal posture</text>
 
-      <rect x="30" y="160" width="600" height="48" fill="#9c5818"/>
-      <text x="50" y="182" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#faf6ec" letter-spacing="2">LAYER 4 · RECIPES</text>
-      <text x="50" y="200" font-family="Georgia,serif" font-size="14" fill="#faf6ec">Prompts · profile files · Skills · retrieval policy · tool grants</text>
+      <rect x="30" y="160" width="600" height="48" fill="#5a5a5a"/>
+      <text x="50" y="182" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">LAYER 4 · RECIPES</text>
+      <text x="50" y="200" font-family="Georgia,serif" font-size="14" fill="#ffffff">Prompts · profile files · Skills · retrieval policy · tool grants</text>
 
-      <rect x="30" y="212" width="600" height="48" fill="#c8b693"/>
-      <text x="50" y="234" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#231a14" letter-spacing="2">LAYER 3 · EVALUATION</text>
-      <text x="50" y="252" font-family="Georgia,serif" font-size="14" fill="#231a14">Offline eval suites · online probes · drift detection · regression gates</text>
+      <rect x="30" y="212" width="600" height="48" fill="#9a9a9a"/>
+      <text x="50" y="234" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">LAYER 3 · EVALUATION</text>
+      <text x="50" y="252" font-family="Georgia,serif" font-size="14" fill="#000000">Offline eval suites · online probes · drift detection · regression gates</text>
 
-      <rect x="30" y="264" width="600" height="48" fill="#e2d5b6"/>
-      <text x="50" y="286" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#231a14" letter-spacing="2">LAYER 2 · OBSERVABILITY</text>
-      <text x="50" y="304" font-family="Georgia,serif" font-size="14" fill="#231a14">Traces · cost &amp; latency budgets · hallucination triage · incident review</text>
+      <rect x="30" y="264" width="600" height="48" fill="#c8c8c8"/>
+      <text x="50" y="286" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">LAYER 2 · OBSERVABILITY</text>
+      <text x="50" y="304" font-family="Georgia,serif" font-size="14" fill="#000000">Traces · cost &amp; latency budgets · hallucination triage · incident review</text>
 
-      <rect x="30" y="316" width="600" height="48" fill="#f5efe2" stroke="#c8b693" stroke-width="1.2"/>
-      <text x="50" y="338" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#231a14" letter-spacing="2">LAYER 1 · RUNTIME</text>
-      <text x="50" y="356" font-family="Georgia,serif" font-size="14" fill="#231a14">Model access · vector store · queues · rate limits · failover</text>
+      <rect x="30" y="316" width="600" height="48" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="338" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">LAYER 1 · RUNTIME</text>
+      <text x="50" y="356" font-family="Georgia,serif" font-size="14" fill="#000000">Model access · vector store · queues · rate limits · failover</text>
     </svg>
     <div class="figure-caption"><b>Figure 2</b> · Six layers, bottom-up. The discipline gap is not at the runtime layer (everyone has the same APIs); it is at layers 3, 4, and 5 — eval, recipes, and governance — where Busse argues the new operations role actually lives.</div>
   </div>
