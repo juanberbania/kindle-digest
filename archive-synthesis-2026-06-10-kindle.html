@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive Synthesis — May 25 – June 10, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · Archive Synthesis · May 25 – June 10, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Archive Synthesis</div>
+    <div class="rhs">15 issues · 25 May – 10 Jun 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Story So Far</p>
+  <h1>The Great Sorting</h1>
+  <p class="subtitle">Seventeen days of reading turn out to be one continuous act: the industry sorting everything it owns — code, screens, models, moats, careers — into what commoditizes with the token and what compounds against it.</p>
+
+  <div class="byline">
+    <span><b>15 issues</b> · ~140 sources upstream · 2 diagrams · ~26 min read</span>
+    <span>Standing synthesis · regenerated as the archive grows</span>
+  </div>
+
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>What this page is, and the whole story in one paragraph</h2>
+
+    <p class="lead">This is the standing synthesis of the Kindle Digest archive — a map and an argument, not a table of contents. It covers all fifteen issues published between <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a> and <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10, 2026</a>: eleven dailies, two strategic briefings, two weeklies — three weeks in which the working consensus about where value lives in the AI economy was demolished and rebuilt at least three times.</p>
+
+    <p>The one-paragraph version of the whole story: in the last week of May the archive watched software's primary customer change species — agents got protocols, accounts, platforms, and price cuts built for them (<a href="weekly-tldr-digest-2026-W22-kindle.html">The Species Shift</a>) — and watched the invoice arrive in the same week, as per-token billing met a 5–30× agentic multiplier (<a href="daily-tldr-digest-2026-05-27-kindle.html">The Memory Premium</a>). In the first week of June the stack acquired named layers and primitives (<a href="daily-tldr-digest-2026-06-05-kindle.html">The Legible Stack</a>), and the moat visibly left the model layer (<a href="weekly-tldr-digest-2026-W23-kindle.html">The Moat Migration</a>) — first into the harness, then, as the labs absorbed the harness too (<a href="ai-industrial-shift-2026-06-kindle.html">The AI Industrial Shift</a>), one ring further out. By June 10 both frontier labs had filed to go public, and the archive's shortlist of durable assets had stabilized: <strong>context, verification, judgment, and taste</strong> — the four things that get more valuable as tokens get cheaper (<a href="daily-tldr-digest-2026-06-10-kindle.html">The Harness Era</a>). Everything else in fifteen issues is the sorting machinery that produced that shortlist.</p>
+
+    <p><em>If you read only one page of this archive, the question it has to answer is the one every issue kept circling: when intelligence is rented, what is still worth owning — and who gets paid for the checking?</em></p>
+  </section>
+
+  <div class="pullbox">
+    <h4>The fortnight's argument in seven moves</h4>
+    <ol>
+      <li><strong>The customer changed species.</strong> Agents became software's busiest reader — half of Mintlify's docs traffic, their own registration protocol, a stateless MCP built for fleets (<a href="daily-tldr-digest-2026-05-26-kindle.html">The Second Audience</a>) — while the companies selling automation doubled their human trust-hiring (<a href="daily-tldr-digest-2026-05-25-kindle.html">The Labor Inversion</a>).</li>
+      <li><strong>The invoice arrived before the business model.</strong> Per-token billing transferred usage risk to buyers in the same quarter agent loops multiplied usage 5–30× — Uber's budget died in spring, Microsoft retreated, and memory, judgment, and provenance were named as the counter-assets (<a href="daily-tldr-digest-2026-05-27-kindle.html">The Memory Premium</a>).</li>
+      <li><strong>Everything got a wall except the human.</strong> MicroVMs, sandboxes, and egress proxies shipped for every machine in the stack while reviewers rubber-stamped 93% of prompts and burned out uncontained (<a href="daily-tldr-digest-2026-05-28-kindle.html">The Blast Radius</a>).</li>
+      <li><strong>The screen was demoted to a view</strong> — the durable product became the structured substrate beneath it (<a href="daily-tldr-digest-2026-05-29-kindle.html">The Demoted Interface</a>), and the W22 weekly softened the verdict to the honest one: demotion, not death (<a href="weekly-tldr-digest-2026-W22-kindle.html">The Species Shift</a>).</li>
+      <li><strong>The stack got names, and the moat got an address.</strong> Harness, L1–L5, MCP · CLI · Skills — the vocabulary debate ended (<a href="state-of-agentic-ai-jun-2026-kindle.html">The State of Agentic AI</a>, <a href="daily-tldr-digest-2026-06-05-kindle.html">The Legible Stack</a>), and the moat's forwarding address read context, validation, and judgment (<a href="weekly-tldr-digest-2026-W23-kindle.html">The Moat Migration</a>).</li>
+      <li><strong>The deliverable became the recipe; the differentiator became discipline.</strong> Versioned prompts, evals, and retrieval policies replaced code as the asset (<a href="daily-tldr-digest-2026-06-08-kindle.html">The Recipe Layer</a>), and the same agent in two pairs of hands produced opposite organizations (<a href="daily-tldr-digest-2026-06-09-kindle.html">The Discipline Gap</a>).</li>
+      <li><strong>The labs came to collect.</strong> Opus 4.8 absorbed three of five harness layers (<a href="ai-industrial-shift-2026-06-kindle.html">The AI Industrial Shift</a>), both labs filed S-1s within a week of each other, and the closing advice inverted the opening thesis: don't compete as an agent business — sell what agents consume (<a href="daily-tldr-digest-2026-06-10-kindle.html">The Harness Era</a>).</li>
+    </ol>
+  </div>
+
+  <section>
+    <h2><span class="sec-num">§2 · The thread map</span>Four threads, three weeks, one direction</h2>
+
+    <p>Fifteen issues sound like fifteen subjects; they are four threads braided. <strong>The second audience</strong> — agents as software's primary customer, and the screen that demotion implies. <strong>The meter</strong> — agent economics, from sticker shock to a new unit of account. <strong>Verification, trust, and the human ledger</strong> — who checks the cheap output, and at what human cost. And <strong>the moat migration</strong> — the search for where defensible value actually lives. Every issue advances at least two of the four; the weeklies braid all of them.</p>
+
+    <p>What the map makes visible that no single issue could: the threads are not parallel — they are sequential causes. The second audience created the meter (agents consume like fleets, not users); the meter created the verification premium (waste is unverified output, priced); and the verification premium drove the moat migration (the only defensible assets are the ones the meter can't reach). Read down any column of Figure 1 and the week's issues are one causal chain, not a news cycle.</p>
+  </section>
+
+  <div class="figure">
+    <svg viewBox="0 0 660 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grid of four running threads against three weeks of coverage, showing which thread ran where">
+      <rect x="0" y="0" width="660" height="510" fill="#ffffff"/>
+      <text x="330" y="26" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · THE THREAD MAP, W22–W24</text>
+
+      <!-- Column headers -->
+      <rect x="182" y="42" width="146" height="30" fill="#3a3a3a"/>
+      <text x="255" y="62" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="2">W22 · MAY 25–29</text>
+      <rect x="333" y="42" width="146" height="30" fill="#3a3a3a"/>
+      <text x="406" y="62" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="2">W23 · JUN 1–5</text>
+      <rect x="484" y="42" width="146" height="30" fill="#3a3a3a"/>
+      <text x="557" y="62" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="2">W24 · JUN 8–10</text>
+
+      <!-- Row 1: Second audience -->
+      <rect x="30" y="80" width="148" height="98" fill="#000000"/>
+      <text x="42" y="106" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">THE SECOND</text>
+      <text x="42" y="122" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">AUDIENCE</text>
+      <text x="42" y="142" font-family="Georgia,serif" font-size="11" fill="#ffffff">agents as the customer;</text>
+      <text x="42" y="157" font-family="Georgia,serif" font-size="11" fill="#ffffff">the screen demoted</text>
+
+      <rect x="182" y="80" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="192" y="102" font-family="Georgia,serif" font-size="11" fill="#000000">Rails: stateless MCP,</text>
+      <text x="192" y="117" font-family="Georgia,serif" font-size="11" fill="#000000">auth.md, DeepSeek floor;</text>
+      <text x="192" y="132" font-family="Georgia,serif" font-size="11" fill="#000000">screen becomes a view</text>
+      <text x="192" y="150" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">May 26 · May 29</text>
+
+      <rect x="333" y="80" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="343" y="102" font-family="Georgia,serif" font-size="11" fill="#000000">Canvas vs chat dispute;</text>
+      <text x="343" y="117" font-family="Georgia,serif" font-size="11" fill="#000000">Scout; inspection</text>
+      <text x="343" y="132" font-family="Georgia,serif" font-size="11" fill="#000000">surfaces; AI-first UX</text>
+      <text x="343" y="150" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 4 · Jun 5</text>
+
+      <rect x="484" y="80" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="494" y="102" font-family="Georgia,serif" font-size="11" fill="#000000">Sell to the agents — the</text>
+      <text x="494" y="117" font-family="Georgia,serif" font-size="11" fill="#000000">limitless buyer; Chesky</text>
+      <text x="494" y="132" font-family="Georgia,serif" font-size="11" fill="#000000">re-bets on experience</text>
+      <text x="494" y="150" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 10</text>
+
+      <!-- Row 2: The meter -->
+      <rect x="30" y="182" width="148" height="98" fill="#000000"/>
+      <text x="42" y="208" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">THE METER</text>
+      <text x="42" y="228" font-family="Georgia,serif" font-size="11" fill="#ffffff">agent economics, from</text>
+      <text x="42" y="243" font-family="Georgia,serif" font-size="11" fill="#ffffff">sticker shock to a new</text>
+      <text x="42" y="258" font-family="Georgia,serif" font-size="11" fill="#ffffff">unit of account</text>
+
+      <rect x="182" y="182" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="192" y="204" font-family="Georgia,serif" font-size="11" fill="#000000">Sticker shock: Uber,</text>
+      <text x="192" y="219" font-family="Georgia,serif" font-size="11" fill="#000000">Microsoft; 5–30×</text>
+      <text x="192" y="234" font-family="Georgia,serif" font-size="11" fill="#000000">multiplier; per-token</text>
+      <text x="192" y="252" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">May 26 · May 27</text>
+
+      <rect x="333" y="182" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="343" y="204" font-family="Georgia,serif" font-size="11" fill="#000000">PMF on the invoice;</text>
+      <text x="343" y="219" font-family="Georgia,serif" font-size="11" fill="#000000">82¢ of every AI dollar</text>
+      <text x="343" y="234" font-family="Georgia,serif" font-size="11" fill="#000000">wasted; allocation wars</text>
+      <text x="343" y="252" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 1 · Jun 4</text>
+
+      <rect x="484" y="182" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="494" y="204" font-family="Georgia,serif" font-size="11" fill="#000000">Routing claws back</text>
+      <text x="494" y="219" font-family="Georgia,serif" font-size="11" fill="#000000">60–80%; outcome</text>
+      <text x="494" y="234" font-family="Georgia,serif" font-size="11" fill="#000000">pricing ships</text>
+      <text x="494" y="252" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 8 · Jun 10</text>
+
+      <!-- Row 3: Verification -->
+      <rect x="30" y="284" width="148" height="98" fill="#000000"/>
+      <text x="42" y="310" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">VERIFICATION,</text>
+      <text x="42" y="326" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">TRUST &amp; LABOR</text>
+      <text x="42" y="346" font-family="Georgia,serif" font-size="11" fill="#ffffff">who checks the output,</text>
+      <text x="42" y="361" font-family="Georgia,serif" font-size="11" fill="#ffffff">and at what human cost</text>
+
+      <rect x="182" y="284" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="192" y="306" font-family="Georgia,serif" font-size="11" fill="#000000">TLA+ proofs; publication</text>
+      <text x="192" y="321" font-family="Georgia,serif" font-size="11" fill="#000000">gates; 93% fatigue;</text>
+      <text x="192" y="336" font-family="Georgia,serif" font-size="11" fill="#000000">the SDR paradox</text>
+      <text x="192" y="354" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">May 25 · May 28</text>
+
+      <rect x="333" y="284" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="343" y="306" font-family="Georgia,serif" font-size="11" fill="#000000">Domain expert as oracle;</text>
+      <text x="343" y="321" font-family="Georgia,serif" font-size="11" fill="#000000">eval crisis; primitive</text>
+      <text x="343" y="336" font-family="Georgia,serif" font-size="11" fill="#000000">wedges</text>
+      <text x="343" y="354" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 1 · Jun 2 · Jun 4</text>
+
+      <rect x="484" y="284" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="494" y="306" font-family="Georgia,serif" font-size="11" fill="#000000">Discipline gap; agent-</text>
+      <text x="494" y="321" font-family="Georgia,serif" font-size="11" fill="#000000">ops; "should you believe</text>
+      <text x="494" y="336" font-family="Georgia,serif" font-size="11" fill="#000000">the answer?"</text>
+      <text x="494" y="354" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 9 · Jun 10</text>
+
+      <!-- Row 4: Moat migration -->
+      <rect x="30" y="386" width="148" height="98" fill="#000000"/>
+      <text x="42" y="412" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">THE MOAT</text>
+      <text x="42" y="428" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1">MIGRATION</text>
+      <text x="42" y="448" font-family="Georgia,serif" font-size="11" fill="#ffffff">memory → harness →</text>
+      <text x="42" y="463" font-family="Georgia,serif" font-size="11" fill="#ffffff">context · verification · taste</text>
+
+      <rect x="182" y="386" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="192" y="408" font-family="Georgia,serif" font-size="11" fill="#000000">Memory compounds,</text>
+      <text x="192" y="423" font-family="Georgia,serif" font-size="11" fill="#000000">intelligence rents;</text>
+      <text x="192" y="438" font-family="Georgia,serif" font-size="11" fill="#000000">wrappers get last rites</text>
+      <text x="192" y="456" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">May 27 · W22</text>
+
+      <rect x="333" y="386" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="343" y="408" font-family="Georgia,serif" font-size="11" fill="#000000">Stack named L1–L5;</text>
+      <text x="343" y="423" font-family="Georgia,serif" font-size="11" fill="#000000">harness absorbed by</text>
+      <text x="343" y="438" font-family="Georgia,serif" font-size="11" fill="#000000">Opus 4.8</text>
+      <text x="343" y="456" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 3 · Jun 5 · W23</text>
+
+      <rect x="484" y="386" width="146" height="98" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="494" y="408" font-family="Georgia,serif" font-size="11" fill="#000000">Recipe layer; two S-1s;</text>
+      <text x="494" y="423" font-family="Georgia,serif" font-size="11" fill="#000000">survivors: context,</text>
+      <text x="494" y="438" font-family="Georgia,serif" font-size="11" fill="#000000">verification, taste</text>
+      <text x="494" y="456" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">Jun 8 · Jun 10</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Four threads against three weeks of coverage. Each cell names what the thread did that week and the issues that carried it. The claim: the rows are causally ordered — the second audience created the meter, the meter created the verification premium, and the verification premium drove the moat migration. W24 is three issues old; its column will be re-graded when the week closes.</div>
+  </div>
+
+  <section>
+    <h2><span class="sec-num">§3 · Thread one</span>The second audience — and the screen it demoted</h2>
+
+    <p>The archive's founding thread arrived fully formed on day two: <a href="daily-tldr-digest-2026-05-26-kindle.html">The Second Audience</a> declared agents the new primary customer of software, with receipts — half of Mintlify's documentation traffic, a registration protocol (auth.md) shipped four days after a stateless MCP release candidate, a price war calibrated to fleet-scale consumption. <a href="daily-tldr-digest-2026-05-29-kindle.html">The Demoted Interface</a> supplied the consequence: if the busiest reader is a machine, the screen is one renderer over a structured substrate, and the substrate is the product. <a href="weekly-tldr-digest-2026-W22-kindle.html">The Species Shift</a> braided both into the fortnight's most quoted overreach — "the era of designing software for human visual appeal is ending" — then corrected itself against its own reading list: the Linear teardown is a love letter to interface craft, so the honest verdict is <em>demotion, not death</em> — the screen drops from moat to obligation.</p>
+
+    <p>Then the thread did something the W22 issues did not predict: it bounced. W23's product news was all <em>new human surfaces</em> — GitHub's Canvases, Microsoft's Scout, the "IDE for intent" thesis (<a href="daily-tldr-digest-2026-06-04-kindle.html">The Bifurcation</a>, <a href="daily-tldr-digest-2026-06-05-kindle.html">The Legible Stack</a>) — and an open dispute about whether chat itself was obsolete or the ultimate interface (GitHub vs. Garry Tan). By <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a> the archive held both poles at maximum tension: Stancil's "the customer base genuinely growing without limit is the robots" is the second-audience thesis at full strength, while Chesky's design lab and Jane Street's Claude-first design practice re-promoted human experience to one of the three terminal moats.</p>
+
+    <p>The cross-issue claim no single issue made: <strong>the archive's position on the interface made a round trip</strong> — product (pre-archive) → view (May 29) → obligation (W22) → moat again, as <em>taste</em> (June 10). That is not indecision; it is the sorting working. What got permanently demoted was the interface as <em>workflow</em> — the clicking-through middle agents now operate. What got re-promoted was the interface as <em>judgment made visible</em> — inspection surfaces, confidence rendered in the UI, the feel the labs have failed to ship. The second audience took the verbs; the first audience kept the veto.</p>
+
+    <p><span class="caflag">Counter</span><em>The thread's weakest joint is legal, and the archive flagged it once and never resolved it: the agent got an account (auth.md) but no liability. Nothing in fifteen issues says who pays, who is liable, or who gets sued when the agent-verified account acts (<a href="weekly-tldr-digest-2026-W22-kindle.html">W22 §9</a>). The bottom of the stack rebuilt itself for agents in days; the contractual top has not moved at all. Until it does, "the customer changed species" describes traffic, not commerce.</em></p>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§4 · Thread two</span>The meter — watching a unit of account get born</h2>
+
+    <p>Read in sequence, the economics thread is the live recording of a metric being invented. <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a> set the stage with one cost curve and two opposite bets — DeepSeek passing efficiency through to a permanent 75% price cut, Anthropic banking the same physics as margin. <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a> delivered the buyer's side: Uber's annual AI budget gone by spring, Microsoft retreating from Claude Code, and the structural cause — per-token billing arriving in the same quarter agentic loops multiplied consumption 5–30× over chat. <a href="daily-tldr-digest-2026-06-01-kindle.html">June 1</a> held both jaws in one frame: Willison's product-market fit, argued from a $2,180 token month on a $200 plan, against Gupta's "adoption to allocation" budget wars — and named the unbuilt layer between them: <strong>token-to-outcome attribution</strong>. <a href="daily-tldr-digest-2026-06-04-kindle.html">June 4</a> priced the gap: 82 cents of every AI dollar consumed by rework and hallucination correction. And W24 shipped the machinery: model routing with 60–80% cost cuts (<a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>) and outcome-based pricing taxonomies ready for rollout (<a href="daily-tldr-digest-2026-06-08-kindle.html">June 8</a>).</p>
+
+    <p>The synthesis only the whole archive can state: <strong>the unit of account migrated twice in seventeen days — seat → token → outcome</strong> — and each migration was announced as a crisis before it was sold as a product. The token sticker shock of May 27 became the routing memo of June 10; the attribution gap Gupta named on June 1 became the outcome-pricing taxonomy of June 8. Every "cost crisis" in this archive was an unbuilt product category roughly ten days before someone built it. That pattern is itself a forecast: the current unpriced scarcity — verifier attention, flagged in W22 and never tooled — is the next product category, or the thesis breaks.</p>
+
+    <p><span class="caflag">Counter</span><em>The thread's standing caveat, logged by <a href="weekly-tldr-digest-2026-W22-kindle.html">W22's negative space</a> and still true at the window's close: no audited number appeared in seventeen days. Anthropic's margins, Uber's spend, the 82-cent figure, OpenRouter's 25 trillion tokens — every economic claim in ~140 sources is a projection, a self-report, or a rumor. The S-1s filed in early June are the scheduled correction; until they publish, the entire meter thread is well-sourced hearsay, and the archive has said so each week.</em></p>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§5 · Thread three</span>Verification, trust, and the human ledger</h2>
+
+    <p>This thread opened as a design philosophy and ended as a job market. <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a> found every serious agent deployment to be an architecture of distrust — TLA+ proofs bought with the cheap-code dividend, merge kept outside the agent loop — and found the surviving human work clustering in trust: AI-native companies doubling SDR hiring while the broader market cut 21%. <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a> showed the cost side: humans approving 93% of permission prompts, reviewers "fully cooked" in four hours, every machine contained and the human verifier uncontained. <a href="daily-tldr-digest-2026-06-01-kindle.html">June 1</a> stated the thesis at its purest — generation collapsed, verification held, and validation skill is a practice that atrophies — while <a href="state-of-agentic-ai-jun-2026-kindle.html">June 2</a> relocated the scarce oracle into the domain expert: the actuary who recognizes a treaty violation at a glance. <a href="daily-tldr-digest-2026-06-04-kindle.html">June 4</a> turned it into a market ("should I trust this output?"), and W24 made it an occupation: agent-ops with incident reviews for wrong answers (<a href="daily-tldr-digest-2026-06-09-kindle.html">June 9</a>), and K-Dense's rule that the question is never whether the agent can run the analysis but whether you should believe the answer (<a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>).</p>
+
+    <p>The position change is real and worth naming: the archive began by saying <em>humans verify</em> and ended by saying <em>verification is engineered, and the humans inside it need maintenance</em>. The strongest claim across the thread is W22's: trust is the residual human monopoly — the more autonomy shipped, the more human work concentrated in checking and vouching, which is why the same week could double SDR hiring and self-serve revenue at once. The strongest counter-claim is May 27's own: the verified-human premium may stay a luxury niche, because the same surveys showing collapsed stated preference for AI content show consumption rising — people say authenticity and click slop.</p>
+
+    <p>What no single issue said: <strong>the archive's two recurring human characters — the newly hired trust-carrier and the burned-out reviewer — are the same person at different load levels.</strong> The industry spent the fortnight hiring trust and tooling everything except its maintenance: W22 predicted a human-side limit (attention budgets, review caps) in a mainstream agent product by mid-June; five issues later nothing has shipped. The verification premium accrues to organizations; the verification cost lands on individuals; the gap between those facts is the most consistently flagged, least addressed finding in fifteen issues.</p>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§6 · Thread four</span>The moat migration — three forwarding addresses in seventeen days</h2>
+
+    <p>Track the word "moat" through the archive and it moves like a fugitive. On <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a> it was <strong>memory</strong> — Kavcic's 105-tools-no-memory experiment, data flywheels, wrappers given last rites for zero switching costs. By <a href="state-of-agentic-ai-jun-2026-kindle.html">June 2</a> it was <strong>the harness</strong> — "the harness is the product," competitive advantage as context, plumbing, and evaluation. One day later, <a href="ai-industrial-shift-2026-06-kindle.html">June 3</a> reported the harness already shrinking — Opus 4.8 absorbing constraint, execution, and verification, leaving only context and lifecycle judgment to defend. <a href="weekly-tldr-digest-2026-W23-kindle.html">The Moat Migration</a> formalized the journey; <a href="daily-tldr-digest-2026-06-08-kindle.html">June 8</a> repackaged the survivor as the <strong>recipe</strong> — versioned prompts, evals, and retrieval policies as the deliverable itself; and <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a> closed the window by predicting the recipe's own commoditization via outer-loop search, leaving a terminal shortlist: context, verification, taste.</p>
+
+    <blockquote>
+      A decent model with a great harness beats a great model with a bad harness.
+      <cite>— Addy Osmani, via June 10 — the thread's strongest claim, true for exactly as long as harnesses resist search</cite>
+    </blockquote>
+
+    <p>The cross-issue observation no issue made about itself: <strong>every moat the archive nominated survived roughly one week of coverage before being declared absorbable</strong> — memory for five issues, the harness for six, the recipe for two. Only two assets were never reclassified across all fifteen: <em>context</em> (priced as compounding in every single week, from Kavcic's decision memory to YC's organizational brain to Stancil's terminal answer) and <em>verification</em> (the binding constraint in W22, the load-bearing economics of W23, the surviving discipline of W24). The honest summary is not that the moat moved — the noise moved around two constants, and the archive needed seventeen days to stop reporting the noise.</p>
+
+    <p>The strongest counter-claim belongs to the absorption evidence: June 3's layer table and June 10's Stancil mechanism (outer-loop search plus post-IPO war chests) together imply that anything expressible as text — and the recipe layer is text by definition — commoditizes on the model's schedule, only faster. The archive's reply, "the harness migrates outward," is a hypothesis it has placed on its own predictions ledger (§9), not a fact it has demonstrated.</p>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§7 · Contradictions &amp; open questions</span>Where the archive disagrees with itself</h2>
+
+    <p>Fifteen issues that agreed on everything would be one issue printed fifteen times. These are the places where the archive's own sources genuinely collide — left standing here, unresolved, because this section is the page's honesty layer.</p>
+
+    <ol>
+      <li><strong>"Build agents into everything" vs. "get out of the token path."</strong> <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a> and <a href="daily-tldr-digest-2026-06-04-kindle.html">June 4</a> hold up YC's agent-saturated playbook as the template; <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>'s Stancil says don't put AI in your product at all — sell sandboxes and connectors to the agents. June 10's reconciliation (labs absorb what is adjacent to the model, not what is distant) is plausible and unproven. Open: is "distance from the model" a real defensive variable or this quarter's cope?</li>
+      <li><strong>AI flattens the skill curve vs. AI steepens it.</strong> <a href="daily-tldr-digest-2026-06-05-kindle.html">June 5</a> warns that juniors with tooling fluency will outrun seniors who lost hands-on depth; <a href="daily-tldr-digest-2026-06-09-kindle.html">June 9</a> cites Cursor's habits data showing the novice–expert gap widening. Both cite evidence. The unresolved variable is <em>which skill the curve measures</em> — tooling fluency (flattening) or judgment (steepening) — and no issue has separated them cleanly.</li>
+      <li><strong>Product-market fit vs. the 82-cent economy.</strong> <a href="daily-tldr-digest-2026-06-01-kindle.html">June 1</a> declares PMF from invoices; <a href="daily-tldr-digest-2026-06-04-kindle.html">June 4</a> reports 82¢ per AI dollar wasted, 90% of firms seeing zero impact, $1.2T of debt against missing productivity. <a href="weekly-tldr-digest-2026-W23-kindle.html">W23</a>'s reconciliation — micro real, macro missing — is honest but incomplete: PMF in dollars is proven only by renewal, and no renewal cycle has completed inside the window.</li>
+      <li><strong>The harness: durable discipline or doomed layer?</strong> <a href="state-of-agentic-ai-jun-2026-kindle.html">June 2</a> says the harness is the product; <a href="ai-industrial-shift-2026-06-kindle.html">June 3</a> documents three of its five layers already absorbed; <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a> names harness engineering a discipline in the morning and forecasts its commoditization by afternoon. The archive's answer — the harness migrates outward, one ring ahead of absorption — would mean harness engineers permanently employed and permanently re-platforming. Open: what is the half-life of a ring?</li>
+      <li><strong>The screen: demoted or decisive?</strong> <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a> demotes the interface to a view; <a href="weekly-tldr-digest-2026-W22-kindle.html">W22</a> softens it to an obligation; <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a> re-promotes taste to one of three terminal moats, with Chesky's lab and Jane Street as evidence. Three positions in seventeen days is a thesis under live revision, not a settled claim (§3 argues the round trip is coherent; a skeptic could call it drift).</li>
+      <li><strong>Statelessness vs. the memory premium.</strong> The protocols evicted state (stateless MCP, <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>) in the same week memory was priced as the only durable asset (<a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>). W22 called them one design decision — whoever owns the evicted state owns the compounding layer. Open, sharpened by the S-1s: who catches the state — application builders, or the labs' own memory features, absorbing one ring further out as they did the harness?</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§8 · The vocabulary that stuck</span>The archive's working dictionary</h2>
+
+    <p>A name is a bet that a pattern will recur. These twelve recurred: each was coined (or canonized) by one issue and then used by later issues without explanation — the archive's own test for vocabulary that stuck. Together they do the job a glossary would, which is why this page doesn't carry one.</p>
+  </section>
+
+  <div class="figure">
+    <svg viewBox="0 0 660 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grid of twelve coinages from the archive with the issue that coined each">
+      <rect x="0" y="0" width="660" height="500" fill="#ffffff"/>
+      <text x="330" y="26" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · TWELVE COINAGES THAT STUCK</text>
+
+      <!-- Row 1 -->
+      <rect x="30" y="44" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="42" y="66" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">SECOND AUDIENCE</text>
+      <text x="42" y="83" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 26</text>
+      <text x="42" y="103" font-family="Georgia,serif" font-size="11" fill="#000000">Agents as a parallel user</text>
+      <text x="42" y="118" font-family="Georgia,serif" font-size="11" fill="#000000">base that reads docs literally</text>
+      <text x="42" y="133" font-family="Georgia,serif" font-size="11" fill="#000000">and ignores brand.</text>
+
+      <rect x="232" y="44" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="244" y="66" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">EXPENSIVE CONFIDENCE</text>
+      <text x="244" y="83" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 27</text>
+      <text x="244" y="103" font-family="Georgia,serif" font-size="11" fill="#000000">An agent without memory</text>
+      <text x="244" y="118" font-family="Georgia,serif" font-size="11" fill="#000000">re-asserts what you already</text>
+      <text x="244" y="133" font-family="Georgia,serif" font-size="11" fill="#000000">paid to reject.</text>
+
+      <rect x="434" y="44" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="446" y="66" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">BLAST RADIUS</text>
+      <text x="446" y="83" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 28</text>
+      <text x="446" y="103" font-family="Georgia,serif" font-size="11" fill="#000000">Cap what any component can</text>
+      <text x="446" y="118" font-family="Georgia,serif" font-size="11" fill="#000000">damage. Every machine got</text>
+      <text x="446" y="133" font-family="Georgia,serif" font-size="11" fill="#000000">one; the human didn't.</text>
+
+      <!-- Row 2 -->
+      <rect x="30" y="158" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="42" y="180" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">PUBLICATION GATE</text>
+      <text x="42" y="197" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 25</text>
+      <text x="42" y="217" font-family="Georgia,serif" font-size="11" fill="#000000">Merge, publish, and deploy</text>
+      <text x="42" y="232" font-family="Georgia,serif" font-size="11" fill="#000000">stay outside the agent loop;</text>
+      <text x="42" y="247" font-family="Georgia,serif" font-size="11" fill="#000000">a human turns the key.</text>
+
+      <rect x="232" y="158" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="244" y="180" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">THE 0.5 LAYER</text>
+      <text x="244" y="197" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 26</text>
+      <text x="244" y="217" font-family="Georgia,serif" font-size="11" fill="#000000">The primitives agents</text>
+      <text x="244" y="232" font-family="Georgia,serif" font-size="11" fill="#000000">assemble outcomes from:</text>
+      <text x="244" y="247" font-family="Georgia,serif" font-size="11" fill="#000000">auth, search, payments.</text>
+
+      <rect x="434" y="158" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="446" y="180" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">LEGIBILITY</text>
+      <text x="446" y="197" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 25 → JUN 5</text>
+      <text x="446" y="217" font-family="Georgia,serif" font-size="11" fill="#000000">What the agent can't read it</text>
+      <text x="446" y="232" font-family="Georgia,serif" font-size="11" fill="#000000">can't help. Grew into "the</text>
+      <text x="446" y="247" font-family="Georgia,serif" font-size="11" fill="#000000">legible stack."</text>
+
+      <!-- Row 3 -->
+      <rect x="30" y="272" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="42" y="294" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">HARNESS</text>
+      <text x="42" y="311" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">JUN 2 → JUN 10</text>
+      <text x="42" y="331" font-family="Georgia,serif" font-size="11" fill="#000000">Everything around the model</text>
+      <text x="42" y="346" font-family="Georgia,serif" font-size="11" fill="#000000">that makes it shippable. The</text>
+      <text x="42" y="361" font-family="Georgia,serif" font-size="11" fill="#000000">era's working noun.</text>
+
+      <rect x="232" y="272" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="244" y="294" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">RECIPE LAYER</text>
+      <text x="244" y="311" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">JUN 8</text>
+      <text x="244" y="331" font-family="Georgia,serif" font-size="11" fill="#000000">Prompts, evals, retrieval</text>
+      <text x="244" y="346" font-family="Georgia,serif" font-size="11" fill="#000000">policies: the versioned bundle</text>
+      <text x="244" y="361" font-family="Georgia,serif" font-size="11" fill="#000000">that is now the deliverable.</text>
+
+      <rect x="434" y="272" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="446" y="294" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">PRIMITIVE WEDGE</text>
+      <text x="446" y="311" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">JUN 4</text>
+      <text x="446" y="331" font-family="Georgia,serif" font-size="11" fill="#000000">Narrow, painful, unavoidable:</text>
+      <text x="446" y="346" font-family="Georgia,serif" font-size="11" fill="#000000">tools that answer "should I</text>
+      <text x="446" y="361" font-family="Georgia,serif" font-size="11" fill="#000000">trust this output?"</text>
+
+      <!-- Row 4 -->
+      <rect x="30" y="386" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="42" y="408" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">TOKEN PATH</text>
+      <text x="42" y="425" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">JUN 10</text>
+      <text x="42" y="445" font-family="Georgia,serif" font-size="11" fill="#000000">Reselling tokens at a markup</text>
+      <text x="42" y="460" font-family="Georgia,serif" font-size="11" fill="#000000">— a business with a structural</text>
+      <text x="42" y="475" font-family="Georgia,serif" font-size="11" fill="#000000">expiry date.</text>
+
+      <rect x="232" y="386" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="244" y="408" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">COST PER OUTCOME</text>
+      <text x="244" y="425" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">JUN 1 → JUN 10</text>
+      <text x="244" y="445" font-family="Georgia,serif" font-size="11" fill="#000000">The metric that replaced</text>
+      <text x="244" y="460" font-family="Georgia,serif" font-size="11" fill="#000000">tokens-per-second as the one</text>
+      <text x="244" y="475" font-family="Georgia,serif" font-size="11" fill="#000000">that matters.</text>
+
+      <rect x="434" y="386" width="196" height="102" fill="#f1f1f1" stroke="#000000" stroke-width="1"/>
+      <text x="446" y="408" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">AGENTIC ENGINEERING</text>
+      <text x="446" y="425" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#3a3a3a" letter-spacing="1">MAY 27 → JUN 9</text>
+      <text x="446" y="445" font-family="Georgia,serif" font-size="11" fill="#000000">AI under discipline — the</text>
+      <text x="446" y="460" font-family="Georgia,serif" font-size="11" fill="#000000">judgment version of the job.</text>
+      <text x="446" y="475" font-family="Georgia,serif" font-size="11" fill="#000000">Vibe coding's obituary.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The archive's working dictionary, with the issue that coined or canonized each term. Arrowed dates mark terms that were minted in one issue and upgraded by another. The claim, borrowed from the weeklies' vocabulary-watch method: a coinage that survives two non-adjacent issues names a structural fact, not a news cycle — all twelve here cleared that bar.</div>
+  </div>
+
+  <section>
+    <h2><span class="sec-num">§9 · Predictions ledger</span>Every falsifiable bet, graded as of June 10</h2>
+
+    <p>The dailies close with falsifiable expectations and the weeklies with watch-items; this ledger collects them and grades them honestly. Three statuses: <strong>confirmed</strong> (a later issue reported the event), <strong>refuted</strong> (the deadline passed with the archive's own evidence against), and <strong>open</strong> (still live). The dominant grade is open — seventeen days is a short grading window, and pretending otherwise would be expensive confidence.</p>
+
+    <div class="glossary">
+      <dl>
+        <dt>Agent-authored work crosses half of merged changes at a platform builder, within a year</dt>
+        <dd><span class="caflag">Open</span>Made May 25 (The Labor Inversion). Trending hard — Cursor at 40%+ of internal PRs (May 25), Uber at 70% of committed code (May 27) — but no platform builder has formally reported the crossing.</dd>
+
+        <dt>MCP final spec lands July 28 with Tier-1 SDKs inside the window</dt>
+        <dd><span class="caflag">Open</span>Made May 26 (The Second Audience). Due date ahead of the archive's window; the RC locked May 21 and no slippage has been reported since.</dd>
+
+        <dt>A named SaaS company beyond the four launch adopters publishes an auth.md by end of W23</dt>
+        <dd><span class="caflag">Refuted</span>Made by the W22 weekly. The deadline (June 5) passed with no sighting in any later issue — the "open protocol" still looks like a vendor launch, the exact failure case the prediction named.</dd>
+
+        <dt>Usage caps and agent runtime quotas become standard enterprise policy within two quarters</dt>
+        <dd><span class="caflag">Open</span>Made May 27 (The Memory Premium). Trending: the allocation wars (June 1) and the routing memo (June 10) are the demand side; no issue has yet reported caps as default policy.</dd>
+
+        <dt>A visible product category for organizational decision memory within two quarters</dt>
+        <dd><span class="caflag">Open</span>Made May 27. Early entries exist (RushDB 2.0, mem0, the context-architecture essays) but no issue has reported the category being named by the market.</dd>
+
+        <dt>A major platform ships verified-human provenance as a paid feature within two quarters</dt>
+        <dd><span class="caflag">Open</span>Made May 27. Nothing reported since — the quietest prediction on the ledger.</dd>
+
+        <dt>Agent-execution sandboxing becomes default-on in mainstream coding agents within two quarters</dt>
+        <dd><span class="caflag">Confirmed</span>Made May 28 (The Blast Radius). Early and emphatic: GitHub shipped local and cloud sandboxes as a launch pillar of the Copilot app (June 4), and Windows OpenShell sandboxes the agentic PC (June 3).</dd>
+
+        <dt>A mainstream agent product announces a human-side limit (attention budget, per-day cap, review quota) by mid-June</dt>
+        <dd><span class="caflag">Open</span>Made by the W22 weekly. Five issues later, nothing — the gap §5 calls the archive's most consistent finding — but the mid-June deadline hasn't passed. Graded at the next regeneration; refuted if nothing ships by June 15.</dd>
+
+        <dt>A Western lab publicly answers DeepSeek's permanent price floor</dt>
+        <dd><span class="caflag">Open</span>W22 watch-item. No pricing response reported in nine subsequent issues; Anthropic chose margin and an S-1 instead. The silence is increasingly the answer.</dd>
+
+        <dt>Another frontier release leads with honesty or self-checking metrics, within two quarters</dt>
+        <dd><span class="caflag">Open</span>Made June 1 (The Verification Premium), generalizing from Opus 4.8's honesty-first release notes. No subsequent frontier release has landed inside the window to test it.</dd>
+
+        <dt>A funded product category around token-to-outcome attribution; first $100M+ "primitive wedge" round within two weeks</dt>
+        <dd><span class="caflag">Open</span>Made June 1 and sharpened by the W23 weekly (June 6). No such round reported by June 10; ten days remain on W23's two-week clock.</dd>
+
+        <dt>Multi-cloud model routing reaches ordinary enterprises, not just Slack-sized ones, within two quarters</dt>
+        <dd><span class="caflag">Open</span>Made June 1. Trending: ByteByteGo's routing memo (June 10) is written for exactly that audience, with 60–80% savings as the carrot.</dd>
+
+        <dt>First public IC-as-Operator org-chart restructuring at a public company within 90 days</dt>
+        <dd><span class="caflag">Open</span>Made by the W23 weekly (June 6). Clock runs to early September; nothing yet.</dd>
+
+        <dt>A frontier lab ships automated harness optimization within two quarters; first post-IPO acquisitions are context owners, not agent startups</dt>
+        <dd><span class="caflag">Open</span>Made June 10 (The Harness Era) — the newest entries, on which §6's thesis stands or falls. If the first post-IPO acquisition is an agent startup, this page needs a correction.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§10 · How to read this archive</span>Five paths through fifteen issues</h2>
+
+    <p><strong>Start with the two weeklies.</strong> <a href="weekly-tldr-digest-2026-W22-kindle.html">The Species Shift</a> and <a href="weekly-tldr-digest-2026-W23-kindle.html">The Moat Migration</a> are the archive compressed to two sittings: the customer changing species, then the moat leaving the model. Everything else is evidence and revision. If you read nothing else, read these in order.</p>
+
+    <p><strong>The economics thread in five issues.</strong> <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a> (two bets on one cost curve) → <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a> (the invoice) → <a href="daily-tldr-digest-2026-06-01-kindle.html">June 1</a> (PMF vs. allocation wars) → <a href="daily-tldr-digest-2026-06-04-kindle.html">June 4</a> (the 82-cent reckoning) → <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a> (routing and the S-1s). You will watch a unit of account get invented in real time.</p>
+
+    <p><strong>The builder's path.</strong> <a href="state-of-agentic-ai-jun-2026-kindle.html">June 2</a> (triggers, evals, synthetic businesses) → <a href="daily-tldr-digest-2026-06-05-kindle.html">June 5</a> (the five-layer stack, the three connectivity pillars) → <a href="daily-tldr-digest-2026-06-08-kindle.html">June 8</a> (recipes, retrieval policy, outcome pricing) → <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a> (harness engineering and the ratchet). The archive's curriculum; finish with <a href="daily-tldr-digest-2026-06-09-kindle.html">June 9</a> for the discipline that makes it stick.</p>
+
+    <p><strong>The human path.</strong> <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a> (the labor inversion, the broken ladder) → <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a> (burnout, the uncontained reviewer) → <a href="daily-tldr-digest-2026-06-05-kindle.html">June 5</a> (engineering values under leverage) → <a href="daily-tldr-digest-2026-06-09-kindle.html">June 9</a> (the widening discipline gap). The archive's answer to "what should I personally do" — and its record of the cost nobody meters.</p>
+
+    <p><strong>The skeptic's path.</strong> <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>'s counters (the retreat as vendor politics) → <a href="daily-tldr-digest-2026-06-04-kindle.html">June 4</a> (the bubble case, taken seriously) → <a href="weekly-tldr-digest-2026-W23-kindle.html">W23 §6</a> (the debate in stereo) → §7 above. The archive's economic story is built on unaudited numbers, and these are the issues that keep saying so.</p>
+  </section>
+
+  <section>
+    <h2><span class="sec-num">§11 · Practical takeaways</span>The eight rules that survived the whole fortnight</h2>
+
+    <p>Every issue carries takeaways; most expire with their news cycle. These eight appeared, in some form, in at least two issues — the bar for advice that survived contact with the next week's reading.</p>
+
+    <ol>
+      <li><strong>Meter and cap agents before the invoice does it for you.</strong> The Uber lesson (May 27), the W22 rule, the allocation wars (June 1), and the routing memo (June 10) are one instruction at four dates: per-engineer budgets, routing by default, cost per outcome as the reported number.</li>
+      <li><strong>Build memory first, orchestration last.</strong> Kavcic's inverted build order (May 27), YC's single database (May 28, June 4), the data substrate as strategic asset (June 5, W23), and context as the terminal moat (June 10). The most repeated single idea in the archive.</li>
+      <li><strong>Walls before vigilance.</strong> Nova's publication gates (May 25), sandboxes and egress allowlists (May 28), GitHub's sandbox-as-platform (June 4). You will approve 93% of prompts; stop pretending you are the control.</li>
+      <li><strong>Spend the cheap-generation dividend on verification.</strong> Antfly's proofs (May 25), the validation thesis (June 1), eval harnesses and synthetic businesses (June 2), verification as first-class line item (W23), believe-the-answer budgeting (June 10).</li>
+      <li><strong>Practice the judgment version of your job — and keep your depth.</strong> Gothelf's "it was always the job" (May 27), Nakazawa's expired IC/manager promise (June 5), McKinney's vibe-coding obituary (June 9). The admin half automates; the judgment half is the wage premium.</li>
+      <li><strong>Keep the human surface excellent but thin — and make it show its work.</strong> Linear's order, sync engine first (May 29); inspection surfaces over chat windows (June 4, June 5); UIs that render confidence, plans, and sources (June 8). Demoted is not optional.</li>
+      <li><strong>Version your judgment as text.</strong> Skills (May 25), recipes in repos with PR review (June 8), markdown profile files (June 9), the AGENTS.md ratchet (June 10). The recurring move: taste survives only when it is written down where an agent can read it.</li>
+      <li><strong>Run the vendor pre-mortem quarterly.</strong> The Yellow Brick Road test (June 1), "your vendor is your competitor" (June 9), the Stancil pre-mortem (June 10). Write the two-line plan for the week a lab ships your product natively; if you can't, move toward context, verification, or tools agents consume.</li>
+    </ol>
+  </section>
+
+  <div class="audio-cta">
+    <span class="caflag">Standing</span>This page is the archive's standing synthesis, regenerated as the archive grows. Everything above is stated as of the June 10 issue; every open status in §9 gets re-graded — and every thesis in §3–§6 re-tested — the next time this page is rebuilt.
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · Archive Synthesis · regenerated 2026-06-10 · 15 issues · 2 diagrams · ~26 min read · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

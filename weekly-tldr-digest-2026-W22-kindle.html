@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Digest — Week of May 25, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · Weekly Summary · May 25–29, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Weekly Edition</div>
+    <div class="rhs">W22 · 25–29 May 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · Five Days, One Species</p>
+  <h1>The Species Shift</h1>
+  <p class="subtitle">Forty-nine sources across five days tell one story told five ways: software's primary user changed species this week. Agents got payrolls, protocols, price cuts, walls, and a demoted screen — and the humans got the invoice, the review queue, and the one job that didn't transfer: being believed.</p>
+
+  <div class="byline">
+    <span><b>49 sources</b> · 4 diagrams · ~31 min read</span>
+    <span>Weekly synthesis · distilled from NotebookLM</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The customer changed species</h2>
+
+    <p class="lead">Read in one sitting, the week's forty-nine sources stop being five days of news and become a single event: the primary user of software changed species, and the industry re-formed around the new one in the same five days. Monday put agents on the payroll and moved humans to trust work. Tuesday gave the new customer rails — registration, a stateless protocol, repriced tokens. Wednesday delivered the invoice. Thursday built the walls. Friday demoted the screen. The same names recur all week — Anthropic on both sides of the meter, MCP at every boundary, memory inside every moat argument — and the one layer that got no new infrastructure was the human one. <em>If the stack now assumes its busiest reader is a machine, which part of this week's work was still addressed to you — and how long does that part stay load-bearing?</em></p>
+
+    <p>Forty-four of the forty-nine sources passed through the daily digests; the five that arrived only in the weekly notebook cluster tellingly — three essays on memory and context architecture, one on the efficient path nobody admires, one creator video running a marketing agency from a single chat. Even the stragglers vote for the thesis: the new customer needs memory, rigor, and an operator who states intent.</p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>What this week's 49 sources agree on</h4>
+    <ol>
+      <li><strong>The customer changed species.</strong> Agents drive nearly half of Mintlify's documentation traffic (Ramdial), auth.md exists so they can open accounts, the MCP release candidate rebuilds the protocol for fleets, and Mozilla.ai's essay — the only piece the notebook ingested twice — declares the interface demoted to a view. Four layers, one new reader.</li>
+      <li><strong>The platform, not the chat window, is the adoption unit.</strong> Dropbox's Nova, Figma's design agent, Anthropic's Skills, and YC's 350-tool registry independently moved the agent into org-owned infrastructure — each locating the moat in what the org owns around the agent, not the rented intelligence inside it.</li>
+      <li><strong>The meter is the message.</strong> Per-token billing (Anthropic), a 5–30× agentic token multiplier (Kavcic), Uber's annual budget gone by spring, Microsoft migrating staff off Claude Code, and Willison's $2,180-on-a-$200-plan receipt: adoption outran budgeting in the same week product-market fit got declared.</li>
+      <li><strong>Verification and trust are the residual human monopolies.</strong> Antfly spends the cheap-code dividend on TLA+ proofs, Nova keeps merge outside the loop, Anthropic shows 93% of permission prompts rubber-stamped, and AI-native firms doubled human SDR hiring while the market cut 21% — the more autonomy shipped, the more the human job concentrated in checking and vouching.</li>
+      <li><strong>Memory compounds; intelligence rents.</strong> Kavcic's 105-tools-no-memory experiment, the moats essay's data flywheels, YC's metaprompting loop, RushDB's pitch, and the strategics on OpenRouter's cap table all price organization-specific context above access to models everyone else also rents.</li>
+      <li><strong>Containment is the prerequisite for autonomy, not its tax.</strong> Anthropic's sandboxes cut interruptions 84%, Vercel's microVM isolation took provisioning from 90 seconds to 5, the Kubernetes SIG gave the pattern a CRD. Every wall shipped this week bought speed.</li>
+      <li><strong>The screen got demoted everywhere at once.</strong> Mozilla.ai's frame, Linear's database-in-the-browser teardown, Stitch streaming design into a canvas, ChatGPT inside PowerPoint, and Karpathy-via-Gothelf's "the judgment version is the job": humans state intent and supervise diffs; the interface survives as one renderer among several.</li>
+    </ol>
+  </div>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 462" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five day-labelled bands stacking into one building, with the agent as the black foundation band">
+      <rect x="0" y="0" width="660" height="462" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · THE WEEK, ASSEMBLED — FIVE DAYS, ONE BUILDING</text>
+
+      <rect x="30" y="48" width="600" height="58" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="71" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">MON · THE WORKFORCE — AGENTS GO ON PAYROLL</text>
+      <text x="50" y="93" font-family="Georgia,serif" font-size="14" fill="#000000">Nova · Figma agent · Skills · AI-natives double human SDR hiring anyway</text>
+
+      <rect x="30" y="110" width="600" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="133" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">TUE · THE RAILS — THE NEW CUSTOMER GETS STANDARDS</text>
+      <text x="50" y="155" font-family="Georgia,serif" font-size="14" fill="#000000">Stateless MCP (RC) · auth.md registration · DeepSeek's permanent price floor</text>
+
+      <rect x="30" y="172" width="600" height="58" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="195" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">WED · THE METER — THE INVOICE ARRIVES</text>
+      <text x="50" y="217" font-family="Georgia,serif" font-size="14" fill="#000000">Per-token billing · 5–30× agent multiplier · Uber's budget gone · Microsoft balks</text>
+
+      <rect x="30" y="234" width="600" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="257" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THU · THE WALLS — CONTAINMENT BUYS AUTONOMY</text>
+      <text x="50" y="279" font-family="Georgia,serif" font-size="14" fill="#000000">MicroVM convergence · egress proxies · 93% approval fatigue · burnout uncapped</text>
+
+      <rect x="30" y="296" width="600" height="58" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="319" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">FRI · THE SUBSTRATE — THE SCREEN BECOMES A VIEW</text>
+      <text x="50" y="341" font-family="Georgia,serif" font-size="14" fill="#000000">Linear's local database · memory graphs · tunnels · agent labor priced like labor</text>
+
+      <rect x="30" y="362" width="600" height="58" fill="#000000"/>
+      <text x="330" y="387" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="3">THE AGENT — THE WEEK'S ONLY CONSTANT</text>
+      <text x="330" y="409" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#ffffff">every band above was shipped, priced, walled, or rewritten for the same new customer</text>
+
+      <text x="330" y="448" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The one layer with no new infrastructure this week: the human operating manual.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Each weekday contributed one storey to the same building — workforce, rails, meter, walls, substrate — and the foundation under all five is the agent as primary customer. The claim: this was not five news cycles but one construction project, and the only unbuilt floor is the one where the humans work.</div>
+  </div>
+
+  <!-- =================== §2 THE NEW CUSTOMER =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The new customer</span>Built for the reader that doesn't blink</h2>
+
+    <p>The week's thesis essay is Ramdial's <em>AI Bifurcation of Tech</em>, and its receipts kept compounding as the week went on. His claim: the new consumer of your product is an agent that reads docs literally, tolerates no flaky endpoints, and judges you on whether calls return in under 300 milliseconds — which is why the <strong>0.5 layer</strong> of primitives (auth, vector search, payments, inference, docs) is in structural growth while the application layer compresses. Turbopuffer at $100M revenue on under $1M raised, Mintlify reporting agents as nearly half of documentation traffic: the second audience is already on the books.</p>
+
+    <p>What the weekly stack adds is how deep the rewrite goes. The agent-first development note argues the language layer itself is re-sorting by audience: Rust and Go are eclipsing Python in new agent runtimes because <strong>strict compilers are feedback loops</strong> — a type error is a precise, machine-readable correction an autonomous builder can act on, where Python's runtime surprises surface only after the agent has moved on. The unfashionable rigor that slowed human teams is exactly what lets a non-human team self-correct. <em>The AI Paradox</em>, one of the weekly-only essays, generalizes the point: the efficient path for machine consumers is rarely the popular path for human ones, because popularity was always a proxy for human onboarding costs agents don't pay.</p>
+
+    <p>Meanwhile the human's seat shrank to a chat box three times in one week: Figma's agent works the canvas, Google Stitch streams UI onto it as you speak, ChatGPT builds decks inside PowerPoint. The synthesis no single source states: <strong>the era of designing software for human visual appeal is ending as an economic regime, not as a craft</strong> — every layer from compiler to slide deck is being re-graded on machine-readable efficiency, and the human surface survives as the thin top band that states intent and reviews results. Figure 2 turns that into the week's sorting rule.</p>
+
+    <p><span class="caflag">Counter</span><em>The week's own most-shared engineering piece undercuts the strong version: the Linear teardown is a love letter to interface feel — sub-100ms budgets, keyboard-first design — and that feel, not a schema, is what users pay $15 a seat for. The honest weekly claim is demotion, not death: the screen stops being the product and becomes an obligation. §6 takes this tension up properly.</em></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decision flow with three gates — legibility, economics, compounding — and three failure exits">
+      <rect x="0" y="0" width="660" height="560" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THREE GATES — THE WEEK'S SORTING RULE</text>
+
+      <rect x="40" y="46" width="360" height="54" fill="#000000"/>
+      <text x="58" y="69" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">YOUR PRODUCT, MID-2026</text>
+      <text x="58" y="89" font-family="Georgia,serif" font-size="14" fill="#ffffff">the task it serves is now handed to an agent</text>
+
+      <text x="220" y="124" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼</text>
+
+      <rect x="40" y="134" width="360" height="72" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="58" y="158" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">GATE 1 · LEGIBILITY</text>
+      <text x="58" y="180" font-family="Georgia,serif" font-size="14" fill="#000000">Can the agent consume it without driving</text>
+      <text x="58" y="198" font-family="Georgia,serif" font-size="14" fill="#000000">your UI? API · docs · auth.md · MCP</text>
+
+      <text x="490" y="160" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">fail ►</text>
+      <rect x="440" y="134" width="190" height="72" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="452" y="158" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">ROUTED AROUND</text>
+      <text x="452" y="178" font-family="Georgia,serif" font-size="13" fill="#000000">outcome assembled from</text>
+      <text x="452" y="195" font-family="Georgia,serif" font-size="13" fill="#000000">0.5-layer pieces instead</text>
+
+      <text x="220" y="230" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ pass</text>
+
+      <rect x="40" y="240" width="360" height="72" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="58" y="264" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">GATE 2 · ECONOMICS</text>
+      <text x="58" y="286" font-family="Georgia,serif" font-size="14" fill="#000000">Does it survive per-token honesty —</text>
+      <text x="58" y="304" font-family="Georgia,serif" font-size="14" fill="#000000">cost per completed, verified outcome?</text>
+
+      <text x="490" y="266" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">fail ►</text>
+      <rect x="440" y="240" width="190" height="72" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="452" y="264" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">THE UBER MOMENT</text>
+      <text x="452" y="284" font-family="Georgia,serif" font-size="13" fill="#000000">adoption outruns budget;</text>
+      <text x="452" y="301" font-family="Georgia,serif" font-size="13" fill="#000000">procurement pulls the plug</text>
+
+      <text x="220" y="336" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ pass</text>
+
+      <rect x="40" y="346" width="360" height="72" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="58" y="370" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">GATE 3 · COMPOUNDING</text>
+      <text x="58" y="392" font-family="Georgia,serif" font-size="14" fill="#000000">Does usage deposit memory, context,</text>
+      <text x="58" y="410" font-family="Georgia,serif" font-size="14" fill="#000000">or trust that you — not the lab — own?</text>
+
+      <text x="490" y="372" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">fail ►</text>
+      <rect x="440" y="346" width="190" height="72" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="452" y="370" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">THE WRAPPER SHELF</text>
+      <text x="452" y="390" font-family="Georgia,serif" font-size="13" fill="#000000">zero switching costs ·</text>
+      <text x="452" y="407" font-family="Georgia,serif" font-size="13" fill="#000000">gross-retention apocalypse</text>
+
+      <text x="220" y="442" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ pass</text>
+
+      <rect x="40" y="452" width="590" height="70" fill="#000000"/>
+      <text x="58" y="478" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">THE DURABLE QUADRANT</text>
+      <text x="58" y="500" font-family="Georgia,serif" font-size="14" fill="#ffffff">context that compounds · verification that certifies · judgment that decides ·</text>
+      <text x="58" y="517" font-family="Georgia,serif" font-size="14" fill="#ffffff">distribution you own — the assets that get MORE valuable as tokens get cheaper</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The week's forty-nine sources collapse into one decision frame: a product faces three gates — agent legibility, per-token economics, compounding ownership — and the week supplied a named casualty for each failure exit. The claim: anything that clears all three gates gets more valuable as tokens get cheaper; anything that doesn't is living on borrowed pricing.</div>
+  </div>
+
+  <!-- =================== §3 THE METER =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The meter</span>Product-market fit, invoiced</h2>
+
+    <p>The week's economic story is a pincer, and both jaws closed in the same five days. On one side, the strongest demand evidence yet: Willison's argument-from-receipts that the labs have found product-market fit — his $200 subscription consuming $2,180.16 of tokens at list price, coding agents expensed without blinking, a third of OpenAI's open roles in enterprise sales — and Contrary Research's arithmetic putting Anthropic's compute cost at 71 cents per revenue dollar in Q1 falling to a projected 56, which would make Q2 the first profitable quarter in its history. On the other side, the cost evidence: Uber's Claude Code adoption running 32% to 84% of five thousand engineers at $500–$2,000 each per month until the year's budget died in spring, and Microsoft quietly migrating its staff off Claude Code by fiscal year-end. The essay on Anthropic's <em>paradox of unprofitable growth</em> names the mechanism connecting the jaws: the labs moved enterprises to per-token billing — revenue that tracks consumption — in the same quarter agentic harnesses multiplied consumption 5–30× over chat. <strong>The fit and the sticker shock are the same fact read from opposite sides of the invoice.</strong></p>
+
+    <p>Underneath both, the price floor moved. DeepSeek made its 75% V4-Pro discount permanent — frontier-tier capability at roughly 2% of GPT-5.5's price — passing an efficiency gain through to the rate card that Anthropic, with the same physics, chose to bank as margin. And OpenRouter's $113M Series B at $1.3B priced the layer that makes the two strategies substitutable: 25 trillion tokens a week across 400+ interchangeable models, with a cap table — CapitalG, Nvidia, ServiceNow, MongoDB, Snowflake, Databricks — that reads like the enterprise-context owners buying insurance against any single lab owning them. The synthesis the week makes unavoidable: <strong>every durable position visible in the money flow sits beside the token stream, not in it</strong> — the workflow (Claude Code), the switchboard (OpenRouter), the 0.5-layer primitive, the local-inference escape hatch (LM Studio Link plus Qwen-class weights). The token itself is being priced like what it is becoming: a commodity input racing to the floor.</p>
+
+    <p><span class="caflag">Counter</span><em>Hold the profitability narrative loosely. Contrary's numbers are projections published ahead of an expected IPO, Willison's PMF case leans on one power user's receipt and a rumor, and Microsoft's "retreat" is consolidation onto its own Copilot CLI that it would pursue at any token price — vendor politics wearing economics' clothes. The week proves enterprises can't budget agents yet; it does not prove the unit economics work, for buyer or seller. No audited number exists on either side of this argument.</em></p>
+  </section>
+
+  <!-- =================== §4 THE HUMAN LEDGER =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · The human ledger</span>Stratified, not replaced</h2>
+
+    <p>The week's labor data refuses the simple story in both directions. Against a broader market that cut SDR hiring 21%, AI-native companies <strong>more than doubled</strong> theirs — Cursor, LangChain, OpenAI, Anthropic among them — in the same week Anthropic disclosed that 54% of its new enterprise logos arrive entirely self-serve. The reconciliation, visible only across sources: automation is not replacing the salesforce, it is <strong>stratifying</strong> it. Legible deals flow through software; humans concentrate on the trust-heavy remainder, which grows as agents keep expanding what's legible. The same stratification runs through engineering: Gothelf's reading of Karpathy — agentic engineering is "the judgment version of every task, and it was always the job" — and the Grumpy Dev's value-per-complexity ledger both relocate the wage premium to deciding and certifying, exactly where Monday's hiring data already put it.</p>
+
+    <p>The casualty list is equally consistent, and it is the opaque middle. <em>The Cruel Reality of the Modern Job Market</em> documents the broken apprenticeship rung — models absorbing the entry-level tasks juniors learned on. <em>The End of Non-Technical Management</em> squeezes the translator-manager from both sides: agents below, legibility demands above. <em>The Death of Productivity Projects</em> retires copilot sprawl — minutes saved was the wrong metric — for fewer, deeper, compounding systems. Three authors, one structural rule none states: <strong>what the species shift eliminates is not labor but opacity — every role whose value depended on an unreadable middle layer is being read.</strong></p>
+
+    <p>And then there is the cost nobody meters. Evil Martians' burnout report describes the surviving humans — the judges, reviewers, trust-carriers the week promotes — running uncontained: the fulfilling middle of the job gone, effort compressed into "4–5 extremely intense hours before your brain is fully cooked," saved time instantly refilled with supervision. Put it next to the 93% approval-fatigue telemetry and the week's ugliest symmetry appears: <strong>the industry that gave every machine a blast radius this week shipped nothing — not one tool, cap, or default — to contain the cognitive load it moved onto the people doing the checking.</strong> §9 logs the absence formally.</p>
+
+    <p><span class="caflag">Counter</span><em>The broken-ladder attribution deserves its standing caveat: entry-level deterioration predates capable agents and implicates remote work at least as much as AI. And the burnout evidence is anecdote plus one observational study — vivid, plausible, unquantified. The stratification claim stands on hiring data; the suffering claims still stand mostly on essays.</em></p>
+  </section>
+
+  <!-- =================== §5 THE PLUMBING =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The plumbing</span>Walls, rails, and memory</h2>
+
+    <p>Strip the vendor names and the week shipped a complete civil infrastructure for the new species, in three public works. <strong>Walls:</strong> Anthropic's containment disclosure and ByteByteGo's Vercel teardown converge from opposite decades on the identical architecture — assume the workload is hostile, give it its own kernel, inspect what leaves, destroy it after use — while the Sandbox CRD turns that shape into a declarative API and Webwright shows the payoff of handing the contained agent the oldest tool in computing, a terminal: 60.1% on Odysseys versus 33.5% bare, from a thousand lines of harness. The convergence matters more than any single system: <strong>agent infrastructure is CI infrastructure rediscovered</strong>, so a decade of hostile-multi-tenancy engineering transfers wholesale.</p>
+
+    <p><strong>Rails:</strong> the MCP release candidate went stateless — sessions gone, metadata on every request, state surfaced as explicit handles — four days before auth.md let agents open accounts via a markdown file at a well-known location. Add OpenAI's outbound-only tunnel, long-polling past corporate firewalls without a single inbound port, and the pattern is unmistakable: the agent web is being built the way the human web was — plain files, boring HTTP, humble daemons. Google's ADK-and-A2A squads complete the set by rediscovering microservices, clause by clause, for non-human staff.</p>
+
+    <p><strong>Memory:</strong> the statelessness is not an omission — it is an eviction, and the week's memory sources are the real-estate market that eviction created. Protocol state has to live somewhere; Kavcic's 105-tools experiment proves that somewhere had better include <em>why</em> decisions were made, or the agent re-bills you for explorations your organization already paid to reject. RushDB 2.0 sells the consolidated layer; the two <em>Architecture of Context</em> essays — both new to the weekly notebook — argue the team-scale version, that the data layer is the biggest job and orchestration the smallest; the <em>Architectural Consolidation</em> essay maps the migration at industry scale. The weekly synthesis no daily could see whole: <strong>the protocol layer pushed state out at the exact moment the moat literature priced state as the only durable asset — statelessness in the rails and memory in the moats are one design decision viewed from its two beneficiaries.</strong> Whoever owns the evicted state owns the compounding layer; the protocols just guaranteed it would not be the protocol.</p>
+  </section>
+
+  <!-- =================== §6 THE LONG VIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The long view</span>What survives the species shift</h2>
+
+    <p>The weekly notebook's own overview ends on the week's most quotable overreach: "the era of designing software for human visual appeal is ending, replaced by a regime focused on technical fundamentals and machine-readable efficiency." Half of that sentence is the best one-line summary of the week; the other half is contradicted by the week's own reading list — and the contradiction is where the durable lesson lives.</p>
+
+    <p>The true half first. Every layer audited this week got re-graded by a machine reader. Languages: strict compilers beat ergonomic ones when the developer is an agent that learns from error messages. Documentation: Mintlify's traffic is half agents, so docs are an API surface. Signup: auth.md replaces the onboarding tour with a markdown file. Protocols: MCP shed every ceremony a human session implied. Even sales: 54% of Anthropic's enterprise logos never touch a rep, because the deal itself was legible. Across all of it the same trade executed — <strong>charm for rigor, popularity for parseability, the demo for the contract</strong> — and the companies that made the trade early (Turbopuffer, Modal, Linear) are the week's compounding stories.</p>
+
+    <p>Now the false half. The week's most-loved artifact is Linear's interface — a four-year obsession with sub-100ms feel that the teardown treats as sacred craft. The week's biggest consumer launches (Stitch, ChatGPT-in-PowerPoint) compete on experience, not API latency. And the labor data says the trust-heavy, human-facing work is the part being <em>hired for</em>. The reconciliation: the human surface is demoted from moat to obligation — from the thing you are to one renderer you must still execute excellently, because the audience with feelings is also the audience with budget authority. Mozilla.ai's essay carries the precise formulation: the artifact is the structured model; the deck, the dashboard, and the beautiful screen are outputs. Demotion, not death.</p>
+
+    <p>Hold the whole week in one hand and the assets sort themselves. What commoditized in five days: model access (DeepSeek's floor, OpenRouter's 400 interchangeable slots), code volume (70% of Uber's commits machine-originated), wrappers (zero switching costs, by the moats essay's own funeral rites). What compounded: <strong>context</strong> — Kavcic's decision memory, YC's nightly-metaprompted skill library, the data flywheels every moat argument circles; <strong>verification</strong> — Antfly's proofs, Nova's gates, the certifying human whose wage premium grows with everything she certifies; <strong>judgment</strong> — Gothelf's "it was always the job"; and <strong>distribution</strong> — the owned audience the creator playbook prices and the Monastery bet presumes. What the four share: none is a token business, all get more valuable as tokens get cheaper, and each is, at bottom, a record of humans being trusted — by each other or by their institution's memory.</p>
+
+    <p>Which exposes the week's deepest irony. The species shift was supposed to be about machines replacing people; read whole, the week says the machines are <em>clarifying</em> people — burning off every role, layer, and artifact whose value was opacity, and concentrating human work into the three things a stochastic process cannot supply about itself: why, whether, and who vouches. The companies that understood this hired more humans this week, not fewer. The cost of the clarification is real and §4 priced it; the week offered no fix. But the direction is set: the stack belongs to the second audience now, and the first audience's job is to be worth believing.</p>
+
+    <p><span class="caflag">Counter</span><em>The falsification scenario deserves its paragraph: if token prices keep falling at DeepSeek's pace, the meter that disciplines this whole sorting weakens — wasteful agents, memoryless wrappers, and uncapped budgets all become survivable, and the week's "only the compounding survives" thesis loses its forcing function. Cheap enough intelligence forgives bad architecture. The thesis is a bet that demand (5–30× per task, more tasks every quarter) outruns the price collapse; the week supplies evidence for both horses.</em></p>
+  </section>
+
+  <!-- =================== §7 WEEK IN NUMBERS =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The week in numbers</span>Eight figures that carry the argument</h2>
+
+    <p>Every claim in §§2–6 hangs off a number some source put in print this week. These are the eight that do the most work — worth keeping, because next quarter's versions of these same metrics are how the week's theses get graded.</p>
+  </section>
+
+  <!-- =================== FIGURE 3 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Eight labelled rows, each pairing a headline number with what it measures">
+      <rect x="0" y="0" width="660" height="520" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 3 · THE WEEK IN EIGHT NUMBERS</text>
+
+      <rect x="30" y="46" width="150" height="50" fill="#000000"/>
+      <text x="105" y="77" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="16" font-weight="700" fill="#ffffff">54%</text>
+      <rect x="184" y="46" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="67" font-family="Georgia,serif" font-size="14" fill="#000000">of Anthropic's new enterprise logos arrive fully self-serve</text>
+      <text x="198" y="86" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">MON · SAASTR</text>
+
+      <rect x="30" y="104" width="150" height="50" fill="#000000"/>
+      <text x="105" y="135" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="15" font-weight="700" fill="#ffffff">2× vs −21%</text>
+      <rect x="184" y="104" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="125" font-family="Georgia,serif" font-size="14" fill="#000000">AI-native SDR hiring doubled while the broader market cut a fifth</text>
+      <text x="198" y="144" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">MON · GROWTH UNHINGED</text>
+
+      <rect x="30" y="162" width="150" height="50" fill="#000000"/>
+      <text x="105" y="193" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="16" font-weight="700" fill="#ffffff">~2%</text>
+      <rect x="184" y="162" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="183" font-family="Georgia,serif" font-size="14" fill="#000000">DeepSeek V4-Pro's price vs GPT-5.5 after the 75% cut went permanent</text>
+      <text x="198" y="202" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">TUE · THE NEXT WEB</text>
+
+      <rect x="30" y="220" width="150" height="50" fill="#000000"/>
+      <text x="105" y="251" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="15" font-weight="700" fill="#ffffff">71¢ → 56¢</text>
+      <rect x="184" y="220" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="241" font-family="Georgia,serif" font-size="14" fill="#000000">Anthropic compute per revenue dollar, Q1 → projected Q2 — margin or price cut</text>
+      <text x="198" y="260" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">TUE · CONTRARY RESEARCH</text>
+
+      <rect x="30" y="278" width="150" height="50" fill="#000000"/>
+      <text x="105" y="309" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="16" font-weight="700" fill="#ffffff">70%</text>
+      <rect x="184" y="278" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="299" font-family="Georgia,serif" font-size="14" fill="#000000">of Uber's committed code AI-originated — as the annual budget died in spring</text>
+      <text x="198" y="318" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">WED · THE NEXT WEB</text>
+
+      <rect x="30" y="336" width="150" height="50" fill="#000000"/>
+      <text x="105" y="367" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="16" font-weight="700" fill="#ffffff">5–30×</text>
+      <rect x="184" y="336" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="357" font-family="Georgia,serif" font-size="14" fill="#000000">token draw of an agentic loop vs a chat session — the multiplier on every meter</text>
+      <text x="198" y="376" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">WED · KAVCIC</text>
+
+      <rect x="30" y="394" width="150" height="50" fill="#000000"/>
+      <text x="105" y="425" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="16" font-weight="700" fill="#ffffff">93%</text>
+      <rect x="184" y="394" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="415" font-family="Georgia,serif" font-size="14" fill="#000000">of permission prompts approved — human oversight degraded to noise</text>
+      <text x="198" y="434" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">THU · ANTHROPIC</text>
+
+      <rect x="30" y="452" width="150" height="50" fill="#000000"/>
+      <text x="105" y="483" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#ffffff">$2,180 / $200</text>
+      <rect x="184" y="452" width="446" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="0.6"/>
+      <text x="198" y="473" font-family="Georgia,serif" font-size="14" fill="#000000">tokens consumed vs subscription paid — one power user, one month</text>
+      <text x="198" y="492" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">FRI · WILLISON</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 3</b> · The week's argument in eight rows: demand is real (rows 1–2, 5, 8), the price floor is collapsing (3–4), the multiplier guarantees the invoice (6), and the human control layer is saturated (7). The claim: every row is a leading indicator — re-check all eight next quarter and the week's thesis grades itself.</div>
+  </div>
+
+  <section>
+    <p>What the numbers don't measure is precisely the layer the week declared durable. There is no row for the quality of a decision memory, no benchmark for "would an enterprise buyer trust this without a human," no unit for apprenticeship destroyed or reviewer attention consumed — the "brain fully cooked" hours appear on no dashboard, and the 93% approval rate measures fatigue only by its failure. The quantified layer is the commoditizing one; the compounding layer is still measured in essays. That asymmetry is itself a finding: when the durable assets get metrics — context coverage, verification rates, trust conversion — expect valuations to re-sort around whoever scores well, the way they re-sorted around token efficiency this week.</p>
+  </section>
+
+  <!-- =================== §8 VOCABULARY WATCH =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Vocabulary watch</span>What got named this week</h2>
+
+    <p>Weeks that matter mint vocabulary, and this one minted a working dictionary. A name is a claim that a pattern will recur — these eight are the bets the week's authors placed on which patterns you'll need words for by autumn.</p>
+  </section>
+
+  <!-- =================== FIGURE 4 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grid of eight coined terms with their coiners and one-line definitions">
+      <rect x="0" y="0" width="660" height="470" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 4 · EIGHT TERMS THE WEEK COINED OR CROWNED</text>
+
+      <rect x="30" y="46" width="295" height="96" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="46" y="70" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">SECOND AUDIENCE</text>
+      <text x="46" y="88" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">RAMDIAL · TUE</text>
+      <text x="46" y="110" font-family="Georgia,serif" font-size="13" fill="#000000">agents as a parallel user base that reads</text>
+      <text x="46" y="127" font-family="Georgia,serif" font-size="13" fill="#000000">docs literally and ignores your brand</text>
+
+      <rect x="335" y="46" width="295" height="96" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="351" y="70" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">THE 0.5 LAYER</text>
+      <text x="351" y="88" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">RAMDIAL · TUE</text>
+      <text x="351" y="110" font-family="Georgia,serif" font-size="13" fill="#000000">the primitives between infrastructure and</text>
+      <text x="351" y="127" font-family="Georgia,serif" font-size="13" fill="#000000">apps that agents assemble outcomes from</text>
+
+      <rect x="30" y="150" width="295" height="96" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="46" y="174" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">EXPENSIVE CONFIDENCE</text>
+      <text x="46" y="192" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">KAVCIC · WED</text>
+      <text x="46" y="214" font-family="Georgia,serif" font-size="13" fill="#000000">an agent with access but no memory,</text>
+      <text x="46" y="231" font-family="Georgia,serif" font-size="13" fill="#000000">asserting what you already paid to reject</text>
+
+      <rect x="335" y="150" width="295" height="96" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="351" y="174" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">AGENTIC ENGINEERING</text>
+      <text x="351" y="192" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">KARPATHY, VIA GOTHELF · WED</text>
+      <text x="351" y="214" font-family="Georgia,serif" font-size="13" fill="#000000">vibe coding's successor: specs, diffs, evals —</text>
+      <text x="351" y="231" font-family="Georgia,serif" font-size="13" fill="#000000">product management in an engineer's coat</text>
+
+      <rect x="30" y="254" width="295" height="96" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="46" y="278" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">COGNITIVE DEBT</text>
+      <text x="46" y="296" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">STOREY, VIA EVIL MARTIANS · THU</text>
+      <text x="46" y="318" font-family="Georgia,serif" font-size="13" fill="#000000">understanding that lives in people, not code —</text>
+      <text x="46" y="335" font-family="Georgia,serif" font-size="13" fill="#000000">and accrues interest in reviewers' heads</text>
+
+      <rect x="335" y="254" width="295" height="96" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="351" y="278" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">EXPLICIT HANDLES</text>
+      <text x="351" y="296" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">MCP RELEASE CANDIDATE · TUE</text>
+      <text x="351" y="318" font-family="Georgia,serif" font-size="13" fill="#000000">protocol state made visible: identifiers the</text>
+      <text x="351" y="335" font-family="Georgia,serif" font-size="13" fill="#000000">model itself passes back, nothing hidden</text>
+
+      <rect x="30" y="358" width="295" height="96" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="46" y="382" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">THE MONASTERY</text>
+      <text x="46" y="400" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">CYBER•FUND · THU</text>
+      <text x="46" y="422" font-family="Georgia,serif" font-size="13" fill="#000000">$2M and 12 weeks on the bet that one</text>
+      <text x="46" y="439" font-family="Georgia,serif" font-size="13" fill="#000000">builder now outruns a public company</text>
+
+      <rect x="335" y="358" width="295" height="96" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="351" y="382" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">DREAM CYCLE</text>
+      <text x="351" y="400" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">Y COMBINATOR · THU</text>
+      <text x="351" y="422" font-family="Georgia,serif" font-size="13" fill="#000000">a nightly agent that reads every employee</text>
+      <text x="351" y="439" font-family="Georgia,serif" font-size="13" fill="#000000">conversation hunting for missing context</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 4</b> · The week's coinages, sorted left-to-right by day. The claim: vocabulary is a leading indicator — "second audience" and "expensive confidence" name structural facts and will stick; "the Monastery" names a marketing program and probably won't. Grade them in six months.</div>
+  </div>
+
+  <!-- =================== §9 NEGATIVE SPACE =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Negative space</span>What didn't happen this week</h2>
+
+    <p>A week is also defined by its silences. Five structural absences worth logging:</p>
+
+    <ol>
+      <li><strong>No frontier model shipped.</strong> A week that reorganized languages, protocols, pricing, sales orgs, and interfaces contained zero capability news. The action has moved out of the model and into everything around it — the strongest evidence for the week's thesis is what nobody announced.</li>
+      <li><strong>No Western lab answered DeepSeek.</strong> A permanent cut to ~2% of GPT-5.5's price drew no public pricing response all week; Anthropic banked its gains as margin. Either workflow lock-in beats price, or the answer is being saved for the IPO window — neither reading is "we can match it."</li>
+      <li><strong>Nothing shipped for the human bottleneck.</strong> The week produced telemetry proving approval fatigue (93%) and essays describing reviewer burnout — and not one product, default, or cap addressing either. Every other failure mode got engineering; the saturated human got advice.</li>
+      <li><strong>The agent got an account but no liability.</strong> auth.md covers registration; nothing says who pays, who is liable, or who gets sued when the agent-verified account acts. The commercial and legal layers of the agent web remain unbuilt — a larger gap than the protocol gap everyone is closing.</li>
+      <li><strong>No audited number appeared.</strong> Every economic claim in the forty-nine sources — Anthropic's margins, Uber's spend, OpenRouter's 25 trillion tokens, the profitable quarter itself — is a projection, a self-report, or a rumor. The species shift is being priced on numbers nobody has had to sign.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §10 LOOKING AHEAD =================== -->
+  <section>
+    <h2><span class="sec-num">§10 · Looking ahead</span>Watch-items for W23, in declining order of confidence</h2>
+
+    <ol>
+      <li><strong>The token-governance story continues.</strong> Microsoft's June 30 migration deadline approaches and sticker-shock accounts are now a genre; expect more enterprise cost reporting and the first explicit cap-and-quota policies. The safest bet on the list.</li>
+      <li><strong>MCP migration work begins in earnest.</strong> The final spec lands July 28 with Tier-1 SDKs promised inside the window; expect stateless-migration guides and the first deprecation complaints from teams that relied on sessions, roots, or sampling.</li>
+      <li><strong>The Anthropic profitability drumbeat gets louder.</strong> Q2 closes in June with an IPO expected in the fall; expect more margin analyses and the first leaks framing the quarter. Watch for any number that is filed rather than projected.</li>
+      <li><strong>The moat question sharpens.</strong> This week settled that models and wrappers commoditize; the obvious next conversation is where defensible value actually sits when intelligence is rented — context, workflow, distribution, verification. Expect the essays to converge on it within weeks.</li>
+      <li><strong>Someone answers DeepSeek.</strong> A pricing, routing, or efficiency-passthrough response from a Western lab or major cloud — the longer the silence holds, the more it says.</li>
+      <li><strong>Falsifiable:</strong> by the end of W23, at least one named SaaS company beyond the four launch adopters (Cloudflare, Firecrawl, Resend, Monday.com) publishes an auth.md at its domain. Check the well-known locations; if none appears, the "open protocol" was a vendor launch after all.</li>
+      <li><strong>Falsifiable:</strong> a mainstream agent product announces a human-side limit — an attention budget, per-day agent cap, or enforced review quota — by mid-June. If not, §9's third absence persists and the burnout thread stays an essay genre rather than a product category.</li>
+    </ol>
+
+    <p>And the meta-item, as always: whether next Saturday's weekly notebook arrives at all. The pipeline that produced this issue is itself an agent harness with a human verifier — every thesis above applies to it, including the one about uncapped review budgets.</p>
+  </section>
+
+  <!-- =================== FROM THIS WEEK'S DAILIES =================== -->
+  <section>
+    <h2><span class="sec-num">Backfile · W22</span>From this week's daily digests</h2>
+
+    <p>The weekly thesis was assembled one day at a time. Each daily carried a load-bearing piece:</p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-05-25-kindle.html">Mon, May 25 — The Labor Inversion</a> · Opened the week with its anchor paradox: the companies industrializing agents fastest doubled their human SDR hiring, because nobody has automated trust. Named verification and legibility as the week's recurring monopolies.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-05-26-kindle.html">Tue, May 26 — The Second Audience</a> · Supplied the thesis the whole week confirms — agents as software's new primary customer — plus the rails: stateless MCP, auth.md, and DeepSeek's permanent price floor.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-05-27-kindle.html">Wed, May 27 — The Memory Premium</a> · Delivered the invoice (Microsoft's retreat, Uber's blown budget, the 5–30× multiplier) and the counter-asset: memory, judgment, and provenance as what compounds while tokens are metered.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-05-28-kindle.html">Thu, May 28 — The Blast Radius</a> · Built the walls — the microVM convergence, egress proxies, 93% approval fatigue — and found the week's only uncontained component: the burning-out human reviewer.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-05-29-kindle.html">Fri, May 29 — The Demoted Interface</a> · Closed the arc: the screen becomes a view over a structured substrate, and Willison's receipts price what the new customer actually buys — agent labor, sold like labor.</span></p>
+  </section>
+
+  <!-- =================== §11 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§11 · Practical takeaways</span>Eight rules the week converged on</h2>
+
+    <ol>
+      <li><strong>Run everything you own through the three gates.</strong> Legibility (can an agent consume it without your UI?), economics (does it survive cost-per-verified-outcome?), compounding (does usage deposit context you own?). Sort your portfolio into Figure 2 and be honest about the right-hand exits.</li>
+      <li><strong>Meter and cap agents before the Uber moment, not after.</strong> Per-engineer budgets, usage dashboards, an escalation tier. Per-token billing transferred usage risk to you in the same quarter agents multiplied usage 5–30× — budget like it.</li>
+      <li><strong>Build memory in Kavcic's order: data, retrieval, orchestration — last.</strong> Catalog decisions and their reasons before buying another agent; an agent without decision memory re-bills you for explorations you already paid to reject.</li>
+      <li><strong>Walls before vigilance.</strong> OS sandboxes or microVMs, outbound allowlists, publication gates outside agent control. You will approve 93% of permission prompts; stop pretending you are the control.</li>
+      <li><strong>Give your own attention a blast radius.</strong> Fixed stop time, abandon after 3–4 failed iterations, one agent task at a time, protected craft hours. Nobody will ship this for you — §9 confirmed it.</li>
+      <li><strong>Spend the cheap-code dividend on verification.</strong> Proofs, property tests, real validation paths. Generation is nearly free; certification is the scarce good and the surviving wage premium.</li>
+      <li><strong>Keep the human surface excellent but thin.</strong> One superb renderer over a structured, agent-readable core — Linear's order: sync engine first, interface second. Charm is now an obligation, not a moat.</li>
+      <li><strong>Practice the judgment version of your job, and encode one expert.</strong> Mark which of your activities are administration (automating now) and which are judgment (the job). Capture one practitioner's pattern as a shared skill — and write down where the next expert learns.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §12 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§12 · Glossary</span>Working terms, beyond the coinages</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Per-token billing</dt>
+        <dd>Pricing where the invoice tracks model consumption rather than seat count. Decisive this week: it transferred usage risk to buyers in the same quarter agent loops multiplied usage 5–30× over chat.</dd>
+
+        <dt>MicroVM (Firecracker)</dt>
+        <dd>A minimal virtual machine with its own kernel, booting in ~125 ms. The containment unit both Vercel (builds) and Anthropic (agents) converged on: assume hostility, isolate the kernel, destroy after use.</dd>
+
+        <dt>Publication gate</dt>
+        <dd>Keeping merge, publish, and deploy outside agent control — the agent proposes, a human turns the key. The structural form of not trusting your own automation, common to every serious platform this week.</dd>
+
+        <dt>Stateless MCP</dt>
+        <dd>The 2026-07-28 release candidate's core change: no handshake, no sessions; metadata travels on every request and state lives in explicit handles. Servers scale behind plain load balancers; memory becomes the application's problem — and asset.</dd>
+
+        <dt>Data flywheel</dt>
+        <dd>The compounding moat: usage generates proprietary context no competitor holds, which improves the product, which attracts more usage. The week's test for which AI companies survive commoditized intelligence.</dd>
+
+        <dt>Local-first sync</dt>
+        <dd>The application's data replicated to the client (Linear's IndexedDB), with the server as a sync peer rather than a gatekeeper. Built for latency; turns out to be the agent-legible architecture too.</dd>
+
+        <dt>Agent-verified flow</dt>
+        <dd>auth.md's no-human-in-the-loop registration: the agent's identity provider vouches for the user and the account opens itself. The agent web's front door — and its newest fraud surface.</dd>
+
+        <dt>Cost inversion</dt>
+        <dd>The condition where AI compute for a task exceeds the human's cost — true today in roughly three of four jobs by MIT's estimate. The week's buildout is a leveraged bet that the inversion unwinds on schedule.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Weekly Summary (May 25-29, 2026)</em> · 49 sources, with the "How autonomous agents kill the application layer" Deep Dive audio overview available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register · grouped by theme</div>
+    <h2>The forty-nine pieces this week's digest is built on</h2>
+
+    <h3>I · The thesis — software's new customer</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · neevash.com</span>
+        <span class="src-title"><a href="https://neevash.com/blog/tech-bifurcation-and-the-0.5-layer">The AI Bifurcation of Tech by Neevash Ramdial</a></span>
+        <span class="src-note">The week's spine. The 0.5-layer taxonomy plus real revenue numbers make "agents are the customer" falsifiable rather than vibes; its weak spot — who survives the compressed app layer — is answered by the week's own launches. Read first.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Mozilla.ai</span>
+        <span class="src-title"><a href="https://blog.mozilla.ai/the-interface-is-no-longer-the-product/">The Interface Is No Longer the Product</a></span>
+        <span class="src-note">The conceptual frame the week kept reaching for: products unbundle into an agent-readable source of truth plus disposable views. PowerPoint-as-container will outlive the essay; its blind spot is how much interface feel still decides what humans buy.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Mozilla.ai (duplicate import)</span>
+        <span class="src-title"><a href="https://blog.mozilla.ai/the-interface-is-no-longer-the-product/">The Interface Is No Longer the Product</a></span>
+        <span class="src-note">Honesty entry: the weekly notebook ingested this essay twice — fittingly, the only source the dailies also covered twice, because Monday's labor story and Friday's substrate story both needed it. The duplication is the pipeline's accidental endorsement.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Technical note · saved markdown</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=Agent-First+Development%3A+The+Shift+from+Python+to+Systems+Languages">Agent-First Development: The Shift from Python to Systems Languages</a></span>
+        <span class="src-note">The engineering-floor evidence for the species shift: strict compilers as feedback loops agents can self-correct against. Keep the audience argument; skip the benchmark-war sections — Rust evangelism is doing some of the lifting here.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+AI+Paradox%3A+Efficiency+Beyond+the+Popular+Path">The AI Paradox: Efficiency Beyond the Popular Path</a></span>
+        <span class="src-note">New to the weekly notebook: the efficient path for machine consumers is rarely the popular path for human ones — popularity priced human onboarding, which agents don't pay. A useful generalization of the language-stratification argument; thin on evidence beyond it.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Grumpy Dev</span>
+        <span class="src-title"><a href="https://shvetsm.github.io/posts/the-best-engineers-write-less-code/">The Best Engineers Write Less Code</a></span>
+        <span class="src-note">Old wisdom newly priced: with volume free, value-per-complexity is the only honest metric for machines and humans alike. The "fixing the slop" warning is the cleanup-side reading of every optimistic launch post above it.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+    </ol>
+
+    <h3>II · The rails — protocols, reach, local compute</h3>
+    <ol>
+      <li>
+        <span class="pub">Spec blog · modelcontextprotocol.io</span>
+        <span class="src-title"><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/">The 2026-07-28 MCP Specification Release Candidate</a></span>
+        <span class="src-note">Required reading before July 28: stateless core, explicit handles, cacheable tool lists, OAuth hardening. Trust the boring text, not the "agents sharing memory" coverage attached to it — the spec got more deployable by promising less.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Protocol release · WorkOS</span>
+        <span class="src-title"><a href="https://workos.com/auth-md">auth.md — Open Protocol for Agent Registration</a></span>
+        <span class="src-note">A vendor launch in protocol clothing — acceptable because it composes boring OAuth standards and shipped with real adopters. The agent-verified flow (no human at registration) is the feature and the fraud surface in one markdown file.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Documentation · OpenAI API</span>
+        <span class="src-title"><a href="https://developers.openai.com/api/docs/guides/secure-mcp-tunnels">Secure MCP Tunnel</a></span>
+        <span class="src-note">Dry docs, strategic content: outbound-only, long-polling, no inbound ports. OpenAI believes the valuable context lives behind corporate perimeters and is building the pickup window — which tells you where the bottleneck actually is.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Product page · LM Studio</span>
+        <span class="src-title"><a href="https://lmstudio.ai/link">Scaling Local LLMs via LM Studio Link and Tunneling</a></span>
+        <span class="src-note">A product page, not an argument, but the capability matters: your own GPU as a private, encrypted inference endpoint. One half of the attack on the cost inversion — the plumbing half.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Reference · Qwen</span>
+        <span class="src-title"><a href="https://qwen.ai/">Qwen</a></span>
+        <span class="src-note">The other half: an open-weight family good enough to make owned hardware a credible substitute for a metered API. A bookmark, not a read — but the bookmark is a price ceiling on every rate card in group V.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+    </ol>
+
+    <h3>III · The runtime — containment &amp; verification</h3>
+    <ol>
+      <li>
+        <span class="pub">Engineering blog · Anthropic</span>
+        <span class="src-title"><a href="https://www.anthropic.com/engineering/how-we-contain-claude">How we contain Claude across products</a></span>
+        <span class="src-note">Instantly the reference document for agent containment, and the candor is the value: 93% approval fatigue, 24/25 phishing exfiltrations stopped only by the environment, "the software you build yourself is often the weakest." Keep every number.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Newsletter · ByteByteGo</span>
+        <span class="src-title"><a href="https://blog.bytebytego.com/p/how-vercel-cut-build-wait-times-from">How Vercel Cut Build Wait Times From 90 Seconds To 5</a></span>
+        <span class="src-note">Best read beside the Anthropic post: the same hostile-multi-tenancy architecture, built a problem-generation earlier for CI. The honest detail coverage skips — warm pools burn idle compute; the speed was bought, not found.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Repository · kubernetes-sigs</span>
+        <span class="src-title"><a href="https://github.com/kubernetes-sigs/agent-sandbox">agent-sandbox: isolated, stateful, singleton workloads for AI agent runtimes</a></span>
+        <span class="src-note">A Kubernetes SIG cutting a Sandbox CRD is the week's strongest signal that agents are normal workloads now. v1beta1 means churn; the primitives (warm pools, kernel-level isolation) are already right.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Research release · Microsoft Research</span>
+        <span class="src-title"><a href="https://microsoft.github.io/Webwright/">Webwright | Terminal-Native Web Agents</a></span>
+        <span class="src-note">60.1% vs 33.5% from a thousand lines and zero model changes: a terminal beats planning hierarchies. The reusable-script idea — solved tasks become parameterized CLIs — is the quietly radical part everyone will copy.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Video · YouTube (Google Cloud)</span>
+        <span class="src-title"><a href="https://www.youtube.com/watch?v=VjBijrS19gY">Building distributed multi-agent systems</a></span>
+        <span class="src-note">Competent ADK/A2A walkthrough; the durable content is the architecture — specialist squads as microservices, failing alone. If you lived the microservices decade, skim the framework tour, keep the failure-isolation argument.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Dropbox</span>
+        <span class="src-title"><a href="https://dropbox.tech/machine-learning/introducing-nova-our-internal-platform-for-coding-agents">Introducing Nova, our internal platform for coding agents</a></span>
+        <span class="src-note">The most concrete platform artifact of the week, best in its negative space: merge and test execution outside the agent loop, iterations capped. Read it for the guardrail list, then copy the guardrails before the platform.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Antfly Blog</span>
+        <span class="src-title"><a href="https://antfly.io/blog/agent-formal-verification">Cheap code means formal verification is reasonable now — Antfly Blog</a></span>
+        <span class="src-note">The week's most quietly radical inversion: spend the cheap-code dividend on proof, not more code — validated against a real Pebble race condition. Its own caveat is the keeper: confidence in your codebase can't be automated away.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+    </ol>
+
+    <h3>IV · Memory — the compounding layer</h3>
+    <ol>
+      <li>
+        <span class="pub">Newsletter · The Design System Guide</span>
+        <span class="src-title"><a href="https://learn.thedesignsystem.guide/p/the-design-system-advantage-is-memory">The Design System Advantage Is Memory - by Romina Kavcic</a></span>
+        <span class="src-note">The week's keeper. The 105-tools-no-memory experiment should be a standard cautionary tale, "expensive confidence" is the best coinage of the month, and the inverted build order — data first, orchestration last — generalizes everywhere. Read in full.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Release · RushDB</span>
+        <span class="src-title"><a href="https://rushdb.com/blog/rushdb-2-0-release">RushDB 2.0: Memory Infrastructure for the Agentic Era</a></span>
+        <span class="src-note">A vendor pitch with one testable claim (one semantic layer replacing the Redis + vector + graph trio) and one genuinely sharp insight: agents learn your product from dependencies, not docs. That sentence outvalues the release.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+Architecture+of+Context%3A+AI+Memory+Systems+for+Teams">The Architecture of Context: AI Memory Systems for Teams</a></span>
+        <span class="src-note">New to the weekly notebook: the team-scale playbook for what Kavcic proved by failure — shared decision memory as the layer agents are useless without. Practical but derivative; read Kavcic first, this second, and only if you're the one implementing.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+Architecture+of+Context%3A+Building+Durable+AI+Systems">The Architecture of Context: Building Durable AI Systems</a></span>
+        <span class="src-note">The companion piece, aimed at systems rather than teams: durable AI means context that outlives sessions, models, and vendors. Sound thesis, familiar argument — the durable part of this essay is its title's claim, which the week's pricier sources made with receipts.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+Architectural+Consolidation+of+AI+Infrastructure">The Architectural Consolidation of AI Infrastructure</a></span>
+        <span class="src-note">The macro map: the AI stack consolidating into distinct professional layers — compute, models, routing, memory, coordination — the way cloud did. Useful as wallpaper for groups II–IV; light on falsifiable claims of its own.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+AI+Bifurcation%3A+Building+Durable+Moats+for+Startups%22">The AI Bifurcation: Building Durable Moats for Startups</a></span>
+        <span class="src-note">Standard moat taxonomy with two sharp claims worth keeping: switching costs at the wrapper layer are effectively zero, and markets pay steep premiums for advantage that compounds rather than rents. Skip the listicle.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+    </ol>
+
+    <h3>V · The money — meters, margins, price war</h3>
+    <ol>
+      <li>
+        <span class="pub">News analysis · The Next Web</span>
+        <span class="src-title"><a href="https://thenextweb.com/news/microsoft-claude-code-retreat-ai-cost">Microsoft's quiet Claude Code retreat and the real cost of enterprise AI</a></span>
+        <span class="src-note">The best single account of enterprise token sticker shock, with the Uber numbers that make it concrete. Underweights the politics of consolidating onto Copilot CLI — read the numbers, discount the moral.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">News · The Next Web</span>
+        <span class="src-title"><a href="https://thenextweb.com/news/deepseek-v4-pro-75-percent-price-cut-permanent">DeepSeek made its 75% discount permanent. The AI price war just escalated.</a></span>
+        <span class="src-note">The week's most loaded price tag: frontier-tier capability at ~2% of GPT-5.5's price, locked in. Efficiency passed through to price rather than kept as margin — the exact inverse of Anthropic's move, which is the whole story.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Research note · Contrary Research</span>
+        <span class="src-title"><a href="https://contraryresearch.substack.com/p/anthropics-march-to-profitability">Anthropic's March to Profitability - Contrary Research</a></span>
+        <span class="src-note">The clearest unit-economics walkthrough available: 71¢ → 56¢ compute per revenue dollar matters more than the headline revenue. It is projection ahead of an IPO, sourced sympathetically — read the margin math, discount the inevitability.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=Anthropic+and+the+Paradox+of+Unprofitable+AI+Growth">Anthropic and the Paradox of Unprofitable AI Growth</a></span>
+        <span class="src-note">The vendor-side mirror of the Microsoft story: brutal upfront training costs, capex scaling with usage, and the shift to per-token billing that makes revenue — and your invoice — track consumption. Keep the mechanism; the doom framing overstates a chosen capital structure as a law.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">News · TechCrunch</span>
+        <span class="src-title"><a href="https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/">OpenRouter more than doubles valuation to $1.3B in a year</a></span>
+        <span class="src-note">Straight funding coverage; the buried lede is the cap table — CapitalG, Nvidia, and four enterprise-data strategics buying the layer that keeps models swappable. The 25T-tokens-a-week figure is self-reported; quote with caution.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · simonwillison.net</span>
+        <span class="src-title"><a href="https://simonwillison.net/2026/May/27/product-market-fit/">I think Anthropic and OpenAI have found product-market fit</a></span>
+        <span class="src-note">Argument from receipts — $2,180 of tokens on a $200 plan — and from job boards, which beats most PMF talk. The conclusion is plausible and premature in equal measure: hold it loosely, act on it anyway.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+High+Cost+of+Artificial+Intelligence+vs.+Human+Labor">The High Cost of Artificial Intelligence vs. Human Labor</a></span>
+        <span class="src-note">The corrective the boosters need: compute exceeding salaries at the frontier, automation pencilling out in ~23% of jobs. The marquee quote describes a maximal-appetite research team and the 23% is a 2024-vintage estimate — a brake on rhetoric, not a verdict.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+    </ol>
+
+    <h3>VI · The surfaces — screens demoted</h3>
+    <ol>
+      <li>
+        <span class="pub">Product launch · Figma Blog</span>
+        <span class="src-title"><a href="https://www.figma.com/blog/the-figma-agent-is-here/">The Figma Design Agent is Here</a></span>
+        <span class="src-note">A launch post; discount the superlatives. The durable claim is the context moat — components, tokens, and standards legible to the model in ways no third-party tool reaches. The credits footnote is the business model.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Announcement · Google Labs</span>
+        <span class="src-title"><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/">We're introducing real time design with Google Stitch.</a></span>
+        <span class="src-note">Design as a streaming conversation, free, multiplayer — aimed squarely at Figma's $15 seat. Read it as a pricing weapon and an agent-surface play; the Agent Manager is the tell about where Google thinks the workflow goes.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">News · Dataconomy</span>
+        <span class="src-title"><a href="https://dataconomy.com/2026/05/22/chatgpt-powerpoint-ai-slides/">OpenAI Integrates ChatGPT Directly into Microsoft PowerPoint</a></span>
+        <span class="src-note">Matters for one structural reason: OpenAI now operates inside Microsoft's flagship surface, pulling from Gmail and SharePoint, down to the free tier. The deck features are table stakes; the precedent is what to file.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Engineering teardown · performance.dev</span>
+        <span class="src-title"><a href="https://performance.dev/how-is-linear-so-fast-a-technical-breakdown">How's Linear so fast? A technical breakdown</a></span>
+        <span class="src-note">The week's best pure engineering read and its most useful counterweight: the database-in-the-browser substrate is accidentally agent-native, while the interface craft on top is why humans pay. Read twice, once per audience.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+    </ol>
+
+    <h3>VII · The human ledger</h3>
+    <ol>
+      <li>
+        <span class="pub">Engineering blog · Evil Martians</span>
+        <span class="src-title"><a href="https://evilmartians.com/chronicles/ai-assisted-engineers-are-burning-out-is-this-fine">AI-assisted engineers are burning out, is this fine?</a></span>
+        <span class="src-note">The week's necessary corrective, unusually practical for a burnout essay — the 3–4-iteration abandon rule and protected craft hours are adoptable today. Anecdote stands in for data; Anthropic's 93% telemetry quietly supplies the number it lacks.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Newsletter · Growth Unhinged</span>
+        <span class="src-title"><a href="https://www.growthunhinged.com/p/who-s-actually-hiring-in-gtm-right-now">Who's actually hiring in GTM right now? AI companies are doubling SDR hiring</a></span>
+        <span class="src-note">The dataset of the week and its anchor paradox: the companies selling labor automation doubled human SDR hiring while the market cut 21%. Read the tables, not the takes.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Article · SaaStr</span>
+        <span class="src-title"><a href="https://www.saastr.com/how-anthropic-rebuilt-its-sales-org-from-scratch-when-demand-went-vertical-54-of-new-enterprise-logos-now-come-self-serve/">How Anthropic Rebuilt Its Sales Org From Scratch When Demand Went Vertical: 54% of New Enterprise Logos Now Come Self-Serve</a></span>
+        <span class="src-note">The 54% is the headline; the Skills mechanism — best-rep playbooks encoded as MCP-plus-instructions — is the story. What it tactfully omits: what happens to the reps whose patterns got encoded.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+Cruel+Reality+of+the+Modern+Job+Market">The Cruel Reality of the Modern Job Market</a></span>
+        <span class="src-note">Strongest as the broken-apprenticeship argument: AI eats the tasks juniors learn on, so the senior pipeline starves. Weakest as nostalgia — the research implicates remote work at least as much. Keep the mechanism, drop the mood.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+End+of+Non-Technical+Management+in+Software+Engineering">The End of Non-Technical Management in Software Engineering</a></span>
+        <span class="src-note">Overstated as obituary, right as direction: the translator-manager is squeezed by agents below and legibility demands above. Reads better as a demand to learn the stack than as a purge of MBAs.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · jeffgothelf.com</span>
+        <span class="src-title"><a href="https://jeffgothelf.com/blog/karpathy-said-vibe-coding-is-obsolete-what-he-described-instead-is-product-management/">Karpathy said vibe coding is obsolete. What he described instead is product management.</a></span>
+        <span class="src-note">The week's sharpest reframe — "the judgment version is the job; it was always the job." Mildly self-serving from a PM educator, but the mapping holds and the warning cuts both tribes: clerical PMs and execution-only engineers alike.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-27-kindle.html">May 27</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Technical note · saved markdown</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+Death+of+Productivity+Projects%3A+Switching+to+AI+Workflow">The Death of Productivity Projects: Switching to AI Workflow</a></span>
+        <span class="src-note">Thin sourcing, corroborated conclusion: copilot sprawl is being culled in favor of fewer, deeper, compounding systems — minutes saved was the wrong metric. Skippable once you've absorbed the week's economics sections.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+    </ol>
+
+    <h3>VIII · Operators, outliers &amp; one wall</h3>
+    <ol>
+      <li>
+        <span class="pub">Video · Y Combinator / Lightcone</span>
+        <span class="src-title"><a href="https://www.youtube.com/watch?v=B246K_G7mHU">Inside YC's AI Playbook</a></span>
+        <span class="src-note">The most concrete org-level AI account on record — single Postgres of context, 350-tool registry, nightly Dream Cycle. Discount for scale: a hundred high-trust people, no compliance regime. Copy the flywheel, not the radical transparency.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Talk · YouTube (Y Combinator)</span>
+        <span class="src-title"><a href="https://www.youtube.com/watch?v=t-G67yKAHBQ">How to Build a Self-Improving Company with AI</a></span>
+        <span class="src-note">Watchable at 1.5×: "make the company legible to AI" connects half the week's sources, and the loop anatomy — sensors, policy, tools, gates, learning — is genuinely usable. The "burn tokens not headcount" applause line needs group V's price tag.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-25-kindle.html">May 25</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Video · YouTube</span>
+        <span class="src-title"><a href="https://www.youtube.com/watch?v=YX7nE-3rYEQ">I Built an Entire Marketing Agency With 1 AI Tool!</a></span>
+        <span class="src-note">New to the weekly notebook: a creator running research, visuals, and campaigns from a single Higgsfield chat. Promotional and breathless — but as a demo of "human states intent, agent operates the applications," it is the week's thesis performed live. One watch, 1.5×.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Creator+Distribution+Playbook%22">The Creator Distribution Playbook</a></span>
+        <span class="src-note">Standard creator-economy material elevated by its company: it supplies the distribution half of the solo-builder equation that rented intelligence leaves open. An owned audience is the one moat in the week's set no lab can absorb.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Post · X (cyber•Fund)</span>
+        <span class="src-title"><a href="https://x.com/cyberfund/status/2058950286324986294">cyber•Fund on the Monastery and the AI-native solo builder</a></span>
+        <span class="src-note">Venture marketing read as a price signal: someone now underwrites "one builder outperforms a public company" with $2M. The burnout essay in group VII is the unhedged risk in the position, and neither side acknowledges the other.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Post · X (Simon Last)</span>
+        <span class="src-title"><a href="https://x.com/simonlast/status/2057978156183957995">Simon Last on the AI windfall and the state's cut</a></span>
+        <span class="src-note">The Notion co-founder's entry in the founder-circle debate over government equity stakes and national dividends on AI profits. A post, not an analysis — its value is the signal that surplus-capture talk reached operator Twitter, which historically precedes policy.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-26-kindle.html">May 26</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Dead capture · Cloudflare interstitial</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Just+a+moment...%22+cloudflare+challenge+page">Just a moment...</a></span>
+        <span class="src-note">Not an article: the pipeline's machine reader was served a bot wall and ingested it, title and all. Zero content contributed — kept because a web that says "just a moment" to machines is the week's thesis in four words, demonstrated on this digest's own supply chain.</span>
+        <span class="prev-ref">Also covered in <a href="daily-tldr-digest-2026-05-28-kindle.html">May 28</a> and <a href="daily-tldr-digest-2026-05-29-kindle.html">May 29</a>.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · Weekly Summary · May 25–29, 2026 · 49 sources · 4 diagrams · 12 sections · ~31 min read · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>
