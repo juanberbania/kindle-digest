@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — May 29, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · May 29, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 32</div>
+    <div class="rhs">Friday · 29 May 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · Substrate Over Surface</p>
+  <h1>The Demoted Interface</h1>
+  <p class="subtitle">Eight sources converge on a quiet inversion: the screen is becoming a view, and the thing underneath it — the structured data model, the sync engine, the memory graph, the tunnel into private context — is becoming the product. The economics, per Simon Willison's receipts, have already noticed.</p>
+
+  <div class="byline">
+    <span><b>8 sources</b> · 2 diagrams · ~22 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The screen becomes a view</h2>
+
+    <p class="lead">Today's set reads like one essay drafted by six strangers. A performance engineer dissects Linear and finds the secret is that <strong>the app is a database with views</strong> — the interface is just the fastest reader of a local data model. A Mozilla.ai essayist argues the same shape from the agent side: agent-native software is a structured representation plus renderers, and the deck or dashboard is an output, not the source of truth. RushDB ships the memory layer for that representation; OpenAI ships the tunnel that lets agents reach the private context behind it; Willison shows enterprises already paying labor-like money for agent work; and a grumpy veteran reminds everyone that the engineers who matter were never measured in volume anyway. <em>If the interface is no longer the product, what exactly are you shipping — and who, or what, is the customer?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Five agreements across today's sources</h4>
+    <ol>
+      <li><strong>The product is the data model.</strong> Linear (a client-side database with views on top) and Mozilla.ai's agent-native blueprint (a structured representation with renderers on top) specify the same architecture from opposite directions — one chasing human latency, the other chasing agent legibility.</li>
+      <li><strong>Agents are the new enterprise workload.</strong> Willison's token receipts, RushDB's MCP-served memory, and OpenAI's tunnel docs all treat the agent — not the seated user — as the thing to provision, meter, and bill for.</li>
+      <li><strong>Private context is the bottleneck.</strong> Capability is assumed everywhere today; what every infrastructure source sells is governed <em>reach</em> — getting structured, permissioned context from behind the firewall into the agent's working set.</li>
+      <li><strong>The connectivity pattern is outbound and structured.</strong> Background sync (Linear), long-polling tunnels that never open an inbound port (OpenAI), MCP endpoints with OAuth (RushDB): nothing new gets exposed; everything reaches out. The human web's front door is increasingly not on the route.</li>
+      <li><strong>Volume metrics are deflating.</strong> Code volume (Grumpy Dev), raw user counts (Willison's 5.6% conversion), interface seats: the honest metrics emerging across the set are value per unit of complexity and spend per completed outcome.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 SPEED =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · Speed</span>Linear, or what a substrate feels like</h2>
+
+    <p>The performance.dev teardown of Linear is the day's best pure engineering read, and its core finding fits in a sentence: <strong>Linear feels instant because the database lives in the browser.</strong> The full workspace syncs into IndexedDB; mutations apply locally first and reconcile over a WebSocket in the background; a MobX observable graph makes every property independently reactive, so a 50-issue update re-renders 50 cells instead of a list. The delivery layer is equally uncompromising — modern browsers only, no polyfills, hundreds of route-level chunks, a service worker that precaches roughly 1,200 hashed assets while you're still logging in. The team rewrote its build pipeline four times (Parcel → Rollup → Vite → Roundown) and even treats auth the way it treats data: assume the happy path, verify in the background. The reported numbers: ~50% less code shipped, 59% faster first paint on Safari, memory down 70–80%.</p>
+
+    <blockquote>
+      Literally the first lines of code that I wrote was the sync engine.
+      <cite>— Tuomas Artman, Linear co-founder, quoted in the breakdown</cite>
+    </blockquote>
+
+    <p>Read alone, this is a craft story. Read against the rest of today's set, it is something stranger: <strong>Linear accidentally built the agent-native shape years early.</strong> A complete, typed, client-side replica of workspace state — where the UI is merely one reader among possible readers — is exactly the "structured representation plus renderers" architecture Mozilla.ai's essay prescribes for agents (§3). The local-first crowd arrived chasing latency; the agent crowd is arriving chasing legibility; they have converged on the same building. That convergence is the day's quiet headline, and no single source states it.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six labelled bands showing the agent-native application stack with the structured data model as the black band in the middle">
+      <rect x="0" y="0" width="660" height="372" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · THE AGENT-NATIVE BUILDING</text>
+
+      <rect x="30" y="46" width="600" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="67" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">HUMAN VIEWS · RENDERERS</text>
+      <text x="50" y="85" font-family="Georgia,serif" font-size="14" fill="#000000">Docs · decks · dashboards — outputs, not sources of truth</text>
+
+      <rect x="30" y="96" width="600" height="46" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="117" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">VALIDATORS &amp; DIFFS</text>
+      <text x="50" y="135" font-family="Georgia,serif" font-size="14" fill="#000000">Coherence checks · approval surfaces · reviewable change sets</text>
+
+      <rect x="30" y="146" width="600" height="40" fill="#000000"/>
+      <text x="330" y="171" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="2">STRUCTURED DATA MODEL — THE PRODUCT, NOT THE SCREEN</text>
+
+      <rect x="30" y="190" width="600" height="46" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="211" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">SYNC &amp; MEMORY</text>
+      <text x="50" y="229" font-family="Georgia,serif" font-size="14" fill="#000000">Local replicas (Linear's IndexedDB) · semantic graph memory (RushDB 2.0)</text>
+
+      <rect x="30" y="240" width="600" height="46" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="261" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">CONNECTIVITY</text>
+      <text x="50" y="279" font-family="Georgia,serif" font-size="14" fill="#000000">MCP endpoints with OAuth · outbound-only tunnels into private context</text>
+
+      <rect x="30" y="290" width="600" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="311" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">SUBSTRATE</text>
+      <text x="50" y="329" font-family="Georgia,serif" font-size="14" fill="#000000">Models · compute · the re-layering AI infrastructure stack underneath</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Every source today builds or argues for one band of the same building, and the screen — the layer that used to <em>be</em> the product — is the thinnest band at the top. The claim: ownership is moving from the rendering layer to the structured model underneath it, and the bands below the black line are where this year's money is going.</div>
+  </div>
+
+  <!-- =================== §3 INTERFACE =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Interface</span>The container was never the artifact</h2>
+
+    <p>Mozilla.ai's <em>The Interface Is No Longer the Product</em> supplies the day's frame. Its sharpest move is historical: for fifty years the editing interface and the artifact were "for practical purposes, the same thing," and entire software categories are accidents of that conflation. <strong>PowerPoint is not a presentation; it is a container for one</strong>, built around the assumption that a human assembles it slide by slide. Excel is not a financial model; it is a grid interface for building one. Agents break the conflation because they don't need a mouse — they need <em>structured state they can read, reason about, and rewrite</em>. So the agent-native application has a predictable shape: a structured internal representation of the work; renderers that turn it into whatever view the audience needs; validators that keep it coherent; and diff-and-approval surfaces so humans can supervise changes they didn't type. Where agents currently struggle against human UIs, the essay argues, "the friction is the signal."</p>
+
+    <p>The cross-source point is that this is not a prediction — it is a description of software that already exists for other reasons. Linear's sync-first architecture (§2) is the blueprint implemented; code itself, as the essay notes, is the proof that agents thrive wherever the artifact is already structured text. The shift it forecasts is an ownership shift: value migrating from whoever draws the view to whoever owns the model the views are drawn from.</p>
+
+    <p><span class="caflag">Counter</span><em>Hold the thesis against the day's own most-shared piece. The Linear teardown is, at bottom, a four-thousand-word love letter to interface craft — sub-100ms animation budgets, keyboard-first design, asymmetric easing — and that craft, not a data schema, is what users say they love. The honest reconciliation: the interface stops being the product without ceasing to matter. It is demoted from moat to obligation — one renderer among several, which must still be excellent for the one audience that has feelings.</em></p>
+  </section>
+
+  <!-- =================== §4 PLUMBING =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Plumbing</span>Memory graphs and tunnels: selling reach</h2>
+
+    <p>Two infrastructure releases this month fill in the bands below the data model. <strong>RushDB 2.0</strong> pitches itself as "memory infrastructure for the agentic era," and the substance behind the slogan is consolidation: where an agent stack today typically stitches together Redis for key-value state, a vector store for semantic search, and a graph database for relationships, RushDB collapses the trio into one Neo4j-backed layer — native semantic search, ontology-aware querying, schema introspection an agent can run in a single call, MCP with OAuth, and prebuilt agent skills. The shrewdest line in the release is about distribution, not databases: agents learn RushDB <em>from dependencies, not documentation</em> — the SDK in the lockfile is the new developer-relations program, because the developer being related to is a model.</p>
+
+    <p><strong>OpenAI's Secure MCP Tunnel</strong> solves the complementary problem: the context agents most need lives behind corporate firewalls that should never expose an MCP server to the public internet. The pattern is deliberately humble — a small <code>tunnel-client</code> daemon sits next to your private server, dials <em>out</em> to OpenAI over HTTPS, long-polls for work, forwards requests inward, and posts answers back. No inbound ports, no firewall changes, optional mTLS at both ends; supported across ChatGPT, Codex, and the Responses API. It is the architecture of a pickup window: the building never hands out keys, it sends a runner outside.</p>
+
+    <p>Put the two releases side by side and they are the same product at different layers: <strong>governed reach</strong>. Neither sells intelligence; both sell the ability to get private, structured, permissioned context into an agent's working set — which, per today's pullbox, is the actual bottleneck now that capability is table stakes. And notice the family resemblance to §2: an outbound-only tunnel long-polling for work is Linear's background sync engine transplanted to the enterprise perimeter. The agentic era's connectivity idiom — optimistic, asynchronous, outbound, structured — was invented by app developers chasing latency before the agents arrived to need it.</p>
+  </section>
+
+  <!-- =================== §5 ECONOMICS =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Economics</span>Chat monetized like media; agents monetize like labor</h2>
+
+    <p>Simon Willison's Wednesday essay is the day's economic anchor, and it argues from receipts. His own usage: a $200/month Claude subscription that consumed <strong>$2,180.16 worth of tokens</strong> in a month at API list prices — an order-of-magnitude gap between what a power user pays and what coding agents burn. The consumer side never closed that kind of gap: in February, ChatGPT had more than 900 million weekly active users of whom about 50 million — <strong>5.6%</strong> — paid. Coding agents flipped the model: tools like Claude Code and Codex consume vastly more tokens but became daily drivers professionals expense without blinking, and enterprises are now discovering surprisingly large LLM bills from ordinary staff usage. Willison's structural evidence is the job boards — 32.6% of OpenAI's 703 open roles and 26.9% of Anthropic's 390 read as enterprise sales and support — plus the rumor that Anthropic is approaching its first profitable quarter. His conclusion: after years of wildly popular products that resisted monetization, both labs have found product-market fit, and it looks like selling agent labor to enterprises rather than chat to consumers.</p>
+
+    <p>The notebook's macro source — an essay on the emerging architecture of AI infrastructure — maps where that spend lands once it leaves the invoice: a stack re-layering from energy and compute up through models to an emerging agent-coordination layer, with each layer professionalizing the way cloud did. The synthesis with the rest of the day is direct: Willison documents the demand shock (agents as a paying workload), and §4's releases are the supply response (memory, connectivity, and structured state sold agent-first). When the customer changed species, the infrastructure re-formed around it — the way the web re-formed around the browser.</p>
+
+    <p><span class="caflag">Counter</span><em>Willison's claim deserves its own audit. The evidence is one power user's receipt, job-listing ratios, and an unsourced profitability rumor — directional, not dispositive. And "customers are surprised by how large their bills are" is a sentence with two readings: product-market fit, or a churn cohort forming. PMF declared at the top of a token-burning boom, before a single quarter of public financials, is a thesis to hold loosely even while acting on it.</em></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-by-two matrix of surface versus substrate work, consumed by humans versus by agents">
+      <rect x="0" y="0" width="660" height="440" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · WHERE TO PUT YOUR NEXT UNIT OF EFFORT</text>
+
+      <!-- column headers -->
+      <text x="240" y="58" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">CONSUMED BY HUMANS</text>
+      <text x="525" y="58" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">CONSUMED BY AGENTS</text>
+
+      <!-- row labels -->
+      <text x="30" y="92" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">SURFACE</text>
+      <text x="30" y="268" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">SUBSTRATE</text>
+
+      <!-- TOP-LEFT: humans x surface -->
+      <rect x="100" y="70" width="280" height="160" fill="#c8c8c8" stroke="#000000" stroke-width="1.2"/>
+      <text x="118" y="98" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="2">THE CRAFT MOAT</text>
+      <text x="118" y="122" font-family="Georgia,serif" font-size="14" fill="#000000">Linear's feel: sub-100ms motion,</text>
+      <text x="118" y="140" font-family="Georgia,serif" font-size="14" fill="#000000">keyboard-first, no spinners.</text>
+      <text x="118" y="164" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Real and lovable — but expensive</text>
+      <text x="118" y="182" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">to keep, and only humans pay for it.</text>
+
+      <!-- TOP-RIGHT: agents x surface -->
+      <rect x="385" y="70" width="245" height="160" fill="#9a9a9a" stroke="#000000" stroke-width="1.2"/>
+      <text x="403" y="98" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="2">THE BLOCKED PATH</text>
+      <text x="403" y="122" font-family="Georgia,serif" font-size="14" fill="#000000">Agents driving human UIs:</text>
+      <text x="403" y="140" font-family="Georgia,serif" font-size="14" fill="#000000">brittle scrapers, bot walls.</text>
+      <text x="403" y="164" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Today's eighth source died</text>
+      <text x="403" y="182" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">here, at a Cloudflare wall.</text>
+
+      <!-- BOTTOM-LEFT: humans x substrate -->
+      <rect x="100" y="246" width="280" height="160" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="118" y="274" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="2">THE SPEED DIVIDEND</text>
+      <text x="118" y="298" font-family="Georgia,serif" font-size="14" fill="#000000">Local-first sync: the database</text>
+      <text x="118" y="316" font-family="Georgia,serif" font-size="14" fill="#000000">in the browser, mutations first.</text>
+      <text x="118" y="340" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Humans experience the substrate</text>
+      <text x="118" y="358" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">as speed. Same investment, twice paid.</text>
+
+      <!-- BOTTOM-RIGHT: agents x substrate -->
+      <rect x="385" y="246" width="245" height="160" fill="#000000"/>
+      <text x="403" y="274" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="2">THE BUILD ZONE</text>
+      <text x="403" y="298" font-family="Georgia,serif" font-size="14" fill="#ffffff">Memory graphs · MCP · tunnels ·</text>
+      <text x="403" y="316" font-family="Georgia,serif" font-size="14" fill="#ffffff">structured, permissioned state.</text>
+      <text x="403" y="340" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#ffffff">Where the new enterprise</text>
+      <text x="403" y="358" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#ffffff">spend is landing.</text>
+
+      <text x="330" y="430" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">BUILD DOWN AND TO THE RIGHT</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The decision frame today's sources jointly imply: surface work for humans is a real but costly moat; surface work for agents is a dead end the bot-blocked web enforces; and the compounding quadrant is substrate for agents — with the welcome twist that substrate built for agents (structured local state, background sync) is the same investment humans experience as speed.</div>
+  </div>
+
+  <!-- =================== §6 CRAFT =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · Craft</span>Less code, priced honestly at last</h2>
+
+    <p>The Grumpy Dev's <em>The Best Engineers Write Less Code</em> would have been a familiar sermon in any year — great engineers are measured "by how much value they create relative to the complexity they leave behind," code is a liability unless it solves the right problem, the senior move is asking <em>why are we building this</em> before estimating it. What makes it load-bearing today is the company it keeps. Set it against Willison's numbers and a genuinely new economic fact appears: <strong>token spend is exploding precisely while the best human engineers are writing less</strong>. Agents have driven the marginal cost of code volume toward zero — which means volume is now worthless as a signal of contribution, for machines and humans alike. What the agent cannot supply is the judgment about what <em>not</em> to build; every feature still carries its old tail of maintenance, debugging, support, and cognitive overhead, regardless of who typed it. The author's warning about "an enormous amount of work fixing the slop now being pushed into production" is the same liability ledger, read from the cleanup side.</p>
+
+    <p>The synthesis with §3 is sharper than it first looks: writing less code and demoting the interface are the same discipline at different layers. Both say the artifact users see — the feature, the screen — is the <em>output</em>, and the durable asset is the small, structured core that generates it. The engineers who internalized value-per-complexity a decade ago turn out to have been practicing agent-era economics before there were agents to enforce them.</p>
+  </section>
+
+  <!-- =================== §7 THE LONG VIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The long view</span>The eighth source, and the web that says no</h2>
+
+    <p>A confession from the editing desk: today's notebook contains eight sources, and one of them is titled <em>"Just a moment..."</em> That is not an essay. It is Cloudflare's anti-bot challenge page — the machine reader behind this digest's pipeline requested an article, got an interstitial built to repel machine readers, and dutifully ingested the wall instead of the building. It contributed nothing to the summary, and it is the most instructive item in the set, because it is the day's thesis demonstrated by accident: <strong>the human-interface web actively refuses non-human readers.</strong> That hostility is not a bug to be patched; it is the negative space that explains the rest of today's reading. It is why OpenAI builds outbound tunnels instead of teaching agents to click through portals, why RushDB sells agents a memory they can query instead of a site they must scrape, and why Mozilla.ai expects applications to be rebuilt around structured state rather than expecting agents to win a war against bot walls. The agent-native rebuild routes <em>around</em> the interface web, not through it.</p>
+
+    <p>The decade's sequence, as today's sources sketch it: software spent twenty years collapsing the model into the interface because humans were the only readers. The agentic era runs the film backwards — prying the model back out (Mozilla.ai), syncing it everywhere (Linear), giving it memory (RushDB), tunneling it past the perimeter (OpenAI), and pricing it like labor (Willison). For the ledger, three falsifiable expectations: an MCP or "agent endpoint" surface becomes a standard checkbox on B2B software within a year; local-first sync engines stop being a boutique architecture and start being acquired or cloned by application platforms; and per-seat pricing visibly erodes first in exactly the tools whose heaviest users are no longer people.</p>
+  </section>
+
+  <!-- =================== §8 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Practical takeaways</span>If you only do six things this week</h2>
+
+    <ol>
+      <li><strong>Audit your product for a structured core.</strong> Ask the Mozilla.ai question concretely: can an agent read and write your app's real state without driving the UI? If the truth of your product lives only in the DOM, start extracting the model — that is the asset, the screens are renderers.</li>
+      <li><strong>Steal Linear's ordering, not just its tricks.</strong> Sync engine first, interface second. If you're starting anything new: local replica, optimistic mutation, background reconciliation. Speed is an architecture decision made on day one, not an optimization sprint in year two.</li>
+      <li><strong>Tunnel, don't expose.</strong> When agents need private context, copy the outbound-only pattern: a daemon inside the perimeter that dials out and long-polls. The moment a plan involves opening an inbound port for an AI integration, stop and redesign.</li>
+      <li><strong>Count your memory stores.</strong> If your agent stack runs Redis plus a vector DB plus a graph — three systems to keep consistent — price the consolidation play before adding a fourth. The glue code between memory stores is pure liability by §6's ledger.</li>
+      <li><strong>Run a deletion review.</strong> Apply the Grumpy Dev test to last quarter's shipped features: which created value relative to the complexity they left behind? With agents making volume free, the discipline of <em>not building</em> is the differentiating skill — practice it on your own backlog.</li>
+      <li><strong>Read your token bill like a P&amp;L line.</strong> Willison's inflection means vendors found their pricing power on your invoice. Move budgeting from per-seat to per-outcome now, before the gap between subscription price and token consumption gets repriced for you.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §9 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Local-first</dt>
+        <dd>An architecture where the application's data lives on the client (e.g. in IndexedDB) and the server is a sync peer, not a gatekeeper. Reads and writes hit local data; the network is removed from the interaction path.</dd>
+
+        <dt>Sync engine</dt>
+        <dd>The machinery that keeps a local replica and a server database convergent: apply mutations locally, ship them in the background, reconcile conflicts. Linear's co-founder wrote it before the UI existed.</dd>
+
+        <dt>Optimistic mutation</dt>
+        <dd>Applying a change locally and assuming success, verifying with the server afterwards. Linear applies the same trick to authentication: assume the happy path, check in the background.</dd>
+
+        <dt>Agent-native application</dt>
+        <dd>Mozilla.ai's blueprint: a structured internal representation of the work, renderers that turn it into human views, validators that keep it coherent, and diff/approval surfaces for supervision. The interface becomes one view over the structure.</dd>
+
+        <dt>Renderer</dt>
+        <dd>A component that turns the structured model into an audience-appropriate view — a doc, a deck, a dashboard. In the agent-native frame, the deliverable artifact is an export of the model, not the model itself.</dd>
+
+        <dt>MCP (Model Context Protocol)</dt>
+        <dd>The open protocol through which models discover and call external tools and data sources. Increasingly the standard "agent door" on infrastructure products — RushDB 2.0 ships it with OAuth attached.</dd>
+
+        <dt>Outbound-only tunnel</dt>
+        <dd>OpenAI's Secure MCP Tunnel pattern: a daemon inside the private network dials out over HTTPS and long-polls for work, so private servers serve agents without inbound ports or firewall changes.</dd>
+
+        <dt>Code as liability</dt>
+        <dd>The Grumpy Dev's accounting: every line shipped carries ongoing costs — maintenance, debugging, support, migration, cognitive load — so contribution is value created relative to complexity left behind, not volume produced.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (May 29, 2026)</em> · 8 sources, with audio overview available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The eight pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Engineering teardown · performance.dev</span>
+        <span class="src-title"><a href="https://performance.dev/how-is-linear-so-fast-a-technical-breakdown">How's Linear so fast? A technical breakdown</a></span>
+        <span class="src-note">The day's best engineering read, and the detail that matters is the priority ordering, not the tricks: the sync engine was the first code written. Read it twice — once as a performance postmortem, once as the agent-native architecture document its author didn't know he was writing.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Mozilla.ai blog</span>
+        <span class="src-title"><a href="https://blog.mozilla.ai/the-interface-is-no-longer-the-product/">The Interface Is No Longer the Product</a></span>
+        <span class="src-note">Names the day's frame, and the PowerPoint-as-container reframing will outlive the essay. Its blind spot is the one §3 flags: it underweights how much interface feel still decides what people buy. Right about ownership; incomplete about love.</span>
+      </li>
+      <li>
+        <span class="pub">Release · RushDB</span>
+        <span class="src-title"><a href="https://rushdb.com/blog/rushdb-2-0-release">RushDB 2.0: Memory Infrastructure for the Agentic Era</a></span>
+        <span class="src-note">A vendor pitch — discount the adjectives. The testable claim is consolidation (one semantic layer replacing the Redis + vector + graph trio), and the genuinely sharp insight is distributional: agents learn your product from dependencies, not docs. That sentence is worth the whole release.</span>
+      </li>
+      <li>
+        <span class="pub">Documentation · OpenAI API</span>
+        <span class="src-title"><a href="https://developers.openai.com/api/docs/guides/secure-mcp-tunnels">Secure MCP Tunnel</a></span>
+        <span class="src-note">Dry platform docs that read as strategy if you squint: outbound-only, long-polling, no inbound firewall changes. Skim the setup; keep the implication — OpenAI believes the valuable context lives behind perimeters and is building the pickup window to reach it.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · simonwillison.net</span>
+        <span class="src-title"><a href="https://simonwillison.net/2026/May/27/product-market-fit/">I think Anthropic and OpenAI have found product-market fit</a></span>
+        <span class="src-note">Argument from receipts — $2,180 of tokens on a $200 plan — and from job boards, which is more honest than most PMF talk. The 5.6% consumer conversion figure is the number to remember. The conclusion is plausible and premature in equal measure; hold it loosely, act on it anyway.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Notebook upload, uncredited</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=The+Emerging+Architecture+of+Artificial+Intelligence+Infrastructure">The Emerging Architecture of Artificial Intelligence Infrastructure</a></span>
+        <span class="src-note">The macro wallpaper of the set: the stack re-layering from energy and compute up to an agent-coordination layer. Useful as a map, light on falsifiable claims — if you've read any infrastructure-stack survey this quarter, you can skip it without loss.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Grumpy Dev</span>
+        <span class="src-title"><a href="https://shvetsm.github.io/posts/the-best-engineers-write-less-code/">The Best Engineers Write Less Code</a></span>
+        <span class="src-note">Old wisdom, newly priced. Nothing here is novel — value per complexity, code as liability — but the agent era converts it from temperament into economics. The "fixing the slop" warning is the cleanup-side reading of every optimistic source above it.</span>
+      </li>
+      <li>
+        <span class="pub">Dead capture · Cloudflare interstitial</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Just+a+moment...%22+cloudflare+challenge+page">Just a moment...</a></span>
+        <span class="src-note">Not an article: the pipeline's machine reader was served a bot wall and ingested it, title and all. Zero content contributed — kept on the register for honesty, and because a web that says "just a moment" to machines is the day's thesis in four words (§7).</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 32 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

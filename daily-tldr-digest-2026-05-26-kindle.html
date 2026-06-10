@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — May 26, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · May 26, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 29</div>
+    <div class="rhs">Tuesday · 26 May 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · Software's New Customer</p>
+  <h1>The Second Audience</h1>
+  <p class="subtitle">Ten sources, one converging claim: software's primary customer is changing species. Agents are getting accounts, protocols, runtimes, and price cuts built for them — and every product built for human eyes now faces one question: would an agent still need you?</p>
+
+  <div class="byline">
+    <span><b>10 sources</b> · 2 diagrams · ~23 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The week the internet got a second user base</h2>
+
+    <p class="lead">Today's reading looks scattered — a protocol release candidate, a markdown file for signups, a Chinese price cut, a profitability projection, a design tool, a PowerPoint add-in, a creative supercomputer, a government equity grab — until you notice every piece answers the same request from the same new customer. Ramdial names the customer plainly: a <strong>second audience</strong> of software agents that never sleeps, reads your docs literally, and doesn't care about your brand. The MCP release candidate rebuilds the protocol layer so that audience can scale; auth.md, shipped yesterday, lets it open accounts; the Rust migration gives it runtimes; DeepSeek gives it cheap tokens; Anthropic's projected first profitable quarter shows who collects when it spends. <em>If the next billion users of your product aren't people, what were you building for the last ten years?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Five agreements across today's sources</h4>
+    <ol>
+      <li><strong>Agents are becoming the primary consumers of software.</strong> Agents already drive nearly half of documentation traffic at Mintlify (Ramdial); auth.md exists so they can register for services; the MCP RC redesigns the protocol for fleets, not sessions. Three independent layers, one customer.</li>
+      <li><strong>The infrastructure for non-human users is being standardized right now.</strong> The MCP RC locked May 21; auth.md shipped May 25 with Cloudflare, Firecrawl, Resend, and Monday.com on board. Four days apart, both make machine-readable text at a well-known location the front door to a service.</li>
+      <li><strong>Token economics are bending toward agent-scale consumption.</strong> DeepSeek made its 75% V4-Pro cut permanent (~2% of GPT-5.5's price); Anthropic's compute cost fell from 71 to a projected 56 cents per revenue dollar. Opposite strategies, same wager: agent demand grows without limit.</li>
+      <li><strong>The stack is stratifying by audience.</strong> Ramdial's 0.5 layer (auth, vector search, payments, inference) is in structural growth; the agent-first note documents the same stratification inside engineering — Python for the human scripting layer, Rust for the runtimes agents hammer.</li>
+      <li><strong>Chat is becoming the human's only seat.</strong> In one ten-day window, Higgsfield put every frontier model behind one chat, Google Stitch made design a streaming conversation, and OpenAI put ChatGPT inside PowerPoint. Humans state intent; agents do the clicking.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 THE THESIS =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The thesis</span>The 0.5 layer and the audience that doesn't read landing pages</h2>
+
+    <p>Neevash Ramdial's <em>The AI Bifurcation of Tech</em> is the day's organizing essay. His model splits the stack three ways: raw infrastructure at the bottom, applications at the top, and between them a <strong>0.5 layer</strong> of primitives software gets assembled from — auth, vector databases, payments, inference, documentation hosting. His claim: AI hasn't created new product requirements; it is <em>enforcing old ones</em>, because the new consumer of your product is an agent that reads docs literally, tolerates no flaky endpoints, and judges you on whether calls return 200 in under 300 milliseconds. The receipts: Turbopuffer at $100M annual revenue in 19 months on under $1M raised; Modal's $355M Series C at $4.65B; Mintlify reporting agents now drive nearly half of all documentation traffic.</p>
+
+    <blockquote>
+      The line that matters isn't AI-native versus legacy. It's whether your product can be consumed by something that doesn't read landing pages.
+      <cite>— Neevash Ramdial, The AI Bifurcation of Tech</cite>
+    </blockquote>
+
+    <p>The agent-first development note supplies what Ramdial leaves implicit: the second audience is restructuring engineering itself. The fastest-growing agent repos of Q1 2026 are written in Rust, and teams tell the same story — conceive the system in Python, re-engineer it in Rust once it must be concurrent, always-on, and cheap, because the GIL was never built for ten thousand simultaneous non-human callers. The synthesis neither source states alone: <strong>language choice has become an audience choice.</strong> Python is where humans sketch; systems languages are where agents live — the stratification databases went through, replayed at machine speed. And the economics making agent-assembled software real sit in Ramdial's I/O datapoint: an Antigravity 2.0 demo built a functioning OS in 12 hours with 93 sub-agents and 2.6 billion tokens — for under $1,000. That bill is only payable in a world where §4's price war is happening.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six labelled bands showing the software stack redrawn around the agent as the new primary customer">
+      <rect x="0" y="0" width="660" height="440" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · THE STACK, REDRAWN FOR THE SECOND AUDIENCE</text>
+
+      <rect x="30" y="50" width="600" height="52" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="72" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">HUMAN INTENT — ONE CHAT</text>
+      <text x="50" y="92" font-family="Georgia,serif" font-size="14" fill="#000000">Higgsfield Supercomputer · Stitch real-time design · ChatGPT in PowerPoint</text>
+
+      <rect x="30" y="106" width="600" height="48" fill="#000000"/>
+      <text x="330" y="127" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="3">THE AGENT — THE NEW PRIMARY CUSTOMER</text>
+      <text x="330" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#ffffff">never sleeps · reads docs literally · doesn't care about your brand</text>
+
+      <rect x="30" y="158" width="600" height="52" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="180" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PROTOCOL RAILS — STANDARDIZED THIS WEEK</text>
+      <text x="50" y="200" font-family="Georgia,serif" font-size="14" fill="#000000">MCP stateless core (RC May 21) · auth.md registration (May 25) · OAuth/OIDC</text>
+
+      <rect x="30" y="214" width="600" height="52" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="236" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THE 0.5 LAYER — STRUCTURAL GROWTH</text>
+      <text x="50" y="256" font-family="Georgia,serif" font-size="14" fill="#000000">Auth · vector search · payments · inference · docs — what agents assemble from</text>
+
+      <rect x="30" y="270" width="600" height="52" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="292" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">RUNTIME — SYSTEMS LANGUAGES</text>
+      <text x="50" y="312" font-family="Georgia,serif" font-size="14" fill="#000000">Rust where agents run hot · Python stays the human scripting layer</text>
+
+      <rect x="30" y="326" width="600" height="52" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="348" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">COMPUTE — REPRICED FOR FLEETS</text>
+      <text x="50" y="368" font-family="Georgia,serif" font-size="14" fill="#000000">DeepSeek V4-Pro −75% permanent · Anthropic compute: 71¢ → 56¢ per $1 revenue</text>
+
+      <text x="330" y="408" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The app layer appears nowhere — it survives as the surface on top</text>
+      <text x="330" y="426" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">or the primitive below, not as the destination.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Every layer of the redrawn stack — surfaces, protocols, primitives, runtimes, compute — shipped news this fortnight, and the load-bearing middle band is the agent, not the application. The app layer's absence from the diagram is the day's quiet thesis.</div>
+  </div>
+
+  <!-- =================== §3 THE PLUMBING =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The plumbing</span>MCP goes stateless, auth.md opens the front door</h2>
+
+    <p>The MCP <strong>2026-07-28 release candidate</strong>, locked last Thursday, is the most consequential spec revision since the protocol launched. The headline: MCP is now <em>stateless at the protocol layer</em>. The initialize handshake and sessions are gone; protocol metadata travels in <code>_meta</code> on every request; a server that used to need sticky sessions and a shared session store can sit behind a plain round-robin load balancer, route on an <code>Mcp-Method</code> header, and let clients cache <code>tools/list</code> for as long as <code>ttlMs</code> permits. State doesn't vanish — it moves into <strong>explicit handles</strong> the model passes back as tool arguments, visible instead of hidden in transport metadata. Around the core: MCP Apps (server-rendered UIs in sandboxed iframes), a redesigned Tasks extension, six SEPs hardening authorization toward real OAuth/OIDC practice, and formal deprecation of roots, sampling, and logging. Final spec lands July 28; Tier 1 SDKs ship inside the ten-week window.</p>
+
+    <p>Four days after the RC locked, WorkOS shipped <strong>auth.md</strong> — an open protocol that lets agents <em>register accounts</em> on behalf of users, discoverable through a markdown file at your domain. The file declares which flows a service supports: <em>agent-verified</em>, where the agent's identity provider vouches for the user with no human in the loop, or <em>user-claimed</em>, where the agent triggers an OTP and the human confirms. It composes boring existing standards — OAuth Protected Resource Metadata, ID-JAG assertions — and Cloudflare, Firecrawl, Resend, and Monday.com shipped support on day one. The synthesis no single source states: <strong>both releases make the identical move.</strong> Coordination that lived in session state or human ritual — handshakes, signup forms, sticky sessions — gets flattened into stateless, cacheable, machine-readable text at a well-known location. The agent web is being built the way the human web was: plain files, HTTP semantics, caching headers. That humility is why it will probably work.</p>
+
+    <p><span class="caflag">Counter</span><em>Mind the hype gap: the framing circulating this week — MCP as the standard that lets agents "communicate and share memory seamlessly" — is not what the RC says. The text is strictly client–server plumbing; there is no agent-to-agent channel and no shared memory in it. Statelessness pushes memory out of the protocol, into handles the application must manage. The spec got more boring and more deployable at once, and the boring reading is the correct one.</em></p>
+  </section>
+
+  <!-- =================== §4 ECONOMICS =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Economics</span>One cost curve, two opposite bets</h2>
+
+    <p>Two money stories anchor the day, and they are mirror images. <strong>DeepSeek</strong> made its 75% discount on V4-Pro permanent — pricing due to expire May 31 is now the list price: $0.435 per million input tokens, $0.87 output, roughly 2% of GPT-5.5's price for frontier-tier capability. V4-Pro cut long-context inference to about a quarter of the compute and a tenth of the memory of its predecessor, and DeepSeek passed the whole gain through to the API price — market share over margin, and open pressure on every Western lab's rate card.</p>
+
+    <p><strong>Anthropic</strong> made the opposite choice with the same physics. Contrary Research's breakdown centers on one ratio: compute spend per dollar of revenue — 71 cents in Q1, a projected 56 in Q2 — which, with revenue more than doubling to a projected $10.9B for the quarter (Claude Code alone above $2.5B), would make Q2 the first profitable quarter in the company's history, conveniently ahead of an IPO expected this fall. Falling inference costs became margin instead of price cuts. The synthesis: <strong>the price war and the profitability story are the same wager read from opposite sides.</strong> Both only pay if agent-scale demand keeps compounding — DeepSeek is buying the second audience's traffic, Anthropic is monetizing it — and both confirm §2: when the token reprices toward commodity, durable revenue migrates to whoever owns the workflow (Claude Code) or the primitive (the 0.5 layer), not the raw intelligence.</p>
+  </section>
+
+  <!-- =================== §5 THE SURFACE =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The surface</span>Chat becomes the human's only seat</h2>
+
+    <p>Three product launches in a ten-day window, three different giants, one identical shape. <strong>Higgsfield's Supercomputer</strong> (May 14, the subject of today's video source) puts every frontier model — Claude Opus 4.7, GPT-5.5 Pro, Gemini 3.1 Pro — plus its stable of media models behind a single chat agent with 40+ tools and three layers of memory: describe the reel or the week of content, and the agent plans, routes, renders, and learns from the run. <strong>Google Stitch</strong> (announced at I/O last week, free) replaced turn-based design with a real-time streaming agent that renders UI onto the canvas as you type or speak, with multiplayer editing — while Figma charges $15 a seat for the workflow Stitch is dissolving. And <strong>OpenAI put ChatGPT inside PowerPoint</strong> (May 21): generate and edit decks conversationally without leaving the app, pulling context from Gmail, Outlook, and SharePoint, down to the free tier.</p>
+
+    <p>The cross-source point: the same inversion at three altitudes. The human no longer operates the application; the human states intent into a chat, and an agent operates the application — picks the model, places the component, builds the slide. Launches that look like the app layer fighting back are the app layer <em>surrendering its interior</em>: PowerPoint survives as a rendering target, design tools as canvases, creative suites as model menus. Combine with §2 and the bifurcation sharpens into a rule no single source states: <strong>an application now survives as the chat surface above the agent or the primitive below it — the middle, where humans used to click through workflows, evaporates.</strong></p>
+
+    <p><span class="caflag">Counter</span><em>The honest tension in today's set: Ramdial says the app layer is compressing, yet the week's loudest launches are application-layer products from OpenAI and Google. The reconciliation is uncomfortable for everyone smaller: distribution giants can convert their apps into agent surfaces and keep the seat; SaaS products that are neither the chat box nor the API underneath get squeezed from both ends. Compression isn't the app layer dying — it's the app layer consolidating into whoever already owns the user.</em></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-panel decision frame comparing products built for human eyes against products consumable by agents">
+      <rect x="0" y="0" width="660" height="400" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THE THREE-YEAR TEST: WOULD AN AGENT STILL NEED YOU?</text>
+
+      <!-- LEFT PANEL: built for eyes -->
+      <rect x="30" y="50" width="295" height="330" fill="#f1f1f1" stroke="#000000" stroke-width="1.4"/>
+      <text x="48" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PANEL A · BUILT FOR EYES</text>
+
+      <rect x="48" y="96" width="259" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="60" y="116" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">YOUR PRODUCT</text>
+      <text x="60" y="133" font-family="Georgia,serif" font-size="13" fill="#000000">landing pages · dashboards · per-seat</text>
+      <text x="60" y="148" font-family="Georgia,serif" font-size="13" fill="#000000">pricing · onboarding tours</text>
+
+      <text x="177" y="178" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ agent gets the task</text>
+
+      <rect x="48" y="192" width="259" height="58" fill="#000000"/>
+      <text x="60" y="212" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff">IT ROUTES AROUND YOU</text>
+      <text x="60" y="229" font-family="Georgia,serif" font-size="13" fill="#ffffff">assembles the same outcome from</text>
+      <text x="60" y="244" font-family="Georgia,serif" font-size="13" fill="#ffffff">0.5-layer pieces · no login, no brand</text>
+
+      <text x="177" y="274" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ value exits</text>
+
+      <rect x="48" y="288" width="259" height="50" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="60" y="308" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">STRUCTURAL COMPRESSION</text>
+      <text x="60" y="325" font-family="Georgia,serif" font-size="13" fill="#000000">the seat disappears with the clicker</text>
+
+      <text x="48" y="364" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Ramdial's compressed quadrant.</text>
+
+      <!-- RIGHT PANEL: consumable by agents -->
+      <rect x="335" y="50" width="295" height="330" fill="#f1f1f1" stroke="#000000" stroke-width="1.4"/>
+      <text x="353" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PANEL B · CONSUMABLE BY AGENTS</text>
+
+      <rect x="353" y="96" width="259" height="58" fill="#000000"/>
+      <text x="365" y="116" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff">YOUR PRODUCT, AGENT-LEGIBLE</text>
+      <text x="365" y="133" font-family="Georgia,serif" font-size="13" fill="#ffffff">clean API · 200s under 300 ms · docs</text>
+      <text x="365" y="148" font-family="Georgia,serif" font-size="13" fill="#ffffff">a literal reader can parse</text>
+
+      <text x="482" y="178" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ open the front door</text>
+
+      <rect x="353" y="192" width="259" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="365" y="212" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">RAILS: auth.md + MCP</text>
+      <text x="365" y="229" font-family="Georgia,serif" font-size="13" fill="#000000">agents register accounts · stateless</text>
+      <text x="365" y="244" font-family="Georgia,serif" font-size="13" fill="#000000">servers scale on plain HTTP</text>
+
+      <text x="482" y="274" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ traffic compounds</text>
+
+      <rect x="353" y="288" width="259" height="50" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="365" y="308" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">STRUCTURAL GROWTH</text>
+      <text x="365" y="325" font-family="Georgia,serif" font-size="13" fill="#000000">half of Mintlify's docs traffic is agents</text>
+
+      <text x="353" y="364" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Turbopuffer's quadrant: $100M, &lt;$1M raised.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · Products built for human eyes get routed around by an audience that doesn't read landing pages; products that are agent-legible — clean API, auth.md at the domain, a stateless MCP server — compound with the traffic. The test for anything you own: would an agent still need you in three years?</div>
+  </div>
+
+  <!-- =================== §6 THE STATE =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The state</span>From referee to shareholder</h2>
+
+    <p>The day's outlier source — a Simon Last post circulating via TLDR's founders letter — points at the political layer of the same windfall. The backdrop is concrete: last week Washington announced $2B in grants across nine quantum computing companies with a novel condition — the federal government takes <em>minority equity stakes</em> in the recipients. IBM gets $1B for a domestic quantum-chip foundry; GlobalFoundries $375M for a 1% stake; D-Wave's $100M is entirely equity-based; publicly traded recipients jumped 15–30%. Alongside it, the idea getting oxygen in founder circles this week: if AI profits are about to become real — see §4 — proposals for a <strong>"national dividend"</strong> on those profits move from fringe pamphlet to plausible policy.</p>
+
+    <p>Put it next to Anthropic's projected first profitable quarter and the shape is hard to miss: the same quarter the first frontier lab is on track to cross into operating profit, the state starts taking equity in strategic compute. That is a regime change in posture — government as <em>shareholder of the windfall</em> rather than referee of the risk — and it lands precisely because the windfall finally exists. The synthesis worth logging: the agent economy's three claimants surfaced in one week's reading — labs (margin), infrastructure owners (the 0.5 layer), and now the state (equity and dividends). The fight over who captures agent-generated surplus has formally started, before most application companies have noticed their customer changed species.</p>
+  </section>
+
+  <!-- =================== §7 THE LONG VIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The long view</span>What breaks when half your traffic isn't human</h2>
+
+    <p>Take Mintlify's number seriously — agents already near half of documentation traffic — and run it forward across today's stack. Per-seat pricing breaks: the seat was a proxy for a human clicker, and the clicker is leaving (§5). Marketing breaks: the new audience doesn't read landing pages and can't be retargeted — Ramdial's point about rigor over brand polish is really a point about where sales budgets go to die. Analytics break, because "users" becomes a category error. Security breaks the other way: auth.md's agent-verified flow — no human at registration — is exactly what makes fraud teams sweat, and the OAuth hardening in the MCP RC reads like the protocol authors know it. Even the dev-tools hierarchy breaks: when the hot path is ten thousand concurrent agent calls, the GIL is a business problem, and language stratification (§2) is the stack reorganizing around its heaviest user.</p>
+
+    <p>The falsifiable version, for the ledger. If the second-audience thesis is right: the MCP final spec lands July 28 with Tier-1 SDK support inside the window; auth.md files appear on major SaaS domains by autumn; an analytics vendor ships agent-traffic segmentation as a headline feature this year; and post-IPO lab earnings calls report agent/API consumption growing faster than chat subscriptions. If agent traffic instead plateaus at a novelty fraction of the web by year-end, today's issue overweighted a vendor narrative — auth.md is a WorkOS product launch wearing a protocol's clothes, and Contrary's arithmetic is projection, not a filed result. Write the checkpoints down now; grade them later.</p>
+  </section>
+
+  <!-- =================== §8 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Practical takeaways</span>If you only do six things this week</h2>
+
+    <ol>
+      <li><strong>Run the three-year test on everything you own.</strong> For each product or internal tool: if an agent were handed the task it serves, would it call you or assemble the outcome from 0.5-layer pieces? Sort your portfolio into Figure 2's panels and be honest about the left column.</li>
+      <li><strong>Read the MCP release candidate before July 28.</strong> The stateless core changes your deployment story for the better — plain load balancers, cacheable tool lists, explicit handles. Budget the migration inside the ten-week window, not after the final spec lands on you.</li>
+      <li><strong>Publish (or at least draft) an auth.md.</strong> Even if you wait on the agent-verified flow, writing down how a non-human registers for your service exposes every place your signup assumes eyeballs. The protocol is a markdown file; the audit is the real product.</li>
+      <li><strong>Reprice your model menu against DeepSeek's new floor.</strong> Frontier capability at ~2% of GPT-5.5's price changes which tasks justify premium tokens. Re-run the routing math; what was uneconomical for agents in April may be free-tier cheap now.</li>
+      <li><strong>Check your docs traffic for agents.</strong> Mintlify's near-half number is a leading indicator you can measure on your own properties today. If agents are a third of your docs reads, your docs are an API surface — write them for the literal reader.</li>
+      <li><strong>Profile your hot path before the second audience finds it.</strong> The Python-to-Rust stories all start with an agent workload melting a prototype. If you expect agent callers, load-test at fleet concurrency now and decide deliberately what stays in the scripting layer.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §9 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Second audience</dt>
+        <dd>Ramdial's framing for software agents as a user base parallel to humans — one that never sleeps, reads documentation literally, ignores brand, and judges services purely on interface quality and latency.</dd>
+
+        <dt>The 0.5 layer</dt>
+        <dd>The stratum between raw infrastructure and applications: auth, vector search, payments, inference, docs hosting — the primitives agents assemble outcomes from. Growing because every agent-built product draws on it.</dd>
+
+        <dt>Stateless MCP</dt>
+        <dd>The 2026-07-28 release candidate's core change: no handshake, no sessions. Protocol metadata travels in <code>_meta</code> on every request, so any server instance can answer any call behind a plain load balancer.</dd>
+
+        <dt>Explicit handle</dt>
+        <dd>The MCP RC's replacement for protocol-managed state: an identifier returned by a tool call that the model passes back in later calls. State becomes visible to the agent, not hidden in transport metadata.</dd>
+
+        <dt>auth.md</dt>
+        <dd>An open WorkOS-published protocol: a markdown file at a service's domain telling agents how to register accounts on a user's behalf, via an agent-verified (no human) or user-claimed (OTP) flow. Built on OAuth standards.</dd>
+
+        <dt>Language stratification</dt>
+        <dd>A maturing stack splitting by layer: Python as the human scripting and prototyping layer, Rust and other systems languages as the runtime layer where agent concurrency and cost dominate.</dd>
+
+        <dt>Inference margin</dt>
+        <dd>Revenue minus compute cost per dollar served. Anthropic's compute fell from 71¢ to a projected 56¢ per revenue dollar; DeepSeek converted the same efficiency into a permanent 75% price cut instead.</dd>
+
+        <dt>National dividend</dt>
+        <dd>The policy idea — newly plausible alongside government equity stakes in quantum firms — that the state should hold shares in the AI windfall and distribute returns to citizens: taxing the boom by ownership, not by rate.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (May 26, 2026)</em> · 10 sources, with the "The Internet is Now for AI Agents" Deep Dive audio overview available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The ten pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Essay · neevash.com</span>
+        <span class="src-title"><a href="https://neevash.com/blog/tech-bifurcation-and-the-0.5-layer">The AI Bifurcation of Tech</a></span>
+        <span class="src-note">The day's keeper and the issue's spine. The 0.5-layer taxonomy plus real numbers (Turbopuffer, Modal, Mintlify) make the agent-as-customer thesis falsifiable instead of vibes. Weakest where it waves at "compression" without naming who survives; §5 supplies the missing answer.</span>
+      </li>
+      <li>
+        <span class="pub">Technical note · saved markdown</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Rise+of+Agent-First+Development+and+Systems+Languages%22">The Rise of Agent-First Development and Systems Languages</a></span>
+        <span class="src-note">The engineering-floor view of Ramdial's thesis: prototype in Python, productionize in Rust, because agent concurrency turns the GIL into a P&amp;L line. Keep the stratification frame; skip the language-war sections — the audience argument, not the benchmark table, is what transfers.</span>
+      </li>
+      <li>
+        <span class="pub">Spec blog · modelcontextprotocol.io</span>
+        <span class="src-title"><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/">The 2026-07-28 MCP Specification Release Candidate</a></span>
+        <span class="src-note">Required reading if you run anything MCP-shaped. The stateless core, explicit handles, and ttlMs caching are deployment-changing; the deprecations will bite the unprepared. Notably free of the "agents sharing memory" hype attached to it elsewhere — trust the text, not the coverage.</span>
+      </li>
+      <li>
+        <span class="pub">Protocol release · WorkOS</span>
+        <span class="src-title"><a href="https://workos.com/auth-md">auth.md — Open Protocol for Agent Registration</a></span>
+        <span class="src-note">A vendor launch dressed as an open protocol — and that's fine, because it composes boring OAuth standards and shipped with real adopters. Scrutinize the agent-verified flow: registration with no human in the loop is a fraud surface as much as a feature.</span>
+      </li>
+      <li>
+        <span class="pub">Research note · Contrary Research</span>
+        <span class="src-title"><a href="https://contraryresearch.substack.com/p/anthropics-march-to-profitability">Anthropic's March to Profitability</a></span>
+        <span class="src-note">The clearest unit-economics walkthrough of the quarter: 71¢ → 56¢ compute per revenue dollar matters more than the $10.9B headline. It's projection ahead of an IPO, sourced sympathetically — read the margin math, discount the inevitability narrative.</span>
+      </li>
+      <li>
+        <span class="pub">News · The Next Web</span>
+        <span class="src-title"><a href="https://thenextweb.com/news/deepseek-v4-pro-75-percent-price-cut-permanent">DeepSeek made its 75% discount permanent. The AI price war just escalated.</a></span>
+        <span class="src-note">Straight reporting on the day's most loaded price tag: frontier capability at ~2% of GPT-5.5's price, locked in. What it adds: V4-Pro's efficiency passed through to price rather than kept as margin — the exact inverse of source 05, which is the whole story.</span>
+      </li>
+      <li>
+        <span class="pub">News · Dataconomy</span>
+        <span class="src-title"><a href="https://dataconomy.com/2026/05/22/chatgpt-powerpoint-ai-slides/">ChatGPT Integration with Microsoft PowerPoint</a></span>
+        <span class="src-note">Matters for one structural reason: OpenAI now operates inside Microsoft's flagship surface, pulling from Gmail and SharePoint, down to the free tier. The deck features are table stakes; the precedent — the agent inside the incumbent's app — is what to file away.</span>
+      </li>
+      <li>
+        <span class="pub">Announcement · Google Labs</span>
+        <span class="src-title"><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/">We're introducing real time design with Google Stitch.</a></span>
+        <span class="src-note">The I/O update that turns design from turn-based prompting into a streaming conversation, free, with multiplayer — aimed squarely at Figma's $15 seat. Read it as a pricing weapon and agent-surface play; the Agent Manager is the tell about where Google thinks the workflow goes.</span>
+      </li>
+      <li>
+        <span class="pub">Video · YouTube</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Most+Intelligent+AI+of+2026%3A+All+Models+In+One+Chat%21%22">The Most Intelligent AI of 2026: All Models In One Chat!</a></span>
+        <span class="src-note">A creator walkthrough of Higgsfield's Supercomputer — every frontier LLM plus the media-model stable behind one chat. Promotional, worth one watch at 1.5×: seeing model routing happen live makes §5's "humans state intent" claim concrete. Skip the superlatives.</span>
+      </li>
+      <li>
+        <span class="pub">Post · X (Simon Last)</span>
+        <span class="src-title"><a href="https://x.com/simonlast/status/2057978156183957995">Simon Last on the AI windfall and the state's cut</a></span>
+        <span class="src-note">The Notion co-founder's entry in the week's founder-circle debate over government equity stakes and national dividends on AI profits, surfaced via TLDR. A post, not an analysis — its value is the signal that surplus-capture has reached operator Twitter, which historically precedes policy.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 29 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

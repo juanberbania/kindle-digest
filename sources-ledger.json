@@ -130,8 +130,12 @@
       "title": "Inside YC's AI Playbook",
       "publisher": "Y Combinator (YouTube Lightcode)",
       "url": "https://www.youtube.com/watch?v=B246K_G7mHU",
-      "first_cited": "2026-06-04",
+      "first_cited": "2026-05-28",
       "citations": [
+        {
+          "date": "2026-05-28",
+          "context": "shared organizational brain, five-step skill flywheel, Dream Cycle"
+        },
         {
           "date": "2026-06-04",
           "context": "shared organizational brain · skill registry · routing strategy"
@@ -603,6 +607,555 @@
       "url": "https://zero.rocicorp.dev/",
       "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
       "context": "Postgres-to-client replication · instant AI-native UX substrate"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "introducing-nova-our-internal-platform-for-coding-agents",
+      "title": "Introducing Nova, our internal platform for coding agents",
+      "publication": "Dropbox · Engineering blog",
+      "url": "https://dropbox.tech/machine-learning/introducing-nova-our-internal-platform-for-coding-agents",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "internal agent platform with publication gate and iteration caps"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "what-weve-learned-building-cloud-agents",
+      "title": "What we've learned building cloud agents",
+      "publication": "Cursor · Engineering blog",
+      "url": "https://cursor.com/blog/cloud-agent-lessons",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "environment determines agent quality; 40% of internal PRs"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "the-figma-design-agent-is-here",
+      "title": "The Figma Design Agent is Here",
+      "publication": "Figma Blog · Product launch",
+      "url": "https://www.figma.com/blog/the-figma-agent-is-here/",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "design agent on canvas; context moat of components and tokens"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "how-anthropic-rebuilt-its-sales-org-from-scratch",
+      "title": "How Anthropic Rebuilt Its Sales Org From Scratch When Demand Went Vertical: 54% of New Enterprise Logos Now Come Self-Serve",
+      "publication": "SaaStr · Article",
+      "url": "https://www.saastr.com/how-anthropic-rebuilt-its-sales-org-from-scratch-when-demand-went-vertical-54-of-new-enterprise-logos-now-come-self-serve/",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "best-rep playbooks encoded as Skills; 54% self-serve logos"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "cheap-code-means-formal-verification-is-reasonable-now",
+      "title": "Cheap code means formal verification is reasonable now",
+      "publication": "Antfly Blog · Essay",
+      "url": "https://antfly.io/blog/agent-formal-verification",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "spend the cheap-code dividend on TLA+ model checking"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "the-high-cost-of-artificial-intelligence-vs-human-labor",
+      "title": "The High Cost of Artificial Intelligence vs Human Labor",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=The+High+Cost+of+Artificial+Intelligence+vs+Human+Labor",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "compute exceeds salaries; automation viable in ~23% of jobs"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "the-broken-ladder-the-cruel-reality-of-modern-hiring",
+      "title": "The Broken Ladder: The Cruel Reality of Modern Hiring",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=The+Broken+Ladder%3A+The+Cruel+Reality+of+Modern+Hiring",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "AI breaks the apprenticeship rung that produces seniors"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "whos-actually-hiring-in-gtm-right-now",
+      "title": "Who's actually hiring in GTM right now? AI companies are doubling SDR hiring",
+      "publication": "Growth Unhinged · Newsletter",
+      "url": "https://www.growthunhinged.com/p/who-s-actually-hiring-in-gtm-right-now",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "AI-natives doubled SDR hiring while market cut 21%"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "the-death-of-non-technical-software-management",
+      "title": "The Death of Non-Technical Software Management",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=The+Death+of+Non-Technical+Software+Management",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "managers who can't read the stack get squeezed out"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "the-interface-is-no-longer-the-product",
+      "title": "The Interface Is No Longer the Product",
+      "publication": "Mozilla.ai · Essay",
+      "url": "https://blog.mozilla.ai/the-interface-is-no-longer-the-product/",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "citations": [
+        {
+          "date": "2026-05-25",
+          "context": "products unbundle into agent-readable source of truth plus views"
+        },
+        {
+          "date": "2026-05-29",
+          "context": "agent-native apps as structured state plus renderers"
+        }
+      ]
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "how-to-build-a-self-improving-company-with-ai",
+      "title": "How to Build a Self-Improving Company with AI",
+      "publication": "YouTube (Y Combinator) · Talk",
+      "url": "https://www.youtube.com/watch?v=t-G67yKAHBQ",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "make the company legible to AI; recursive self-improving loops"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "supercharging-local-ai-with-lm-studio-link",
+      "title": "Supercharging Local AI with LM Studio Link",
+      "publication": "LM Studio · Product page",
+      "url": "https://lmstudio.ai/link",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "own GPU as private encrypted remote inference endpoint"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "qwen",
+      "title": "Qwen",
+      "publication": "Qwen · Reference",
+      "url": "https://qwen.ai/",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "open-weight model family supplying the local-AI alternative"
+    },
+    {
+      "first_cited": "2026-05-25",
+      "slug": "ditching-productivity-projects-for-ai-intelligence",
+      "title": "Ditching Productivity Projects for AI Intelligence",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=Ditching+Productivity+Projects+for+AI+Intelligence",
+      "first_seen_in": "daily-tldr-digest-2026-05-25-kindle.html",
+      "context": "copilot sprawl culled in favor of compounding intelligence systems"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "ai-bifurcation-of-tech",
+      "title": "The AI Bifurcation of Tech",
+      "publication": "neevash.com · Essay",
+      "url": "https://neevash.com/blog/tech-bifurcation-and-the-0.5-layer",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "0.5 layer thesis; agents as second audience"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "agent-first-development-systems-languages",
+      "title": "The Rise of Agent-First Development and Systems Languages",
+      "publication": "Saved markdown · Technical note",
+      "url": "https://www.google.com/search?q=%22The+Rise+of+Agent-First+Development+and+Systems+Languages%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "Python-to-Rust migration; language stratification by audience"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "mcp-2026-07-28-release-candidate",
+      "title": "The 2026-07-28 MCP Specification Release Candidate",
+      "publication": "Model Context Protocol Blog · Spec release",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "stateless core, explicit handles, MCP Apps"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "auth-md",
+      "title": "auth.md — Open Protocol for Agent Registration",
+      "publication": "WorkOS · Protocol release",
+      "url": "https://workos.com/auth-md",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "agents register accounts via markdown file"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "anthropics-march-to-profitability",
+      "title": "Anthropic's March to Profitability",
+      "publication": "Contrary Research · Research note",
+      "url": "https://contraryresearch.substack.com/p/anthropics-march-to-profitability",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "first profitable quarter projection; 71¢→56¢ compute ratio"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "deepseek-75-discount-permanent",
+      "title": "DeepSeek made its 75% discount permanent. The AI price war just escalated.",
+      "publication": "The Next Web · News",
+      "url": "https://thenextweb.com/news/deepseek-v4-pro-75-percent-price-cut-permanent",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "V4-Pro permanent cut; ~2% of GPT-5.5 price"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "chatgpt-powerpoint-integration",
+      "title": "ChatGPT Integration with Microsoft PowerPoint",
+      "publication": "Dataconomy · News",
+      "url": "https://dataconomy.com/2026/05/22/chatgpt-powerpoint-ai-slides/",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "agent inside the incumbent's flagship app"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "google-stitch-real-time-design",
+      "title": "We're introducing real time design with Google Stitch.",
+      "publication": "Google Labs · Announcement",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "streaming design agent, free, multiplayer"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "most-intelligent-ai-2026-all-models-one-chat",
+      "title": "The Most Intelligent AI of 2026: All Models In One Chat!",
+      "publication": "YouTube · Video",
+      "url": "https://www.google.com/search?q=%22The+Most+Intelligent+AI+of+2026%3A+All+Models+In+One+Chat%21%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "Higgsfield Supercomputer walkthrough; model routing live"
+    },
+    {
+      "first_cited": "2026-05-26",
+      "slug": "simonlast-x-post",
+      "title": "Simon Last on the AI windfall and the state's cut",
+      "publication": "X (Simon Last) · Post",
+      "url": "https://x.com/simonlast/status/2057978156183957995",
+      "first_seen_in": "daily-tldr-digest-2026-05-26-kindle.html",
+      "context": "government equity stakes and national dividend debate"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "building-distributed-multi-agent-systems",
+      "title": "Building distributed multi-agent systems",
+      "publication": "YouTube · Video",
+      "url": "https://www.youtube.com/watch?v=VjBijrS19gY",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "ADK specialist squads as microservices on Cloud Run"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "kubernetes-sigs-agent-sandbox",
+      "title": "agent-sandbox: isolated, stateful, singleton workloads for AI agent runtimes",
+      "publication": "GitHub · Repository",
+      "url": "https://github.com/kubernetes-sigs/agent-sandbox",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "Sandbox CRD standardizes isolated agent runtimes"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "webwright-terminal-native-web-agents",
+      "title": "Webwright | Terminal-Native Web Agents",
+      "publication": "Microsoft Research · Release",
+      "url": "https://microsoft.github.io/Webwright/",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "terminal harness lifts same model 33.5% to 60.1%"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "microsofts-quiet-claude-code-retreat",
+      "title": "Microsoft's quiet Claude Code retreat and the real cost of enterprise AI",
+      "publication": "The Next Web · News analysis",
+      "url": "https://thenextweb.com/news/microsoft-claude-code-retreat-ai-cost",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "enterprise token sticker shock, Uber budget burn"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "anthropic-and-the-high-cost-of-ai-growth",
+      "title": "Anthropic and the High Cost of AI Growth",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=%22Anthropic+and+the+High+Cost+of+AI+Growth%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "vendor-side economics behind per-token billing"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "the-design-system-advantage-is-memory",
+      "title": "The Design System Advantage Is Memory",
+      "publication": "The Design System Guide · Newsletter",
+      "url": "https://learn.thedesignsystem.guide/p/the-design-system-advantage-is-memory",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "105 MCP tools, no memory; expensive confidence"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "the-ai-bifurcation-building-durable-startup-moats",
+      "title": "The AI Bifurcation: Building Durable Startup Moats",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=%22The+AI+Bifurcation%3A+Building+Durable+Startup+Moats%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "wrapper retention apocalypse versus data-flywheel moats"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "karpathy-said-vibe-coding-is-obsolete",
+      "title": "Karpathy said vibe coding is obsolete. What he described instead is product management.",
+      "publication": "jeffgothelf.com · Essay",
+      "url": "https://jeffgothelf.com/blog/karpathy-said-vibe-coding-is-obsolete-what-he-described-instead-is-product-management/",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "agentic engineering decomposes into product management"
+    },
+    {
+      "first_cited": "2026-05-27",
+      "slug": "the-erosion-of-authenticity-in-the-ai-era",
+      "title": "The Erosion of Authenticity in the AI Era",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=%22The+Erosion+of+Authenticity+in+the+AI+Era%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-27-kindle.html",
+      "context": "verified-human provenance as priced scarcity"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "how-we-contain-claude",
+      "title": "How we contain Claude across products",
+      "publication": "Anthropic · Engineering blog",
+      "url": "https://www.anthropic.com/engineering/how-we-contain-claude",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "agent containment architecture, approval fatigue, egress controls"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "how-vercel-cut-build-wait-times-from-90-seconds-to-5",
+      "title": "How Vercel Cut Build Wait Times From 90 Seconds To 5",
+      "publication": "ByteByteGo · Newsletter",
+      "url": "https://blog.bytebytego.com/p/how-vercel-cut-build-wait-times-from",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "Firecracker microVMs, warm pools, hostile multi-tenancy"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "ai-assisted-engineers-are-burning-out-is-this-fine",
+      "title": "AI-assisted engineers are burning out, is this fine?",
+      "publication": "Evil Martians · Engineering blog",
+      "url": "https://evilmartians.com/chronicles/ai-assisted-engineers-are-burning-out-is-this-fine",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "cognitive overload, review fatigue, attention-containment practices"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "the-compound-power-of-contextual-intelligence",
+      "title": "The Compound Power of Contextual Intelligence",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=%22The+Compound+Power+of+Contextual+Intelligence%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "raw intelligence commoditizes, context compounds thesis"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "openrouter-more-than-doubles-valuation-to-1-3b",
+      "title": "OpenRouter more than doubles valuation to $1.3B in a year",
+      "publication": "TechCrunch · News",
+      "url": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "$113M Series B, 25T tokens/week, swappable-model utility"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "cyberfund-monastery-solo-builder",
+      "title": "cyber•Fund on the Monastery and the AI-native solo builder",
+      "publication": "X (cyber•Fund) · Post",
+      "url": "https://x.com/cyberfund/status/2058950286324986294",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "$2M Monastery residency, solo-builder leverage thesis"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "the-creator-led-distribution-playbook",
+      "title": "The Creator-Led Distribution Playbook",
+      "publication": "Medium · Essay",
+      "url": "https://www.google.com/search?q=%22The+Creator-Led+Distribution+Playbook%22",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "owned audience as the post-commoditization moat"
+    },
+    {
+      "first_cited": "2026-05-28",
+      "slug": "just-a-moment-cloudflare-may28",
+      "title": "Just a moment…",
+      "publication": "Unresolved import",
+      "url": "https://www.google.com/search?q=%22Just+a+moment...%22+Cloudflare+interstitial",
+      "first_seen_in": "daily-tldr-digest-2026-05-28-kindle.html",
+      "context": "Cloudflare-walled import, contributed nothing, kept for honesty"
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "hows-linear-so-fast-a-technical-breakdown",
+      "title": "How's Linear so fast? A technical breakdown",
+      "publication": "performance.dev · Engineering teardown",
+      "url": "https://performance.dev/how-is-linear-so-fast-a-technical-breakdown",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "context": "local-first sync engine, database in the browser"
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "rushdb-2-0-memory-infrastructure-for-the-agentic-era",
+      "title": "RushDB 2.0: Memory Infrastructure for the Agentic Era",
+      "publication": "RushDB · Release",
+      "url": "https://rushdb.com/blog/rushdb-2-0-release",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "context": "consolidated semantic graph memory for agents"
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "secure-mcp-tunnel",
+      "title": "Secure MCP Tunnel",
+      "publication": "OpenAI API · Documentation",
+      "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "context": "outbound-only tunnels to private MCP servers"
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "i-think-anthropic-and-openai-have-found-product-market-fit",
+      "title": "I think Anthropic and OpenAI have found product-market fit",
+      "publication": "simonwillison.net · Essay",
+      "url": "https://simonwillison.net/2026/May/27/product-market-fit/",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "citations": [
+        {
+          "date": "2026-05-29",
+          "context": "coding agents flip labs to enterprise economics"
+        },
+        {
+          "date": "2026-06-01",
+          "context": "PMF found in agents, proven by invoices"
+        }
+      ]
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "the-emerging-architecture-of-artificial-intelligence-infrastructure",
+      "title": "The Emerging Architecture of Artificial Intelligence Infrastructure",
+      "publication": "Notebook upload · Essay",
+      "url": "https://www.google.com/search?q=The+Emerging+Architecture+of+Artificial+Intelligence+Infrastructure",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "context": "macro map of the re-layering AI stack"
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "the-best-engineers-write-less-code",
+      "title": "The Best Engineers Write Less Code",
+      "publication": "The Grumpy Dev · Essay",
+      "url": "https://shvetsm.github.io/posts/the-best-engineers-write-less-code/",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "context": "value per complexity replaces code volume"
+    },
+    {
+      "first_cited": "2026-05-29",
+      "slug": "just-a-moment-cloudflare-may29",
+      "title": "Just a moment...",
+      "publication": "Cloudflare interstitial · Dead capture",
+      "url": "https://www.google.com/search?q=%22Just+a+moment...%22+cloudflare+challenge+page",
+      "first_seen_in": "daily-tldr-digest-2026-05-29-kindle.html",
+      "context": "bot wall ingested instead of an article"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "building-an-ai-agent-from-scratch-the-deterministic-loop",
+      "title": "Building an AI Agent from Scratch: The Deterministic Loop",
+      "publication": "Level Up Coding (Medium) · Tutorial",
+      "url": "https://levelup.gitconnected.com/building-an-ai-agent-from-scratch-no-magic-just-a-deterministic-loop-a916161705fb",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "agent demystified as fifty-line Python loop"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "the-2026-guide-to-local-llms-for-coding",
+      "title": "The 2026 Guide to Local LLMs for Coding",
+      "publication": "Data Science Collective (Medium) · Guide",
+      "url": "https://medium.com/data-science-collective/what-is-the-best-local-llm-for-coding-in-2026-8dab3619ff89",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "zero-egress coding models on consumer GPUs"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "jaya-gupta-token-budget-wars",
+      "title": "Jaya Gupta on the token budget wars",
+      "publication": "X (Foundation Capital) · Thread",
+      "url": "https://x.com/JayaGup10/status/2059784669382791653",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "adoption to allocation; token-to-outcome attribution"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "introducing-claude-opus-4-8",
+      "title": "Introducing Claude Opus 4.8",
+      "publication": "Anthropic · Release",
+      "url": "https://www.anthropic.com/news/claude-opus-4-8",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "frontier release leading with honesty metrics"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "introducing-dynamic-workflows",
+      "title": "Introducing dynamic workflows",
+      "publication": "Claude · Product blog",
+      "url": "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "model-written orchestration; the Bun port landmark"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "slack-ai-the-path-to-multi-cloud",
+      "title": "Slack AI: The Path to Multi-Cloud",
+      "publication": "Engineering at Slack · Engineering blog",
+      "url": "https://slack.engineering/slack-ai-the-path-to-multi-cloud/",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "model providers treated as cloud regions"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "engineering-the-ai-bottleneck-validation-over-generation",
+      "title": "Engineering the AI Bottleneck: Validation Over Generation",
+      "publication": "Web · Essay",
+      "url": "https://www.google.com/search?q=Engineering+the+AI+Bottleneck%3A+Validation+Over+Generation",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "generation got cheap, validation didn't"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "mapping-code-with-lat-md-validated-knowledge-graphs-for-ai",
+      "title": "Mapping Code with lat.md: Validated Knowledge Graphs for AI",
+      "publication": "Agentic Builders (Medium) · Tutorial",
+      "url": "https://medium.com/agentic-builders/how-to-use-lat-md-turn-any-folder-into-a-validated-knowledge-graph-8cffac54ceaa",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "validated context; lat check referential integrity"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "software-after-ai",
+      "title": "Software After AI",
+      "publication": "tomtunguz.com · Essay",
+      "url": "https://tomtunguz.com/harnessing-ai/",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "seven harness components; best riders win"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "joe-schmidt-iv-avoiding-death-on-the-yellow-brick-road",
+      "title": "Joe Schmidt IV: Avoiding Death on the Yellow Brick Road",
+      "publication": "X (a16z) · Thread",
+      "url": "https://x.com/joeschmidtiv/status/2059642470334677472",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "labs own horizontal; startups build vertical"
+    },
+    {
+      "first_cited": "2026-06-01",
+      "slug": "product-studio",
+      "title": "Product Studio",
+      "publication": "Notebook source · Unresolved",
+      "url": "https://www.google.com/search?q=%22Product+Studio%22",
+      "first_seen_in": "daily-tldr-digest-2026-06-01-kindle.html",
+      "context": "unresolvable notebook entry, filed for completeness"
     }
   ]
 }

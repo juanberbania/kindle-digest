@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — May 27, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · May 27, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 30</div>
+    <div class="rhs">Wednesday · 27 May 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Bill Comes Due</p>
+  <h1>The Memory Premium</h1>
+  <p class="subtitle">Nine sources, one converging account: AI agents graduated into production infrastructure this week — and the invoice graduated with them. What holds value under metered intelligence is whatever compounds: memory, judgment, provenance.</p>
+
+  <div class="byline">
+    <span><b>9 sources</b> · 2 diagrams · ~24 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>Agents went to production. Production sent back an invoice.</h2>
+
+    <p class="lead">Three platform shops shipped the same message this month: Google demoed <strong>squads of specialist agents</strong> as plain microservices on Cloud Run, a Kubernetes SIG cut a beta <strong>Sandbox CRD</strong> for agent runtimes, and Microsoft Research released <strong>Webwright</strong> — a web agent that is just a terminal and a thousand lines of harness. Agents are normal workloads now. On cue, the rest of today's reading shows what that costs: Microsoft is walking back its internal Claude Code rollout, Uber burned an annual AI budget in four months, and agentic loops draw 5–30× the tokens of a chatbot, every one billed. The industrialization and the sticker shock are the same story. <em>When intelligence is metered like electricity, what is still worth owning?</em></p>
+
+    <p>Today's sources give a three-part answer, and none of the parts is a model: the <strong>memory</strong> of why your organization decided what it decided (Kavcic), the <strong>judgment</strong> about what is worth building at all (Gothelf, via Karpathy), and the <strong>provenance</strong> that proves a human stood behind the work. Everything else — model access, wrappers, the frameworks themselves — is visibly commoditizing.</p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Five agreements across today's sources</h4>
+    <ol>
+      <li><strong>The agent runtime is standardizing.</strong> Google (ADK squads over A2A), the Kubernetes SIG (a declarative Sandbox API), and Microsoft Research (a ~1,000-line terminal harness) independently converge: agents stop being demos and become workloads, with boring abstractions.</li>
+      <li><strong>Good tools get overused, and overuse breaks the budget.</strong> Uber's Claude Code adoption ran 32% → 84% at $500–$2,000 per engineer per month; Microsoft is migrating its own staff off the tool by fiscal year-end. The retreat is a success symptom.</li>
+      <li><strong>Agents multiply the meter.</strong> Agentic loops draw 5–30× the tokens of a chat session (Kavcic), and the vendor side now bills per token rather than per seat (the Anthropic piece) — harness quality and invoice size rise together, by design.</li>
+      <li><strong>Memory, not model access, is the durable advantage.</strong> Kavcic's 105-tool experiment, the bifurcation essay's data flywheels, and the multi-agent guides' grounding requirements land on one sentence: the agent that knows <em>why</em> a pattern was rejected beats the agent with more tools.</li>
+      <li><strong>The human job consolidates into judgment.</strong> Karpathy's "agentic engineering" decomposes into product management (Gothelf); the authenticity essay prices verified-human work as scarcity. Execution commoditized; deciding and vouching did not.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 INFRASTRUCTURE =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · Infrastructure</span>The agent runtime gets boring, on purpose</h2>
+
+    <p>The day's three infrastructure sources read like one roadmap written by three vendors. The Google Cloud session on <em>building distributed multi-agent systems</em> makes the architectural case: a single LLM hits a wall against real-world complexity, so you decompose the work into a <strong>squad of specialists</strong> — researcher, judge, generator — each an independent microservice on Cloud Run, orchestrated through ADK's sequential/parallel/loop primitives and talking over the open <strong>A2A protocol</strong>. Decentralized control is the point: each agent scales independently and fails alone — the multi-agent system is rediscovering, clause by clause, the microservices argument of the 2010s.</p>
+
+    <p>The Kubernetes SIG's <strong>agent-sandbox</strong> project supplies the missing workload type. Deployments assume stateless replicas; StatefulSets assume ordered pods; an agent is neither — it is an isolated, stateful <em>singleton</em> running untrusted, model-generated code. The Sandbox CRD gives that shape a declarative API: stable identity, storage that survives restarts, gVisor/Kata isolation, lifecycle verbs, warm pools. And Microsoft Research's <strong>Webwright</strong> shows what belongs <em>inside</em> the sandbox: not a click-predicting browser bot but a coding agent with a terminal, writing and re-running Playwright scripts against the page's structure. The numbers are the argument — 60.1% on the Odysseys benchmark against 33.5% for the same base model bare, a 79% relative improvement from roughly 1,000 lines of scaffolding and zero model changes.</p>
+
+    <p>The synthesis no single source states: all three projects abandon bespoke "agent framework" abstractions and reach for the <strong>oldest primitives in computing</strong> — Webwright gives the model a terminal, agent-sandbox what is functionally a small VM, ADK a service mesh. And once a workload has a CRD, a protocol, and a benchmark harness, it stops being a research artifact and starts being a line item. Which is where §3 picks up.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Labelled bands showing the production agent stack with a black meter band at the bottom">
+      <rect x="0" y="0" width="660" height="392" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · THE PRODUCTION AGENT STACK, AS SHIPPED THIS MONTH</text>
+
+      <rect x="30" y="48" width="600" height="48" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="69" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PROTOCOL</text>
+      <text x="50" y="88" font-family="Georgia,serif" font-size="14" fill="#000000">A2A · agents published as services that discover and call each other</text>
+
+      <rect x="30" y="100" width="600" height="48" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="121" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">ORCHESTRATION</text>
+      <text x="50" y="140" font-family="Georgia,serif" font-size="14" fill="#000000">ADK squads · researcher / judge / generator as microservices on Cloud Run</text>
+
+      <rect x="30" y="152" width="600" height="48" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="173" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">HARNESS</text>
+      <text x="50" y="192" font-family="Georgia,serif" font-size="14" fill="#000000">Webwright · a terminal; the agent writes Playwright code, not clicks</text>
+
+      <rect x="30" y="204" width="600" height="48" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="225" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">RUNTIME</text>
+      <text x="50" y="244" font-family="Georgia,serif" font-size="14" fill="#000000">agent-sandbox CRD · isolated, stateful, declarative · gVisor / Kata</text>
+
+      <rect x="30" y="256" width="600" height="48" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="277" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">MODEL</text>
+      <text x="50" y="296" font-family="Georgia,serif" font-size="14" fill="#000000">Frontier API · interchangeable across the four layers above</text>
+
+      <rect x="30" y="312" width="600" height="62" fill="#000000"/>
+      <text x="330" y="338" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="3">THE METER — RUNS THROUGH EVERY BAND</text>
+      <text x="330" y="360" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#ffffff">agent loops draw 5–30× the tokens of chat · billed per token, not per seat</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Agents became standard workloads this month — each band got a boring, declarative abstraction from a major vendor — and every standardized band multiplies traffic through the one band that is metered, which is why industrialization and sticker shock arrive in the same news cycle.</div>
+  </div>
+
+  <!-- =================== §3 ECONOMICS =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Economics</span>Microsoft's quiet retreat, and the meter behind it</h2>
+
+    <p>The Next Web's reporting on <strong>Microsoft's Claude Code wind-down</strong> is the day's hardest evidence that the §2 stack has a cost function. The timeline is short: Microsoft opened Claude Code to thousands of staff in December 2025; usage spread beyond engineering within a quarter; now the Experiences and Devices division is cancelling most direct licenses, with engineers told to migrate to GitHub Copilot CLI by June 30, the last day of the fiscal year. The stated reason is toolchain unification. The numbers underneath say tokens: at Uber, Claude Code usage climbed from 32% to 84% of ~5,000 engineers at $500–$2,000 a month each, 70% of committed code originated with AI, and the year's AI coding budget was gone by spring. GitHub itself paused Copilot Pro signups in November when agentic workloads blew past plan prices.</p>
+
+    <blockquote>
+      The budget I thought I would need is blown away already.
+      <cite>— Praveen Neppalli Naga, Uber CTO, quoted in The Next Web</cite>
+    </blockquote>
+
+    <p>The Medium essay on <strong>Anthropic's growth economics</strong> is the vendor-side mirror of the same pipe. Training frontier models and serving inference is a brutal upfront cost, the capex curve scales with usage, and Anthropic has moved enterprise customers from flat-rate deals toward <strong>per-token billing</strong> — its revenue now tracks consumption, and so does your invoice. Add Kavcic's 5–30× agentic multiplier and the sticker shock stops looking like an accident: <strong>per-token pricing transferred usage risk to the buyer in the same quarter that agentic harnesses multiplied usage</strong>. The crisis was structurally scheduled. Note what nobody claims: that the tools failed. Uber's 70%-of-commits figure is an argument they succeeded — at a unit price seat-based procurement was never built to absorb.</p>
+
+    <p><span class="caflag">Counter</span><em>Read the retreat with one eyebrow raised. Microsoft moving spend from Anthropic's tool to its own Copilot CLI is consolidation it would pursue at any token price — vendor politics dressed as economics. One procurement decision is weak evidence that usage pricing fails in general; it is strong evidence that nobody has learned to budget for it yet.</em></p>
+  </section>
+
+  <!-- =================== §4 MEMORY =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Memory</span>One hundred and five tools, zero memory</h2>
+
+    <p>Romina Kavcic's <em>The Design System Advantage Is Memory</em> is the day's keeper, and its opening experiment deserves to become a standard cautionary tale. She wired <strong>105 MCP tools</strong> into her design system — tokens, docs, components, Figma — and the agent still confidently proposed patterns her team had already rejected, because the <em>reasons</em> lived in Slack threads, ADRs, and Figma comments it could not retrieve. Her summary line: "I had given the agent access. I had not given it memory." She names the failure mode <strong>expensive confidence</strong> — an agent with partial context doesn't hedge, it asserts — and her prescription inverts the usual build order: the data layer (decisions, critiques, drift records) is the biggest job, retrieval second, agent orchestration the <em>smallest</em> layer, not the first one you buy.</p>
+
+    <p>The bifurcation essay makes the same claim at market scale. Generic wrapper startups are living through what analysts call a gross-retention apocalypse — switching costs between LLM wrappers are effectively zero, so enterprise buyers show no loyalty — while AI-native companies with proprietary data loops, workflow depth, and compounding <strong>data flywheels</strong> command large valuation premiums. Strip the VC vocabulary and it is Kavcic's argument wearing a term sheet: the moat is accumulated, retrievable, organization-specific memory, not access to a model everyone else also rents.</p>
+
+    <p>The cross-source point neither piece states alone: <strong>memory is a cost control, not just a moat</strong>. Connect §3's meter to Kavcic's experiment — an agent without decision memory re-purchases the same exploration in tokens every session, re-proposing what your organization already paid to reject. "Expensive confidence" is a literal line item on the invoice Microsoft just balked at. The cheapest token is the one your memory layer made unnecessary, so cataloging the reasoning behind decisions is simultaneously the moat-building and the cost-cutting program. Kavcic supplies the starter kit: index your highest-signal folders with hybrid keyword-plus-vector retrieval, and run your team's real questions against it before buying another agent.</p>
+  </section>
+
+  <!-- =================== §5 JUDGMENT =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Judgment</span>Agentic engineering was product management all along</h2>
+
+    <p>Jeff Gothelf's response to Andrej Karpathy's Sequoia AI Ascent talk performs a useful translation. Karpathy declared his own coinage — vibe coding — obsolete, and described its successor, <strong>agentic engineering</strong>, as seven activities: design specs, plan supervision, diff inspection, tests, evaluation loops, permissions, quality. Gothelf strips the engineering vocabulary and shows the residue: problem definition, prioritization, outcome validation, success metrics, scope, quality judgment. He did not describe a new discipline, Gothelf argues; he described the fundamentals of product management. When execution stops being the bottleneck, the bottleneck migrates to deciding — what to build, for whom, and what signal will prove it worked.</p>
+
+    <blockquote>
+      The admin version of every one of those activities is now automatable… The judgment version is the job. It was always the job.
+      <cite>— Jeff Gothelf</cite>
+    </blockquote>
+
+    <p>Today's other sources make this measurable rather than rhetorical. At Uber, <strong>70% of committed code now originates with AI</strong> — the commit log itself records where the bottleneck moved. Webwright sharpens the point from the agent side: its scripts can be parameterized, exported as CLIs, and reused, but nothing in the framework decides <em>which</em> tasks are worth solidifying into tools — that call is Gothelf's "judgment version" of the work. The synthesis: engineers have inherited the product management job whether they wanted it or not, and the agent will never hand it back, because it writes the code but cannot say whether the code was worth writing. The advice cuts both tribes — clerical PMs are automatable, and execution-only engineers already have been.</p>
+  </section>
+
+  <!-- =================== §6 TRUST =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · Trust</span>Provenance, inside the org and out</h2>
+
+    <p>The authenticity essay is the day's most familiar piece — AI slop now makes up a fifth or more of recommended video on major platforms, deepfake detection hovers near chance, stated preference for AI-generated content has collapsed from roughly 60% to the mid-20s — but it earns its place by what it implies rather than reports: <strong>verified-human work is becoming a priced scarcity</strong>, a differentiator brands pay for, not a default assumption. When generation is free, value concentrates in the one thing generation cannot produce — a credible answer to "who made this, and do they stand behind it?"</p>
+
+    <p>Set that next to Kavcic and the day closes a loop no single author drew: <strong>the external authenticity crisis and the internal memory crisis are the same shortage</strong>. Outside the firewall, the scarce metadata is "who made this and why should I trust it"; inside, it is "why did we decide this and does it still bind." Both are provenance problems; both worsen as generation gets cheaper; and both are solved by the same discipline — recording, structuring, and retrieving the human reasoning behind the artifact. Provenance is memory with a signature on it.</p>
+
+    <p><span class="caflag">Counter</span><em>The verified-human premium may stay a luxury niche. The same surveys showing collapsed stated preference for AI content show consumption rising — people say authenticity and click slop. Bet on provenance where trust is load-bearing; be skeptical of it as a general consumer moat.</em></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 394" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-by-two matrix sorting the AI stack into rent, delegate, own, and staff quadrants">
+      <rect x="0" y="0" width="660" height="394" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · WHERE TO PUT WEIGHT WHEN INTELLIGENCE IS METERED</text>
+
+      <!-- axis labels -->
+      <text x="200" y="56" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">COMMODITIZING →</text>
+      <text x="490" y="56" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">COMPOUNDING →</text>
+
+      <!-- top-left: machine + commoditizing -->
+      <rect x="60" y="68" width="280" height="150" fill="#c8c8c8" stroke="#000000" stroke-width="1.2"/>
+      <text x="78" y="94" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="2">RENT IT</text>
+      <text x="78" y="116" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">MODEL ACCESS &amp; WRAPPERS</text>
+      <text x="78" y="138" font-family="Georgia,serif" font-size="14" fill="#000000">Zero switching cost · no loyalty ·</text>
+      <text x="78" y="157" font-family="Georgia,serif" font-size="14" fill="#000000">gross-retention apocalypse at the</text>
+      <text x="78" y="176" font-family="Georgia,serif" font-size="14" fill="#000000">wrapper layer · negotiate, don't</text>
+      <text x="78" y="195" font-family="Georgia,serif" font-size="14" fill="#000000">marry</text>
+
+      <!-- top-right: machine + compounding -->
+      <rect x="344" y="68" width="280" height="150" fill="#000000"/>
+      <text x="362" y="94" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="2">OWN IT</text>
+      <text x="362" y="116" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff">ORGANIZATIONAL MEMORY</text>
+      <text x="362" y="138" font-family="Georgia,serif" font-size="14" fill="#ffffff">Decision history · critique records ·</text>
+      <text x="362" y="157" font-family="Georgia,serif" font-size="14" fill="#ffffff">data flywheels · retrievable context —</text>
+      <text x="362" y="176" font-family="Georgia,serif" font-size="14" fill="#ffffff">the moat and the cost control are</text>
+      <text x="362" y="195" font-family="Georgia,serif" font-size="14" fill="#ffffff">the same asset</text>
+
+      <!-- bottom-left: human + commoditizing -->
+      <rect x="60" y="226" width="280" height="150" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="78" y="252" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="2">DELEGATE IT</text>
+      <text x="78" y="274" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">EXECUTION</text>
+      <text x="78" y="296" font-family="Georgia,serif" font-size="14" fill="#000000">Typing code · producing artifacts ·</text>
+      <text x="78" y="315" font-family="Georgia,serif" font-size="14" fill="#000000">browsing and clicking — 70% of</text>
+      <text x="78" y="334" font-family="Georgia,serif" font-size="14" fill="#000000">commits already machine-originated</text>
+      <text x="78" y="353" font-family="Georgia,serif" font-size="14" fill="#000000">at Uber</text>
+
+      <!-- bottom-right: human + compounding -->
+      <rect x="344" y="226" width="280" height="150" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="362" y="252" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="2">STAFF IT</text>
+      <text x="362" y="274" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">JUDGMENT &amp; PROVENANCE</text>
+      <text x="362" y="296" font-family="Georgia,serif" font-size="14" fill="#000000">What to build, for whom, and why ·</text>
+      <text x="362" y="315" font-family="Georgia,serif" font-size="14" fill="#000000">standing behind the output ·</text>
+      <text x="362" y="334" font-family="Georgia,serif" font-size="14" fill="#000000">the judgment version of every task ·</text>
+      <text x="362" y="353" font-family="Georgia,serif" font-size="14" fill="#000000">verified-human as priced scarcity</text>
+
+      <!-- row labels -->
+      <text x="42" y="148" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2" transform="rotate(-90 42 148)">MACHINE LAYER</text>
+      <text x="42" y="306" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2" transform="rotate(-90 42 306)">HUMAN LAYER</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The meter sorts the stack into four boxes — rent what commoditizes, delegate what machines execute, own the memory, staff the judgment — and the day's claim is that budget and career capital should both migrate rightward, because the left column gets cheaper every quarter while the right column compounds; everything durable in today's nine sources sits on the right.</div>
+  </div>
+
+  <!-- =================== §7 LONG VIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The long view</span>After standardization, the ledger</h2>
+
+    <p>Hold §2 and §3 together and a sequence emerges. First, agents industrialize: the runtime gets a CRD, the protocol a spec, the harness a benchmark. Standardization collapses the price of the standardized layer and explodes the <em>volume</em> moving through it — which is why the Sandbox CRD and the Claude Code retreat belong in the same issue. The easier agents are to run, the more of them run, and under per-token billing the invoice scales with success. The next procurement cycle will be defined less by "which model" than by caps, quotas, and runtime budgets.</p>
+
+    <p>Then the sorting. If compute is metered and the runtime is commodity, competitive difference has to live where the meter can't reach. Today's sources nominate three residences. <strong>Memory</strong>: the organization that can retrieve why it decided things makes every token count once. <strong>Judgment</strong>: the person who can specify, prioritize, and evaluate becomes the multiplier on everything below. <strong>Provenance</strong>: as slop saturates every channel, provable human authorship becomes a premium good. None of these are token businesses; all three get <em>more</em> valuable as tokens get cheaper.</p>
+
+    <p>The falsifiable version, for the ledger: within two quarters, expect (a) usage caps and agent runtime quotas as standard enterprise policy, the way cloud cost governance arrived circa 2015; (b) a visible product category for organizational decision memory, sold as both moat and cost control; and (c) at least one major platform shipping verified-human provenance as a paid feature. If instead token prices collapse faster than usage grows, the memory-premium thesis loses its forcing function — worth watching honestly.</p>
+  </section>
+
+  <!-- =================== §8 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Practical takeaways</span>If you only do six things this week</h2>
+
+    <ol>
+      <li><strong>Audit your decision memory before buying another tool.</strong> Catalog the reasoning behind decisions, starting with the highest-signal folders (ADRs, critiques, postmortems). If an agent can't retrieve why you rejected something, it will bill you to re-propose it.</li>
+      <li><strong>Put a meter and a cap on every agentic tool now.</strong> Don't wait for the Uber moment. Per-engineer budgets, usage dashboards, an escalation tier — boring controls that turn a surprise invoice into a planned expense.</li>
+      <li><strong>Prefer harnesses that produce reusable artifacts.</strong> Webwright's deepest idea: a solved task becomes a parameterized script, not a transcript. Ask of any agent workflow — what survives the session? If nothing, you are renting the same work twice.</li>
+      <li><strong>Treat agent runtimes as workloads, not pets.</strong> Isolation (the sandbox CRD's gVisor/Kata path), declarative lifecycle, persistent state. Running model-generated code without kernel-level isolation is a postmortem waiting for a date.</li>
+      <li><strong>Practice the judgment version of your job.</strong> Mark which of Karpathy's seven activities you do as administration and which as judgment. The admin half is automating now. Move your weight before the org chart does it for you.</li>
+      <li><strong>Sign your work.</strong> Internally, record the why alongside the what; externally, make human authorship explicit where trust is load-bearing. Provenance is becoming a priced good — start accruing it.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §9 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Sandbox CRD</dt>
+        <dd>The kubernetes-sigs agent-sandbox custom resource: a declarative API for isolated, stateful, singleton workloads — a lightweight VM shape for agent runtimes, with gVisor/Kata isolation, persistent identity, warm pools.</dd>
+
+        <dt>A2A (Agent2Agent protocol)</dt>
+        <dd>An open protocol letting agents publish themselves as services and discover and call one another across processes and vendors — the RPC layer of the multi-agent stack.</dd>
+
+        <dt>Terminal-native agent</dt>
+        <dd>Webwright's design: instead of predicting clicks in a browser session, the agent gets a terminal and writes Playwright code it runs, inspects, and refines — code, not clicks.</dd>
+
+        <dt>Agentic engineering</dt>
+        <dd>Karpathy's successor term for vibe coding: specs, plan supervision, diff inspection, tests, eval loops, permissions, quality. Gothelf's translation: the judgment half is product management.</dd>
+
+        <dt>Expensive confidence</dt>
+        <dd>Kavcic's name for what an agent with partial context produces: assertive, plausible recommendations of things your organization already paid to reject — confidence priced in tokens.</dd>
+
+        <dt>Per-token billing</dt>
+        <dd>Pricing where the invoice tracks actual model consumption rather than seat count — decisive once agentic loops multiply consumption 5–30× over chat.</dd>
+
+        <dt>Data flywheel</dt>
+        <dd>The compounding moat: usage generates proprietary data no competitor holds, which improves the product, which attracts more usage. The bifurcation essay's test for which AI startups survive.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (May 27, 2026)</em> · 9 sources, with the "Why AI Agents Break Enterprise Budgets" Deep Dive audio overview available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The nine pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Video · YouTube (Google Cloud)</span>
+        <span class="src-title"><a href="https://www.youtube.com/watch?v=VjBijrS19gY">Building distributed multi-agent systems</a></span>
+        <span class="src-note">A competent walkthrough of the ADK / A2A / Cloud Run stack; the durable content is the architecture, not the framework tour. If you lived through the microservices decade, skim the second half; keep the failure-isolation argument.</span>
+      </li>
+      <li>
+        <span class="pub">Repository · kubernetes-sigs</span>
+        <span class="src-title"><a href="https://github.com/kubernetes-sigs/agent-sandbox">agent-sandbox: isolated, stateful, singleton workloads for AI agent runtimes</a></span>
+        <span class="src-note">Read the API, not the stars. A Kubernetes SIG cutting a Sandbox CRD is the day's strongest signal that agents are normal workloads now. v1beta1 means churn — but the primitives to steal (warm pools, kernel-level isolation) are already right.</span>
+      </li>
+      <li>
+        <span class="pub">Research release · Microsoft Research</span>
+        <span class="src-title"><a href="https://microsoft.github.io/Webwright/">Webwright | Terminal-Native Web Agents</a></span>
+        <span class="src-note">The result is real — 60.1% on Odysseys against 33.5% bare — but the lesson is the thousand lines: a terminal beats elaborate planning hierarchies. The reusable-script idea (solved tasks become parameterized CLIs) is the quietly radical part everyone will copy.</span>
+      </li>
+      <li>
+        <span class="pub">News analysis · The Next Web</span>
+        <span class="src-title"><a href="https://thenextweb.com/news/microsoft-claude-code-retreat-ai-cost">Microsoft's quiet Claude Code retreat and the real cost of enterprise AI</a></span>
+        <span class="src-note">The best single account of enterprise token sticker shock, with the Uber numbers that make it concrete. Rightly frames the retreat as economics but underweights the politics of consolidating onto Copilot CLI. Read the numbers, discount the moral.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Anthropic+and+the+High+Cost+of+AI+Growth%22">Anthropic and the High Cost of AI Growth</a></span>
+        <span class="src-note">The vendor-side mirror of the Microsoft story: training and inference are brutal upfront costs, and the shift to per-token billing means revenue — and your invoice — now track real consumption. Useful for the mechanism; discount the doom framing — capital intensity this extreme is a choice, not a law.</span>
+      </li>
+      <li>
+        <span class="pub">Newsletter · The Design System Guide</span>
+        <span class="src-title"><a href="https://learn.thedesignsystem.guide/p/the-design-system-advantage-is-memory">The Design System Advantage Is Memory</a></span>
+        <span class="src-note">The day's keeper. The 105-tools-no-memory experiment should become a standard cautionary tale, "expensive confidence" is the set's best coinage, and the inverted build order — data first, orchestration last — generalizes far beyond design systems. Read in full.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+AI+Bifurcation%3A+Building+Durable+Startup+Moats%22">The AI Bifurcation: Building Durable Startup Moats</a></span>
+        <span class="src-note">Standard moat taxonomy — proprietary data, workflow depth, flywheels — competently assembled. Skip the listicle; keep the two sharp claims: switching costs at the wrapper layer are effectively zero, and the market pays a steep premium for advantage that compounds rather than rents.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · jeffgothelf.com</span>
+        <span class="src-title"><a href="https://jeffgothelf.com/blog/karpathy-said-vibe-coding-is-obsolete-what-he-described-instead-is-product-management/">Karpathy said vibe coding is obsolete. What he described instead is product management.</a></span>
+        <span class="src-note">The day's sharpest reframe; "the judgment version is the job — it was always the job" is the line to keep. Mildly self-serving from a PM educator, but the mapping holds, and the warning cuts both ways: clerical PMs are as automatable as execution-only engineers.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Erosion+of+Authenticity+in+the+AI+Era%22">The Erosion of Authenticity in the AI Era</a></span>
+        <span class="src-note">Analytically the weakest of the nine — familiar slop statistics, familiar alarm — but it completes the day's argument: the scarce metadata is "who made this and why," outside the org exactly as inside. The provenance implication is better than the essay.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 30 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>
