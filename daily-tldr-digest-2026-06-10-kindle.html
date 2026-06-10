@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 10, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 10, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 40</div>
+    <div class="rhs">Wednesday · 10 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · After the Model</p>
+  <h1>The Harness Era</h1>
+  <p class="subtitle">Eight sources, one converging claim: raw model intelligence has stopped being the story. The story is the harness around the model, the workflow that verifies it, the router that pays for it, the interface that ships it — and the capital that is about to fight over all four.</p>
+
+  <div class="byline">
+    <span><b>8 sources</b> · 2 diagrams · ~23 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>Intelligence got cheap; everything around it didn't</h2>
+
+    <p class="lead">Today's reading is unusually coherent. A chemistry lab, a quant firm's design desk, a Chrome engineer, a data-industry essayist, an infrastructure shop, and two trillion-dollar IPO filings all say versions of the same sentence: <strong>the model is no longer the bottleneck.</strong> Frontier models now match specialist software in NMR analysis, out-prototype Figma in product design, and rival dedicated bioinformatics pipelines — and precisely because of that, the differentiating work has moved out of the model and into the machinery wrapped around it. Osmani names the discipline (<em>harness engineering</em>), K-Dense supplies the lab evidence, ByteByteGo prices it, and Stancil warns who is coming to collect.</p>
+
+    <p><em>Last week's weekly called it the moat migration — value leaving the model layer. Today's sources ask the harder follow-up: now that the moat sits in the harness, how long before the labs absorb that layer too — and where do you stand when they do?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Five agreements across today's sources</h4>
+    <ol>
+      <li><strong>The bottleneck has left the model.</strong> Chemistry (K-Dense), engineering (Osmani), design (Jane Street), and product (Chesky) independently report that general-purpose intelligence is now sufficient — the constraint is the workflow, verification, and interface around it.</li>
+      <li><strong>The harness is the work now.</strong> Prompts, tools, sandboxes, context policy, evals, feedback loops. A decent model with a great harness beats a great model with a bad harness — and the gap is measurable on public benchmarks.</li>
+      <li><strong>Economics force routing.</strong> Agent loops resend full context to the most expensive model by default. Teams that route tasks to the cheapest sufficient model report 60–80% cost cuts; cost-per-outcome is replacing cost-per-token as the metric that matters.</li>
+      <li><strong>The interface is becoming the bet.</strong> Chesky's new lab, Jane Street's Claude-first design practice, and Zero 1.0's instant-sync substrate all wager that experience quality — not model access — is where durable product advantage lives.</li>
+      <li><strong>The labs are coming for the agent layer.</strong> OpenAI and Anthropic filed for public debuts within a week of each other; both ship general-purpose agents that outcompete hand-built wrappers. Stancil's advice: get out of the token path before the war chests arrive.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 CRAFT =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · Craft</span>Harness engineering becomes a named discipline</h2>
+
+    <p>Addy Osmani's <em>Agent Harness Engineering</em> is the day's most practically dense piece, and its core move is taxonomic: it takes the scaffolding everyone has been improvising — system prompts, tool definitions, hooks, sandboxes, context-compaction policy, memory, planner/evaluator splits — and names the whole assembly the <strong>harness</strong>, then argues the harness is where engineering leverage now concentrates. His evidence is uncomfortable for model-watchers: the same frontier model scores wildly differently on Terminal Bench depending on the harness it runs inside, and one team he cites moved a coding agent from Top-30 to Top-5 <em>without touching the model</em>.</p>
+
+    <blockquote>
+      A decent model with a great harness beats a great model with a bad harness.
+      <cite>— Addy Osmani, Agent Harness Engineering</cite>
+    </blockquote>
+
+    <p>The piece's most transferable idea is the <strong>ratchet principle</strong>: every agent mistake becomes a permanent, written signal — a new rule in a failure-traced <em>AGENTS.md</em>, a new eval, a tightened hook — so the harness only ever gets stricter. That converts agent failures from embarrassments into compounding assets, which is exactly the move that separated disciplined teams in yesterday's reading. The synthesis worth keeping: harness engineering is not a new skill so much as classical operations discipline applied to a stochastic component.</p>
+
+    <p><span class="prev-ref">Continues <a href="ai-industrial-shift-2026-06-kindle.html">Jun 3 — The AI Industrial Shift</a>'s "shrinking harness" thread: what Anthropic absorbs into the model (effort controls, dynamic workflows), Osmani's discipline rebuilds one layer further out. The harness doesn't disappear; it migrates outward.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Seven labelled bands showing the anatomy of an agent harness with the model as one thin band in the middle">
+      <rect x="0" y="0" width="660" height="420" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · ANATOMY OF A HARNESS</text>
+
+      <!-- Stack: harness layers wrap the model band. Stepped grayscale, model = black -->
+      <rect x="30" y="50" width="600" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="71" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">CONTEXT POLICY</text>
+      <text x="50" y="89" font-family="Georgia,serif" font-size="14" fill="#000000">What enters the window · compaction · retrieval scope</text>
+
+      <rect x="30" y="100" width="600" height="46" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="121" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">TOOLS &amp; SANDBOXES</text>
+      <text x="50" y="139" font-family="Georgia,serif" font-size="14" fill="#000000">Filesystem · bash · git · scoped execution environments</text>
+
+      <rect x="30" y="150" width="600" height="46" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="171" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">HOOKS &amp; GUARDRAILS</text>
+      <text x="50" y="189" font-family="Georgia,serif" font-size="14" fill="#000000">Enforcement that doesn't rely on the model agreeing</text>
+
+      <rect x="30" y="200" width="600" height="40" fill="#000000"/>
+      <text x="330" y="225" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="3">THE MODEL — ONE BAND, NOT THE BUILDING</text>
+
+      <rect x="30" y="244" width="600" height="46" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="265" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">MEMORY &amp; STATE</text>
+      <text x="50" y="283" font-family="Georgia,serif" font-size="14" fill="#000000">Durable artefacts · AGENTS.md · session continuity</text>
+
+      <rect x="30" y="294" width="600" height="46" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="315" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">EVALS &amp; FEEDBACK LOOPS</text>
+      <text x="50" y="333" font-family="Georgia,serif" font-size="14" fill="#000000">Planner/evaluator splits · regression gates · drift probes</text>
+
+      <rect x="30" y="344" width="600" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="365" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THE RATCHET</text>
+      <text x="50" y="383" font-family="Georgia,serif" font-size="14" fill="#000000">Every failure becomes a permanent rule — the harness only tightens</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The model is one thin band in a seven-band machine. Osmani's claim, made structural: the bands above and below the model are where the same model swings from Top-30 to Top-5 on public benchmarks — so they are where engineering effort now pays.</div>
+  </div>
+
+  <!-- =================== §3 EVIDENCE =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Evidence</span>The chemistry result that proves the slogan</h2>
+
+    <p>K-Dense's <em>The Model Is No Longer the Bottleneck</em> turns the day's slogan into a falsifiable result. Anthropic ran Claude against the entrenched specialist stack for NMR spectroscopy — ChemDraw and MestReNova, software with decades of domain tuning — with no chemistry-specific training. The general model posted the lowest hydrogen-shift prediction error (±0.079&nbsp;ppm), matched MestReNova on carbon analysis, and hit roughly 80% peak-spacing accuracy where the traditional tools managed 26–35%. Most strikingly, it worked the <em>inverse</em> problem — inferring molecular structure from spectra — a task the specialist software mostly leaves to humans. The biology parallel: generalist systems now score ~90% on specialized bioinformatics benchmarks.</p>
+
+    <p>K-Dense's own conclusion is the honest one for a company selling scientific workflow: the bottleneck has moved from the model to the workflow around it — connecting models to real databases, executing code instead of describing it, verifying outputs against evidence, and producing results an auditor (or a reviewer) can trust. The bottleneck was never whether the agent could run the analysis; it is whether you should believe the answer. That is §2's harness argument wearing a lab coat — the strongest cross-domain agreement in today's set.</p>
+
+    <p><span class="caflag">Counter</span><em>Mind the benchmark size: 20 compounds forward, 15 inverse. That is a demonstration, not a validation campaign — and "matched the specialist tool" on a curated panel is the kind of claim that has historically shrunk on contact with messy real-world spectra. The directional point stands; the margins deserve skepticism.</em></p>
+  </section>
+
+  <!-- =================== §4 ECONOMICS =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Economics</span>Routing, or how to stop paying frontier prices for grunt work</h2>
+
+    <p>ByteByteGo's <em>Token Spend Out of Control?</em> is the operations memo for the harness era. The failure mode it describes is now familiar: an agent loop re-sends its full context every step, defaults to the most capable model on the menu, and quietly turns a cent-sized task into a dollar-sized one. The piece's fix is architectural, not contractual — put a <strong>router</strong> in front of the model menu that classifies each request and sends it to the cheapest model that is good enough, with caching layered underneath. The numbers reported across the routing literature are large enough to be strategic rather than tactical: 60–80% cost reduction without measurable quality loss, and ~30% from simply changing the default model.</p>
+
+    <p>The synthesis point is what routing does to the org chart: it converts "which model do we use?" from a procurement decision made annually into an engineering decision made per-request — which means the cost curve of your product is now a function of harness quality (§2), not vendor pricing. Teams that can't route pay frontier prices for everything; teams that can treat the expensive model as an escalation path. The metric shift underneath it all: <strong>cost per outcome</strong>, not cost per token.</p>
+
+    <p><span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-04-kindle.html">Jun 4 — The Bifurcation</a>'s token-reckoning thread (82¢ of every AI dollar wasted; cost-per-completed-workflow as the honest metric). Routing is the first widely-deployed mechanism that actually claws that 82¢ back.</span></p>
+  </section>
+
+  <!-- =================== §5 INTERFACE =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Interface</span>Chesky's lab, Jane Street's desk, and the end of the mockup</h2>
+
+    <p>Two sources attack the same layer from opposite ends of the industry. Brian Chesky — announcing his first major venture outside Airbnb — is starting an AI lab premised on the claim that the chatbot was a transitional form: travel, commerce, and most consumer domains need rich, designed, interactive surfaces, not a text box. He will keep running Airbnb and back the lab rather than lead it, but the thesis is unambiguous — the next phase of AI is won on <em>experience</em>, not on conversational access to a model everyone else also has.</p>
+
+    <p>Jane Street's design blog post — <em>I design with Claude more than Figma now</em> — is the same thesis as a workflow confession. Their designer now skips static mockups for new tools entirely: describe the problem, generate a working prototype, and iterate on the real artefact — buttons, shortcuts, copy, confirmation flows — with effectively free revision cycles. The spec-doc → mockup → handoff → review pipeline collapses into a single loop where the prototype <em>is</em> the spec. The structural reading: design is moving from producing <em>pictures of software</em> to producing <em>software</em>, which quietly merges the designer's loop with the engineer's harness (§2).</p>
+
+    <p>Rocicorp's <strong>Zero 1.0</strong> is the substrate bet underneath both. A sync engine that replicates Postgres into a client-side replica and answers queries in the next frame is infrastructure for exactly the kind of instant, designed, AI-native application Chesky is describing — and it is telling that the day's most experience-obsessed sources and its most infrastructure-obsessed source are pointing at the same gap: model access is commodity; <em>feel</em> is not.</p>
+  </section>
+
+  <!-- =================== §6 CAPITAL =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · Capital</span>Two S-1s and a warning about the token path</h2>
+
+    <p>OpenAI confidentially filed for its IPO on June 8 — one week after Anthropic, whose filing reportedly came in near a $965B valuation, with OpenAI's own preparations pointing at up to $1T. Whatever the listing timelines turn out to be, the strategic fact is already operative: both labs are about to carry public-market growth expectations, hundred-billion-dollar war chests, and a fiduciary obligation to expand into every profitable layer adjacent to their models.</p>
+
+    <p>Which is exactly the scenario Benn Stancil's <em>Your agent will be your undoing</em> war-games. His argument: the easy AI business of 2026 is the <strong>token path</strong> — wrap an LLM, fetch context, resell tokens at a markup. It pays now, but it has a structural expiry date. Citing Meta research that stronger general-purpose agents outperform hand-engineered solutions once a search space becomes accessible, he argues harness design itself will commoditize through outer-loop search — and the labs, owning the models, the distribution, and soon the public capital, will absorb the agent layer the way Claude Code and Codex already absorbed swathes of the coding-tool market. Cursor's sale, in his telling, is the canary. His prescription is the day's most contrarian sentence: <strong>don't put AI in your product</strong> — build the picks and shovels agents themselves need (sandboxes, notebooks, data connectors, presentation surfaces), because the customer base that is genuinely growing without limit is the robots.</p>
+
+    <p><span class="caflag">Counter</span><em>The day's two big theses are in tension. If the labs absorb every layer they touch (Stancil), Chesky's design-driven bet sits inside the blast radius too. The reconciliation — visible in the labs' own behaviour — is that they absorb what is adjacent to the model (harnesses, coding agents, workflow tooling) and have repeatedly failed to ship taste (consumer experience, vertical UX). Both bets can be right; they are bets on different distances from the model.</em></p>
+
+    <p><span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-09-kindle.html">Jun 9 — The Discipline Gap</a>'s "your vendor is your competitor" section: Stancil supplies the mechanism (outer-loop search + war chests) and the timeline (post-IPO), and upgrades the advice from "pre-design your exits" to "don't enter the building."</span></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-panel comparison of the token path versus the agent-infrastructure path">
+      <rect x="0" y="0" width="660" height="400" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · TWO PLACES TO STAND WHEN THE LABS GO PUBLIC</text>
+
+      <!-- LEFT PANEL: token path -->
+      <rect x="30" y="50" width="295" height="330" fill="#f1f1f1" stroke="#000000" stroke-width="1.4"/>
+      <text x="48" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PANEL A · THE TOKEN PATH</text>
+
+      <rect x="48" y="96" width="259" height="44" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="60" y="114" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">YOUR AGENT (WRAPPER)</text>
+      <text x="60" y="131" font-family="Georgia,serif" font-size="13" fill="#000000">fetch context · prompt · resell tokens</text>
+
+      <text x="177" y="162" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ margin flows down</text>
+
+      <rect x="48" y="176" width="259" height="44" fill="#000000"/>
+      <text x="60" y="194" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff">FRONTIER LAB (MODEL + CAPITAL)</text>
+      <text x="60" y="211" font-family="Georgia,serif" font-size="13" fill="#ffffff">owns model · distribution · the S-1</text>
+
+      <text x="177" y="244" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ then ships its own agent</text>
+
+      <rect x="48" y="258" width="259" height="58" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="60" y="278" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">YOUR WRAPPER, DEPRECATED</text>
+      <text x="60" y="295" font-family="Georgia,serif" font-size="13" fill="#000000">harness commoditised by outer-loop</text>
+      <text x="60" y="310" font-family="Georgia,serif" font-size="13" fill="#000000">search · value exits to the substrate</text>
+
+      <text x="48" y="352" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Pays now. Expires when the</text>
+      <text x="48" y="370" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">war chest arrives.</text>
+
+      <!-- RIGHT PANEL: infrastructure path -->
+      <rect x="335" y="50" width="295" height="330" fill="#f1f1f1" stroke="#000000" stroke-width="1.4"/>
+      <text x="353" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PANEL B · BUILD FOR THE AGENTS</text>
+
+      <rect x="353" y="96" width="259" height="44" fill="#000000"/>
+      <text x="365" y="114" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff">AGENTS AS THE CUSTOMER</text>
+      <text x="365" y="131" font-family="Georgia,serif" font-size="13" fill="#ffffff">a buyer population growing without limit</text>
+
+      <text x="482" y="162" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ they need tools</text>
+
+      <rect x="353" y="176" width="259" height="98" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="365" y="196" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">AGENT INFRASTRUCTURE</text>
+      <text x="365" y="214" font-family="Georgia,serif" font-size="13" fill="#000000">sandboxes · data connectors · sync</text>
+      <text x="365" y="231" font-family="Georgia,serif" font-size="13" fill="#000000">engines (Zero) · notebooks · routers</text>
+      <text x="365" y="248" font-family="Georgia,serif" font-size="13" fill="#000000">(§4) · presentation surfaces · context</text>
+      <text x="365" y="265" font-family="Georgia,serif" font-size="13" fill="#000000">stores the agent can't run without</text>
+
+      <text x="482" y="296" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#000000">▼ value sticks here</text>
+
+      <rect x="353" y="310" width="259" height="44" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="365" y="330" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">CONTEXT &amp; DISTRIBUTION MOAT</text>
+      <text x="365" y="347" font-family="Georgia,serif" font-size="13" fill="#000000">labs can't subsume what they depend on</text>
+
+      <text x="353" y="375" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Stancil's exit from the token path.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The token path (left) routes your margin through a vendor that is about to be a public company with an obligation to take it. The structural escape (right) is to sell what agents consume rather than competing as one — value sticks with whoever owns the context and tools the agent can't run without.</div>
+  </div>
+
+  <!-- =================== §7 STRETCH =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The long view</span>What happens when the harness commoditizes too</h2>
+
+    <p>Hold §2 and §6 in the same hand and the decade's sequence becomes visible. 2023–2024: the model is the moat. 2025–2026: models converge, the moat migrates into the harness — and harness engineering becomes a paid discipline, today's reading included. But Stancil's Meta citation points one step further: if harness design is itself searchable — if an outer loop can mutate prompts, tools, and context policy against an eval suite the way AutoML once mutated architectures — then the harness commoditizes on the same schedule the model did, just faster, because the search space is text.</p>
+
+    <p>What is left when both the model and the harness are commodity? Three candidates survive today's sources. <strong>Context</strong> — the proprietary data, permissions, and institutional memory an agent needs to be useful in <em>your</em> business (Stancil's terminal answer, and the ledger's running theme since the W23 weekly). <strong>Verification</strong> — the K-Dense point that trust, not capability, is the durable scarcity; whoever owns the audit trail owns the science. And <strong>taste</strong> — the Chesky/Jane Street layer, the one thing the labs have conspicuously failed to ship despite unlimited model access. None of these are token businesses. All of them get <em>more</em> valuable as tokens get cheaper, which is the test worth applying to anything you build from here.</p>
+
+    <p>The falsifiable version, for the ledger: if the harness-commoditization thesis is right, expect at least one frontier lab to ship automated harness optimization — eval-driven prompt/tool search as a product — within two quarters, and expect the first acquisitions after the IPOs to be context owners (data platforms, vertical system-of-record companies), not agent startups.</p>
+  </section>
+
+  <!-- =================== §8 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Practical takeaways</span>If you only do six things this week</h2>
+
+    <ol>
+      <li><strong>Start your AGENTS.md ratchet.</strong> Take the last five agent failures you saw and write each one into a rule, an eval, or a hook. From now on, no failure exits the room without leaving a rule behind. That is the whole of harness engineering, applied.</li>
+      <li><strong>Put a router in front of your model menu.</strong> Even a crude two-tier classifier (cheap-by-default, frontier-on-escalation) captures most of the 60–80%. Measure cost per outcome before and after; report that number, not token spend.</li>
+      <li><strong>Prototype in code, not pictures.</strong> Try the Jane Street loop once: next new feature, skip the mockup, generate a working prototype, iterate on the artefact. Judge whether the handoff pipeline you keep paying for still earns its latency.</li>
+      <li><strong>Run the Stancil pre-mortem on your own product.</strong> If your value is "agent + model + UI," write the two-line plan for the week a lab ships it natively. If you can't, start moving your weight toward context, verification, or tools agents consume.</li>
+      <li><strong>Treat scientific or quantitative agent output as unverified by default.</strong> The K-Dense rule: the question is never "can it run the analysis," it is "should you believe the answer." Budget verification into every workflow that produces a number someone will act on.</li>
+      <li><strong>Read the S-1s when they go public.</strong> The disclosed unit economics of the labs will price the token path for everyone downstream. The first honest look at frontier margins is worth more than a quarter of analyst speculation.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §9 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Harness</dt>
+        <dd>The full assembly wrapped around a model in an agent system: prompts, tools, hooks, sandboxes, context policy, memory, and feedback loops. Osmani's framing: the building around the band.</dd>
+
+        <dt>Ratchet principle</dt>
+        <dd>The harness-engineering rule that every agent mistake becomes a permanent written signal — a rule, an eval, a hook — so the harness only ever tightens. Failures convert into compounding assets.</dd>
+
+        <dt>Model routing</dt>
+        <dd>An architectural layer that classifies each request and sends it to the cheapest model that is good enough, reserving frontier models for escalation. Reported savings of 60–80% at constant quality.</dd>
+
+        <dt>Cost per outcome</dt>
+        <dd>What you spend to get a useful, completed result — as opposed to cost per token, which measures raw compute consumption. The metric shift that makes routing strategic rather than cosmetic.</dd>
+
+        <dt>Token path</dt>
+        <dd>Stancil's term for the business of wrapping an LLM and reselling its tokens at a markup. Lucrative now; structurally exposed to the labs that own the model, the distribution, and (soon) public capital.</dd>
+
+        <dt>Outer-loop search</dt>
+        <dd>Automated optimization of the harness itself — mutating prompts, tools, and context policy against an eval suite, the way AutoML once searched architectures. The mechanism by which harness design commoditizes.</dd>
+
+        <dt>Inverse problem (NMR)</dt>
+        <dd>Inferring a molecular structure from its spectrum, rather than predicting the spectrum from a known structure. The harder direction — historically left to human chemists, now handled by a general model.</dd>
+
+        <dt>Sync engine</dt>
+        <dd>Infrastructure (e.g. Rocicorp's Zero) that continuously replicates a server database into a client-side replica so queries answer instantly from local data. The substrate that makes AI-native apps feel immediate.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (June 10, 2026)</em> · 8 sources, with the "The shift to autonomous AI agents" Deep Dive audio overview available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The eight pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Article · X (Addy Osmani)</span>
+        <span class="src-title"><a href="https://addyosmani.com/blog/agent-harness-engineering/">Agent Harness Engineering</a></span>
+        <span class="src-note">The day's keeper. Names the discipline, supplies the primitives, and the ratchet principle alone is worth the read. The Terminal Bench delta (same model, Top-30 → Top-5 on harness changes alone) is the most quotable evidence in today's set.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Industry coverage</span>
+        <span class="src-title"><a href="https://techcrunch.com/2026/06/04/airbnbs-brian-chesky-plans-to-launch-a-new-ai-lab/">Beyond the Chatbot: Brian Chesky's Design-Driven AI Future</a></span>
+        <span class="src-note">The thesis matters more than the announcement: a consumer-product operator betting that chat was the transitional UI, not the destination. Whether the lab ships anything, the diagnosis of the text box's limits is correct and increasingly consensus.</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Jane Street</span>
+        <span class="src-title"><a href="https://blog.janestreet.com/i-design-with-claude-code-more-than-figma-now-index/">I design with Claude more than Figma now</a></span>
+        <span class="src-note">A workflow confession with structural implications: the prototype becomes the spec, and the design loop merges into the engineering harness. The honest detail is what survives — Figma stays for some work; the pipeline around it is what dies.</span>
+      </li>
+      <li>
+        <span class="pub">News · Markets</span>
+        <span class="src-title"><a href="https://www.cnbc.com/2026/05/20/openai-ipo-filing.html">OpenAI Files Confidential IPO For Landmark Public Debut</a></span>
+        <span class="src-note">Read for the sequencing, not the valuation chatter: OpenAI filing a week after Anthropic means both labs will soon answer to growth expectations measured in adjacent layers. The strategic content is in §6, not in the price targets.</span>
+      </li>
+      <li>
+        <span class="pub">Research blog · K-Dense</span>
+        <span class="src-title"><a href="https://www.k-dense.ai/blog/the-model-is-no-longer-the-bottleneck">The Model Is No Longer the Bottleneck</a></span>
+        <span class="src-note">The lab evidence for the day's slogan, written by a company whose business depends on the conclusion — discount accordingly, but the ±0.079 ppm and inverse-problem results are Anthropic's numbers, not theirs. The verification framing is the durable part.</span>
+      </li>
+      <li>
+        <span class="pub">Newsletter · ByteByteGo</span>
+        <span class="src-title"><a href="https://blog.bytebytego.com/p/token-spend-out-of-control-the-case">Token Spend Out of Control? The Case for Smarter Routing</a></span>
+        <span class="src-note">Systems-newsletter treatment of a problem most teams discover on an invoice. Nothing here is novel to anyone running agents at scale; everything here is useful to the much larger group about to. The cost-per-outcome reframe is the takeaway.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · benn.substack.com</span>
+        <span class="src-title"><a href="https://benn.substack.com/p/get-out-of-the-token-path">Your agent will be your undoing</a></span>
+        <span class="src-note">The day's best-argued and most uncomfortable piece. The "don't put AI in your product" prescription overcorrects — but the mechanism (outer-loop search commoditizing harnesses, labs absorbing the agent layer post-IPO) deserves to be war-gamed by every wrapper company this quarter.</span>
+      </li>
+      <li>
+        <span class="pub">Release · Rocicorp</span>
+        <span class="src-title"><a href="https://zero.rocicorp.dev/">Zero — the sync engine reaches 1.0</a></span>
+        <span class="src-note">Two years of work shipping as a stable release. Read it as agent-era infrastructure rather than web tooling: instant local-first data is what makes designed, AI-native surfaces (§5) feel inevitable instead of laggy. The quiet pick-and-shovel play in today's set.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 40 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

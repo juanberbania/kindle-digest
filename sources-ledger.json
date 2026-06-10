@@ -531,6 +531,78 @@
       "title": "App Store ecosystem reaches $1.4 trillion as developers thrive globally",
       "publication": "Press release · Apple",
       "first_seen_in": "daily-tldr-digest-2026-06-09-kindle.html"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "agent-harness-engineering-addy-osmani",
+      "title": "Agent Harness Engineering",
+      "publication": "Article · X (Addy Osmani)",
+      "url": "https://addyosmani.com/blog/agent-harness-engineering/",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "harness > model · ratchet principle · Terminal Bench Top-30 to Top-5"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "beyond-the-chatbot-brian-chesky-s-design-driven-ai-future",
+      "title": "Beyond the Chatbot: Brian Chesky's Design-Driven AI Future",
+      "publication": "Essay · Industry coverage",
+      "url": "https://techcrunch.com/2026/06/04/airbnbs-brian-chesky-plans-to-launch-a-new-ai-lab/",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "new AI lab · chat as transitional UI · experience over model access"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "i-design-with-claude-more-than-figma-now",
+      "title": "Jane Street Blog — I design with Claude more than Figma now",
+      "publication": "Engineering blog · Jane Street",
+      "url": "https://blog.janestreet.com/i-design-with-claude-code-more-than-figma-now-index/",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "prototype-as-spec · design loop merges into engineering harness"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "openai-files-confidential-ipo-for-landmark-public-debut",
+      "title": "OpenAI Files Confidential IPO For Landmark Public Debut",
+      "publication": "News · Markets",
+      "url": "https://www.cnbc.com/2026/05/20/openai-ipo-filing.html",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "confidential S-1 Jun 8 · one week after Anthropic · up to $1T"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "the-model-is-no-longer-the-bottleneck-k-dense",
+      "title": "The Model Is No Longer the Bottleneck",
+      "publication": "Research blog · K-Dense",
+      "url": "https://www.k-dense.ai/blog/the-model-is-no-longer-the-bottleneck",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "Claude vs ChemDraw/MestReNova · ±0.079 ppm · inverse problem · verification scarcity"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "token-spend-out-of-control-the-case-for-smarter-routing",
+      "title": "Token Spend Out of Control? The Case for Smarter Routing",
+      "publication": "Newsletter · ByteByteGo",
+      "url": "https://blog.bytebytego.com/p/token-spend-out-of-control-the-case",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "model routing · 60-80% cost cuts · cost-per-outcome metric"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "your-agent-will-be-your-undoing-benn-stancil",
+      "title": "Your agent will be your undoing",
+      "publication": "Essay · benn.substack.com",
+      "url": "https://benn.substack.com/p/get-out-of-the-token-path",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "token path · outer-loop search commoditizes harnesses · build for agents"
+    },
+    {
+      "first_cited": "2026-06-10",
+      "slug": "zero-rocicorp-sync-engine-1-0",
+      "title": "Zero — the sync engine reaches 1.0",
+      "publication": "Release · Rocicorp",
+      "url": "https://zero.rocicorp.dev/",
+      "first_seen_in": "daily-tldr-digest-2026-06-10-kindle.html",
+      "context": "Postgres-to-client replication · instant AI-native UX substrate"
     }
   ]
 }
