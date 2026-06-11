@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 11, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 11, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 41</div>
+    <div class="rhs">Thursday · 11 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · Hype Meets the Ledger</p>
+  <h1>Mark to Market</h1>
+  <p class="subtitle">Eight sources, one verdict: the AI industry is being marked to market. Ed Zitron tallies an infrastructure bill the revenue can't cover; Simon Willison clocks Claude Fable 5 still bending the capability curve upward; a stack blueprint, the context-engineering turn, and the rise of "agent experience" professionalize how the thing gets built; and answer-engine optimization, seven-day subscriptions, and Apple's quiet default show what selling AI looks like once the hype is priced out.</p>
+
+  <div class="byline">
+    <span><b>8 sources</b> · 3 diagrams · ~22 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>Two moods that turn out to be one story</h2>
+
+    <p class="lead">Today's eight sources split cleanly into two moods that, read together, are the same argument. Half are about <strong>money getting serious</strong>: an infrastructure bill that has outrun revenue, subscription plans engineered to extract cash from skeptics, an optimization discipline for being the answer an LLM hands back. The other half are about <strong>craft getting serious</strong>: a named blueprint for the modern stack, prompt engineering maturing into context engineering, developer experience reframed as agent experience, and a frontier model that is still, demonstrably, getting better. The connective tissue is accountability. 2026 is the year AI stops being valued on the story it tells and starts being valued on what it can be shown to deliver — in dollars, and in benchmarks.</p>
+
+    <p><em>The AI-bubble thread has run through this archive since Jun 4's </em>The Bifurcation<em>; today the question gets sharper — how much of "AI is slowing down" survives once you separate the financing curve from the capability curve, and which of the two is Fable 5 actually on?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Six agreements across today's sources</h4>
+    <ol>
+      <li><strong>The metric changed.</strong> Promise stopped counting. Revenue, conversion rates, and benchmark deltas are now the unit of judgment across every source — the financial ones and the technical ones alike.</li>
+      <li><strong>The bill outran the revenue.</strong> Zitron's tally: roughly $725B in 2026 infrastructure capex against frontier-lab revenues an order of magnitude smaller. The fragility lives in the financing, not the technology.</li>
+      <li><strong>"Slowing down" is an economic claim, not a technical one.</strong> Willison's Fable 5 notes — a two-month Stripe migration done in a day, a 90% on Hex's hardest analytics benchmark — are evidence the capability curve is still bending up while the money curve wobbles. The two camps are graphing different lines.</li>
+      <li><strong>The build layer is professionalizing under one move.</strong> The modern-stack blueprint, context engineering replacing prompt engineering, and agent experience replacing developer experience are the same migration: the unit of engineering is no longer the model call but the environment the agent works inside.</li>
+      <li><strong>Go-to-market got hard-nosed.</strong> Answer-engine optimization to capture LLM-mediated demand and seven-day subscriptions to monetize the wary are revenue tactics for a market that no longer buys on faith.</li>
+      <li><strong>Distribution is the consumer endgame.</strong> Apple's bet isn't being best; it's being the default. The channel, not the model, decides who reaches the mainstream.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 BLUEPRINT =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · Structure</span>The stack finally gets a blueprint</h2>
+
+    <p>The day's most structural source lays the modern AI system out as a layered diagram: compute and infrastructure at the base, foundation models above them, then orchestration and routing, then the context-and-data layer, then agents and tools, and the product surface on top. The value of the exercise is not the inventory — every consultancy has a stack diagram now — but what the layering reveals once you ask <em>which layers are yours.</em> The model layer, the one that dominated the 2024 conversation, is the most rented part of the whole structure: you do not own it, you do not differentiate on it, and your competitor can call the same endpoint by lunch.</p>
+
+    <p>The synthesis the blueprint implies, and that no single layer states, is a direction of travel: <strong>value is migrating up and to the sides, away from the model and into the layers that are proprietary to you</strong> — your context and data, your orchestration policy, your product surface. That is the moat-migration thread this archive has tracked for two weeks, now drawn as an org chart. Read defensively, the blueprint is a map of where <em>not</em> to plant your flag.</p>
+
+    <p><span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-05-kindle.html">Jun 5 — The Legible Stack</a>'s argument that the stack is becoming legible enough to reason about layer by layer. Today's blueprint adds the vector: legibility was step one; knowing which layers hold value as the model commoditizes is step two.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six-layer stack of the modern AI system, with the model layer marked as rented and the context and product layers marked as where value now concentrates">
+      <rect x="0" y="0" width="660" height="430" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · WHERE VALUE SITS ON THE STACK</text>
+
+      <!-- top = product surface (yours, black for emphasis) -->
+      <rect x="30" y="48" width="600" height="50" fill="#000000"/>
+      <text x="50" y="70" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">PRODUCT SURFACE — YOURS</text>
+      <text x="50" y="88" font-family="Georgia,serif" font-size="14" fill="#ffffff">The experience, the workflow, the feel. Hardest to copy.</text>
+
+      <rect x="30" y="100" width="600" height="50" fill="#000000"/>
+      <text x="50" y="122" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">CONTEXT &amp; DATA — YOURS</text>
+      <text x="50" y="140" font-family="Georgia,serif" font-size="14" fill="#ffffff">Proprietary data, permissions, institutional memory.</text>
+
+      <rect x="30" y="152" width="600" height="50" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="174" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">ORCHESTRATION &amp; ROUTING</text>
+      <text x="50" y="192" font-family="Georgia,serif" font-size="14" fill="#000000">Agent loops, routers, evals — partly yours to own.</text>
+
+      <rect x="30" y="204" width="600" height="50" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="226" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">AGENTS &amp; TOOLS</text>
+      <text x="50" y="244" font-family="Georgia,serif" font-size="14" fill="#000000">Increasingly shipped by the labs themselves.</text>
+
+      <rect x="30" y="256" width="600" height="50" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="50" y="278" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">FOUNDATION MODELS — RENTED</text>
+      <text x="50" y="296" font-family="Georgia,serif" font-size="14" fill="#ffffff">Same endpoint your competitor calls. No moat here.</text>
+
+      <rect x="30" y="308" width="600" height="50" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="50" y="330" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">COMPUTE &amp; INFRASTRUCTURE</text>
+      <text x="50" y="348" font-family="Georgia,serif" font-size="14" fill="#000000">The $725B buildout — and §4's open question.</text>
+
+      <!-- value arrow -->
+      <text x="330" y="390" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">▲ VALUE MIGRATES TOWARD THE LAYERS YOU OWN</text>
+      <text x="330" y="412" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The model is the most rented band in the building.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The modern AI stack, read for ownership rather than inventory. The two black bands at the top — context and product surface — are the only layers a competitor can't rent by lunchtime, which is precisely why value is migrating into them and out of the model.</div>
+  </div>
+
+  <!-- =================== §3 BUILD SHIFT =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Craft</span>From prompts to environments: context engineering and AX</h2>
+
+    <p>Two sources describe the same shift from opposite ends. <em>The Context Engineering Revolution</em> argues that the job has moved from <em>how to ask</em> — the prompt-engineering question — to <em>what the agent knows, sees, and remembers at the moment it acts.</em> Context stops being prose you tune and becomes infrastructure you manage: dynamic selection, compression, memory, retrieval scope, policy. The piece traces the term to Andrej Karpathy's mid-2025 coinage and makes the operating-system analogy explicit — the developer's job is deciding what gets paged into the model's limited working memory at each step.</p>
+
+    <p>Builder.io's <em>Agent experience is the new developer experience</em> is the same migration seen from the design side. Where DX optimized the human's path through a codebase, <strong>AX</strong> optimizes the agent's: the context, tools, permissions, tests, and review loops that tell an autonomous worker what matters, what it may touch, and how it knows it succeeded. Its sharpest observation is that with agents, onboarding happens at the <em>start of every single task</em> — there is no ramp-up that persists — so the repo's instructions, schemas, and known failure modes have to teach the worker from scratch, every time, through a deterministic and bounded preview environment.</p>
+
+    <p>The synthesis worth keeping, present in neither piece alone: <strong>context engineering and agent experience are one discipline wearing two job titles.</strong> Both relocate the engineering effort from the model call to the environment the agent inhabits; both are in the business of building a <em>deterministic world for a stochastic worker.</em> One approaches it as data plumbing, the other as interaction design, and they meet in the middle.</p>
+
+    <p><span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-10-kindle.html">Jun 10 — The Harness Era</a>'s harness thread. Context engineering is the harness seen from the data side; agent experience is the harness seen from the design side. Same machine around the model, named twice this week.</span></p>
+  </section>
+
+  <!-- =================== §4 THE BILL =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Economics</span>The bill comes due</h2>
+
+    <p>Ed Zitron's <em>AI Is Slowing Down</em> is the day's loudest source and its bleakest. The core arithmetic: the four largest hyperscalers are on track to spend on the order of <strong>$725 billion on AI infrastructure in 2026</strong>, while the two flagship model companies post annualized revenues — roughly $25B for OpenAI, $19B for Anthropic by his accounting — that sit an order of magnitude beneath the capital being poured into the ground to serve them. He marshals the bear-case furniture: revenue growth decelerating, circular vendor-customer investments, power and data-center capacity built for a demand curve that may not arrive, and the live risk that 2024–2025-vintage assets strand by 2027–2028. Impairments, he notes, have already started being taken.</p>
+
+    <p>The synthesis that matters — and that separates a useful reading from doomscrolling — is to name <em>which</em> bubble this is. If there is one, it is a <strong>financing bubble, not a usefulness bubble.</strong> The danger Zitron actually documents is in the capital structure: debt-funded buildout, demand booked ahead of revenue, returns assumed rather than observed. That structure can break even if the technology keeps working perfectly — which is exactly what makes §5 the necessary other half of the page.</p>
+
+    <p><span class="caflag">Counter</span><em>Zitron's case overshoots at one specific joint: "the demand won't come" is the weakest plank, and it is undercut twice on today's own page — by Fable 5's capability gains (§5) and by the go-to-market machinery being built to manufacture and capture demand (§6). The honest residue of his argument is narrower and harder to dismiss: the financing is fragile. That claim survives every counter on this page.</em></p>
+
+    <p><span class="prev-ref">Continues <a href="daily-tldr-digest-2026-06-04-kindle.html">Jun 4 — The Bifurcation</a>'s token-reckoning thread (82¢ of every AI dollar wasted; cost-per-completed-workflow as the honest metric). Zitron zooms that same waste out from the invoice to the balance sheet.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two magnitude boxes comparing 2026 AI infrastructure capex of about 725 billion dollars against frontier-lab annualized revenue of about 44 billion dollars">
+      <rect x="0" y="0" width="660" height="360" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THE GAP ZITRON IS POINTING AT</text>
+
+      <!-- capex: big black box -->
+      <rect x="30" y="50" width="400" height="250" fill="#000000"/>
+      <text x="48" y="78" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">2026 INFRASTRUCTURE CAPEX</text>
+      <text x="48" y="150" font-family="Georgia,serif" font-size="72" font-weight="700" fill="#ffffff">~$725B</text>
+      <text x="48" y="186" font-family="Georgia,serif" font-size="15" fill="#ffffff">Amazon · Google · Microsoft · Meta —</text>
+      <text x="48" y="208" font-family="Georgia,serif" font-size="15" fill="#ffffff">spent to serve a demand curve</text>
+      <text x="48" y="230" font-family="Georgia,serif" font-size="15" fill="#ffffff">assumed, not yet observed.</text>
+      <text x="48" y="276" font-family="-apple-system,sans-serif" font-size="12" font-style="italic" fill="#c8c8c8">Debt-funded · ahead of revenue</text>
+
+      <!-- revenue: small box, to scale-ish -->
+      <rect x="450" y="240" width="180" height="60" fill="#9a9a9a" stroke="#000000" stroke-width="0.8"/>
+      <text x="462" y="262" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">FRONTIER-LAB REVENUE</text>
+      <text x="462" y="290" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#000000">~$44B</text>
+
+      <text x="450" y="80" font-family="Georgia,serif" font-size="15" fill="#000000">OpenAI ~$25B + Anthropic</text>
+      <text x="450" y="102" font-family="Georgia,serif" font-size="15" fill="#000000">~$19B, annualized — the</text>
+      <text x="450" y="124" font-family="Georgia,serif" font-size="15" fill="#000000">revenue that has to service</text>
+      <text x="450" y="146" font-family="Georgia,serif" font-size="15" fill="#000000">the box on the left.</text>
+      <text x="450" y="196" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="1">≈ 16× GAP</text>
+      <text x="450" y="218" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#000000">capex to flagship revenue</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · Drawn to scale, the gap is the thesis. The question isn't whether AI is used — it's whether the revenue on the right can ever service the debt that built the box on the left. A financing problem, not a usefulness one.</div>
+  </div>
+
+  <!-- =================== §5 COUNTER-CURVE =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Counter-curve</span>Meanwhile, the model is still getting better</h2>
+
+    <p>Where Zitron measures the money, Simon Willison measures the model — and on his bench it is still climbing. His <em>Initial impressions of Claude Fable 5</em> — Anthropic's most powerful generally-available model, the public-access sibling of the more tightly held Mythos 5 — calls it a "beast": slow and expensive, but handling essentially everything he throws at it. The reported field results are the part worth holding next to §4. Stripe is said to have compressed a codebase-wide migration that would have taken a team over two months into a single day; the analytics company Hex reported Fable as the first model to clear 90% on its core benchmark for hard analytical work, with unusual judgment on the nuanced questions.</p>
+
+    <p>This is the reconciliation the day requires. <strong>"Slowing down" is a statement about revenue-per-dollar-of-capex, not capability-per-model-generation.</strong> The two curves are genuinely independent, and most bubble arguments quietly swap one for the other. Willison's notes are direct evidence the capability curve has not plateaued — which neither proves nor refutes Zitron, because they are about different graphs.</p>
+
+    <p><span class="caflag">Counter</span><em>But the curves touch at one joint, and it cuts against the optimists. If frontier capability arrives "slow and expensive," then better models that cost more don't close Zitron's revenue gap — they can widen it. A capability curve that bends up only at frontier cost is not a refutation of the financing problem; it's a contributor to it. The comfortable reading ("the tech works, so the money will follow") assumes a cost trajectory Fable 5's own reviewer doesn't grant.</em></p>
+  </section>
+
+  <!-- =================== §6 MONEY PLAYS =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · Go-to-market</span>How you actually sell AI once the hype is priced out</h2>
+
+    <p>Three sources, read together, are a single playbook for making money in a market that has stopped paying for promises. <em>LLMs are picking winners. Here's how to become one.</em> (PostHog) treats the model itself as the new demand channel: as buyers ask ChatGPT and Perplexity instead of Google, the game becomes <strong>answer-engine optimization</strong> — be the answer, not a blue link. Its concrete advice is unsentimental: get mentioned in the sources LLMs already cite, and measure your brand's appearance by asking the engines fifteen to twenty buying-intent questions a month and recording how you show up.</p>
+
+    <p>RevenueCat's <em>Why 7-day plans are winning</em> attacks the same problem at the till. Weekly subscriptions now drive a majority of in-app subscription revenue — north of 55% by their data — and convert at <strong>1.7× to 7.4× the rate of annual plans on the same paywall</strong>, because a seven-day commitment is the lowest possible barrier for a user who doesn't yet trust the product enough to marry it. The cost is churn, paid later; the win is conversion, banked now. It is, precisely, how you monetize doubt.</p>
+
+    <p>M.G. Siegler's <em>Apple Wins Consumer AI By Default</em> supplies the third lever: distribution. His argument is that Apple takes consumer AI not by building the best model but by being the <strong>default</strong> — riding a billion devices and a reservoir of consumer trust to make Siri AI the way the mainstream meets the technology, the way ChatGPT was the way the early adopters met it. The synthesis across all three, stated by none: <strong>in a marked-to-market industry the model is table stakes, and the contest moves to capture (AEO), conversion (weekly plans), and default (Apple).</strong> Channel and meter, not model, decide who survives the repricing.</p>
+
+    <p><span class="caflag">Counter</span><em>Siegler files his own objection, and it's the right one: the danger to Apple isn't that Siri AI fails to launch — it's that it launches and simply isn't very good. Default distribution is a colossal head start, not a substitute for the product working. The same caveat shrinks the other two plays: AEO and weekly pricing are amplifiers, and amplifying a product nobody re-subscribes to just buys you faster, more measurable churn.</em></p>
+  </section>
+
+  <!-- =================== §7 LONG VIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The long view</span>Two curves, told apart</h2>
+
+    <p>Hold §4 and §5 in the same hand and the whole day resolves into a single instruction: <strong>separate the two curves.</strong> There is a <em>capability curve</em> — is the technology still improving? — and a <em>capital curve</em> — is the money that built it durable? In 2023–2024 the two were fused; capability was priced as destiny and the financing rode on it. In 2025–2026 they have come apart. Fable 5 says the capability curve is still bending up. Zitron says the capital curve is fraying. Both can be true at once, and most of the year's loudest arguments are just one curve being mistaken for the other.</p>
+
+    <p>Map today's sources onto the two axes and they cluster in one quadrant — and it is the uncomfortable one.</p>
+  </section>
+
+  <!-- =================== FIGURE 3 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two-by-two matrix with capability trend on one axis and financing durability on the other, with today's sources clustered in the strong-capability fragile-financing quadrant">
+      <rect x="0" y="0" width="660" height="440" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 3 · THE TWO CURVES, AS A MATRIX</text>
+
+      <!-- axes labels -->
+      <text x="40" y="60" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">FINANCING DURABLE ▲</text>
+      <text x="40" y="420" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">FINANCING FRAGILE ▼</text>
+      <text x="120" y="436" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">◀ CAPABILITY PLATEAUING</text>
+      <text x="430" y="436" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">CAPABILITY RISING ▶</text>
+
+      <!-- quadrant grid -->
+      <!-- top-left -->
+      <rect x="40" y="72" width="285" height="165" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+      <text x="56" y="98" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">PLATEAU, SOLVENT</text>
+      <text x="56" y="120" font-family="Georgia,serif" font-size="14" fill="#000000">Mature, boring, safe. The</text>
+      <text x="56" y="140" font-family="Georgia,serif" font-size="14" fill="#000000">software-as-usual outcome.</text>
+      <text x="56" y="160" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Nobody's data is here.</text>
+
+      <!-- top-right -->
+      <rect x="325" y="72" width="295" height="165" fill="#c8c8c8" stroke="#000000" stroke-width="0.8"/>
+      <text x="341" y="98" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">BOOM, EARNED</text>
+      <text x="341" y="120" font-family="Georgia,serif" font-size="14" fill="#000000">Capability rises and revenue</text>
+      <text x="341" y="140" font-family="Georgia,serif" font-size="14" fill="#000000">funds it. The bull case —</text>
+      <text x="341" y="160" font-family="Georgia,serif" font-size="14" fill="#000000">requires the gap in Fig. 2</text>
+      <text x="341" y="180" font-family="Georgia,serif" font-size="14" fill="#000000">to close. Not yet observed.</text>
+
+      <!-- bottom-left -->
+      <rect x="40" y="237" width="285" height="165" fill="#9a9a9a" stroke="#000000" stroke-width="0.8"/>
+      <text x="56" y="263" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">BUST</text>
+      <text x="56" y="285" font-family="Georgia,serif" font-size="14" fill="#000000">Tech stalls and the money</text>
+      <text x="56" y="305" font-family="Georgia,serif" font-size="14" fill="#000000">leaves. The full-Zitron</text>
+      <text x="56" y="325" font-family="Georgia,serif" font-size="14" fill="#000000">scenario — needs the</text>
+      <text x="56" y="345" font-family="Georgia,serif" font-size="14" fill="#000000">capability curve to break.</text>
+
+      <!-- bottom-right: the live quadrant, black -->
+      <rect x="325" y="237" width="295" height="165" fill="#000000"/>
+      <text x="341" y="263" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff">REAL TECH, SHAKY BALANCE SHEET ★</text>
+      <text x="341" y="287" font-family="Georgia,serif" font-size="14" fill="#ffffff">Great products and broke</text>
+      <text x="341" y="307" font-family="Georgia,serif" font-size="14" fill="#ffffff">builders coexist. Fable 5 up,</text>
+      <text x="341" y="327" font-family="Georgia,serif" font-size="14" fill="#ffffff">financing frayed — where every</text>
+      <text x="341" y="347" font-family="Georgia,serif" font-size="14" fill="#ffffff">source on today's page lands.</text>
+      <text x="341" y="375" font-family="-apple-system,sans-serif" font-size="12" font-style="italic" fill="#c8c8c8">The most likely 2026 state.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 3</b> · The bubble debate is really an argument about which quadrant we're in. Today's sources don't disagree about the technology and the money — they disagree about which one the word "bubble" refers to. Both point, separately, at the starred quadrant: capability rising, financing fragile.</div>
+  </div>
+
+  <section>
+    <p>If that quadrant is where we are, the build advice falls out of it directly. Make things that get <em>more</em> valuable as tokens get cheaper, and that do not depend on the buildout staying solvent: the context you own, the distribution you control, and the revenue mechanics you run — which is, not coincidentally, exactly what §6's money plays are reaching for. The falsifiable version, for the ledger: if the financing-bubble read is right, the first visible cracks should be <strong>infrastructure write-downs and stranded-asset disclosures</strong> — data centers, power contracts — within two-to-three quarters, <em>not</em> a capability plateau. And expect at least one frontier lab to keep posting benchmark gains straight through the financial wobble. If instead the next two quarters bring a capability stall before any balance-sheet event, it is §5 that was wrong, not §4.</p>
+  </section>
+
+  <!-- =================== §8 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Practical takeaways</span>If you only do six things this week</h2>
+
+    <ol>
+      <li><strong>Separate the two curves before you argue about the bubble.</strong> When someone says "AI is slowing down," ask whether they mean capability or capital. The first is falsified roughly weekly; the second is a real, open question. Don't let one stand in for the other — most of the noise is that substitution.</li>
+      <li><strong>Treat context as the deliverable, not the prompt.</strong> On your next agent build, spend the effort on what the agent knows, sees, may touch, and how it verifies — the deterministic world around the stochastic worker. That is what context engineering and AX both actually mean.</li>
+      <li><strong>Audit where your value sits on the stack.</strong> Map your product onto Figure 1. If your moat is at the model layer, it's rented; move weight up toward context and product surface, the bands a competitor can't call by lunchtime.</li>
+      <li><strong>Instrument for the answer engine now.</strong> Run PostHog's check: ask 15–20 buying-intent questions across ChatGPT, Perplexity, and Google; record whether and how your brand appears; repeat monthly. LLM-mediated demand is already a measurable channel.</li>
+      <li><strong>Test a weekly plan — and model the churn, not just the lift.</strong> RevenueCat's numbers make a seven-day entry tier worth trying, but a plan that wins the paywall and loses the cohort is a treadmill. Decide which you're optimizing before you ship it.</li>
+      <li><strong>Stress-test your dependencies for solvency, not just uptime.</strong> If your product rides a demand-ahead-of-revenue buildout, write the one-page plan for a provider price hike or capacity pullback in 2027. The technology working does not mean its financing does.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §9 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Mark to market</dt>
+        <dd>A finance term for revaluing a position at its current real worth rather than its assumed or purchase value. Today's organizing metaphor: AI is being repriced from the story it told to what it can be shown to deliver.</dd>
+
+        <dt>Capability curve vs capital curve</dt>
+        <dd>The two independent trends this digest insists on telling apart: whether the technology is still improving (capability) versus whether the money that built it is durable (capital). Most "bubble" arguments confuse the two.</dd>
+
+        <dt>Context engineering</dt>
+        <dd>The discipline of managing what an LLM knows, sees, and remembers at the moment it acts — context as infrastructure (selection, compression, memory, retrieval policy) rather than prose. The successor to prompt engineering; coined by Andrej Karpathy in mid-2025.</dd>
+
+        <dt>Agent experience (AX)</dt>
+        <dd>The agent-facing analogue of developer experience: the context, tools, permissions, tests, and review loops designed so an autonomous worker knows what matters and how it succeeded. Notable because an agent re-onboards at the start of every task.</dd>
+
+        <dt>Answer Engine Optimization (AEO)</dt>
+        <dd>Structuring content and brand presence so AI answer engines surface you as the direct answer, not a ranked link. SEO's successor for a world where the search result is a synthesized response.</dd>
+
+        <dt>Stranded asset</dt>
+        <dd>Infrastructure built for expected demand that never fully arrives, leaving it underused and written down. Zitron's worry for AI data centers and power contracts provisioned in 2024–2025 against a 2026 demand curve that may fall short.</dd>
+
+        <dt>Weekly subscription (and churn)</dt>
+        <dd>A seven-day billing tier that lowers the commitment barrier and lifts conversion sharply, at the cost of higher cancellation rates. The mechanism by which products monetize users who don't yet trust them.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (June 11, 2026)</em> · 8 sources, with the Deep Dive audio overview on the 2026 AI-accountability turn available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The eight pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Essay · The Blueprint of the Modern AI Stack</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Blueprint+of+the+Modern+AI+Stack%22">The Blueprint of the Modern AI Stack</a></span>
+        <span class="src-note">The day's structural anchor. Skip the layer-by-layer inventory you've seen a dozen times and read it for one question only — which layers are yours — because that's where the moat-migration story turns into a deployment decision. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Medium</span>
+        <span class="src-title"><a href="https://medium.com/@falexm/the-context-engineering-revolution-how-ai-agents-are-rewriting-the-rules-of-llm-memory-management-3f93fa21e24c">The Context Engineering Revolution</a></span>
+        <span class="src-note">The clearest articulation of the prompt-to-context shift in today's set. The operating-system analogy — you're deciding what gets paged into a limited working memory — is the mental model worth stealing; the rest is elaboration.</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Builder.io</span>
+        <span class="src-title"><a href="https://www.builder.io/blog/agent-experience">Agent experience is the new developer experience</a></span>
+        <span class="src-note">The same shift as the context piece, told from the design side and better. The keeper insight is that agents re-onboard every task — which quietly reframes documentation, schemas, and previews as runtime inputs, not nice-to-haves.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Where's Your Ed At (Ed Zitron)</span>
+        <span class="src-title"><a href="https://www.wheresyoured.at/ai-is-slowing-down/">AI Is Slowing Down</a></span>
+        <span class="src-note">The loudest bear in the room, and worth reading even though he over-claims. Strip the "demand won't come" rhetoric — today's other sources falsify it — and the residue, that the financing is fragile, is the single most important sentence on this page.</span>
+      </li>
+      <li>
+        <span class="pub">Notes · simonwillison.net</span>
+        <span class="src-title"><a href="https://simonwillison.net/2026/Jun/9/claude-fable-5/">Initial impressions of Claude Fable 5</a></span>
+        <span class="src-note">The necessary counterweight to Zitron, from the most reliably level-headed model reviewer working. Note what he concedes as much as what he praises: "slow and expensive" is doing quiet work — it's the detail that keeps the capability story from refuting the cost story.</span>
+      </li>
+      <li>
+        <span class="pub">Newsletter · PostHog</span>
+        <span class="src-title"><a href="https://newsletter.posthog.com/p/llms-are-picking-winners-heres-how">LLMs are picking winners. Here's how to become one.</a></span>
+        <span class="src-note">The most actionable piece of the eight. The monthly measurement loop — ask the engines your buyers' questions, log how you appear — is something you can run this week, and it converts a vague anxiety into a tracked metric.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Spyglass (M.G. Siegler)</span>
+        <span class="src-title"><a href="https://spyglass.org/siri-ai/">Apple Wins Consumer AI By Default</a></span>
+        <span class="src-note">Right about the mechanism (default beats best at consumer scale) and admirably honest about the risk (a mediocre Siri AI squanders the head start). Read it as a thesis about distribution, not a prediction about Apple — the distribution point outlives whatever Siri ships.</span>
+      </li>
+      <li>
+        <span class="pub">Research · RevenueCat</span>
+        <span class="src-title"><a href="https://www.revenuecat.com/blog/growth/weekly-subscriptions/">Why 7-day plans are winning</a></span>
+        <span class="src-note">The numbers are the value here — 55%+ of subscription revenue, 1.7–7.4× conversion versus annual. Let them tempt you, then read the churn caveat twice: weekly pricing is a conversion tool wearing a revenue-model costume.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 41 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

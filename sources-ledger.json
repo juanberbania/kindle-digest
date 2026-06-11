@@ -1339,6 +1339,78 @@
       "url": "https://www.youtube.com/watch?v=YX7nE-3rYEQ",
       "first_seen_in": "weekly-tldr-digest-2026-W22-kindle.html",
       "context": "creator running research, visuals, and campaigns from a single Higgsfield chat; the human-states-intent thesis performed live"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "the-blueprint-of-the-modern-ai-stack",
+      "title": "The Blueprint of the Modern AI Stack",
+      "publication": "Essay",
+      "url": "https://www.google.com/search?q=%22The+Blueprint+of+the+Modern+AI+Stack%22",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "the day structural anchor; read for which stack layers are yours, not the inventory — value migrating off the model layer toward context and product surface"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "the-context-engineering-revolution",
+      "title": "The Context Engineering Revolution",
+      "publication": "Essay · Medium",
+      "url": "https://medium.com/@falexm/the-context-engineering-revolution-how-ai-agents-are-rewriting-the-rules-of-llm-memory-management-3f93fa21e24c",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "prompt engineering maturing into context-as-infrastructure; OS paging analogy; Karpathy mid-2025 coinage"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "agent-experience-is-the-new-developer-experience",
+      "title": "Agent experience is the new developer experience",
+      "publication": "Engineering blog · Builder.io",
+      "url": "https://www.builder.io/blog/agent-experience",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "AX as the agent-facing analogue of DX; agents re-onboard every task; same build shift as context engineering, design side"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "ai-is-slowing-down",
+      "title": "AI Is Slowing Down",
+      "publication": "Essay · Wheres Your Ed At",
+      "url": "https://www.wheresyoured.at/ai-is-slowing-down/",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "Zitron bubble math: ~$725B 2026 capex vs ~$44B frontier-lab revenue; financing-bubble-not-usefulness-bubble; stranded-asset risk 2027-2028"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "initial-impressions-of-claude-fable-5",
+      "title": "Initial impressions of Claude Fable 5",
+      "publication": "Notes · simonwillison.net",
+      "url": "https://simonwillison.net/2026/Jun/9/claude-fable-5/",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "capability curve still climbing — Stripe 2-month migration in a day, Hex 90%; the counterweight to Zitron; slow-and-expensive caveat"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "llms-are-picking-winners-heres-how-to-become-one",
+      "title": "LLMs are picking winners. Heres how to become one.",
+      "publication": "Newsletter · PostHog",
+      "url": "https://newsletter.posthog.com/p/llms-are-picking-winners-heres-how",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "answer-engine optimization; be the answer not the link; monthly brand-appearance measurement loop"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "apple-wins-consumer-ai-by-default",
+      "title": "Apple Wins Consumer AI By Default",
+      "publication": "Essay · Spyglass",
+      "url": "https://spyglass.org/siri-ai/",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "default beats best at consumer scale; Siri AI brings AI mainstream; Siegler own caveat — risk is mediocre launch, not failed launch"
+    },
+    {
+      "first_cited": "2026-06-11",
+      "slug": "why-7-day-plans-are-winning",
+      "title": "Why 7-day plans are winning",
+      "publication": "Research · RevenueCat",
+      "url": "https://www.revenuecat.com/blog/growth/weekly-subscriptions/",
+      "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
+      "context": "weekly subs 55%+ of IAP revenue, 1.7-7.4x annual conversion; monetizing doubt; churn is the cost"
     }
   ]
 }
