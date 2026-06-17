@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 16, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 16, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 46</div>
+    <div class="rhs">Tuesday · 16 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · Building For Agents</p>
+  <h1>The Context Era</h1>
+  <p class="subtitle">Eleven sources converge on one craft: as software grows agents that act on their own, the work moves from writing prompts to architecting the context — instructions, memory, retrieval, and tools — that an autonomous worker reasons inside. NN/G ports information architecture to that "context ecosystem"; Spotify and LinkedIn ground their assistants in expert and domain knowledge; IBM names the discipline; and the economics arrive with the bill — re-sent context that makes token spend grow parabolically.</p>
+
+  <div class="byline">
+    <span><b>11 sources</b> · 2 diagrams · ~21 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>From prototype to profession</h2>
+
+    <p class="lead">Today's eleven sources document one transition: the move from <strong>prototyping</strong> generative AI to <strong>engineering</strong> it. The throughline is that an agent is only as good as the world you build around it. When a model merely answered, the unit of work was the prompt. When a model acts — running multi-step tasks, calling tools, carrying state across turns — the unit of work becomes the <strong>context</strong>: the instructions, the memory, the retrieval scope, and the tools it can reach. NN/G frames this as information architecture for a "context ecosystem." Spotify and LinkedIn show what grounding that ecosystem in real expertise costs and earns. IBM gives the discipline a name. And the cost pieces deliver the catch — done carelessly, the context you assemble each turn gets re-sent so often that spend curves bend the wrong way.</p>
+
+    <p><em>The agentic-cost thread has run through this archive — the June 10 issue tallied where token spend actually goes; today asks the harder structural question underneath it: is parabolic token consumption an accident of sloppy plumbing, or the price of admission for agents that remember?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Six agreements across today's sources</h4>
+    <ol>
+      <li><strong>Context is the new unit of engineering.</strong> Across NN/G, IBM, Spotify, and LinkedIn, the work has moved off the model call and onto the environment — instructions, memory, retrieval, and tools — that the agent reasons inside. Prompting is a subset of it now, not the whole job.</li>
+      <li><strong>Information architecture is the right lens.</strong> The same discipline that organized websites — labeling, hierarchy, findability — is what keeps an agent's context legible. Disorder there is not cosmetic; it degrades the model.</li>
+      <li><strong>"Context rot" is real and it is structural.</strong> More context is not better context. Past a point, excess and disorganized material actively lowers output quality — the failure mode every source is implicitly designing against.</li>
+      <li><strong>Grounding beats raw capability at the enterprise edge.</strong> Spotify's domain "teacher" layer and LinkedIn's semantic retrieval both bet that piping in expert and domain knowledge matters more than a bigger model. Retrieval and ranking are the product.</li>
+      <li><strong>Agentic scale has a money problem.</strong> The "re-sent context" problem — re-transmitting accumulated state every step — makes token consumption grow parabolically, not linearly. Reliability and cost are now the same design conversation.</li>
+      <li><strong>Humans own the essential complexity.</strong> AI absorbs the accidental kind — boilerplate, glue, scaffolding — but conceptual integrity, design judgment, and alignment to a user's mental model stay human. That division is the recurring boundary line.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 IA FOR CONTEXT =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · Structure</span>Information architecture for the context ecosystem</h2>
+
+    <p>The day's most structural source is NN/G's framing of <em>context architecture</em>: the claim that designing an agent's context is the same problem as designing a website's information architecture, just relocated from pages to prompts. An agent reasons over a bundle — system instructions, working memory, retrieved documents, tool definitions, conversation history — and that bundle has structure whether you design it or not. Labeling, hierarchy, scope, and findability are not website-era concerns left behind; they are exactly what determines whether the model can locate the right fact at the moment it acts. IBM's <em>What is Agentic Engineering?</em> arrives at the same place from the engineering side: the new discipline is less about model selection than about assembling a reliable operating environment around the model.</p>
+
+    <p>The synthesis neither source states alone: <strong>the agent's context window is a designed information space, and the failure mode is the same one IA always fought — too much, badly organized, so nothing is findable.</strong> NN/G calls the degradation "context rot." The reframe that matters is that this rot is not a model limitation to be waited out; it is an architecture problem, which means it is yours to fix. The lever is not a bigger window but a better-organized one.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A layered stack of the agent context ecosystem, from durable system instructions at the base through retrieval and tools up to the volatile working window at the top, annotated with where context rot sets in">
+      <rect x="0" y="0" width="660" height="440" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · THE CONTEXT ECOSYSTEM, AS ARCHITECTURE</text>
+
+      <!-- top = volatile working window (black for emphasis) -->
+      <rect x="30" y="48" width="600" height="56" fill="#000000"/>
+      <text x="48" y="72" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">WORKING WINDOW — VOLATILE, EVERY STEP</text>
+      <text x="48" y="92" font-family="Georgia,serif" font-size="14" fill="#ffffff">What the model actually sees this turn. Re-assembled — and re-billed — each step.</text>
+
+      <rect x="30" y="106" width="600" height="52" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="128" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">MEMORY &amp; HISTORY</text>
+      <text x="48" y="147" font-family="Georgia,serif" font-size="14" fill="#ffffff">Accumulated state. The thing that grows — and gets re-sent (see Fig. 2).</text>
+
+      <rect x="30" y="160" width="600" height="52" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="182" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">RETRIEVAL — DOMAIN &amp; EXPERT KNOWLEDGE</text>
+      <text x="48" y="201" font-family="Georgia,serif" font-size="14" fill="#000000">Spotify's teacher layer, LinkedIn's ranked search. Grounding lives here.</text>
+
+      <rect x="30" y="214" width="600" height="52" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="236" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">TOOLS &amp; PERMISSIONS</text>
+      <text x="48" y="255" font-family="Georgia,serif" font-size="14" fill="#000000">What the agent may call and touch. Defined, scoped, named.</text>
+
+      <rect x="30" y="268" width="600" height="56" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="48" y="292" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">SYSTEM INSTRUCTIONS — DURABLE BASE</text>
+      <text x="48" y="312" font-family="Georgia,serif" font-size="14" fill="#000000">Role, policy, conceptual integrity. Set once; the foundation IA organizes.</text>
+
+      <!-- rot annotation -->
+      <text x="330" y="356" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">◆ "CONTEXT ROT" SETS IN AS THE UPPER BANDS BLOAT</text>
+      <text x="330" y="378" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Findability falls as volume rises — the IA problem, relocated to the prompt.</text>
+      <text x="330" y="408" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">▼ DURABLE &amp; DESIGNED ··· VOLATILE &amp; RE-SENT ▲</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The context ecosystem read as a stack from durable to volatile. The bands you set once and design carefully (bottom) are cheap and stable; the bands that accumulate and re-send every step (top) are where both context rot and the token bill come from — which is why organizing the stack is an engineering decision, not a writing one.</div>
+  </div>
+
+  <!-- =================== §3 GROUNDING =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Grounding</span>Spotify and LinkedIn: the expert in the loop</h2>
+
+    <p>Two enterprise sources show what context architecture looks like in production, and they agree on the unglamorous answer: the moat is the retrieval layer, not the model. Spotify's account of the data assistant behind its analytics describes <em>encoding a domain expert</em> — building a "teacher" layer that injects how Spotify's own analysts define metrics, name tables, and reason about data, so the assistant answers like a colleague rather than a stranger reading schemas cold. LinkedIn's piece on its Hiring Assistant is the same bet expressed as semantic search at scale: the engineering effort goes into retrieval and ranking — surfacing the right candidates and the right context, in the right order — because a hiring agent that retrieves badly is worse than useless, it is confidently wrong.</p>
+
+    <p>The synthesis across the two, present in neither alone: <strong>at enterprise scale the differentiator is grounding, and grounding is a human-knowledge pipeline, not a model upgrade.</strong> Both companies are pouring effort into capturing what their experts know and feeding it into the agent's context — Spotify as a teaching layer, LinkedIn as a ranking layer. The generic frontier model is a commodity input to both; the proprietary, expensive, defensible part is the domain knowledge piped in around it. That is the enterprise mirror of NN/G's argument: the value is in how the context is organized and sourced, not in the engine consuming it.</p>
+  </section>
+
+  <!-- =================== §4 THE DISCIPLINE =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Naming it</span>Agentic engineering, defined</h2>
+
+    <p>IBM's <em>What is Agentic Engineering?</em> does the quiet work of naming the discipline the other sources are practicing: the design and operation of systems where AI agents plan and execute multi-step tasks with some autonomy. The piece's value is less the definition than the shift in posture it implies — from "write a good prompt and check the answer" to "build a system that reasons, acts, observes, and corrects across many steps, and instrument it so you can trust it." Reliability, observability, and guardrails become first-class concerns, because an autonomous worker that errs at step three of twelve has already acted on the error by step four.</p>
+
+    <p>The synthesis worth keeping: <strong>"agentic engineering" is the umbrella under which today's other pieces are specialties.</strong> Context architecture (NN/G) is its information-design wing; Spotify's teacher layer and LinkedIn's retrieval are its grounding wing; the cost pieces are its economics wing. Naming the field matters because it tells you what to hire for and what to measure — and that the measure is no longer answer quality on a single turn but task completion across a trajectory.</p>
+
+    <p><span class="caflag">Counter</span><em>The risk in naming a discipline this early is premature ceremony. "Agentic engineering" can ossify into process theater — frameworks, certifications, and ritual scaffolding — before the field knows which practices actually move reliability. The honest version of the term is descriptive, not prescriptive: it points at a real shift in the unit of work, but anyone selling you the canonical methodology for it in mid-2026 is ahead of the evidence.</em></p>
+  </section>
+
+  <!-- =================== §5 THE BILL =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Economics</span>The re-sent context problem</h2>
+
+    <p>The day's hardest-nosed source is <em>Managing Agentic AI Costs at Scale</em>, and its central observation reframes everything above as a budget problem. The mechanism is the <strong>re-sent context problem</strong>: at each step of a multi-step task, an agent typically re-transmits its accumulated context — the prior turns, the tool outputs, the retrieved documents — back to the model so it can reason about the next move. As the task lengthens, the context carried forward grows, and because it is re-sent every step, total token consumption does not rise linearly with task length; it rises closer to <em>quadratically</em>. A task twice as long can cost roughly four times as much. The agentic loop that makes the technology powerful is the same loop that makes it expensive.</p>
+
+    <p>The synthesis that ties this back to §2: <strong>context rot and the token bill are the same phenomenon priced two ways.</strong> Bloated, badly organized context degrades the model's output (NN/G's quality cost) and inflates the per-step payload (the dollar cost) simultaneously. This is why the discipline's two obsessions — reliability and cost — are not separate tracks. The lever for both is the same: keep the carried context tight, compressed, and curated. Good information architecture is, quite literally, a cost-control measure.</p>
+
+    <p><span class="prev-ref">The agentic-cost thread is a running one in this archive — the June 10 issue tallied where token spend actually goes inside a workflow. Today's piece supplies the structural why beneath that tally: it is the re-sent-context loop, not any single wasteful call, that bends the curve.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A stepped diagram of an agent task showing context accumulating and being re-sent at each of four steps, so cumulative tokens grow much faster than the number of steps">
+      <rect x="0" y="0" width="660" height="380" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · WHY TOKENS GROW FASTER THAN STEPS</text>
+
+      <!-- step 1 -->
+      <rect x="40" y="60" width="80" height="40" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="80" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#000000">1 unit</text>
+      <text x="80" y="120" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">STEP 1</text>
+
+      <!-- step 2 -->
+      <rect x="180" y="60" width="80" height="80" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="220" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#000000">+ prior</text>
+      <text x="220" y="160" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">STEP 2</text>
+
+      <!-- step 3 -->
+      <rect x="320" y="60" width="80" height="130" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="360" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#ffffff">+ prior</text>
+      <text x="360" y="210" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">STEP 3</text>
+
+      <!-- step 4 -->
+      <rect x="460" y="60" width="80" height="190" fill="#000000"/>
+      <text x="500" y="160" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#ffffff">+ prior</text>
+      <text x="500" y="270" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000">STEP 4</text>
+
+      <!-- annotation -->
+      <text x="580" y="70" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">PAYLOAD</text>
+      <text x="580" y="88" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">PER STEP</text>
+      <text x="580" y="250" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">▲</text>
+
+      <text x="330" y="300" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">4 STEPS · BUT ≈ 10 UNITS OF TOKENS BILLED</text>
+      <text x="330" y="326" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Each step re-sends everything before it. The carried context is the cost.</text>
+      <text x="330" y="354" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#000000">Compressing the carried bands (Fig. 1, top) is what flattens this curve.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The re-sent context problem as stacked payloads, not a line chart. Because every step re-transmits all prior context, doubling the steps roughly quadruples the tokens — which is why the cheapest performance lever is not a faster model but a leaner carried context.</div>
+  </div>
+
+  <!-- =================== §6 THE HUMAN REMAINDER =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The long view</span>What stays human: the mythical agent-month</h2>
+
+    <p>Wes McKinney's <em>The Mythical Agent-Month</em> — a deliberate echo of Brooks's <em>The Mythical Man-Month</em> — is the day's stretch piece, and it supplies the boundary the rest of the sources circle. Brooks's old distinction between <strong>essential</strong> and <strong>accidental</strong> complexity is the right tool for the agentic era. Agents are extraordinary at the accidental kind: the boilerplate, the glue code, the mechanical translation between layers, the scaffolding that has no inherent conceptual content. They are far weaker at the essential kind: deciding what the system should <em>be</em>, holding conceptual integrity across a large design, and keeping the whole aligned to a user's mental model. Throwing more agents at a problem does not collapse essential complexity any more than throwing more programmers did — Brooks's warning survives the substitution.</p>
+
+    <p>Read the rest of the day through this lens and the sources stop competing and start composing. Two adjacent essays in the set — <em>The Architectures of AI-Native SaaS</em> and <em>The Inverted Market: How AI is Reshaping Software Consultancy</em> — describe the same boundary from the market's side. AI-native SaaS is being rebuilt around agents that act inside the product rather than features a human drives; the consultancy market is inverting because the accidental-complexity work that filled billable hours is collapsing in cost, leaving the essential-complexity work — judgment, integration, conceptual design — as the scarce thing worth paying for. Two short signals round out the day: <em>Ishaan Sehgal</em> and <em>Satya Nadella</em> on X both gesture at the same agentic-platform turn from the practitioner and the platform-CEO vantage points. And as a reminder that the substrate keeps moving underneath all of this, <em>Python 3.15</em> ships practical performance upgrades — the unglamorous tooling progress that quietly raises the floor.</p>
+
+    <p>The synthesis, stated by none of them directly: <strong>the entire stack of today's pieces is a map of where the human line falls.</strong> NN/G, IBM, Spotify, and LinkedIn are all building machinery to hand agents more of the accidental complexity reliably and cheaply; McKinney, the SaaS essay, and the consultancy essay are all describing what is left over when that machinery works — and it is the same residue every time. Conceptual integrity does not parallelize. The agent-month is mythical for the same reason the man-month was.</p>
+
+    <p><span class="caflag">Counter</span><em>The comfortable reading — "essential complexity is a permanent human moat" — assumes the essential/accidental line holds still. It may not. Much of what looks essential today (system design, conceptual integrity) is essential partly because current agents are bad at long-horizon coherence, exactly the axis the grounding and context work in §§2–3 is built to improve. McKinney's framing is the right starting tool, not a law of nature; the line it draws is a snapshot of a moving frontier, and betting a career on its current position is its own kind of myth.</em></p>
+  </section>
+
+  <!-- =================== §7 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · Practical takeaways</span>If you only do seven things this week</h2>
+
+    <ol>
+      <li><strong>Treat the context window as designed information space.</strong> Before adding to an agent's prompt, ask the IA questions: is this findable, is it labeled, does it belong at this layer? Apply Figure 1 — durable instructions at the base, volatile working state at the top — and review the structure, not just the wording.</li>
+      <li><strong>Audit your carried context for re-sent waste.</strong> Trace one real agent task and log the token payload per step. If it grows roughly quadratically with task length, you have the re-sent context problem, and compression — not a cheaper model — is your highest-leverage fix.</li>
+      <li><strong>Invest in retrieval and grounding before a model upgrade.</strong> Spotify and LinkedIn both bet that piping in expert and domain knowledge beats a bigger engine. Spend on the teacher layer and the ranker before you spend on the frontier tier.</li>
+      <li><strong>Design against context rot explicitly.</strong> More is not better. Set a budget for how much context a task may carry, prune aggressively between steps, and treat unbounded history as a bug rather than a convenience.</li>
+      <li><strong>Instrument for trajectories, not turns.</strong> An agentic system's quality metric is task completion across many steps, not answer quality on one. Add observability that shows you where in the trajectory things go wrong, because by the next step the error has already propagated.</li>
+      <li><strong>Hand agents the accidental complexity, keep the essential.</strong> Route boilerplate, glue, and mechanical translation to agents; reserve human attention for conceptual integrity and alignment to the user's mental model. McKinney's line is the one to defend.</li>
+      <li><strong>Don't buy the canonical methodology yet.</strong> "Agentic engineering" names a real shift, but the field is too young for certified best practices. Adopt the posture — reliability, grounding, context discipline — and stay skeptical of anyone selling the framework.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §8 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Context architecture</dt>
+        <dd>NN/G's framing of the design of an agent's context — instructions, memory, retrieval, tools — as an information-architecture problem. The same labeling, hierarchy, and findability discipline that organized websites, relocated to the prompt.</dd>
+
+        <dt>Context rot</dt>
+        <dd>The degradation in model output that sets in when context grows excessive or disorganized. A quality failure caused by too much, badly structured material — not a fixed model limitation but an architecture problem you own.</dd>
+
+        <dt>Agentic engineering</dt>
+        <dd>IBM's term for the discipline of designing and operating systems where AI agents plan and execute multi-step tasks autonomously. Foregrounds reliability, observability, and guardrails over single-turn answer quality.</dd>
+
+        <dt>Grounding</dt>
+        <dd>Anchoring an agent's outputs in authoritative domain or expert knowledge piped into its context, rather than relying on the base model alone. Spotify's "teacher" layer and LinkedIn's ranked retrieval are two implementations.</dd>
+
+        <dt>Re-sent context problem</dt>
+        <dd>The cost mechanism in multi-step agents: because accumulated context is re-transmitted to the model at every step, total token consumption grows roughly quadratically with task length rather than linearly.</dd>
+
+        <dt>Essential vs accidental complexity</dt>
+        <dd>Fred Brooks's distinction, revived by Wes McKinney for agents. Accidental complexity (boilerplate, glue, scaffolding) is what agents absorb well; essential complexity (conceptual design, integrity, mental-model alignment) is what stays human.</dd>
+
+        <dt>Conceptual integrity</dt>
+        <dd>Brooks's term for the coherence of a design under a unifying set of ideas. The property that does not parallelize — adding more agents (or more people) does not produce it — and the reason the "agent-month" is mythical.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Medium, Video &amp; TLDR Digest (June 16, 2026)</em> · 11 sources, with the Deep Dive audio overview on the agentic-engineering and context-architecture turn available in NotebookLM. <a href="https://notebooklm.google.com/notebook/0f1e3a2c-0219-4733-bde0-fb4f2c19bebf">→ Listen in the notebook</a>.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The eleven pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Article · Nielsen Norman Group</span>
+        <span class="src-title"><a href="https://www.nngroup.com">Context Architecture</a></span>
+        <span class="src-note">The day's structural anchor and the cleanest frame in the set: an agent's context is an information space, and IA is the discipline for keeping it findable. Read it for the "context rot" reframe — that degradation is yours to design against, not a model limit to wait out. (No clean canonical URL surfaced; link is the NN/G home.)</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Spotify Engineering</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Encoding%20Your%20Domain%20Expert%3A%20The%20Context%20Layer%20Behind%20Spotify%27s%20Data%20Assistant%22">Encoding Your Domain Expert: The Context Layer Behind Spotify's Data Assistant</a></span>
+        <span class="src-note">The most concrete grounding case study of the eleven. The keeper idea is the "teacher" layer — encoding how your own analysts reason, not just your schemas — which is what makes the assistant answer like a colleague. Skip if you only want theory; read it if you're actually building. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Post · Ishaan Sehgal on X</span>
+        <span class="src-title"><a href="https://t.co/lKK4Slx8zG">Ishaan Sehgal on X</a></span>
+        <span class="src-note">A practitioner signal on the agentic-platform turn rather than an argument. Worth a glance for the vantage point — what builders are noticing in the field — but it's a pointer, not a source you mine for detail.</span>
+      </li>
+      <li>
+        <span class="pub">Analysis · Managing Agentic AI Costs at Scale</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Managing%20Agentic%20AI%20Costs%20at%20Scale%22">Managing Agentic AI Costs at Scale</a></span>
+        <span class="src-note">The piece that turns the day's craft talk into a budget. The re-sent context problem — quadratic, not linear, token growth — is the single most useful mechanism here, and it explains why context discipline is a cost lever, not just a quality one. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Article · Python 3.15</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Python%203.15%3A%20Practical%20Improvements%20and%20Key%20Performance%20Upgrades%22">Python 3.15: Practical Improvements and Key Performance Upgrades</a></span>
+        <span class="src-note">The odd one out, and useful precisely as ballast: the substrate keeps improving while everyone debates agents. Read it for the performance notes; it's a reminder that unglamorous tooling progress quietly raises the floor under all the agentic work above. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Post · Satya Nadella on X</span>
+        <span class="src-title"><a href="https://t.co/vLmiBKTtX3">Satya Nadella on X</a></span>
+        <span class="src-note">The platform-CEO vantage on the same agentic turn the rest of the set engineers. Read it as positioning, not analysis — useful for where Microsoft is pointing, light on how. One signal, paired with Sehgal's, that the shift is being narrated top and bottom at once.</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · LinkedIn Engineering</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Semantic%20Search%20for%20AI%20Agents%20at%20Scale%3A%20Retrieval%20and%20Ranking%20for%20LinkedIn%27s%20Hiring%20Assistant%22">Semantic Search for AI Agents at Scale: Retrieval and Ranking for LinkedIn's Hiring Assistant</a></span>
+        <span class="src-note">The retrieval-and-ranking counterpart to Spotify's grounding piece. Its value is the insistence that for an agent, retrieval order is the product — a hiring agent that ranks badly is confidently wrong, not merely unhelpful. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Architectures of AI-Native SaaS</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Architectures%20of%20AI-Native%20SaaS%22">The Architectures of AI-Native SaaS</a></span>
+        <span class="src-note">The market-side view of the context shift: products rebuilt around agents that act, not features a human drives. Read it next to §6 — it describes the same essential/accidental boundary from the product-architecture angle. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Inverted Market</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Inverted%20Market%3A%20How%20AI%20is%20Reshaping%20Software%20Consultancy%22">The Inverted Market: How AI is Reshaping Software Consultancy</a></span>
+        <span class="src-note">The sharpest economic illustration of McKinney's boundary: the billable hours that lived on accidental complexity are collapsing, leaving judgment and integration as the scarce paid thing. The framing outlasts the specific consultancy data. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Wes McKinney</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Mythical%20Agent-Month%22%20Wes%20McKinney">The Mythical Agent-Month</a></span>
+        <span class="src-note">The day's best stretch read and the lens that organizes the rest. Brooks's essential/accidental distinction, ported to agents, is the cleanest way to reason about where the human line falls — worth re-reading whenever you're tempted to think more agents will fix a design problem. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Article · IBM</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22What%20is%20Agentic%20Engineering%3F%22%20IBM">What is Agentic Engineering?</a></span>
+        <span class="src-note">The definitional piece — useful for the name and the posture shift, lighter on practice. Read it to get the umbrella term straight, then go to Spotify and LinkedIn for what the discipline actually looks like in production. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+  </div>
+
+  <!-- =================== READ FULL NOTEBOOK =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Notebook</span>Read the full source set and the audio overview in NotebookLM · <a href="https://notebooklm.google.com/notebook/0f1e3a2c-0219-4733-bde0-fb4f2c19bebf">→ Open the NotebookLM notebook</a>.
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 44 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

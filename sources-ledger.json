@@ -250,6 +250,10 @@
         {
           "date": "2026-06-04",
           "context": "source content not loadable; cited as agent infrastructure datapoint"
+        },
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
         }
       ],
       "cited_again": [
@@ -1411,6 +1415,1076 @@
       "url": "https://www.revenuecat.com/blog/growth/weekly-subscriptions/",
       "first_seen_in": "daily-tldr-digest-2026-06-11-kindle.html",
       "context": "weekly subs 55%+ of IAP revenue, 1.7-7.4x annual conversion; monetizing doubt; churn is the cost"
+    },
+    {
+      "key": "announcing-stack-overflow-for-agents",
+      "title": "Announcing Stack Overflow for Agents",
+      "publisher": "Engineering blog · Stack Overflow",
+      "url": "https://stackoverflow.blog/",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "architecting-enterprise-trust-in-the-ai-supply-chain",
+      "title": "Architecting Enterprise Trust in the AI Supply Chain",
+      "publisher": "Essay · Enterprise AI",
+      "url": "https://www.google.com/search?q=%22Architecting+Enterprise+Trust+in+the+AI+Supply+Chain%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "beyond-hacks-five-pillars-of-radical-consistency",
+      "title": "Beyond Hacks: Five Pillars of Radical Consistency",
+      "publisher": "Essay · Engineering practice",
+      "url": "https://www.google.com/search?q=%22Beyond+Hacks%3A+Five+Pillars+of+Radical+Consistency%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "design-systems-are-over-product-context-is-the-work",
+      "title": "Design systems are over. Product context is the work.",
+      "publisher": "Essay · Product design",
+      "url": "https://www.google.com/search?q=%22Design+systems+are+over.+Product+context+is+the+work.%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "how-building-an-html-first-site-doubled-our-users-overnight",
+      "title": "How building an HTML-first site doubled our users overnight",
+      "publisher": "Field report · Web",
+      "url": "https://www.google.com/search?q=%22How+building+an+HTML-first+site+doubled+our+users+overnight%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "i-made-opus-4-8-and-fable-5-build-the-same-app-raw-results",
+      "title": "I Made Opus 4.8 and Fable 5 Build the Same App (RAW RESULTS)",
+      "publisher": "Video · YouTube",
+      "url": "https://www.google.com/search?q=%22I+Made+Opus+4.8+and+Fable+5+Build+the+Same+App%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "just-a-moment",
+      "title": "Just a moment...",
+      "publisher": "Web artifact · Blocked page",
+      "url": "https://www.google.com/search?q=%22Just+a+moment...%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "lovable-500m-arr-146-staff-80-non-technical-builders",
+      "title": "Lovable: $500M ARR, 146 staff, 80% non-technical builders",
+      "publisher": "News · Startup metrics",
+      "url": "https://www.google.com/search?q=%22Lovable%22+%22500M+ARR%22+%2280%25+non-technical%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "openai-vs-anthropic-the-looming-ai-price-war",
+      "title": "OpenAI vs. Anthropic: The Looming AI Price War",
+      "publisher": "Analysis · AI industry",
+      "url": "https://www.google.com/search?q=%22OpenAI+vs.+Anthropic%3A+The+Looming+AI+Price+War%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "the-architecture-of-orchestration-from-coder-to-commissioner",
+      "title": "The Architecture of Orchestration: From Coder to Commissioner",
+      "publisher": "Essay · Software architecture",
+      "url": "https://www.google.com/search?q=%22The+Architecture+of+Orchestration%3A+From+Coder+to+Commissioner%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "the-cost-of-automation-why-ai-cannot-replace-engineering-judgment",
+      "title": "The Cost of Automation: Why AI Cannot Replace Engineering Judgment",
+      "publisher": "Essay · Engineering",
+      "url": "https://www.google.com/search?q=%22The+Cost+of+Automation%3A+Why+AI+Cannot+Replace+Engineering+Judgment%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "the-great-kubernetes-exodus-escaping-infrastructure-complexity-tax",
+      "title": "The Great Kubernetes Exodus: Escaping Infrastructure Complexity Tax",
+      "publisher": "Essay · Infrastructure",
+      "url": "https://www.google.com/search?q=%22The+Great+Kubernetes+Exodus%3A+Escaping+Infrastructure+Complexity+Tax%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "The Commissioner — orchestration, agent cost, simplicity"
+        }
+      ]
+    },
+    {
+      "key": "5-papers-that-show-where-ai-research-is-heading-right-now",
+      "title": "5 Papers That Show Where AI Research Is Heading Right Now",
+      "publisher": "Essay · AI research survey",
+      "url": "https://www.google.com/search?q=%225+Papers+That+Show+Where+AI+Research+Is+Heading+Right+Now%22",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "the-architecture-of-persistent-intelligence",
+      "title": "The Architecture of Persistent Intelligence",
+      "publisher": "Essay · The Architecture of Persistent Intelligence",
+      "url": "https://www.google.com/search?q=%22The+Architecture+of+Persistent+Intelligence%22",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "everything-is-recorded-now-david-haber",
+      "title": "Everything is Recorded Now — David Haber",
+      "publisher": "Essay · a16z",
+      "url": "https://a16z.com/everything-is-recorded-now/",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "the-feedback-loop-moat",
+      "title": "The Feedback Loop Moat",
+      "publisher": "Essay · The Feedback Loop Moat",
+      "url": "https://www.google.com/search?q=%22The+Feedback+Loop+Moat%22",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "ai-doesn-t-make-your-job-easier-ravi-mehta",
+      "title": "AI doesn't make your job easier — Ravi Mehta",
+      "publisher": "Essay · Ravi Mehta",
+      "url": "https://www.google.com/search?q=%22AI+doesn%27t+make+your+job+easier%22+Ravi+Mehta",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "the-rise-of-the-forward-deployed-ai-engineer",
+      "title": "The Rise of the Forward Deployed AI Engineer",
+      "publisher": "Essay · The Rise of the Forward Deployed AI Engineer",
+      "url": "https://www.google.com/search?q=%22The+Rise+of+the+Forward+Deployed+AI+Engineer%22",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "how-to-make-your-design-system-ai-ready",
+      "title": "How To Make Your Design System AI-Ready",
+      "publisher": "Article · Smashing Magazine",
+      "url": "https://www.smashingmagazine.com/",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "the-best-loading-states-are-no-loading-states-jjenzz",
+      "title": "The Best Loading States Are No Loading States — jjenzz",
+      "publisher": "Engineering notes · jjenzz",
+      "url": "https://www.google.com/search?q=%22The+Best+Loading+States+Are+No+Loading+States%22+jjenzz",
+      "first_cited": "2026-06-15",
+      "citations": [
+        {
+          "date": "2026-06-15",
+          "context": "The Context Premium — context/feedback moats, formal verification"
+        }
+      ]
+    },
+    {
+      "key": "context-architecture",
+      "title": "Context Architecture",
+      "publisher": "Article · Nielsen Norman Group",
+      "url": "https://www.nngroup.com",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        },
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "encoding-your-domain-expert-the-context-layer-behind-spotify-s-data-assistant",
+      "title": "Encoding Your Domain Expert: The Context Layer Behind Spotify's Data Assistant",
+      "publisher": "Engineering blog · Spotify Engineering",
+      "url": "https://www.google.com/search?q=%22Encoding%20Your%20Domain%20Expert%3A%20The%20Context%20Layer%20Behind%20Spotify%27s%20Data%20Assistant%22",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "ishaan-sehgal-on-x",
+      "title": "Ishaan Sehgal on X",
+      "publisher": "Post · Ishaan Sehgal on X",
+      "url": "https://t.co/lKK4Slx8zG",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "managing-agentic-ai-costs-at-scale",
+      "title": "Managing Agentic AI Costs at Scale",
+      "publisher": "Analysis · Managing Agentic AI Costs at Scale",
+      "url": "https://www.google.com/search?q=%22Managing%20Agentic%20AI%20Costs%20at%20Scale%22",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "python-3-15-practical-improvements-and-key-performance-upgrades",
+      "title": "Python 3.15: Practical Improvements and Key Performance Upgrades",
+      "publisher": "Article · Python 3.15",
+      "url": "https://www.google.com/search?q=%22Python%203.15%3A%20Practical%20Improvements%20and%20Key%20Performance%20Upgrades%22",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "satya-nadella-on-x",
+      "title": "Satya Nadella on X",
+      "publisher": "Post · Satya Nadella on X",
+      "url": "https://t.co/vLmiBKTtX3",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "semantic-search-for-ai-agents-at-scale-retrieval-and-ranking-for-linkedin-s-hiri",
+      "title": "Semantic Search for AI Agents at Scale: Retrieval and Ranking for LinkedIn's Hiring Assistant",
+      "publisher": "Engineering blog · LinkedIn Engineering",
+      "url": "https://www.google.com/search?q=%22Semantic%20Search%20for%20AI%20Agents%20at%20Scale%3A%20Retrieval%20and%20Ranking%20for%20LinkedIn%27s%20Hiring%20Assistant%22",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "the-architectures-of-ai-native-saas",
+      "title": "The Architectures of AI-Native SaaS",
+      "publisher": "Essay · The Architectures of AI-Native SaaS",
+      "url": "https://www.google.com/search?q=%22The%20Architectures%20of%20AI-Native%20SaaS%22",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "the-inverted-market-how-ai-is-reshaping-software-consultancy",
+      "title": "The Inverted Market: How AI is Reshaping Software Consultancy",
+      "publisher": "Essay · The Inverted Market",
+      "url": "https://www.google.com/search?q=%22The%20Inverted%20Market%3A%20How%20AI%20is%20Reshaping%20Software%20Consultancy%22",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "the-mythical-agent-month",
+      "title": "The Mythical Agent-Month",
+      "publisher": "Essay · Wes McKinney",
+      "url": "https://www.google.com/search?q=%22The%20Mythical%20Agent-Month%22%20Wes%20McKinney",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "what-is-agentic-engineering",
+      "title": "What is Agentic Engineering?",
+      "publisher": "Article · IBM",
+      "url": "https://www.google.com/search?q=%22What%20is%20Agentic%20Engineering%3F%22%20IBM",
+      "first_cited": "2026-06-16",
+      "citations": [
+        {
+          "date": "2026-06-16",
+          "context": "The Context Era — context architecture, retrieval grounding, agent cost"
+        }
+      ]
+    },
+    {
+      "key": "ai-demands-more-engineering-discipline-not-less",
+      "title": "AI demands more engineering discipline. Not less",
+      "publisher": "Essay · charity.wtf (Charity Majors)",
+      "url": "https://charity.wtf",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "agentic-code-review",
+      "title": "Agentic Code Review",
+      "publisher": "Essay · AddyOsmani.com",
+      "url": "https://addyosmani.com",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "code-as-constraint-enforcing-design-for-ai-agents",
+      "title": "Code as Constraint: Enforcing Design for AI Agents",
+      "publisher": "Essay · Code as Constraint",
+      "url": "https://www.google.com/search?q=%22Code%20as%20Constraint%3A%20Enforcing%20Design%20for%20AI%20Agents%22",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "factory-2-0-from-coding-agents-to-software-factories",
+      "title": "Factory 2.0: From coding agents to software factories",
+      "publisher": "Essay · Factory.ai",
+      "url": "https://factory.ai",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "how-dropbox-uses-mcp-and-dash-to-close-the-design-to-code-security-gap",
+      "title": "How Dropbox uses MCP and Dash to close the design-to-code security gap",
+      "publisher": "Engineering blog · Dropbox",
+      "url": "https://www.google.com/search?q=%22How%20Dropbox%20uses%20MCP%20and%20Dash%20to%20close%20the%20design-to-code%20security%20gap%22",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "lin-qiao-on-x",
+      "title": "Lin Qiao on X",
+      "publisher": "Post · Lin Qiao on X",
+      "url": "https://t.co/rMVRgBvwEI",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "running-local-models-is-good-now",
+      "title": "Running local models is good now",
+      "publisher": "Essay · Vicki Boykis (vickiboykis.com)",
+      "url": "https://vickiboykis.com",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "the-most-ai-pilled-ceo-we-know",
+      "title": "The Most AI-Pilled CEO We Know",
+      "publisher": "Interview · The Most AI-Pilled CEO We Know",
+      "url": "https://www.google.com/search?q=%22The%20Most%20AI-Pilled%20CEO%20We%20Know%22",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "the-wisdom-of-boring-code-seven-senior-engineering-patterns",
+      "title": "The Wisdom of Boring Code: Seven Senior Engineering Patterns",
+      "publisher": "Essay · The Wisdom of Boring Code",
+      "url": "https://www.google.com/search?q=%22The%20Wisdom%20of%20Boring%20Code%3A%20Seven%20Senior%20Engineering%20Patterns%22",
+      "first_cited": "2026-06-17",
+      "citations": [
+        {
+          "date": "2026-06-17",
+          "context": "The Review Gap — validation, agentic review, software factories"
+        }
+      ]
+    },
+    {
+      "key": "the-rise-of-context-engineering",
+      "title": "The Rise of Context Engineering",
+      "publisher": "Essay · The Rise of Context Engineering",
+      "url": "https://www.google.com/search?q=%22The+Rise+of+Context+Engineering%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "architecting-the-five-layers-of-the-ai-stack",
+      "title": "Architecting the Five Layers of the AI Stack",
+      "publisher": "Essay · Architecting the Five Layers of the AI Stack",
+      "url": "https://www.google.com/search?q=%22Architecting+the+Five+Layers+of+the+AI+Stack%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "agent-experience-is-the-new-developer-experience",
+      "title": "Agent experience is the new developer experience",
+      "publisher": "Engineering blog · Builder.io",
+      "url": "https://www.builder.io/blog/agent-experience",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-retrieval-layer-between-your-data-and-your-ai-outputs-is-a-product-decision",
+      "title": "The Retrieval Layer between Your Data and Your AI Outputs is a Product Decision",
+      "publisher": "Essay · The Retrieval Layer as a Product Decision",
+      "url": "https://www.google.com/search?q=%22The+Retrieval+Layer+between+Your+Data+and+Your+AI+Outputs+is+a+Product+Decision%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "architecting-enterprise-trust-in-the-multi-model-era",
+      "title": "Architecting Enterprise Trust in the Multi-Model Era",
+      "publisher": "Essay · Architecting Enterprise Trust in the Multi-Model Era",
+      "url": "https://www.google.com/search?q=%22Architecting+Enterprise+Trust+in+the+Multi-Model+Era%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "how-anthropic-enables-self-service-data-analytics-with-claude",
+      "title": "How Anthropic enables self-service data analytics with Claude",
+      "publisher": "Engineering blog · Anthropic",
+      "url": "https://www.anthropic.com",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-fall-of-kubernetes-and-the-complexity-tax",
+      "title": "The Fall of Kubernetes and the Complexity Tax",
+      "publisher": "Essay · The Fall of Kubernetes and the Complexity Tax",
+      "url": "https://www.google.com/search?q=%22The+Fall+of+Kubernetes+and+the+Complexity+Tax%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "github-tetherto-qvac-qvac-local-ai-sdk",
+      "title": "GitHub — tetherto/qvac: QVAC — Local AI SDK",
+      "publisher": "SDK · GitHub · tetherto/qvac",
+      "url": "https://github.com/tetherto/qvac",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "addy-osmani-on-x",
+      "title": "Addy Osmani on X",
+      "publisher": "Discussion · Addy Osmani on X",
+      "url": "https://t.co/hIe0UX7z6T",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "zero",
+      "title": "Zero",
+      "publisher": "Project · Zero (sync engine)",
+      "url": "https://www.google.com/search?q=%22Zero%22+sync+engine+local-first",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-model-is-no-longer-the-bottleneck",
+      "title": "The Model Is No Longer the Bottleneck",
+      "publisher": "Essay · The Model Is No Longer the Bottleneck · K-Dense Web",
+      "url": "https://www.google.com/search?q=%22The+Model+Is+No+Longer+the+Bottleneck%22+K-Dense",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "complexity-is-the-ceiling-software-design-in-the-age-of-ai-coding",
+      "title": "Complexity is the ceiling: software design in the age of AI coding",
+      "publisher": "Essay · Complexity is the ceiling",
+      "url": "https://www.google.com/search?q=%22Complexity+is+the+ceiling%22+software+design+AI+coding",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "vibe-coding-is-dangerous-agentic-engineering-isn-t",
+      "title": "Vibe Coding Is Dangerous, Agentic Engineering Isn't",
+      "publisher": "Podcast/Essay · with Wes McKinney",
+      "url": "https://www.google.com/search?q=%22Vibe+Coding+Is+Dangerous,+Agentic+Engineering+Isn%27t%22+Wes+McKinney",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-architect-s-era-programming-by-commission",
+      "title": "The Architect's Era: Programming by Commission",
+      "publisher": "Essay · The Architect's Era",
+      "url": "https://www.google.com/search?q=%22The+Architect%27s+Era:+Programming+by+Commission%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-high-cost-of-automating-software-engineering",
+      "title": "The High Cost of Automating Software Engineering",
+      "publisher": "Essay · The High Cost of Automating Software Engineering",
+      "url": "https://www.google.com/search?q=%22The+High+Cost+of+Automating+Software+Engineering%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "i-design-with-claude-more-than-figma-now",
+      "title": "I design with Claude more than Figma now",
+      "publisher": "Blog · Jane Street",
+      "url": "https://blog.janestreet.com",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "chesky-s-design-driven-vision-for-the-ai-future",
+      "title": "Chesky's Design-Driven Vision for the AI Future",
+      "publisher": "Essay · Chesky's Design-Driven Vision",
+      "url": "https://www.google.com/search?q=%22Chesky%27s+Design-Driven+Vision+for+the+AI+Future%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "initial-impressions-of-claude-fable-5",
+      "title": "Initial impressions of Claude Fable 5",
+      "publisher": "Notes · simonwillison.net (impl.)",
+      "url": "https://www.google.com/search?q=%22Initial+impressions+of+Claude+Fable+5%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "ai-is-slowing-down",
+      "title": "AI Is Slowing Down",
+      "publisher": "Essay · Where's Your Ed At (Ed Zitron)",
+      "url": "https://www.wheresyoured.at/ai-is-slowing-down/",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "openai-files-confidentially-for-landmark-initial-public-offering",
+      "title": "OpenAI Files Confidentially for Landmark Initial Public Offering",
+      "publisher": "News · OpenAI confidential IPO filing",
+      "url": "https://www.google.com/search?q=%22OpenAI+Files+Confidentially+for+Landmark+Initial+Public+Offering%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "openai-and-anthropic-the-looming-ai-price-war",
+      "title": "OpenAI and Anthropic: The Looming AI Price War",
+      "publisher": "Essay · OpenAI and Anthropic: The Looming AI Price War",
+      "url": "https://www.google.com/search?q=%22OpenAI+and+Anthropic:+The+Looming+AI+Price+War%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "how-to-build-an-outcome-based-pricing-plan",
+      "title": "How to Build an Outcome-Based Pricing Plan",
+      "publisher": "Guide · The SaaS CFO",
+      "url": "https://www.thesaascfo.com",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "token-spend-out-of-control-the-case-for-smarter-routing",
+      "title": "Token Spend Out of Control? The Case for Smarter Routing",
+      "publisher": "Essay · Token Spend Out of Control? The Case for Smarter Routing",
+      "url": "https://www.google.com/search?q=%22Token+Spend+Out+of+Control%22+%22The+Case+for+Smarter+Routing%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "why-7-day-plans-are-winning",
+      "title": "Why 7-day plans are winning",
+      "publisher": "Research · RevenueCat",
+      "url": "https://www.revenuecat.com/blog/growth/weekly-subscriptions/",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-cost-of-ai-copyright-a-legal-warning-for-creators",
+      "title": "The Cost of AI Copyright: A Legal Warning for Creators",
+      "publisher": "Essay · The Cost of AI Copyright: A Legal Warning for Creators",
+      "url": "https://www.google.com/search?q=%22The+Cost+of+AI+Copyright%22+%22A+Legal+Warning+for+Creators%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "cursor-get-the-developer-habits-report",
+      "title": "Cursor · Get the Developer Habits Report",
+      "publisher": "Tools · Cursor · Developer Habits Report",
+      "url": "https://cursor.com",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "apple-wins-consumer-ai-by-default",
+      "title": "Apple Wins Consumer AI By Default",
+      "publisher": "Essay · Spyglass (M.G. Siegler)",
+      "url": "https://spyglass.org/siri-ai/",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "llms-are-picking-winners-here-s-how-to-become-one",
+      "title": "LLMs are picking winners. Here's how to become one.",
+      "publisher": "Newsletter · PostHog",
+      "url": "https://newsletter.posthog.com/p/llms-are-picking-winners-heres-how",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "app-store-ecosystem-reaches-1-4-trillion-as-developers-thrive-globally",
+      "title": "App Store ecosystem reaches $1.4 trillion as developers thrive globally",
+      "publisher": "News · Apple",
+      "url": "https://www.apple.com/newsroom/",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "your-vendor-is-your-competitor",
+      "title": "Your Vendor Is Your Competitor",
+      "publisher": "Essay · Your Vendor Is Your Competitor",
+      "url": "https://www.google.com/search?q=%22Your+Vendor+Is+Your+Competitor%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "your-agent-will-be-your-undoing",
+      "title": "Your agent will be your undoing",
+      "publisher": "Essay · Benn Stancil",
+      "url": "https://benn.substack.com",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "voidzero-is-joining-cloudflare",
+      "title": "VoidZero is joining Cloudflare",
+      "publisher": "Tools · VoidZero / Cloudflare",
+      "url": "https://www.google.com/search?q=%22VoidZero+is+joining+Cloudflare%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "being-an-ai-native-designer-isn-t-what-you-think-it-is",
+      "title": "Being an AI-native designer isn't what you think it is",
+      "publisher": "Essay · Being an AI-native designer isn't what you think it is",
+      "url": "https://www.google.com/search?q=%22Being+an+AI-native+designer+isn%27t+what+you+think+it+is%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "why-visual-storytelling-in-ux-matters-more-than-ever",
+      "title": "Why Visual Storytelling in UX Matters More Than Ever",
+      "publisher": "Article · UXPin",
+      "url": "https://www.uxpin.com",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-code-as-content-era-by-m-uhan",
+      "title": "The Code-as-Content Era — by máuhan",
+      "publisher": "Essay · The Code-as-Content Era",
+      "url": "https://www.google.com/search?q=%22The+Code-as-Content+Era%22+m%C3%A1uhan",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "the-idearium-a-sanctuary-for-your-restless-thoughts",
+      "title": "The Idearium: A Sanctuary for Your Restless Thoughts",
+      "publisher": "Essay · The Idearium",
+      "url": "https://www.google.com/search?q=%22The+Idearium%22+%22A+Sanctuary+for+Your+Restless+Thoughts%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "how-to-build-an-ai-native-services-company",
+      "title": "How to Build an AI-Native Services Company",
+      "publisher": "Essay · How to Build an AI-Native Services Company",
+      "url": "https://www.google.com/search?q=%22How+to+Build+an+AI-Native+Services+Company%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "github-for-ai-product-managers-a-practical-guide",
+      "title": "GitHub for AI Product Managers: A Practical Guide",
+      "publisher": "Guide · GitHub for AI Product Managers",
+      "url": "https://www.google.com/search?q=%22GitHub+for+AI+Product+Managers:+A+Practical+Guide%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "hyperagent-s-ai-operations-andrew-busse-interview",
+      "title": "Hyperagent's AI Operations: Andrew Busse Interview",
+      "publisher": "Interview · Hyperagent (Andrew Busse)",
+      "url": "https://www.google.com/search?q=%22Hyperagent%27s+AI+Operations%22+%22Andrew+Busse%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "consistency-over-complexity-building-lasting-discipline",
+      "title": "Consistency Over Complexity: Building Lasting Discipline",
+      "publisher": "Essay · Consistency Over Complexity",
+      "url": "https://www.google.com/search?q=%22Consistency+Over+Complexity:+Building+Lasting+Discipline%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "maybe-later-was-a-feature",
+      "title": "\"maybe later\" was a feature",
+      "publisher": "Essay · arnorhs.dev",
+      "url": "https://arnorhs.dev",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
+    },
+    {
+      "key": "mastering-personal-voice-in-ai-writing",
+      "title": "Mastering Personal Voice in AI Writing",
+      "publisher": "Essay · Mastering Personal Voice in AI Writing",
+      "url": "https://www.google.com/search?q=%22Mastering+Personal+Voice+in+AI+Writing%22",
+      "first_cited": "2026-06-12",
+      "citations": [
+        {
+          "date": "2026-06-12",
+          "context": "Weekly W24 (June 8-12) — generation to judgment"
+        }
+      ]
     }
   ]
 }

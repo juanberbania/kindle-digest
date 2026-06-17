@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 17, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 17, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 47</div>
+    <div class="rhs">Wednesday · 17 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Oversight Bottleneck</p>
+  <h1>The Review Gap</h1>
+  <p class="subtitle">Ten sources, one inversion: when generating code becomes free and instant, the scarce thing is no longer writing it but trusting it. Agentic code review triages the flood; software factories treat code as disposable and regenerable; "code as constraint" and immutable infrastructure box in what agents can break; context architecture makes the environment the real artifact; and the human engineer is reclassified from author to the architect of the safety nets.</p>
+
+  <div class="byline">
+    <span><b>10 sources</b> · 2 diagrams · ~21 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The bottleneck moved, and almost nobody re-tooled for it</h2>
+
+    <p class="lead">For thirty years the binding constraint in software was supply: skilled people are slow, and writing correct code is hard. In 2026 that constraint quietly inverted. Generating a plausible diff is now nearly instantaneous and effectively free, so the scarcity has migrated downstream — to <strong>validation, oversight, and trust.</strong> A team can now produce far more change than any human-speed review process can vet, and the gap between "code written" and "code understood" is where today's ten sources all live. The fix they converge on is not faster typing. It is a re-architecture of the whole loop: machines to triage the machine output, infrastructure that refuses to drift, rules encoded in the codebase itself, and a human who has stopped writing lines and started designing the system that lets the lines be written safely.</p>
+
+    <p><em>Yesterday's issue opened the validation/context-architecture thread by asking what the engineer manages once they stop managing code; today sharpens it — if generation is free, is the new unit of engineering the diff, or the environment and the rules that decide whether the diff is allowed to land?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Six agreements across today's sources</h4>
+    <ol>
+      <li><strong>Writing code stopped being the hard part.</strong> Every source assumes generation is cheap and abundant; none treats authorship as the bottleneck. The interesting work has moved to deciding whether to keep what was generated.</li>
+      <li><strong>Human-speed review has collapsed under the volume.</strong> The traditional line-by-line PR walk cannot scale to machine output, so review itself has to be (partly) automated — AI triaging AI, reconstructing the intent behind diffs nobody hand-wrote.</li>
+      <li><strong>Code is becoming disposable, not precious.</strong> The "software factory" and "boring code" camps agree from opposite directions: if regenerating is cheap, code is an asset you replace, not a craft object you nurse — which raises the premium on what is hard to regenerate.</li>
+      <li><strong>Discipline goes up, not down.</strong> More autonomy demands more constraint: immutable infrastructure, design rules enforced in the code, and bounded permissions are the price of letting agents act at scale.</li>
+      <li><strong>The environment is the real artifact now.</strong> Context architecture, MCP-mediated tool access, and local-model control all say the same thing — the engineer's leverage is in the rules, context, and guardrails that govern the agent, not in the agent's output.</li>
+      <li><strong>The human role is being re-described as architect.</strong> Across the set the modern engineer designs the systems and safety nets that let AI run securely — author of constraints rather than author of code.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 AGENTIC REVIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The new bottleneck</span>When review is the scarce resource, automate the review</h2>
+
+    <p>The day's most structural source is Addy Osmani on <em>agentic code review</em>. Its premise is the whole digest in miniature: if code generation is effectively free, then the only thing standing between a team and chaos is review — and review is exactly the step still pinned to human reading speed. The proposed response is to let AI carry the first pass: triage incoming pull requests, cluster them by risk, summarize what each diff actually does, and — the part that matters most — <strong>reconstruct the intent behind a machine-generated change</strong> that no human ever consciously decided to make. A reviewer who used to read lines now reads a reconstructed argument about why those lines exist.</p>
+
+    <p>The synthesis worth keeping, present in no single source: <strong>the cost of generation and the cost of validation have decoupled, and the second one is now the budget.</strong> Once a diff costs nothing to produce, the binding number is how much trustworthy review you can afford per unit time. Agentic review is not a productivity upgrade; it is the only way to keep the validation cost from growing linearly with a generation cost that has fallen to zero. The danger it introduces is circular — using a model to vouch for a model — which is why §3's structural constraints have to do the load-bearing work that review alone cannot.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked pipelines comparing the old human-speed development loop with the 2026 loop in which generation is free and validation becomes the bottleneck, triaged by agentic review">
+      <rect x="0" y="0" width="660" height="430" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · WHERE THE BOTTLENECK MOVED</text>
+
+      <!-- OLD loop label -->
+      <text x="30" y="62" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PRE-2026 · WRITING WAS THE CONSTRAINT</text>
+
+      <!-- old: writing big, review small -->
+      <rect x="30" y="74" width="380" height="58" fill="#000000"/>
+      <text x="48" y="100" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">WRITING CODE</text>
+      <text x="48" y="120" font-family="Georgia,serif" font-size="14" fill="#ffffff">Slow, expensive, human-paced — the wall.</text>
+
+      <rect x="418" y="74" width="100" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="430" y="100" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">REVIEW</text>
+      <text x="430" y="118" font-family="Georgia,serif" font-size="12" fill="#000000">Keeps up fine.</text>
+
+      <rect x="526" y="74" width="104" height="58" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="538" y="100" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">SHIP</text>
+
+      <!-- divider -->
+      <line x1="30" y1="170" x2="630" y2="170" stroke="#000000" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- NEW loop label -->
+      <text x="30" y="206" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">2026 · VALIDATION IS THE CONSTRAINT</text>
+
+      <!-- new: writing tiny, review huge -->
+      <rect x="30" y="218" width="100" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="42" y="244" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">GENERATE</text>
+      <text x="42" y="262" font-family="Georgia,serif" font-size="11" fill="#000000">~Free, instant.</text>
+
+      <rect x="138" y="218" width="380" height="58" fill="#000000"/>
+      <text x="156" y="244" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">VALIDATION &amp; OVERSIGHT — THE NEW WALL</text>
+      <text x="156" y="264" font-family="Georgia,serif" font-size="14" fill="#ffffff">Trust, not typing, is what's now scarce.</text>
+
+      <rect x="526" y="218" width="104" height="58" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="538" y="244" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">SHIP</text>
+
+      <!-- the relief layer -->
+      <rect x="138" y="288" width="380" height="46" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="156" y="310" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">AGENTIC REVIEW — TRIAGE + INTENT RECONSTRUCTION</text>
+      <text x="156" y="328" font-family="Georgia,serif" font-size="13" fill="#ffffff">The only thing that keeps the black box from growing without bound.</text>
+
+      <text x="330" y="372" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">THE BLACK BAND MOVED LEFT-TO-RIGHT, AND GREW</text>
+      <text x="330" y="398" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The constraint didn't disappear. It relocated from authorship to trust.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The same loop, before and after generation went free. The bottleneck (the black band) didn't vanish when writing got cheap — it slid downstream to validation and grew, because output now outruns any human-speed review. Agentic review is the relief valve, not a luxury.</div>
+  </div>
+
+  <!-- =================== §3 CODE AS CONSTRAINT =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · Discipline</span>More autonomy, more constraint — encoded in the code itself</h2>
+
+    <p>Two sources insist, against the intuition that AI lets you relax, that it demands the opposite. Charity Majors' <em>AI demands more engineering discipline, not less</em> is the blunt version: handing more of the keyboard to a fast, confident, occasionally wrong worker raises — not lowers — the bar on tests, observability, and the operational rigor that catches its mistakes in production. <em>Code as Constraint: Enforcing Design for AI Agents</em> supplies the mechanism. If you cannot trust an agent to <em>remember</em> your architecture, you encode the architecture as something the agent physically cannot violate: types, lints, module boundaries, schemas, and tests that fail closed. The codebase becomes its own rulebook, enforced by the compiler rather than by a reviewer's memory.</p>
+
+    <p>The synthesis neither states alone: <strong>guardrails are migrating from people into the substrate.</strong> Human review is judgment that lives in a head and does not scale; a failing type-check is judgment compiled into the repository, and it scales to infinite agent throughput at zero marginal cost. This is the structural answer to §2's circularity problem — you do not solve "a model vouching for a model" with a better model, you solve it by making large classes of error <em>unrepresentable</em> before any review runs. Discipline, in this frame, is not virtue; it is the only thing that holds when the author is tireless and the reviewer is overwhelmed.</p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A four-layer defense stack showing where trust in machine-generated code comes from, ordered from structural constraints that scale infinitely at the base to human judgment that does not scale at the top">
+      <rect x="0" y="0" width="660" height="380" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · FOUR LAYERS OF TRUST, RANKED BY HOW WELL THEY SCALE</text>
+
+      <!-- layer 4 top: human judgment -->
+      <rect x="30" y="48" width="600" height="62" fill="#c8c8c8" stroke="#000000" stroke-width="0.8"/>
+      <text x="48" y="72" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">HUMAN JUDGMENT</text>
+      <text x="48" y="92" font-family="Georgia,serif" font-size="14" fill="#000000">Reads intent, makes the call. Highest trust per unit —</text>
+      <text x="48" y="110" font-family="Georgia,serif" font-size="14" fill="#000000">but pinned to human speed. Does NOT scale with output.</text>
+
+      <!-- layer 3: agentic review -->
+      <rect x="30" y="116" width="600" height="62" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="140" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">AGENTIC REVIEW</text>
+      <text x="48" y="160" font-family="Georgia,serif" font-size="14" fill="#000000">Triages the flood, reconstructs intent. Scales —</text>
+      <text x="48" y="178" font-family="Georgia,serif" font-size="14" fill="#000000">but it's a model vouching for a model. Needs a floor under it.</text>
+
+      <!-- layer 2: structural constraint -->
+      <rect x="30" y="184" width="600" height="62" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="208" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">CODE AS CONSTRAINT</text>
+      <text x="48" y="228" font-family="Georgia,serif" font-size="14" fill="#ffffff">Types, schemas, lints, boundaries that fail closed.</text>
+      <text x="48" y="246" font-family="Georgia,serif" font-size="14" fill="#ffffff">Makes whole error classes unrepresentable. Scales to ∞.</text>
+
+      <!-- layer 1 base: immutable infra -->
+      <rect x="30" y="252" width="600" height="62" fill="#000000"/>
+      <text x="48" y="276" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">IMMUTABLE INFRASTRUCTURE / BOUNDED PERMISSIONS</text>
+      <text x="48" y="296" font-family="Georgia,serif" font-size="14" fill="#ffffff">The blast radius. Caps what any bad diff can actually touch,</text>
+      <text x="48" y="314" font-family="Georgia,serif" font-size="14" fill="#ffffff">no matter how the layers above fail. The real safety net.</text>
+
+      <text x="330" y="346" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Trust should rest on the bottom two layers; the top two are where it usually rests.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · Where machine-generated code earns trust, ordered by how well each layer survives infinite output. The two layers that scale (constraint, bounded infrastructure) sit at the bottom and do the load-bearing; the two that don't (human and agentic review) sit on top. Most teams still lean on the top — which is exactly the inversion these sources argue against.</div>
+  </div>
+
+  <!-- =================== §4 SOFTWARE FACTORIES =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · Disposability</span>Code as a regenerable asset: the software factory</h2>
+
+    <p>Factory.ai's <em>Factory 2.0: from coding agents to software factories</em> takes the cheap-generation premise to its logical end. If a coding agent can produce a working implementation on demand, then the implementation is no longer the thing you protect — the <strong>factory</strong> is: the repeatable system of specs, context, constraints, and pipelines that can regenerate the implementation reliably whenever you need it. Code stops being a hand-built artifact and becomes an output you can re-run. The valuable, durable thing is the production line, not the part that rolls off it.</p>
+
+    <p>This is the same instinct, from the opposite temperament, as <em>The Wisdom of Boring Code: seven senior engineering patterns</em>. The boring-code camp prizes readability, small surface area, and obviousness — and in a world of regenerable code those virtues sharpen rather than soften: boring code is <em>cheap to regenerate and cheap to validate</em> precisely because it has no cleverness hiding intent. The synthesis across the two, stated by neither: <strong>cleverness was always a tax, and disposability finally prices it.</strong> When regeneration is free, an asset's worth is set by how easily it can be reproduced and verified — which rewards the boring and punishes the bespoke, whether you arrive there as a factory operator or as a senior engineer who has simply stopped being impressed by clever code.</p>
+
+    <p><span class="caflag">Counter</span><em>"Disposable code" is a seductive overshoot. Most production systems carry irreducible essential complexity — a payments edge case, a regulatory rule, a hard-won concurrency fix — that is not boilerplate and does not survive a casual regeneration. Treat all code as disposable and you will cheerfully regenerate away the one subtle line that took a week and an outage to get right. The honest version is narrower: <strong>boilerplate is disposable; institutional knowledge encoded as code is not.</strong> The factory's real job is telling those two apart, and nothing in either source explains how.</em></p>
+  </section>
+
+  <!-- =================== §5 CONTEXT ARCHITECTURE =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The real artifact</span>Context architecture: managing the world the agent works in</h2>
+
+    <p>NN/G's <em>Context Architecture</em> reframes the human's job one level up. If the agent writes the code, the leverage is in governing <em>what the agent knows, what it may touch, and the rules it operates under</em> — the curated context, the constraints, the tool access, the definitions of done. This is information architecture for a non-human reader: you are designing the environment a stochastic worker inhabits so that its outputs are predictable and safe, rather than designing the screens a person reads.</p>
+
+    <p>Two engineering-side sources show context architecture as a practice rather than a concept. Dropbox's account of <em>using MCP and Dash to close the design-to-code security gap</em> is the security-shaped version: the Model Context Protocol becomes the controlled doorway through which an agent reaches tools and data, so that "what the agent can access" is an explicit, auditable policy instead of an emergent accident — context architecture with a permission boundary welded on. Vicki Boykis' <em>Running local models is good now</em> is the same control instinct pulled all the way down to the metal: when the model runs on your own machine, the entire context, data path, and execution boundary are yours to govern, with nothing leaving the box. One closes the gap with protocol and policy; the other closes it by owning the substrate outright.</p>
+
+    <p>The synthesis worth keeping: <strong>context architecture is the discipline that makes §3's constraints and §4's factory actually governable.</strong> Constraints decide what is allowed; the factory decides what is produced; context architecture decides what the agent sees and reaches in the first place — and a guardrail the agent can route around isn't a guardrail. It is the layer where validation, security, and reproducibility are either designed in or quietly absent.</p>
+
+    <p><span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></p>
+  </section>
+
+  <!-- =================== §6 THE ROLE =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The long view</span>From author to architect — what's left for the human</h2>
+
+    <p>Pull §§2–5 into one hand and a single instruction falls out: <strong>stop optimizing the part the machine now does for free, and start owning the parts it can't.</strong> The two profile pieces in today's set — Lin Qiao's note on the shape of the AI-native developer, and the interview with "the most AI-pilled CEO we know" — are, read as evidence rather than as personalities, two data points on the same trajectory. Both describe organizations where humans have largely stopped writing code by hand and instead spend their time on what to build, which constraints to enforce, how to verify, and where the agents are allowed to operate. The most AI-pilled posture is not "let the agents run" — it is having built the systems that make letting them run survivable.</p>
+
+    <p>The honest reframing the digest insists on: the modern engineer's deliverable is no longer the diff. It is the <em>system that produces diffs safely</em> — the constraints, the context, the review machinery, the blast-radius limits. Authorship of code has been commoditized; authorship of the conditions under which code can be trusted has not. That migration, from writing the lines to designing the machine that writes them, is the whole of today's ten sources compressed to one sentence.</p>
+
+    <p><span class="caflag">Counter</span><em>The "everyone becomes an architect" story has a missing-middle problem nobody on this page addresses. Architecting safe agent systems is senior work — it presumes the judgment, scar tissue, and taste that used to be earned by years of writing and reviewing code by hand. If the juniors never write the code, where does the next generation of architects acquire the judgment the whole edifice rests on? "From author to architect" is a clean story for people who are already architects, and an open question for everyone behind them.</em></p>
+  </section>
+
+  <!-- =================== §7 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · Practical takeaways</span>If you only do seven things this week</h2>
+
+    <ol>
+      <li><strong>Budget for validation, not generation.</strong> Stop measuring throughput by code produced and start measuring it by code <em>trustworthily reviewed per unit time</em>. That second number is your real capacity now; the first is approaching free and tells you nothing.</li>
+      <li><strong>Put an agentic first-pass on your PR queue — but make it triage, not verdict.</strong> Use it to cluster by risk, summarize diffs, and reconstruct intent so humans spend their scarce attention on the changes that actually need it. Never let a model be the last word on a model's work.</li>
+      <li><strong>Move guardrails into the substrate.</strong> Every rule you can express as a type, schema, lint, or failing test is judgment that scales to infinite agent output for free. Convert review comments you keep repeating into constraints the compiler enforces.</li>
+      <li><strong>Cap the blast radius before you widen the autonomy.</strong> Immutable infrastructure and bounded, auditable permissions (the MCP-style doorway) decide what a bad diff can touch regardless of how review fails. Tighten this layer first, then hand the agent more rope.</li>
+      <li><strong>Separate disposable code from encoded knowledge.</strong> Before you treat anything as "just regenerate it," ask whether it carries a hard-won edge case or rule. Boilerplate is disposable; institutional knowledge wearing the costume of code is not — label it so nobody regenerates it away.</li>
+      <li><strong>Treat context as the deliverable.</strong> Invest in the curated context, definitions of done, and tool-access policy the agent operates inside. A guardrail the agent can route around is decoration; context architecture is where the real control lives.</li>
+      <li><strong>Have a plan for where judgment comes from.</strong> If your juniors no longer write code by hand, design the path by which they still acquire the taste that architecting safe agent systems requires. The author-to-architect shift breaks silently if you skip this.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §8 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Agentic code review</dt>
+        <dd>Using AI systems to perform the first pass of pull-request review — triaging by risk, summarizing diffs, and reconstructing the intent behind machine-generated changes — so scarce human attention lands only where it's needed. A response to review volume that human reading speed can't absorb.</dd>
+
+        <dt>Validation / oversight bottleneck</dt>
+        <dd>The 2026 inversion this digest is built on: once generating code is cheap and instant, the binding constraint shifts downstream from writing code to verifying and trusting it. The scarce resource becomes review capacity, not authoring capacity.</dd>
+
+        <dt>Code as constraint</dt>
+        <dd>Encoding architectural and design rules as things an agent physically cannot violate — types, schemas, lints, module boundaries, fail-closed tests — so the codebase enforces its own design rather than relying on a reviewer's memory. Guardrails compiled into the repository.</dd>
+
+        <dt>Software factory</dt>
+        <dd>A repeatable system of specs, context, constraints, and pipelines that can regenerate a working implementation on demand. Shifts the durable, valuable asset from the code itself to the production line that produces it; code becomes a regenerable output, not a hand-built artifact.</dd>
+
+        <dt>Immutable infrastructure</dt>
+        <dd>Infrastructure that is never modified in place — changes are made by replacing whole components from a known-good definition rather than editing live systems. Prevents drift and bounds the blast radius of any bad change, which is why it pairs with high-autonomy agents.</dd>
+
+        <dt>Context architecture</dt>
+        <dd>Designing the environment an autonomous agent operates within — the curated context, constraints, tool access, and definitions of done — so its outputs are predictable and safe. Information architecture for a non-human reader; the engineer's leverage point once the agent writes the code.</dd>
+
+        <dt>MCP (Model Context Protocol)</dt>
+        <dd>A standardized, controllable doorway through which an AI agent reaches external tools and data. Lets "what the agent can access" be an explicit, auditable policy with a permission boundary, rather than an emergent accident — the security-shaped face of context architecture.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Listen</span><strong>Tonight's listen.</strong> The Deep Dive audio overview walks the same arc as this issue — generation going free, the bottleneck sliding to validation, and the engineer's job rising from author to architect of the safety nets. A good twenty minutes for a walk if you'd rather hear the argument than read it: <a href="https://notebooklm.google.com/notebook/c251228b-31c1-49e2-b943-263fcf7de503">open the NotebookLM notebook →</a>.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The ten pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Essay · charity.wtf (Charity Majors)</span>
+        <span class="src-title"><a href="https://charity.wtf">AI demands more engineering discipline. Not less</a></span>
+        <span class="src-note">The corrective to the "AI lets you go fast and loose" fantasy, and the right frame for the whole day. Read it for the inversion — more autonomy means more, not less, operational rigor — and skip the parts that just restate observability gospel you already believe.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · AddyOsmani.com</span>
+        <span class="src-title"><a href="https://addyosmani.com">Agentic Code Review</a></span>
+        <span class="src-note">The structural anchor of the issue. The keeper idea is intent reconstruction — review that recovers the "why" behind a diff nobody hand-wrote — which is the thing pure summarization tools miss. Hold its circularity problem (a model vouching for a model) next to §3.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Code as Constraint</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Code%20as%20Constraint%3A%20Enforcing%20Design%20for%20AI%20Agents%22">Code as Constraint: Enforcing Design for AI Agents</a></span>
+        <span class="src-note">The most actionable mechanism on the page: stop trusting agents to remember your architecture and make violating it impossible. Worth it for the reframe that a failing type-check is review that scales to infinity for free. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Research · NN/G (Nielsen Norman Group)</span>
+        <span class="src-title"><a href="https://www.nngroup.com">Context Architecture</a></span>
+        <span class="src-note">The cleanest name for the human's new job: design the environment, not the output. Reading it as information architecture for a non-human reader is the move that makes the rest of the day's engineering pieces click into one discipline.</span>
+        <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Factory.ai</span>
+        <span class="src-title"><a href="https://factory.ai">Factory 2.0: From coding agents to software factories</a></span>
+        <span class="src-note">Takes cheap generation to its end state — the factory, not the code, is the asset — and is most useful read against its own overshoot. The premise is right; the unanswered question (which code is actually disposable) is where the real work hides.</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Dropbox</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22How%20Dropbox%20uses%20MCP%20and%20Dash%20to%20close%20the%20design-to-code%20security%20gap%22">How Dropbox uses MCP and Dash to close the design-to-code security gap</a></span>
+        <span class="src-note">The concrete version of "context architecture with a permission boundary." Read it for how MCP turns agent tool-access from an emergent accident into an auditable policy — the security plumbing the conceptual pieces gesture at but don't build. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Post · Lin Qiao on X</span>
+        <span class="src-title"><a href="https://t.co/rMVRgBvwEI">Lin Qiao on X</a></span>
+        <span class="src-note">A practitioner data point, not an argument — read it as evidence of the author-to-architect shift happening inside a real org, then weigh it against §6's missing-middle objection. The framing matters more than any single claim in it.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Vicki Boykis (vickiboykis.com)</span>
+        <span class="src-title"><a href="https://vickiboykis.com">Running local models is good now</a></span>
+        <span class="src-note">The control instinct pushed to the metal: own the substrate and the entire context, data path, and execution boundary are yours. The mundane-sounding "it works now" is the point — it makes governing the agent's world a default option, not an enterprise project.</span>
+      </li>
+      <li>
+        <span class="pub">Interview · The Most AI-Pilled CEO We Know</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Most%20AI-Pilled%20CEO%20We%20Know%22">The Most AI-Pilled CEO We Know</a></span>
+        <span class="src-note">Read past the personality for the operating model: the most aggressive AI posture turns out to be the most disciplined one — autonomy bought with systems, not bravado. Skip the hype framing; keep the observation that "AI-pilled" and "rigorous" are the same thing here. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Wisdom of Boring Code</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Wisdom%20of%20Boring%20Code%3A%20Seven%20Senior%20Engineering%20Patterns%22">The Wisdom of Boring Code: Seven Senior Engineering Patterns</a></span>
+        <span class="src-note">Looks like a nostalgia piece; is actually the sharpest economic argument on the page once you read it next to §4. Boring code wins not because it's virtuous but because it's cheap to regenerate and cheap to validate — the mundane is the point. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 45 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

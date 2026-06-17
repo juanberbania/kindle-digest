@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Digest — Week of June 8, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · Weekly Summary · June 8–12, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Weekly Summary</div>
+    <div class="rhs">Week of 8 June 2026 · W24</div>
+  </div>
+
+  <p class="kicker">Volume II · The Weekly · ISO Week 24</p>
+  <h1>The Architect's Turn</h1>
+  <p class="subtitle">Forty-nine sources across one working week, in which the AI conversation completed its move from generation to judgment — the bubble argument hardened into a financing problem, agentic computing settled on the structured environment as its unit, Apple and Stack Overflow each adapted distribution to a machine-mediated world, and the role being hired for stopped being "writes code" and became "decides what's worth building."</p>
+
+  <div class="byline">
+    <span><b>49 sources</b> · 4 diagrams · 10 sections · ~36 min read</span>
+    <span>Distilled from NotebookLM · Weekly Summary · personal reading log</span>
+  </div>
+
+  <!-- =================== LEDE =================== -->
+  <p class="lead">The week of June 8 was the one where the year's two loudest arguments — the money one and the craft one — stopped being separate stories and became the same instruction. The bubble case got sharper and narrower: critics tallied the trillions of revenue the buildout needs and concluded the fragility lives in the financing, not the technology. The craft case got more concrete: agentic computing converged on the idea that the work happens inside a structured, secure, well-scoped environment, not in a clever prompt; the stack acquired named layers and a multi-model trust problem; and the people writing about how to build all settled on a single, slightly uncomfortable conclusion — that the durable skill in 2026 is not generating cheap code but deciding, with judgment, what should exist at all. Apple and Stack Overflow show the two endpoints of that world: one bringing AI to a billion people by being the default, the other rebuilding itself so its primary reader can be a machine.</p>
+
+  <p><em>If this is the week the industry agreed that judgment, not generation, is the scarce input — then who actually owns the judgment, where does it live in the stack, and what happens to everyone whose job was the generation?</em></p>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>What this week's 49 sources agree on</h4>
+    <ol>
+      <li><strong>The bubble is a financing problem, not a usefulness one.</strong> The recurring number across the week is the trillions in revenue the compute buildout must eventually service. The technology working does not make the capital structure that paid for it durable — and that gap is now the consensus framing, not the contrarian one.</li>
+      <li><strong>Agentic computing's unit is the environment, not the model.</strong> Source after source describes the same move: specialized agents doing complex workflows inside structured, secure, bounded spaces. The engineering effort has relocated from the model call to the world the agent works inside.</li>
+      <li><strong>The bottleneck moved from the model to the human.</strong> "The model is no longer the bottleneck" recurs almost verbatim. What's scarce is context, retrieval design, taste, and the judgment to tell a confident wrong answer from a right one.</li>
+      <li><strong>Cheap code is a trap, not a moat.</strong> Vibe coding gets a near-unanimous warning; "complexity is the ceiling"; the architect who decides what to build out-ships the coder who builds fast. Generation is commodity; design is the constraint.</li>
+      <li><strong>Distribution and trust decide the consumer outcome.</strong> Apple wins by default and integration; Stack Overflow survives by serving the new machine reader. The contest moved from "best model" to "who already owns the channel and the trust."</li>
+      <li><strong>Pricing and routing are being re-engineered for a metered world.</strong> Outcome-based pricing, smarter token routing, and a looming price war all point the same way: the business model is being repriced from per-seat-promise to per-result-delivered.</li>
+      <li><strong>HTML-first and "maybe later" — restraint is winning quietly.</strong> Two of the week's most-shared small pieces argue that doing less, shipping simpler, and respecting the user's attention beat the maximalist default. The counter-melody to the agentic-everything narrative.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §1 BUBBLE =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · The structural anchor</span>The bubble argument finished narrowing</h2>
+
+    <p>If one claim ran through every day of the week, it is that the AI bubble — to the extent there is one — is a <strong>financing bubble, not a usefulness bubble</strong>. Ed Zitron's <em>AI Is Slowing Down</em> is the loudest voice, and the week's other money pieces fall in behind a narrower version of his case. The arithmetic the week kept returning to: the industry needs <em>trillions</em> of dollars in eventual revenue to service the infrastructure and compute being built today, against flagship-lab revenues an order of magnitude smaller. OpenAI's confidential IPO filing and the looming OpenAI–Anthropic price war are the same story from the capital-markets side: a sector raising and spending against demand that is assumed, not yet observed.</p>
+
+    <p>The synthesis the week earns, present in no single piece, is that the <strong>two curves have fully come apart and the discourse has caught up to it</strong>. In 2024 capability and capital were priced as one thing. By this week, even the optimists concede the financing question is open while insisting the technology keeps working — and the pessimists concede the technology works while insisting the financing breaks. That is no longer a debate about facts; it is a debate about <em>which curve the word "bubble" refers to</em>. The honest residue, which survives every counter on the week's page, is that the capital structure is fragile in a way the product is not.</p>
+
+    <p><span class="caflag">Counter</span><em>The bear case still overshoots at one joint: "demand won't come" is its weakest plank, and the week falsifies it twice — once through Apple's billion-device distribution (§4) and once through Stack Overflow and the agentic-workflow sources showing real, growing machine demand (§2). Strip the demand-doom and the residue is narrower and harder to dismiss: the financing is fragile even if every product ships and sells. That is the claim to carry into next quarter.</em></p>
+
+    <p><span class="prev-ref">This bubble thread held across at least three of this week's daily digests — see <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>, <a href="daily-tldr-digest-2026-06-11-kindle.html">June 11</a>, and <a href="daily-tldr-digest-2026-06-12-kindle.html">June 12</a>, where the financing-vs-capability split and the price-war framing each recurred. The cross-day throughline: every daily that touched the money landed on the same residue — fragile financing, working technology.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A layered stack of the week's six themes showing value migrating from the commoditised model layer toward the structured-environment and judgment layers, with the financing layer beneath the whole stack marked as fragile">
+      <rect x="0" y="0" width="720" height="470" fill="#ffffff"/>
+      <text x="360" y="26" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · WHERE THE WEEK PUT THE VALUE</text>
+      <text x="360" y="44" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Six themes as a stack · what each layer was worth in 2024 vs the week of June 8</text>
+
+      <!-- Judgment / architect (top, black = yours) -->
+      <rect x="50" y="58" width="620" height="56" fill="#000000"/>
+      <text x="70" y="80" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">JUDGMENT &amp; ARCHITECTURE — THE SCARCE INPUT</text>
+      <text x="70" y="100" font-family="Georgia,serif" font-size="14" fill="#ffffff">Deciding what to build · taste · the architect's commission. Hardest to copy.</text>
+
+      <!-- Distribution / trust -->
+      <rect x="50" y="116" width="620" height="56" fill="#3a3a3a" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="138" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">DISTRIBUTION &amp; TRUST</text>
+      <text x="70" y="158" font-family="Georgia,serif" font-size="14" fill="#ffffff">Apple by default · Stack Overflow for agents · the channel decides the winner.</text>
+
+      <!-- Structured environment (agentic) -->
+      <rect x="50" y="174" width="620" height="56" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="196" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">STRUCTURED ENVIRONMENT — THE AGENTIC UNIT</text>
+      <text x="70" y="216" font-family="Georgia,serif" font-size="14" fill="#ffffff">Context engineering · retrieval-as-product · the five-layer stack · AX.</text>
+
+      <!-- Pricing / routing -->
+      <rect x="50" y="232" width="620" height="56" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="254" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PRICING &amp; ROUTING</text>
+      <text x="70" y="274" font-family="Georgia,serif" font-size="14" fill="#000000">Outcome-based pricing · smarter routing · the metered repricing of the model.</text>
+
+      <!-- Model layer (commodity) -->
+      <rect x="50" y="290" width="620" height="56" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="312" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THE MODEL — NO LONGER THE BOTTLENECK</text>
+      <text x="70" y="332" font-family="Georgia,serif" font-size="14" fill="#000000">Opus 4.8 · Fable 5 · the same endpoint your competitor calls. Commodity.</text>
+
+      <!-- Financing substrate -->
+      <rect x="40" y="356" width="640" height="56" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="60" y="378" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">FINANCING SUBSTRATE — FRAGILE ★</text>
+      <text x="60" y="398" font-family="Georgia,serif" font-size="14" fill="#000000">Trillions of revenue required to service the buildout. The week's open question (§1).</text>
+
+      <text x="360" y="438" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">▲ VALUE MIGRATES UP TO JUDGMENT · ▼ RISK CONCENTRATES IN THE FINANCING</text>
+      <text x="360" y="460" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The model is the most rented band in the building; the financing is the cracked foundation.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The week's six themes read as one stack. The model band has commoditised (light), value has migrated up to the structured environment, distribution, and judgment (dark), and the whole structure rests on a financing layer the week marked fragile. The structural insight: a stack can be entirely sound layer-by-layer and still sit on a foundation that the capital markets, not the engineers, decide the fate of.</div>
+  </div>
+
+  <!-- =================== §2 AGENTIC =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The convergence</span>Agentic computing settles on the structured environment</h2>
+
+    <p>The largest cluster of the week describes the same shift from a dozen angles: AI is moving toward <strong>specialized agents doing complex workflows inside highly structured, secure environments</strong>. <em>The Rise of Context Engineering</em> and <em>Architecting the Five Layers of the AI Stack</em> name the parts; <em>Agent experience is the new developer experience</em> reframes the whole discipline around the agent as the primary user; <em>The Retrieval Layer between Your Data and Your AI Outputs is a Product Decision</em> insists that what the agent can see is a deliberate design choice, not plumbing. <em>Architecting Enterprise Trust in the Multi-Model Era</em> adds the security frame: once multiple models touch enterprise data, the structured environment has to be a governed one.</p>
+
+    <p>The synthesis no single piece states: <strong>"context engineering," "agent experience," "the retrieval layer," and "the five-layer stack" are four names for one discipline — building a deterministic world for a stochastic worker.</strong> Each source approaches it from its own trade (data plumbing, interaction design, security, architecture) and they meet in the middle. The week's tell is that the model is barely the subject anymore; the subject is the scaffolding around it. Anthropic's own <em>self-service data analytics with Claude</em> writeup is the same move shown working internally: the win is the governed environment and the schema, not the model call.</p>
+
+    <p><span class="caflag">Counter</span><em>The structured-environment thesis can curdle into its own complexity tax. <em>The Fall of Kubernetes and the Complexity Tax</em> is this week's warning shot: an industry that over-builds its scaffolding recreates exactly the operational burden it set out to remove. The structured environment is the right unit — but "structured" slides into "baroque" the moment nobody is pruning, and the agentic stack is one hype cycle away from its own Kubernetes moment.</em></p>
+
+    <p><span class="prev-ref">Cited in <a href="daily-tldr-digest-2026-06-12-kindle.html">June 12</a>'s daily, which covered the same multi-model trust and Kubernetes-complexity threads (as "Architecting Enterprise Trust in the AI Supply Chain" and "The Great Kubernetes Exodus"). Today's weekly draws the two together as the build-and-prune tension of the agentic stack.</span></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The week's forty-nine sources clustered into seven themes shown as labelled bands, ordered by source weight, with the agentic-environment band marked as the load-bearing thesis">
+      <rect x="0" y="0" width="720" height="440" fill="#ffffff"/>
+      <text x="360" y="24" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THE WEEK'S 49 SOURCES, CLUSTERED BY THEME</text>
+      <text x="360" y="42" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Approximate source counts per theme · the dark band is the load-bearing thesis</text>
+
+      <!-- Theme 1 -->
+      <rect x="50" y="56" width="620" height="44" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="76" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#ffffff">AGENTIC ENVIRONMENT &amp; THE STACK</text>
+      <text x="68" y="93" font-family="-apple-system,sans-serif" font-size="11" fill="#ffffff">context engineering · five layers · retrieval-as-product · AX · multi-model trust</text>
+      <text x="652" y="84" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">~10</text>
+
+      <!-- Theme 2 (load-bearing, black) -->
+      <rect x="50" y="104" width="620" height="44" fill="#000000"/>
+      <text x="68" y="124" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#ffffff">CRAFT, JUDGMENT &amp; THE ARCHITECT</text>
+      <text x="68" y="141" font-family="-apple-system,sans-serif" font-size="11" fill="#ffffff">complexity ceiling · vibe-coding warning · designing with Claude · programming by commission</text>
+      <text x="652" y="132" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">~11</text>
+
+      <!-- Theme 3 -->
+      <rect x="50" y="152" width="620" height="44" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="172" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">MONEY, BUBBLE &amp; PRICING</text>
+      <text x="68" y="189" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">AI slowing down · OpenAI IPO · price war · outcome pricing · smarter routing</text>
+      <text x="652" y="180" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~8</text>
+
+      <!-- Theme 4 -->
+      <rect x="50" y="200" width="620" height="44" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="220" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">DISTRIBUTION, PLATFORMS &amp; AGENTS-AS-USERS</text>
+      <text x="68" y="237" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">Apple by default · Stack Overflow for agents · LLMs picking winners · vendor-as-competitor</text>
+      <text x="652" y="228" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~7</text>
+
+      <!-- Theme 5 -->
+      <rect x="50" y="248" width="620" height="44" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+      <text x="68" y="268" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">DESIGN, UX &amp; THE AI-NATIVE DESIGNER</text>
+      <text x="68" y="285" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">design systems are over · product context · visual storytelling · designing with Claude</text>
+      <text x="652" y="276" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~6</text>
+
+      <!-- Theme 6 -->
+      <rect x="50" y="296" width="620" height="44" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+      <text x="68" y="316" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">BUILDING THE AI-NATIVE COMPANY</text>
+      <text x="68" y="333" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">Lovable economics · AI-native services · GitHub for PMs · hyperagent ops</text>
+      <text x="652" y="324" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~5</text>
+
+      <!-- Theme 7 -->
+      <rect x="50" y="344" width="620" height="44" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+      <text x="68" y="364" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">RESTRAINT, VOICE &amp; THE HTML-FIRST COUNTERMELODY</text>
+      <text x="68" y="381" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">"maybe later" · HTML-first · personal voice · consistency over complexity · the idearium</text>
+      <text x="652" y="372" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~6</text>
+
+      <text x="360" y="416" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#4a4a4a">Themes ordered roughly by source weight · the black band is the week's load-bearing thesis · some sources span two themes.</text>
+      <text x="360" y="432" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#4a4a4a">Total ≈ 49 sources (two block-page artifacts excluded as real sources).</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The week's sources clustered into seven themes. The two heaviest bands — agentic environment and craft/judgment — are not separate stories: the structured environment is <em>where</em> the work happens and judgment is <em>what</em> decides whether the work was worth doing. The structural insight: the money cluster (light) gets the headlines, but the two dark-leaning craft bands carry the week's actual operating advice.</div>
+  </div>
+
+  <!-- =================== §3 JUDGMENT =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The throughline</span>Judgment is the moat; cheap code is the trap</h2>
+
+    <p>The week's most-repeated piece of operating advice is that <strong>long-term success depends on strategic design and human judgment, not on generating vast amounts of cheap code</strong>. <em>Complexity is the ceiling: software design in the age of AI coding</em> states it structurally: when generation is free, the binding constraint becomes how much complexity a system — and a team — can carry. <em>Vibe Coding Is Dangerous, Agentic Engineering Isn't</em> (with Wes McKinney) draws the line between flow-state generation and disciplined, reviewable engineering. <em>The Architect's Era: Programming by Commission</em> and <em>The High Cost of Automating Software Engineering</em> both argue the same: the valuable human is the one who specifies, decides, and reviews — the architect, not the typist.</p>
+
+    <p>The synthesis across the cluster, stated by none in full: <strong>generation has become the cheap half of software, and value has migrated to the two expensive halves around it — deciding what to build, and verifying that what got built is right.</strong> <em>The Model Is No Longer the Bottleneck</em> names the cause; the craft pieces name the consequence. Jane Street's engineer <em>designing with Claude more than Figma</em> and Airbnb's Chesky on a design-driven AI future are the same claim from the design chair: when the machine can produce anything, the scarce act is choosing what is worth producing.</p>
+
+    <p><span class="prev-ref">"The Model Is No Longer the Bottleneck" was cited <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>; "Jane Street — I design with Claude more than Figma now" and "Chesky's Design-Driven Vision" also appeared <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>. The cross-day throughline (held across June 10, 11, and 12): every daily that asked "what's now scarce?" answered "judgment," never "generation."</span></p>
+  </section>
+
+  <!-- =================== §4 DISTRIBUTION =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · The consumer endgame</span>Apple by default, Stack Overflow for the machines</h2>
+
+    <p>Two sources bracket what selling AI looks like once the hype is priced out. <em>Apple Wins Consumer AI By Default</em> argues that Apple reaches the mainstream not by having the best model but by leveraging user trust and hardware integration across a billion devices — distribution and trust, not capability, decide the consumer outcome. At the other end of the pipe, <em>Announcing Stack Overflow for Agents</em> is a platform reorganizing itself so its <em>primary reader is a machine</em>: the canonical Q&amp;A corpus repackaged for agents rather than humans. <em>LLMs are picking winners. Here's how to become one.</em> completes the triangle — when buyers ask a model instead of a search engine, being the cited answer is the new distribution.</p>
+
+    <p>The synthesis no single piece states: <strong>in a machine-mediated market, distribution splits into two new questions — does the human trust you by default (Apple), and does the machine cite you by default (Stack Overflow, AEO)?</strong> Both are about being the path of least resistance for a reader, whether that reader is a person or an agent. <em>Your Vendor Is Your Competitor</em> supplies the dark edge: the platform you build on is increasingly the platform that will absorb your feature, because owning the channel means owning the option to compete.</p>
+
+    <p><span class="prev-ref">"Apple Wins Consumer AI By Default" was cited <a href="daily-tldr-digest-2026-06-11-kindle.html">June 11</a>; "Announcing Stack Overflow for Agents" and "LLMs are picking winners" appeared in <a href="daily-tldr-digest-2026-06-12-kindle.html">June 12</a> and <a href="daily-tldr-digest-2026-06-11-kindle.html">June 11</a> respectively.</span></p>
+  </section>
+
+  <!-- =================== §5 PRICING =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The repricing</span>From per-seat promise to per-result delivered</h2>
+
+    <p>A quieter cluster re-engineers the business model for a metered world. <em>How to Build an Outcome-Based Pricing Plan</em> (The SaaS CFO) and <em>Why 7-day plans are winning</em> attack the same shift from opposite ends: when the cost of serving a customer is a variable token bill, pricing has to track delivered value, not a flat seat. <em>Token Spend Out of Control? The Case for Smarter Routing</em> is the supply-side mirror — route each request to the cheapest model that can do the job, because the margin lives in the routing now. <em>The Looming AI Price War</em> between OpenAI and Anthropic is what happens when everyone reaches that conclusion at once.</p>
+
+    <p>The synthesis: <strong>the unit of the AI business is being repriced from a promise to a result.</strong> Outcome pricing meters the value out; smarter routing meters the cost in; the price war is the market discovering the floor in between. A vendor that cannot state its cost-per-completed-task and its price-per-delivered-result is flying blind into a margin compression that the week's money sources (§1) say is coming whether the bubble pops or not.</p>
+
+    <p><span class="prev-ref">"Token Spend Out of Control? The Case for Smarter Routing" was cited <a href="daily-tldr-digest-2026-06-10-kindle.html">June 10</a>; "OpenAI and Anthropic: The Looming AI Price War" appeared <a href="daily-tldr-digest-2026-06-12-kindle.html">June 12</a>.</span></p>
+  </section>
+
+  <!-- =================== §6 RESTRAINT =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The counter-melody</span>Restraint, voice, and the HTML-first revolt</h2>
+
+    <p>Against the agentic-everything narrative, the week carried a persistent counter-melody about <strong>doing less, well</strong>. <em>"maybe later" was a feature</em> argues that the deferral affordance — letting a user say "not now" — is a design act of respect, not a missing conversion. <em>How building an HTML-first site doubled our users overnight</em> is the empirical version: stripping the JavaScript-maximalist default doubled reach. <em>Consistency Over Complexity: Building Lasting Discipline</em> and <em>Mastering Personal Voice in AI Writing</em> apply the same instinct to habit and prose: the durable thing is the consistent, human-shaped one, not the maximal one.</p>
+
+    <p>The synthesis the week earns: <strong>as generation gets infinitely cheap, restraint becomes the scarce signal of taste.</strong> When everyone can produce more — more features, more code, more AI-written copy — the legible act of judgment is choosing <em>not</em> to. This is the same throughline as §3 (judgment over generation), seen from the consumer-product and writing side rather than the engineering side. <em>The Idearium</em> and <em>The Code-as-Content Era</em> sit here as the reflective edge: when content and code both become cheap to generate, the question shifts to what deserves to be kept.</p>
+
+    <p><span class="prev-ref">"Consistency Over Complexity: Building Lasting Discipline" was cited <a href="daily-tldr-digest-2026-06-12-kindle.html">June 12</a> (covered there as "Beyond Hacks: Five Pillars of Radical Consistency"); "How building an HTML-first site doubled our users overnight" and "Design systems are over. Product context is the work." also appeared <a href="daily-tldr-digest-2026-06-12-kindle.html">June 12</a>.</span></p>
+  </section>
+
+  <!-- =================== §7 NUMBERS =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The week in numbers</span>Seven quantitative anchors</h2>
+
+    <p>A week's reading is easier to hold if the load-bearing claims carry a figure. Read as a block, the week's numbers measure two things and only two: <strong>the scale of the money at risk, and the scale of the human business being built around the machines.</strong> What they conspicuously do <em>not</em> measure is whether the revenue ever shows up to service the compute — the gap that §1 names and §9 returns to.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Seven labelled rows of quantitative anchors from the week, each a headline figure with a short description and source attribution, with a summary band at the bottom">
+        <rect x="0" y="0" width="720" height="460" fill="#ffffff"/>
+        <text x="360" y="24" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 3 · THE WEEK IN NUMBERS</text>
+        <text x="360" y="42" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Seven anchors · the dark rows describe money at risk, the light rows describe the business being built</text>
+
+        <!-- Row 1: $1.4T (Apple App Store) -->
+        <rect x="50" y="56" width="620" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="68" y="87" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">$1.4T</text>
+        <text x="172" y="80" font-family="Georgia,serif" font-size="13" fill="#000000">App Store ecosystem billings &amp; sales — the distribution machine Apple brings to AI</text>
+        <text x="172" y="96" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Apple · apple.com newsroom</text>
+
+        <!-- Row 2: trillions required (black) -->
+        <rect x="50" y="106" width="620" height="46" fill="#000000"/>
+        <text x="68" y="137" font-family="-apple-system,sans-serif" font-size="20" font-weight="700" fill="#ffffff">$T's</text>
+        <text x="172" y="130" font-family="Georgia,serif" font-size="13" fill="#ffffff">in eventual revenue the compute &amp; infrastructure buildout must service to pay off</text>
+        <text x="172" y="146" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#c8c8c8">AI Is Slowing Down · Zitron · the week's load-bearing risk number</text>
+
+        <!-- Row 3: $500M ARR (Lovable) -->
+        <rect x="50" y="156" width="620" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="68" y="187" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">$500M</text>
+        <text x="190" y="180" font-family="Georgia,serif" font-size="13" fill="#000000">ARR at Lovable on 146 staff — the AI-native company shape, at scale</text>
+        <text x="190" y="196" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Lovable coverage</text>
+
+        <!-- Row 4: 80% non-technical -->
+        <rect x="50" y="206" width="620" height="46" fill="#ffffff" stroke="#9a9a9a" stroke-width="1"/>
+        <text x="68" y="237" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">80%</text>
+        <text x="160" y="230" font-family="Georgia,serif" font-size="13" fill="#000000">of Lovable's builders are non-technical — generation commoditised, the user base widened</text>
+        <text x="160" y="246" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Lovable coverage</text>
+
+        <!-- Row 5: 146 staff -->
+        <rect x="50" y="256" width="620" height="46" fill="#ffffff" stroke="#9a9a9a" stroke-width="1"/>
+        <text x="68" y="287" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">146</text>
+        <text x="160" y="280" font-family="Georgia,serif" font-size="13" fill="#000000">staff behind that ARR — revenue-per-head the old SaaS playbook could not reach</text>
+        <text x="160" y="296" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Lovable coverage</text>
+
+        <!-- Row 6: 2x users (HTML-first, black) -->
+        <rect x="50" y="306" width="620" height="46" fill="#000000"/>
+        <text x="68" y="337" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#ffffff">2×</text>
+        <text x="138" y="330" font-family="Georgia,serif" font-size="13" fill="#ffffff">users overnight from going HTML-first — restraint as a growth lever, not a constraint</text>
+        <text x="138" y="346" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#c8c8c8">How building an HTML-first site doubled our users overnight</text>
+
+        <!-- Row 7: 2 models, 1 app -->
+        <rect x="50" y="356" width="620" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="68" y="387" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">2 → 1</text>
+        <text x="158" y="380" font-family="Georgia,serif" font-size="13" fill="#000000">models (Opus 4.8 + Fable 5) building the same app — the head-to-head capability check</text>
+        <text x="158" y="396" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">I Made Opus 4.8 and Fable 5 Build the Same App (RAW RESULTS)</text>
+
+        <!-- Summary band -->
+        <rect x="40" y="410" width="640" height="38" fill="#c8c8c8" stroke="#000000" stroke-width="1.2"/>
+        <text x="60" y="434" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#000000">49 · 7 · 10 · 5</text>
+        <text x="200" y="434" font-family="Georgia,serif" font-size="13" fill="#000000">sources in the notebook · themes · numbered sections · daily digests this week</text>
+      </svg>
+    </div>
+    <p class="figure-caption"><b>Figure 3</b> · The week in numbers, as labelled rows. The dark rows are the risk side (the trillions required, the 2× restraint upside); the light rows are the business-being-built side (Apple's $1.4T channel, Lovable's $500M on 146 people). The structural insight: every number the week produced measures either the money at stake or the new company shape — and none of them measures the one quantity that would settle the bubble, the actual revenue-to-compute ratio.</p>
+
+    <p>What the numbers do <em>not</em> measure is the only figure that would resolve §1: the realized revenue per dollar of compute deployed. The week priced the channel, the company, and the upside of restraint — but left the load-bearing ratio a blank. That blank is the negative-space anchor of §9.</p>
+  </section>
+
+  <!-- =================== §8 VOCABULARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Vocabulary watch</span>Which terms gained ground this week</h2>
+
+    <p>Naming is a leading indicator: the terms that crystallise this week are the ones next week's pieces will argue inside of. Reading the vocabulary shift is a faster route to the structural change than reading the prose.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid of vocabulary terms by weekday, with filled circles marking the days each term was load-bearing in that day's argument, and a right-hand status flag for each term">
+        <rect x="0" y="0" width="720" height="470" fill="#ffffff"/>
+        <text x="360" y="24" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 4 · VOCABULARY WATCH · TERMS vs DAYS</text>
+        <text x="360" y="42" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Filled circle = load-bearing in that day's argument · right column flags the status change</text>
+
+        <!-- Day headers -->
+        <text x="300" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">MON</text>
+        <text x="370" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">TUE</text>
+        <text x="440" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">WED</text>
+        <text x="510" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">THU</text>
+        <text x="580" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">FRI</text>
+
+        <!-- guidelines -->
+        <line x1="300" y1="76" x2="300" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="370" y1="76" x2="370" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="440" y1="76" x2="440" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="510" y1="76" x2="510" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="580" y1="76" x2="580" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+
+        <!-- Row: context engineering -->
+        <text x="50" y="92" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">context engineering</text>
+        <circle cx="370" cy="88" r="6" fill="#000000"/><circle cx="440" cy="88" r="6" fill="#000000"/>
+        <text x="668" y="92" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">crystallising</text>
+
+        <!-- Row: agent experience (AX) -->
+        <text x="50" y="120" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">agent experience (AX)</text>
+        <circle cx="370" cy="116" r="6" fill="#000000"/><circle cx="510" cy="116" r="6" fill="#000000"/>
+        <text x="668" y="120" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">becoming canonical</text>
+
+        <!-- Row: retrieval layer -->
+        <text x="50" y="148" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">retrieval layer (as product)</text>
+        <circle cx="440" cy="144" r="6" fill="#000000"/>
+        <text x="668" y="148" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">new this week</text>
+
+        <!-- Row: programming by commission -->
+        <text x="50" y="176" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">programming by commission</text>
+        <circle cx="510" cy="172" r="6" fill="#000000"/>
+        <text x="668" y="176" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">coined, landed</text>
+
+        <!-- Row: vibe coding (vs agentic eng) -->
+        <text x="50" y="204" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">vibe coding (as a warning)</text>
+        <circle cx="510" cy="200" r="6" fill="#000000"/><circle cx="580" cy="200" r="6" fill="#000000"/>
+        <text x="668" y="204" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">flipping negative</text>
+
+        <!-- Row: model is not the bottleneck -->
+        <text x="50" y="232" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">"model not the bottleneck"</text>
+        <circle cx="440" cy="228" r="6" fill="#000000"/><circle cx="510" cy="228" r="6" fill="#000000"/>
+        <text x="668" y="232" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">load-bearing phrase</text>
+
+        <!-- Row: complexity tax -->
+        <text x="50" y="260" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">complexity tax / ceiling</text>
+        <circle cx="580" cy="256" r="6" fill="#000000"/>
+        <text x="668" y="260" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">revived (post-K8s)</text>
+
+        <!-- Row: outcome-based pricing -->
+        <text x="50" y="288" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">outcome-based pricing</text>
+        <circle cx="440" cy="284" r="6" fill="#000000"/><circle cx="580" cy="284" r="6" fill="#000000"/>
+        <text x="668" y="288" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">moving to mainstream</text>
+
+        <!-- Row: agents-as-users -->
+        <text x="50" y="316" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">agents-as-users</text>
+        <circle cx="580" cy="312" r="6" fill="#000000"/>
+        <text x="668" y="316" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">new (Stack Overflow)</text>
+
+        <!-- Row: multi-model trust -->
+        <text x="50" y="344" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">multi-model trust</text>
+        <circle cx="580" cy="340" r="6" fill="#000000"/>
+        <text x="668" y="344" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">enterprise-driven</text>
+
+        <!-- Row: vendor-as-competitor -->
+        <text x="50" y="372" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">vendor-as-competitor</text>
+        <circle cx="510" cy="368" r="6" fill="#000000"/>
+        <text x="668" y="372" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">recurring anxiety</text>
+
+        <!-- Annotation band -->
+        <rect x="40" y="404" width="640" height="44" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="60" y="424" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#000000">CRYSTALLISED THIS WEEK</text>
+        <text x="60" y="440" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">"programming by commission" · "retrieval layer as product" · "agents-as-users" · "model not the bottleneck" entered the working vocabulary.</text>
+      </svg>
+    </div>
+    <p class="figure-caption"><b>Figure 4</b> · Vocabulary watch. Four terms entered the working vocabulary this week, and they cluster around one idea: the move from model to environment to judgment. "Vibe coding" completed its flip from aspiration to warning. The structural insight: a term that recurs across two <em>non-adjacent</em> days ("model not the bottleneck," Wed and Thu) is a stronger convergence signal than two adjacent days — it means independent sources reached it, not one piece quoting the next.</p>
+
+    <p>The losers are as telling as the winners. "Prompt engineering" went almost unmentioned this week — absorbed into "context engineering" — and the raw "vibe coding" enthusiasm of late 2025 now appears only as the thing the careful pieces warn against. When a term survives only as a cautionary example, its moment is over.</p>
+  </section>
+
+  <!-- =================== §9 NEGATIVE SPACE =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · The negative space</span>What the week didn't deliver</h2>
+
+    <p>The most informative end-of-week exercise is to list what <em>didn't</em> happen — what the structural story would have predicted but the coverage left blank. Five absences stood out.</p>
+
+    <p><strong>No actual revenue-to-compute number.</strong> Every money source this week — Zitron, the OpenAI IPO coverage, the price-war piece — circles the claim that the buildout needs trillions in revenue, and not one of them puts a current realized figure on revenue-per-dollar-of-compute. The single number that would settle whether §1 is alarm or arithmetic is the number nobody supplied. The structural story is being argued in commentary, not in a disclosed ratio.</p>
+
+    <p><strong>No market reaction to the OpenAI IPO filing.</strong> A confidential filing for a landmark IPO is the kind of event that, taken seriously, moves private-market comps and competitor strategy within days. The week's sources reported the filing and largely shrugged. Either the market has fully priced an OpenAI public listing already, or it is waiting for the S-1 to become public. Both are worth pricing.</p>
+
+    <p><strong>No copyright ruling, only a warning.</strong> <em>The Cost of AI Copyright: A Legal Warning for Creators</em> is the week's only legal source, and it is a warning, not a decision. The training-data copyright question that hangs over every model in this digest produced no court ruling, no settlement, no regulatory guidance this week — only another essay telling creators to brace. The legal substrate under the whole industry is still unresolved, and the silence is itself the signal.</p>
+
+    <p><strong>No consolidation despite the price war.</strong> A looming OpenAI–Anthropic price war is the textbook setup for acquisition or partnership moves down the stack. The week named the war and reported no M&amp;A, no major partnership, no shutdown. Price wars usually precede consolidation by a quarter or two; this week was the calm naming of the war, not the moves.</p>
+
+    <p><strong>No public org-chart move toward the "architect" model.</strong> Half the week's craft sources argue the valuable role is now the architect-who-decides, not the coder-who-types. No company announced a restructuring around that thesis. When one does — likely within a quarter — it will set the template. The structural argument is fully formed; the org charts have not caught up.</p>
+
+    <p>The pattern across all five is the same as the structural one all year: <strong>the argument is racing ahead of the official signals.</strong> The cleanest predictive bet is not that the structural story is wrong, but that the disclosures, rulings, and reorganizations catch up to it within a quarter or two.</p>
+  </section>
+
+  <!-- =================== §10 LOOKING AHEAD =================== -->
+  <section>
+    <h2><span class="sec-num">§10 · Looking ahead to W25</span>Seven things to watch next week</h2>
+
+    <p>Seven concrete things to watch in the next seven days, in declining order of confidence.</p>
+
+    <p><strong>1. The OpenAI–Anthropic price war shows up in published pricing.</strong> The war is named; the next visible step is a rate-card change. Watch the API pricing pages, not the blog posts — the first move will be a quiet per-token cut or a new cheaper tier, and the competitor's response usually follows within days.</p>
+
+    <p><strong>2. More platforms announce an "for agents" mode.</strong> Stack Overflow for Agents is a template, and the agents-as-users framing is contagious. Expect at least one more developer-facing platform (docs host, package registry, or knowledge base) to announce a machine-reader interface within the next two weeks.</p>
+
+    <p><strong>3. The Opus 4.8 vs Fable 5 head-to-heads multiply.</strong> The "build the same app" comparison was the week's most shareable format. Expect a wave of follow-up benchmarks and raw-results posts; watch whether the consensus settles on a clear capability verdict or fragments by task type.</p>
+
+    <p><strong>4. Outcome-based pricing gets a named reference customer.</strong> The SaaS CFO framing is circulating. The thesis becomes real when a recognizable AI vendor publicly ships outcome pricing with a named customer; that announcement, if it lands, sets the template for the cycle.</p>
+
+    <p><strong>5. The complexity-tax argument gets a concrete agentic casualty.</strong> "The Fall of Kubernetes" is the historical analogy; the falsifiable prediction is that a specific agentic-orchestration tool or framework gets publicly called out for the same over-complexity within the month. If the pattern is real, the first named casualty appears soon.</p>
+
+    <p><strong>6. A copyright decision or settlement, not just another warning.</strong> The legal warning has been issued repeatedly; the falsifiable bet is that a court ruling, a settlement, or formal regulatory guidance on AI training-data copyright lands within the quarter. If next week passes with only more essays, the silence itself is the more important datum.</p>
+
+    <p><strong>7. Whether next Saturday's weekly notebook arrives.</strong> The pipeline that produced this 49-source weekly is itself a data point. If the cadence holds, this is the second weekly in a maturing series; if it slips, the upstream NotebookLM weekly-summary mechanism needs revisiting before the cadence can be relied on.</p>
+  </section>
+
+  <!-- =================== FROM THIS WEEK'S DAILY DIGESTS =================== -->
+  <section>
+    <h2><span class="sec-num">§ · Cross-reference</span>From this week's daily digests</h2>
+
+    <p>This weekly synthesises five daily digests from ISO week W24. Each contributed a distinct slab of the throughline:</p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-08-kindle.html">Mon · June 8</a> — opened the week on the structured-environment and design threads, setting up the "what to build" question that the rest of the week answered with "judgment, not generation."</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-09-kindle.html">Tue · June 9</a> — extended the agentic-environment and craft material, deepening the context-engineering and retrieval-layer framing that §2 builds on.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-10-kindle.html">Wed · June 10</a> — the pivot day: "The Model Is No Longer the Bottleneck," smarter token routing, designing-with-Claude-over-Figma, Chesky's design-driven vision, and the OpenAI IPO filing all landed here. The single richest source of §3 and §5.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-11-kindle.html">Thu · June 11</a> — the money-meets-craft day: "AI Is Slowing Down," "Apple Wins Consumer AI By Default," "Initial impressions of Claude Fable 5," "Agent experience is the new developer experience," and "LLMs are picking winners." The backbone of §1 and §4.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-12-kindle.html">Fri · June 12</a> — the consolidation day: Stack Overflow for Agents, the price war, the Kubernetes-complexity exodus, multi-model enterprise trust, the HTML-first growth story, Lovable's economics, and the Opus-vs-Fable build-off. Closed the week on distribution, pricing, and restraint.</span></p>
+
+    <p>The cross-day synthesis that holds across at least three of these dailies — June 10, 11, and 12 — and that no single day states in full: <strong>the model stopped being the variable that decides outcomes, and judgment (about what to build, what to charge, and what to leave out) became the one that does.</strong> Each day approached it from a different chair — engineering on Wednesday, economics on Thursday, distribution on Friday — and every one of them landed on the same scarce input.</p>
+  </section>
+
+  <!-- =================== §11 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§11 · Practical takeaways</span>If you only do eight things this week</h2>
+
+    <ol>
+      <li><strong>Stress-test your dependencies for solvency, not uptime.</strong> If your product rides a compute buildout that needs trillions in future revenue to pay off, write the one-page plan for a 2027 provider price hike or capacity pullback. The technology working does not mean its financing does.</li>
+      <li><strong>Spend your engineering effort on the environment, not the model call.</strong> Context, retrieval scope, permissions, tests, the governed sandbox — the deterministic world around the stochastic worker is the deliverable. The model is the rented part.</li>
+      <li><strong>Make the retrieval layer an explicit product decision.</strong> What your agent can see is a design choice with a name and an owner, not plumbing. Decide it deliberately or inherit someone else's defaults.</li>
+      <li><strong>Hire and promote for judgment, not generation speed.</strong> The architect who decides what's worth building out-ships the coder who builds fast. Re-read the complexity-ceiling and programming-by-commission pieces before your next hiring round.</li>
+      <li><strong>Prune your scaffolding before it becomes your Kubernetes.</strong> The structured environment is the right unit until nobody is removing the parts that stopped earning their keep. Schedule the pruning the way you schedule the building.</li>
+      <li><strong>State your cost-per-task and price-per-result.</strong> Outcome pricing meters value out; smarter routing meters cost in. A vendor that can't say both numbers is flying blind into the margin compression §1 and §5 both predict.</li>
+      <li><strong>Win the channel and the trust, in that order.</strong> For humans, be the default (Apple's lesson); for machines, be the cited answer (Stack Overflow / AEO's lesson). Distribution split into two questions this week — answer both.</li>
+      <li><strong>Use restraint as a signal of taste.</strong> "maybe later," HTML-first, consistency over complexity: when everyone can generate more, choosing not to is the legible act of judgment. Ship the simpler thing on purpose.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §12 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§12 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Agentic computing</dt>
+        <dd>The pattern in which specialized AI agents handle complex, multi-step workflows inside structured, secure, bounded environments — rather than a single model answering a single prompt. The week's dominant frame.</dd>
+
+        <dt>Context engineering</dt>
+        <dd>The discipline of managing what an LLM knows, sees, and remembers at the moment it acts — context as infrastructure (selection, retrieval scope, memory, policy) rather than prose. The successor to prompt engineering.</dd>
+
+        <dt>Agent experience (AX)</dt>
+        <dd>The agent-facing analogue of developer experience: the context, tools, permissions, tests, and review loops designed so an autonomous worker knows what matters and how it succeeded. The primary user is now sometimes a machine.</dd>
+
+        <dt>Retrieval layer</dt>
+        <dd>The component that decides what data reaches the model at inference time. The week's argument: this is a product decision with an owner and a design, not a piece of invisible plumbing.</dd>
+
+        <dt>Programming by commission</dt>
+        <dd>The architect's-era framing in which the valuable human act is specifying and commissioning what should be built — and reviewing it — rather than typing the implementation. Generation is delegated to the machine.</dd>
+
+        <dt>Vibe coding vs agentic engineering</dt>
+        <dd>The distinction the week sharpened: flow-state, unreviewed generation (vibe coding, now framed as dangerous) versus disciplined, bounded, reviewable agent-assisted engineering. Same tools, opposite rigor.</dd>
+
+        <dt>Outcome-based pricing</dt>
+        <dd>A pricing model that charges for delivered results rather than seats or raw usage. The demand-side response to a world where the cost of serving a customer is a variable token bill.</dd>
+
+        <dt>Multi-model trust</dt>
+        <dd>The enterprise problem of governing data, access, and accountability once several different models touch the same workflow. Turns the structured environment into a governed one.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Weekly Summary (June 8–12, 2026)</em> · 49 sources, with the Deep Dive audio overview on the week's generation-to-judgment turn available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register · grouped by theme</div>
+    <h2>The week's 49 sources, by theme</h2>
+
+    <h3>Theme 1 · Agentic environment &amp; the AI stack</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · The Rise of Context Engineering</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Rise+of+Context+Engineering%22">The Rise of Context Engineering</a></span>
+        <span class="src-note">The clearest articulation of the prompt-to-context shift this week. Read it for the operating-system mental model — you're deciding what gets paged into limited working memory — and skip the elaboration. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Architecting the Five Layers of the AI Stack</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Architecting+the+Five+Layers+of+the+AI+Stack%22">Architecting the Five Layers of the AI Stack</a></span>
+        <span class="src-note">Names the parts of the structured environment. The value isn't the inventory — every consultancy has one — but the question it forces: which layers are yours to defend. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Builder.io</span>
+        <span class="src-title"><a href="https://www.builder.io/blog/agent-experience">Agent experience is the new developer experience</a></span>
+        <span class="src-note">Reframes the whole discipline around the agent as primary user. The keeper insight is that agents re-onboard every task, which turns docs, schemas, and previews into runtime inputs, not nice-to-haves.
+          <span class="prev-ref">Previously cited June 11 — see <a href="daily-tldr-digest-2026-06-11-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Retrieval Layer as a Product Decision</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Retrieval+Layer+between+Your+Data+and+Your+AI+Outputs+is+a+Product+Decision%22">The Retrieval Layer between Your Data and Your AI Outputs is a Product Decision</a></span>
+        <span class="src-note">The week's sharpest single reframing: what the agent can see is a deliberate design choice with an owner. Treat it as the brief for §2's whole thesis. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Architecting Enterprise Trust in the Multi-Model Era</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Architecting+Enterprise+Trust+in+the+Multi-Model+Era%22">Architecting Enterprise Trust in the Multi-Model Era</a></span>
+        <span class="src-note">Adds the security frame the agentic pieces skip: once many models touch enterprise data, the structured environment must be a governed one. The enterprise version of context engineering.
+          <span class="prev-ref">Previously cited June 12 (as "Architecting Enterprise Trust in the AI Supply Chain") — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Anthropic</span>
+        <span class="src-title"><a href="https://www.anthropic.com">How Anthropic enables self-service data analytics with Claude</a></span>
+        <span class="src-note">The structured-environment thesis shown working internally: the win is the governed schema and access layer, not the model call. Read it as a worked example of §2, not a product pitch.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Fall of Kubernetes and the Complexity Tax</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Fall+of+Kubernetes+and+the+Complexity+Tax%22">The Fall of Kubernetes and the Complexity Tax</a></span>
+        <span class="src-note">The week's warning shot: the structured environment slides into baroque the moment nobody prunes. The historical analogy for the agentic stack's likely next mistake.
+          <span class="prev-ref">Previously cited June 12 (as "The Great Kubernetes Exodus") — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">SDK · GitHub · tetherto/qvac</span>
+        <span class="src-title"><a href="https://github.com/tetherto/qvac">GitHub — tetherto/qvac: QVAC — Local AI SDK</a></span>
+        <span class="src-note">A local-AI SDK datapoint for the on-device end of the agentic environment. Mostly here as evidence that "structured environment" increasingly includes the laptop, not just the cloud.</span>
+      </li>
+      <li>
+        <span class="pub">Discussion · Addy Osmani on X</span>
+        <span class="src-title"><a href="https://t.co/hIe0UX7z6T">Addy Osmani on X</a></span>
+        <span class="src-note">A short, high-signal take in the agentic-engineering vein. Worth the click for the framing; treat it as a pointer rather than a full argument.</span>
+      </li>
+      <li>
+        <span class="pub">Project · Zero (sync engine)</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Zero%22+sync+engine+local-first">Zero</a></span>
+        <span class="src-note">Title truncated in the notebook; treated cautiously as the Zero sync engine for local-first apps — relevant to the on-device structured-environment thread but cited only at its best-guess identity. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+
+    <h3>Theme 2 · Craft, judgment &amp; the architect</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · The Model Is No Longer the Bottleneck · K-Dense Web</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Model+Is+No+Longer+the+Bottleneck%22+K-Dense">The Model Is No Longer the Bottleneck</a></span>
+        <span class="src-note">Names the cause behind the whole judgment thesis: when the model is commodity, context and judgment become the constraint. The single most-quoted phrase of the week.
+          <span class="prev-ref">Previously cited June 10 — see <a href="daily-tldr-digest-2026-06-10-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Complexity is the ceiling</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Complexity+is+the+ceiling%22+software+design+AI+coding">Complexity is the ceiling: software design in the age of AI coding</a></span>
+        <span class="src-note">The structural version of the judgment argument: when generation is free, the binding constraint is how much complexity a system and team can carry. The piece to hand anyone celebrating raw output. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Podcast/Essay · with Wes McKinney</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Vibe+Coding+Is+Dangerous,+Agentic+Engineering+Isn%27t%22+Wes+McKinney">Vibe Coding Is Dangerous, Agentic Engineering Isn't</a></span>
+        <span class="src-note">Draws the line between flow-state generation and disciplined, reviewable engineering. The McKinney imprimatur is the value; the distinction is the year's most useful one. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Architect's Era</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Architect%27s+Era:+Programming+by+Commission%22">The Architect's Era: Programming by Commission</a></span>
+        <span class="src-note">Coins the week's cleanest role-shift term. The valuable human commissions and reviews; the machine implements. The conceptual spine of §3. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The High Cost of Automating Software Engineering</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+High+Cost+of+Automating+Software+Engineering%22">The High Cost of Automating Software Engineering</a></span>
+        <span class="src-note">The corrective to the cheap-code dream: automating generation pushes cost into specification and verification, where it's more expensive. Read alongside the complexity-ceiling piece. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Blog · Jane Street</span>
+        <span class="src-title"><a href="https://blog.janestreet.com">I design with Claude more than Figma now</a></span>
+        <span class="src-note">The judgment thesis from the design chair: when the machine can produce anything, choosing what to produce is the scarce act. A rare concrete account of design workflow actually changing.
+          <span class="prev-ref">Previously cited June 10 — see <a href="daily-tldr-digest-2026-06-10-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Chesky's Design-Driven Vision</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Chesky%27s+Design-Driven+Vision+for+the+AI+Future%22">Chesky's Design-Driven Vision for the AI Future</a></span>
+        <span class="src-note">Airbnb's Chesky arguing design judgment is the differentiator in an AI world. Founder-level confirmation of §3 from the product side; light on mechanism, heavy on conviction.
+          <span class="prev-ref">Previously cited June 10 — see <a href="daily-tldr-digest-2026-06-10-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Notes · simonwillison.net (impl.)</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Initial+impressions+of+Claude+Fable+5%22">Initial impressions of Claude Fable 5</a></span>
+        <span class="src-note">The capability counterweight to the bubble case: the frontier model is still climbing, "slow and expensive." Note the concession as much as the praise — the cost caveat is what keeps capability from refuting the financing story.
+          <span class="prev-ref">Previously cited June 11 — see <a href="daily-tldr-digest-2026-06-11-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Post · I Made Opus 4.8 and Fable 5 Build the Same App</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22I+Made+Opus+4.8+and+Fable+5+Build+the+Same+App%22+RAW+RESULTS">I Made Opus 4.8 and Fable 5 Build the Same App (RAW RESULTS)</a></span>
+        <span class="src-note">The week's most shareable head-to-head format. Useful as a capability snapshot; read the raw results, not the headline verdict, since task type swings the outcome.
+          <span class="prev-ref">Previously cited June 12 — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Notes · Initial impressions of Claude Fable 5 (review)</span>
+        <span class="src-title"><a href="https://simonwillison.net">Initial impressions of Claude Fable 5</a></span>
+        <span class="src-note">The level-headed reviewer's running notes on the new frontier model. Listed distinctly per the notebook's source list; the load-bearing detail remains the "slow and expensive" concession.
+          <span class="prev-ref">Previously cited June 11 — see <a href="daily-tldr-digest-2026-06-11-kindle.html">archive</a>.</span></span>
+      </li>
+    </ol>
+
+    <h3>Theme 3 · Money, bubble &amp; pricing</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · Where's Your Ed At (Ed Zitron)</span>
+        <span class="src-title"><a href="https://www.wheresyoured.at/ai-is-slowing-down/">AI Is Slowing Down</a></span>
+        <span class="src-note">The loudest bear, and worth reading even though he over-claims. Strip "demand won't come" — this week's own pages falsify it — and the residue, fragile financing, is the single most important claim in the digest.
+          <span class="prev-ref">Previously cited June 11 — see <a href="daily-tldr-digest-2026-06-11-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">News · OpenAI confidential IPO filing</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22OpenAI+Files+Confidentially+for+Landmark+Initial+Public+Offering%22">OpenAI Files Confidentially for Landmark Initial Public Offering</a></span>
+        <span class="src-note">The capital-markets side of §1. A confidential filing is a signal of intent, not a price; the market's muted reaction (§9) is as informative as the filing itself.
+          <span class="prev-ref">Previously cited June 10 — see <a href="daily-tldr-digest-2026-06-10-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · OpenAI and Anthropic: The Looming AI Price War</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22OpenAI+and+Anthropic:+The+Looming+AI+Price+War%22">OpenAI and Anthropic: The Looming AI Price War</a></span>
+        <span class="src-note">What happens when everyone concludes routing and margin are the game at once. The named war; watch the rate cards, not the blog posts, for the first real move.
+          <span class="prev-ref">Previously cited June 12 — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Guide · The SaaS CFO</span>
+        <span class="src-title"><a href="https://www.thesaascfo.com">How to Build an Outcome-Based Pricing Plan</a></span>
+        <span class="src-note">The demand-side answer to a variable-cost world. Concrete enough to act on this week; the framing is the value, the templates are the bonus.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Token Spend Out of Control? The Case for Smarter Routing</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Token+Spend+Out+of+Control%22+%22The+Case+for+Smarter+Routing%22">Token Spend Out of Control? The Case for Smarter Routing</a></span>
+        <span class="src-note">The supply-side mirror of outcome pricing: route to the cheapest model that can do the job, because the margin lives in the routing now. Pair with the price-war piece.
+          <span class="prev-ref">Previously cited June 10 — see <a href="daily-tldr-digest-2026-06-10-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Research · RevenueCat</span>
+        <span class="src-title"><a href="https://www.revenuecat.com/blog/growth/weekly-subscriptions/">Why 7-day plans are winning</a></span>
+        <span class="src-note">Weekly plans convert the wary at the till. Let the numbers tempt you, then read the churn caveat twice: it's a conversion tool wearing a revenue-model costume.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Cost of AI Copyright: A Legal Warning for Creators</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Cost+of+AI+Copyright%22+%22A+Legal+Warning+for+Creators%22">The Cost of AI Copyright: A Legal Warning for Creators</a></span>
+        <span class="src-note">The week's only legal source, and it's a warning, not a ruling. The unresolved copyright substrate under every model here; the §9 silence is the real story.</span>
+      </li>
+      <li>
+        <span class="pub">Tools · Cursor · Developer Habits Report</span>
+        <span class="src-title"><a href="https://cursor.com">Cursor · Get the Developer Habits Report</a></span>
+        <span class="src-note">A vendor data-grab dressed as a report, but the habits data is a useful read on how working developers actually use AI tools. Skim for the numbers, ignore the funnel.</span>
+      </li>
+    </ol>
+
+    <h3>Theme 4 · Distribution, platforms &amp; agents-as-users</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · Spyglass (M.G. Siegler)</span>
+        <span class="src-title"><a href="https://spyglass.org/siri-ai/">Apple Wins Consumer AI By Default</a></span>
+        <span class="src-note">Right about the mechanism — default and integration beat best at consumer scale — and honest about the risk that a mediocre product squanders the head start. Read it as a thesis about distribution, not a prediction about Apple.
+          <span class="prev-ref">Previously cited June 11 — see <a href="daily-tldr-digest-2026-06-11-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Announcement · Stack Overflow</span>
+        <span class="src-title"><a href="https://stackoverflow.blog">Announcing Stack Overflow for Agents</a></span>
+        <span class="src-note">A platform reorganizing so its primary reader is a machine. The cleanest single instance of the agents-as-users shift; the strategic move is repackaging trust for a non-human consumer.
+          <span class="prev-ref">Previously cited June 12 — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Newsletter · PostHog</span>
+        <span class="src-title"><a href="https://newsletter.posthog.com/p/llms-are-picking-winners-heres-how">LLMs are picking winners. Here's how to become one.</a></span>
+        <span class="src-note">The most actionable distribution piece: when buyers ask a model, being the cited answer is the channel. The monthly measurement loop is something you can run this week.
+          <span class="prev-ref">Previously cited June 11 — see <a href="daily-tldr-digest-2026-06-11-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">News · Apple</span>
+        <span class="src-title"><a href="https://www.apple.com/newsroom/">App Store ecosystem reaches $1.4 trillion as developers thrive globally</a></span>
+        <span class="src-note">The scale number behind Apple's distribution thesis. Read it next to the Siegler piece: $1.4T of ecosystem is the moat that "best model" can't out-run.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Your Vendor Is Your Competitor</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Your+Vendor+Is+Your+Competitor%22">Your Vendor Is Your Competitor</a></span>
+        <span class="src-note">The dark edge of platform distribution: the platform you build on owns the option to absorb your feature. The strategic caution under the whole distribution theme. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Benn Stancil</span>
+        <span class="src-title"><a href="https://benn.substack.com">Your agent will be your undoing</a></span>
+        <span class="src-note">The contrarian read on agents-as-users: the agent you ship to act on your behalf is also the surface through which you lose control. The skeptic's footnote to §4.
+          <span class="prev-ref">Previously cited June 10 — see <a href="daily-tldr-digest-2026-06-10-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Tools · VoidZero / Cloudflare</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22VoidZero+is+joining+Cloudflare%22">VoidZero is joining Cloudflare</a></span>
+        <span class="src-note">A consolidation datapoint at the dev-tooling layer (the Vite/Rolldown toolchain folding into Cloudflare). Read as the platform layer absorbing the primitives — the §4 "vendor-as-competitor" pattern in action. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+
+    <h3>Theme 5 · Design, UX &amp; the AI-native designer</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · Design systems are over. Product context is the work.</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Design+systems+are+over.+Product+context+is+the+work.%22">Design systems are over. Product context is the work.</a></span>
+        <span class="src-note">The design-side echo of context engineering: the reusable system matters less than the product-specific context. Provocative title, real argument.
+          <span class="prev-ref">Previously cited June 12 — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Being an AI-native designer isn't what you think it is</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Being+an+AI-native+designer+isn%27t+what+you+think+it+is%22">Being an AI-native designer isn't what you think it is</a></span>
+        <span class="src-note">Corrects the lazy assumption that AI-native design means prompting a tool. The real shift is toward judgment and context, mirroring §3 from the design seat. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Article · UXPin</span>
+        <span class="src-title"><a href="https://www.uxpin.com">Why Visual Storytelling in UX Matters More Than Ever</a></span>
+        <span class="src-note">A steady reminder that as generation floods the channel, narrative and visual clarity become the differentiator. Conventional but well-aimed; the restraint theme from the UX side.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Code-as-Content Era</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Code-as-Content+Era%22+m%C3%A1uhan">The Code-as-Content Era — by máuhan</a></span>
+        <span class="src-note">When code becomes as cheap to generate as content, the curatorial question — what deserves to be kept — moves to the center. The reflective edge of the restraint and judgment themes. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Idearium</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Idearium%22+%22A+Sanctuary+for+Your+Restless+Thoughts%22">The Idearium: A Sanctuary for Your Restless Thoughts</a></span>
+        <span class="src-note">A quieter, tool-for-thought piece. Sits in this digest as a counter to generation-maximalism: a place to hold ideas, not mass-produce them. Light, but on-theme. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · How to Build an AI-Native Services Company</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22How+to+Build+an+AI-Native+Services+Company%22">How to Build an AI-Native Services Company</a></span>
+        <span class="src-note">The services-firm version of the AI-native-company question: where the human judgment and the machine leverage actually combine. Practical, if slightly aspirational. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+
+    <h3>Theme 6 · Building the AI-native company</h3>
+    <ol>
+      <li>
+        <span class="pub">Coverage · Lovable</span>
+        <span class="src-title"><a href="https://lovable.dev">Lovable: $500M ARR, 146 staff, 80% non-technical builders</a></span>
+        <span class="src-note">The week's clearest economic shape of the AI-native company: enormous revenue-per-head, a user base that's mostly non-technical. The number that makes §7's case on its own.
+          <span class="prev-ref">Previously cited June 12 — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Guide · GitHub for AI Product Managers</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22GitHub+for+AI+Product+Managers:+A+Practical+Guide%22">GitHub for AI Product Managers: A Practical Guide</a></span>
+        <span class="src-note">The PM-facing how-to for an AI-native workflow. Mundane in places, but the underlying point — PMs now operate the repo, not just the roadmap — is the §3 role-shift applied to product. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Interview · Hyperagent (Andrew Busse)</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Hyperagent%27s+AI+Operations%22+%22Andrew+Busse%22">Hyperagent's AI Operations: Andrew Busse Interview</a></span>
+        <span class="src-note">A practitioner account of running AI-heavy operations. Useful for the texture of what "agentic ops" looks like day-to-day; treat the claims as one operator's experience, not a benchmark. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Consistency Over Complexity</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Consistency+Over+Complexity:+Building+Lasting+Discipline%22">Consistency Over Complexity: Building Lasting Discipline</a></span>
+        <span class="src-note">The habit-formation version of the restraint thesis: durable discipline beats maximal effort. Sits at the seam of company-building and §6; the operating-discipline complement to the craft pieces.
+          <span class="prev-ref">Previously cited June 12 (as "Beyond Hacks: Five Pillars of Radical Consistency") — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Tools · Addy Osmani on X (developer habits)</span>
+        <span class="src-title"><a href="https://t.co/hIe0UX7z6T">Addy Osmani on X</a></span>
+        <span class="src-note">Listed once more in the notebook within the company/practice cluster; the same high-signal thread, here read for its operating-practice angle rather than its agentic-engineering one.</span>
+      </li>
+    </ol>
+
+    <h3>Theme 7 · Restraint, voice &amp; the HTML-first countermelody</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · arnorhs.dev</span>
+        <span class="src-title"><a href="https://arnorhs.dev">"maybe later" was a feature</a></span>
+        <span class="src-note">The deferral affordance — letting users say "not now" — reframed as respect, not lost conversion. The cleanest small argument for restraint as design; pairs with the HTML-first piece.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · How building an HTML-first site doubled our users overnight</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22How+building+an+HTML-first+site+doubled+our+users+overnight%22">How building an HTML-first site doubled our users overnight</a></span>
+        <span class="src-note">The empirical case for restraint: stripping the JavaScript-maximalist default doubled reach. The week's most concrete number on the upside of doing less.
+          <span class="prev-ref">Previously cited June 12 — see <a href="daily-tldr-digest-2026-06-12-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Mastering Personal Voice in AI Writing</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Mastering+Personal+Voice+in+AI+Writing%22">Mastering Personal Voice in AI Writing</a></span>
+        <span class="src-note">The writing-side restraint argument: when prose is cheap to generate, a distinct human voice is the scarce signal. Practical and on-theme; the §6 counter-melody in text form. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Where the daily contributed</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Just+a+moment...%22+Cloudflare+block+page">Just a moment...</a></span>
+        <span class="src-note">A Cloudflare block-page artifact, not a real source — the underlying piece could not be identified with confidence, so no content is drawn from it. Listed for completeness only. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Vercel Security Checkpoint</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Vercel+Security+Checkpoint%22">Vercel Security Checkpoint</a></span>
+        <span class="src-note">A block-page artifact behind a security checkpoint; the underlying source was not loadable, so it is cited as a placeholder datapoint only, with no content inferred. Listed for completeness. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+
+    <p style="font-size: 17px; color: #4a4a4a; font-style: italic; margin-top: 18px; padding-left: 0;">Two of the listed entries ("Just a moment..." and "Vercel Security Checkpoint") are block-page artifacts rather than real sources; they are recorded for completeness but no synthesis above draws on them, which is why the working source count is 49 rather than 51.</p>
+
+  </div>
+
+  <!-- =================== TONIGHT'S LISTEN =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Listen</span>NotebookLM's audio overview for this weekly walks the 49 sources in roughly 15–17 minutes, weighted toward the craft-and-judgment cluster (the load-bearing one). A good Saturday-morning listen before W25 opens. <a href="https://notebooklm.google.com/notebook/92241c3f-bd6a-4372-9449-43c3c91c2c6c">▶ Open in NotebookLM</a>.
+  </div>
+
+  <!-- =================== READ THE FULL NOTEBOOK =================== -->
+  <section>
+    <h2><span class="sec-num">§ · Source</span>Read the full notebook</h2>
+    <p>For source-grounded chat answers, individual source content, the audio overview, and the auto-generated mind map, open the weekly notebook on NotebookLM.</p>
+    <p><a href="https://notebooklm.google.com/notebook/92241c3f-bd6a-4372-9449-43c3c91c2c6c">→ Open the NotebookLM notebook</a></p>
+  </section>
+
+  <div class="footer">
+    <p>Auto-generated by <a href="index.html">Kindle Digest</a> · Weekly Summary · June 8–12, 2026 · 49 sources · 4 diagrams · 10 sections · ~36 min read. Opinions are the editor's, not the sources'. Volume II · The Weekly · ISO Week 24 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>
