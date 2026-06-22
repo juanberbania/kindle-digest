@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Digest — Week of June 15, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · Weekly Summary · June 15–19, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Weekly Summary</div>
+    <div class="rhs">Week of 15 June 2026 · W25</div>
+  </div>
+
+  <p class="kicker">Volume II · The Weekly · ISO Week 25</p>
+  <h1>The Loop Closes</h1>
+  <p class="subtitle">Forty-four sources across one working week, in which the agent stopped being a chatbot and became a loop that plans, executes, and verifies its own work — ChatGPT's share slipped below half, SpaceX bought Cursor for $60B, Spotify and Dropbox shipped the context layers that make agents trustworthy, and the human role finished its move from writing code to designing the systems, the taste, and the verification that decide whether the code is allowed to land.</p>
+
+  <div class="byline">
+    <span><b>44 sources</b> · 4 diagrams · 10 sections · ~37 min read</span>
+    <span>Distilled from NotebookLM · Weekly Summary · personal reading log</span>
+  </div>
+
+  <!-- =================== LEDE =================== -->
+  <p class="lead">The week of June 15 was the one where "agent" stopped meaning a chatbot you talk to and started meaning a loop that does work — one that plans, executes, checks its own output, and tries again, with a human standing over the design rather than the keyboard. The market caught up to the shift in the same week the engineering did: ChatGPT's share of the assistant market slipped below 50% for the first time as Gemini and Claude pulled buyers toward whoever wrapped the model in the better loop, and SpaceX's reported $60B move for Cursor priced AI-driven software engineering as a strategic asset rather than a tooling line item. Underneath the headlines, the same quiet idea recurred from a dozen trades: an agent is only as trustworthy as the context layer, the verifier, and the constraints you build around it. Spotify and Dropbox shipped exactly those. And the people writing about how to build all converged on one uncomfortable conclusion — that when generation costs nothing, the durable skill is design, taste, and verification, not typing.</p>
+
+  <p><em>If this is the week the industry agreed the agent is a loop and not a chatbot — then who owns the verifier inside the loop, where does the trust come from, and what is left for the human once the loop runs itself?</em></p>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>What this week's 44 sources agree on</h4>
+    <ol>
+      <li><strong>The agent is a loop, not a chatbot.</strong> Source after source describes the same primitive: plan → execute → verify → retry. The unit of value moved from a single good answer to a closed loop that catches and fixes its own mistakes — and a loop is something you engineer, not something you prompt.</li>
+      <li><strong>Long-horizon execution is the new frontier.</strong> GLM-5.2 is built explicitly for it; the agentic-factory and customer-success pieces assume it. The bar moved from "answer one question well" to "carry a multi-step task across hours without losing the thread."</li>
+      <li><strong>Context is the moat, and it has to be engineered.</strong> Spotify's domain context layer, Dropbox's MCP-mediated access, and the persistent-context architecture pieces all say the same thing: a generic model plus a specific, governed context layer beats a better generic model alone.</li>
+      <li><strong>Verification is being industrialised.</strong> The agentic code verifier, agentic code review, and the "verification economy" framing converge: when generation is free, the scarce, paid step is the machine that checks the machine — and it needs a structural floor under it, not just a second model.</li>
+      <li><strong>Discipline goes up as autonomy goes up.</strong> The charity.wtf and Ravi Mehta pieces are blunt: AI does not make the job easier or demand less rigor. More autonomy raises the bar on tests, observability, and judgment.</li>
+      <li><strong>Taste is being hardcoded into the substrate.</strong> The design-system cluster argues prose rules don't survive contact with an agent; the moat is a hardcoded design system and an integrated feedback loop the agent physically cannot route around.</li>
+      <li><strong>The market repriced around the loop.</strong> ChatGPT below 50%, SpaceX/Cursor at $60B, Replit-in-Claude, Vercel's eve: the winners this week are the ones who own the loop and the channel, not the ones with the marginally better base model.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §1 AGENTIC LOOPS =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · The structural anchor</span>The agent became a loop that verifies its own work</h2>
+
+    <p>If one claim ran through every day of the week, it is that the agent stopped being a single forward pass and became a <strong>closed loop: plan, execute, verify, retry</strong>. <em>The New AI Prompting Method Everyone Is Talking About: Loops</em> names the consumer-facing version; <em>What is Agentic Engineering?</em> (IBM) names the disciplined version; <em>Architecting Intrinsic Advantage Through Learning Loops</em> pushes it to its end state, where the loop improves itself over time. <em>GLM-5.2: Built for Long-Horizon Tasks</em> is the model-side evidence: a frontier release whose headline feature is not raw quality but the ability to <em>stay coherent across a long multi-step task</em> — exactly what a loop needs to be more than a gimmick.</p>
+
+    <p>The synthesis the week earns, present in no single piece: <strong>the loop, not the answer, is now the unit of engineering — and the verify step is the part that turns a parlor trick into a tool.</strong> A single generation is cheap and often wrong; a loop that checks its own output against a constraint and retries is the cheapest reliable thing anyone has built. Every other theme this week is a different face of that same loop — context (§2) is what the loop reads, verification (§3) is the step that closes it, discipline (§4) is what keeps it honest, and taste (§5) is the constraint it checks against. The model is barely the subject anymore; the loop around it is.</p>
+
+    <p><span class="caflag">Counter</span><em>The loop is only as good as its verifier, and the week quietly admits the verifier is the unsolved part. A loop that checks its own work with the same model that produced it is a confidence amplifier, not a correctness one — it will converge happily on a wrong answer it finds internally consistent. "Plan, execute, verify, retry" is a clean diagram and an open research problem; the honest version is that the retry is real and cheap, and the verify is still mostly aspirational.</em></p>
+
+    <p><span class="prev-ref">This loop thread held across at least three of this week's daily digests — see <a href="daily-tldr-digest-2026-06-17-kindle.html">June 17</a>, <a href="daily-tldr-digest-2026-06-18-kindle.html">June 18</a>, and <a href="daily-tldr-digest-2026-06-19-kindle.html">June 19</a>, where agentic review, the verification economy, and the loops-as-prompting-method framing each recurred. The cross-day throughline: every daily that asked "what makes an agent useful?" answered "the loop that closes around it," never "the size of the model."</span></p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A layered stack of the week's seven themes showing value migrating from the commoditised model layer up through context, verification, and the agentic loop toward design taste and judgment, with the market layer beneath marked as the place the repricing landed">
+      <rect x="0" y="0" width="720" height="460" fill="#ffffff"/>
+      <text x="360" y="26" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · WHERE THE WEEK PUT THE VALUE</text>
+      <text x="360" y="44" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Seven themes as a stack · the agentic loop binds the middle, judgment sits on top, the market reprices below</text>
+
+      <!-- Taste / judgment (top, black = yours) -->
+      <rect x="50" y="58" width="620" height="52" fill="#000000"/>
+      <text x="70" y="80" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">DESIGN, TASTE &amp; JUDGMENT — THE SCARCE INPUT</text>
+      <text x="70" y="99" font-family="Georgia,serif" font-size="14" fill="#ffffff">Hardcoded design systems · deciding what's worth building · the part agents can't supply.</text>
+
+      <!-- Discipline -->
+      <rect x="50" y="112" width="620" height="52" fill="#3a3a3a" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="134" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">ENGINEERING DISCIPLINE &amp; THE ARCHITECT ROLE</text>
+      <text x="70" y="153" font-family="Georgia,serif" font-size="14" fill="#ffffff">More autonomy, more rigor · the human designs the loop, doesn't run it.</text>
+
+      <!-- Verification -->
+      <rect x="50" y="166" width="620" height="52" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="188" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">VERIFICATION — THE STEP THAT CLOSES THE LOOP</text>
+      <text x="70" y="207" font-family="Georgia,serif" font-size="14" fill="#ffffff">Agentic code verifier · review · the paid step when generation is free.</text>
+
+      <!-- Context layer -->
+      <rect x="50" y="220" width="620" height="52" fill="#6a6a6a" stroke="#000000" stroke-width="1.4"/>
+      <text x="70" y="242" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">CONTEXT LAYER — WHAT THE LOOP READS ★</text>
+      <text x="70" y="261" font-family="Georgia,serif" font-size="14" fill="#ffffff">Spotify's domain context · Dropbox MCP · persistent context architecture.</text>
+
+      <!-- Model layer (commodity) -->
+      <rect x="50" y="274" width="620" height="52" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="70" y="296" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THE MODEL — NO LONGER THE DIFFERENTIATOR</text>
+      <text x="70" y="315" font-family="Georgia,serif" font-size="14" fill="#000000">GLM-5.2 · Gemini · Claude · the same loop wraps any of them. Commodity.</text>
+
+      <!-- Market substrate -->
+      <rect x="40" y="340" width="640" height="56" fill="#f1f1f1" stroke="#000000" stroke-width="1.2"/>
+      <text x="60" y="362" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">MARKET &amp; CORPORATE REPRICING — WHERE IT LANDED ★</text>
+      <text x="60" y="382" font-family="Georgia,serif" font-size="14" fill="#000000">ChatGPT &lt; 50% · SpaceX–Cursor $60B · Replit-in-Claude · eve. The channel reprices (§6).</text>
+
+      <text x="360" y="426" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">▲ VALUE MIGRATES UP TO TASTE · THE LOOP BINDS THE MIDDLE · ▼ THE MARKET REPRICES BELOW</text>
+      <text x="360" y="448" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The model is the most rented band in the building; the loop and its context are what's actually defended.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The week's seven themes read as one stack. The model band has commoditised (light); value has migrated up through the context layer and verification — the two bands the agentic loop actually reads and closes on — to taste and judgment at the top (dark). Beneath it all, the market repriced the whole structure. The structural insight: the defensible layers this week were not the model but the two starred bands — the context the loop reads and the channel the market rewards.</div>
+  </div>
+
+  <!-- =================== §2 CONTEXT LAYER =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The convergence</span>Context is the moat — and someone finally shipped it</h2>
+
+    <p>The largest engineering cluster of the week describes the same move from a dozen angles: a generic model becomes trustworthy only when wrapped in a <strong>specific, governed context layer</strong>. Spotify's <em>Encoding Your Domain Expert: The Context Layer Behind Spotify's Data Assistant</em> is the week's cleanest worked example — the win isn't a better model, it's the encoded domain knowledge that lets the assistant answer like an analyst who knows the schema. Dropbox's <em>How Dropbox uses MCP and Dash to close the design-to-code security gap</em> is the same instinct with a permission boundary welded on: the Model Context Protocol turns "what the agent can reach" into an auditable policy. The conceptual cluster — <em>The Architecture of Persistent AI Context</em>, <em>The Architectures of Contextual Intelligence</em>, and NN/G's <em>Context Architecture</em> — names the discipline these two companies are practicing.</p>
+
+    <p>The synthesis no single piece states: <strong>"context layer," "contextual intelligence," "persistent context," and "MCP" are four names for one discipline — building the specific, governed world a generic model reads before it acts.</strong> Each source approaches it from its own trade (data, security, architecture, IA) and they meet in the middle. The week's tell is that the two pieces with real production weight — Spotify and Dropbox — are both about the layer <em>around</em> the model, not the model. <em>Semantic Search for AI Agents at Scale</em> (LinkedIn's Hiring Assistant) is the retrieval-side version: what the agent can find is a product decision, not plumbing.</p>
+
+    <p><span class="caflag">Counter</span><em>The context-layer thesis can curdle into a moat nobody can afford. Spotify and Dropbox built bespoke context layers with platform-scale engineering teams; the implicit promise — that context is the great equalizer against bigger models — quietly assumes you have a Spotify-sized domain team to encode the expertise. For everyone else, "context is the moat" can mean "the moat belongs to whoever already has the proprietary data and the headcount to encode it," which is the opposite of a leveler.</em></p>
+
+    <p><span class="prev-ref">The context-layer thread held across <a href="daily-tldr-digest-2026-06-16-kindle.html">June 16</a> (Spotify's domain context, Semantic Search for LinkedIn) and <a href="daily-tldr-digest-2026-06-17-kindle.html">June 17</a> (Dropbox MCP, NN/G Context Architecture). The cross-day throughline: every daily that asked "why is this agent trustworthy?" answered "the context layer," never "the base model."</span></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The week's forty-four sources clustered into seven themes shown as labelled bands, ordered by source weight, with the agentic-loop band marked as the load-bearing thesis">
+      <rect x="0" y="0" width="720" height="440" fill="#ffffff"/>
+      <text x="360" y="24" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THE WEEK'S 44 SOURCES, CLUSTERED BY THEME</text>
+      <text x="360" y="42" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Approximate source counts per theme · the dark band is the load-bearing thesis</text>
+
+      <!-- Theme 1 (load-bearing, black) -->
+      <rect x="50" y="56" width="620" height="44" fill="#000000"/>
+      <text x="68" y="76" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#ffffff">AGENTIC LOOPS &amp; LONG-HORIZON EXECUTION</text>
+      <text x="68" y="93" font-family="-apple-system,sans-serif" font-size="11" fill="#ffffff">loops as method · agentic engineering · GLM-5.2 long-horizon · learning loops · agent-month</text>
+      <text x="652" y="84" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">~7</text>
+
+      <!-- Theme 2 -->
+      <rect x="50" y="104" width="620" height="44" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="124" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#ffffff">CONTEXT LAYERS, MCP &amp; CONTEXTUAL INTELLIGENCE</text>
+      <text x="68" y="141" font-family="-apple-system,sans-serif" font-size="11" fill="#ffffff">Spotify context layer · Dropbox MCP · persistent context · semantic search · NN/G</text>
+      <text x="652" y="132" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">~7</text>
+
+      <!-- Theme 3 -->
+      <rect x="50" y="152" width="620" height="44" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="172" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#ffffff">VERIFICATION, REVIEW &amp; THE AGENTIC VERIFIER</text>
+      <text x="68" y="189" font-family="-apple-system,sans-serif" font-size="11" fill="#ffffff">agentic code review · code verifier · customer-success engineering · everything recorded</text>
+      <text x="652" y="180" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">~5</text>
+
+      <!-- Theme 4 -->
+      <rect x="50" y="200" width="620" height="44" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="220" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">DISCIPLINE, EXPERTISE &amp; THE SHIFTING ROLE</text>
+      <text x="68" y="237" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">more discipline not less · job not easier · the expertise shift · resilient architecture · agent-month</text>
+      <text x="652" y="228" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~7</text>
+
+      <!-- Theme 5 -->
+      <rect x="50" y="248" width="620" height="44" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="268" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">DESIGN SYSTEMS, TASTE &amp; THE MOAT</text>
+      <text x="68" y="285" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">hardcoding the aesthetic · AI-ready design systems · moats · loading states · no loading states</text>
+      <text x="652" y="276" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~6</text>
+
+      <!-- Theme 6 -->
+      <rect x="50" y="296" width="620" height="44" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="68" y="316" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">MARKET, PLATFORMS &amp; CORPORATE MOVES</text>
+      <text x="68" y="333" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">ChatGPT &lt; 50% · SpaceX–Cursor $60B · Replit-in-Claude · eve · Android 17 · Python 3.15</text>
+      <text x="652" y="324" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~8</text>
+
+      <!-- Theme 7 -->
+      <rect x="50" y="344" width="620" height="44" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+      <text x="68" y="364" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#000000">THE AGENT-NATIVE FACTORY, COSTS &amp; PLANNING</text>
+      <text x="68" y="381" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">Factory 2.0 · agent-native factory · agentic AI costs · Rivian planning · operational systems · X posts</text>
+      <text x="652" y="372" text-anchor="end" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000">~6</text>
+
+      <text x="360" y="416" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#4a4a4a">Themes ordered roughly by source weight · the black band is the week's load-bearing thesis · some sources span two themes.</text>
+      <text x="360" y="432" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-style="italic" fill="#4a4a4a">Total = 44 sources (two block-page artifacts excluded as real sources).</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The week's sources clustered into seven themes. The two heaviest engineering bands — agentic loops and context layers — are not separate stories: context is <em>what</em> the loop reads, and the loop is <em>how</em> the context gets used. The structural insight: the market band (light, but the biggest count) got the headlines, but the dark loop-and-context bands carry the week's actual operating advice.</div>
+  </div>
+
+  <!-- =================== §3 VERIFICATION =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The throughline</span>Verification is the paid step now</h2>
+
+    <p>The week's most-repeated piece of operating advice is that when generation is free, <strong>the scarce, paid step is verification</strong>. <em>The Rise of the Agentic Code Verifier</em> names the role directly: a machine whose whole job is to check another machine's output before it lands. <em>AddyOsmani.com — Agentic Code Review</em> supplies the mechanism — triage the flood, summarize diffs, reconstruct the intent behind a change nobody hand-wrote. <em>The Engineering Shift in AI Customer Success</em> generalizes it past code: customer-success work becomes an engineering discipline because someone has to verify that the agent's answers to customers are actually right. And <em>Everything is Recorded Now</em> (a16z) supplies the substrate — when every action is logged, verification has something to check against.</p>
+
+    <p>The synthesis across the cluster, stated by none in full: <strong>verification has split from generation and become the load-bearing half of the loop — but it only works if it rests on something more reliable than a second model.</strong> A verifier that is just another LLM is the loop's circular-trust problem (§1's counter) wearing a job title. The week's tell is that the verifier pieces keep reaching for an external floor: a recorded log, a constraint, a test, a permission boundary. <em>The Rise of the Agent-Native Software Factory</em> and <em>Factory 2.0</em> are the same claim at the org scale — the factory's durable asset is the verified pipeline, not the code that rolls off it.</p>
+
+    <p><span class="prev-ref">"AddyOsmani.com — Agentic Code Review" was cited <a href="daily-tldr-digest-2026-06-17-kindle.html">June 17</a> (the daily's structural anchor on intent reconstruction). The cross-day throughline (held across June 17, 18, and 19): every daily that asked "what's now scarce?" answered "trustworthy verification," never "more output."</span></p>
+  </section>
+
+  <!-- =================== §4 DISCIPLINE =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · The corrective</span>AI makes the job harder, not easier</h2>
+
+    <p>Against the fantasy that agents let you relax, the week carried a persistent corrective: <strong>more autonomy demands more discipline, not less</strong>. Charity Majors' <em>AI demands more engineering discipline. Not less</em> is the blunt version — handing the keyboard to a fast, confident, occasionally wrong worker raises the bar on tests, observability, and operational rigor. Ravi Mehta's <em>AI doesn't make your job easier</em> is the same claim from the product-leadership chair: the work shifts from execution to judgment, and judgment is harder, not easier. <em>The Shift: Expertise and AI in the Software Industry</em> and <em>What is Agentic Engineering?</em> (IBM) both argue the durable skill is the senior one — knowing what to ask for and how to tell when it's wrong.</p>
+
+    <p>The synthesis the week earns: <strong>AI compresses the easy middle of every job and leaves the hard ends — deciding what to do, and verifying it was done right — fully intact and now fully exposed.</strong> The juniors' execution layer is what got automated; the seniors' judgment layer is what's left, and it was always the harder part. <em>Seven Patterns for Resilient and Senior Code Architecture</em> is the practitioner's version: the patterns that survive agent-scale output are the boring, senior ones — small surfaces, clear boundaries, fail-closed design. <em>The Mythical Agent-Month</em> (Wes McKinney) is the cautionary echo of Brooks: adding more agents to a late project makes it later, because coordination and verification — not generation — were always the constraint.</p>
+
+    <p><span class="caflag">Counter</span><em>The "AI makes the job harder" framing has a survivorship problem nobody on this page addresses. It's true for the people who already have the judgment — the seniors whose execution got automated and whose taste is now the whole job. For everyone earlier in the curve, the job didn't get harder, it got <em>narrower</em>, and the ladder they would have climbed to acquire that judgment got its bottom rungs sawn off. "Harder, not easier" is a flattering story for people who are already senior, and an open question for everyone behind them.</em></p>
+
+    <p><span class="prev-ref">"AI demands more engineering discipline. Not less" was cited <a href="daily-tldr-digest-2026-06-17-kindle.html">June 17</a>; "AI doesn't make your job easier" appeared <a href="daily-tldr-digest-2026-06-15-kindle.html">June 15</a>; "The Mythical Agent-Month" and "What is Agentic Engineering?" both appeared <a href="daily-tldr-digest-2026-06-16-kindle.html">June 16</a>.</span></p>
+  </section>
+
+  <!-- =================== §5 TASTE / DESIGN SYSTEMS =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The moat</span>Hardcode the taste — prose rules don't survive an agent</h2>
+
+    <p>A distinct cluster argues the surviving human advantage is <strong>taste, made enforceable</strong>. <em>Hardcoding the Aesthetic: Enforcing Design Systems in AI Agents</em> is the sharpest: a design system written as prose guidelines is something an agent will cheerfully ignore; a design system compiled into tokens, components, and lint rules is something it physically cannot violate. <em>How To Make Your Design System AI-Ready</em> (Smashing) is the practical how-to for the same move. <em>The Architecture of AI Moats</em> generalizes it: in a world where capability is rented, the defensible thing is the constraint, the data, and the feedback loop that are specific to you. <em>The Best Loading States Are No Loading States</em> (jjenzz) is the restraint-as-taste version — the most refined design decision is often the one that removes a state rather than animating it.</p>
+
+    <p>The synthesis the week earns, stated by none: <strong>taste only becomes a moat at the moment you hardcode it — prose is a suggestion to an agent, a constraint is a wall.</strong> This is the §2 context-layer argument applied to design: just as a domain context layer makes a generic model answer like an expert, a hardcoded design system makes a generic agent <em>build</em> like one. The throughline with §4 is exact — the durable human act is encoding judgment into something the machine reads, whether that judgment is architectural (constraints), domain (context), or aesthetic (design tokens). <em>The Architecture of AI-Native Operational Systems</em> sits here as the operations-side version: the moat is the system, not the output.</p>
+
+    <p><span class="prev-ref">"How To Make Your Design System AI-Ready" and "The Best Loading States Are No Loading States" both appeared <a href="daily-tldr-digest-2026-06-15-kindle.html">June 15</a>. The throughline ties §5 to §4: across the week, every "what's defensible?" answer reduced to "the judgment you managed to encode into something the agent can't route around."</span></p>
+  </section>
+
+  <!-- =================== §6 MARKET =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The repricing</span>ChatGPT below half, SpaceX buys the IDE</h2>
+
+    <p>The week's loudest cluster by source count is the market catching up to the loop. <em>ChatGPT's market share slips below 50% for first time</em> (TechCrunch) is the headline datum: the first mover's dominance cracked as Gemini and Claude pulled buyers — and the buyers moved toward whoever wrapped the model in the better agentic loop, not the better raw model. <em>SpaceX to Acquire AI Startup Cursor for $60 Billion</em> is the capital-markets exclamation point: an AI-driven IDE valued like strategic infrastructure, because owning the loop developers work inside is owning the channel. <em>Replit — Replit is now available in Claude</em> and <em>Introducing eve</em> (Vercel) are the same move at product scale — the agentic build loop embedded directly where the work happens.</p>
+
+    <p>The synthesis no single piece states: <strong>the market repriced around the loop, not the model — the assets that gained value this week are the ones that own the channel the loop runs inside.</strong> A base model is rented and substitutable; an IDE, a deployment platform, or an assistant that owns the developer's loop is not. <em>GLM-5.2</em> and <em>Android Developers Blog: Android 17 is here</em> and <em>Python 3.15</em> are the platform-substrate evidence — the tools underneath the loop kept advancing on schedule, which is exactly why the differentiation moved up to the loop. <em>The Most AI-Pilled CEO We Know</em> is the operating posture that matches the repricing: the aggressive bet is on owning the loop, not on having the best model.</p>
+
+    <p><span class="prev-ref">"ChatGPT's market share slips below 50%" and "Introducing eve" both appeared <a href="daily-tldr-digest-2026-06-19-kindle.html">June 19</a>; "Replit is now available in Claude" appeared <a href="daily-tldr-digest-2026-06-19-kindle.html">June 19</a>; "SpaceX to Acquire AI Startup Cursor for $60 Billion" and "GLM-5.2" appeared <a href="daily-tldr-digest-2026-06-18-kindle.html">June 18</a>; "Android 17 is here" appeared <a href="daily-tldr-digest-2026-06-18-kindle.html">June 18</a>.</span></p>
+  </section>
+
+  <!-- =================== §7 NUMBERS =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · The week in numbers</span>Seven quantitative anchors</h2>
+
+    <p>A week's reading is easier to hold if the load-bearing claims carry a figure. Read as a block, the week's numbers measure two things and only two: <strong>the scale of the market repricing, and the scale of the autonomy now being trusted to a loop.</strong> What they conspicuously do <em>not</em> measure is whether the verifier inside the loop actually works — the gap that §1's counter names and §9 returns to.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Seven labelled rows of quantitative anchors from the week, each a headline figure with a short description and source attribution, with a summary band at the bottom">
+        <rect x="0" y="0" width="720" height="460" fill="#ffffff"/>
+        <text x="360" y="24" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 3 · THE WEEK IN NUMBERS</text>
+        <text x="360" y="42" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Seven anchors · the dark rows are the market repricing, the light rows are the platform substrate</text>
+
+        <!-- Row 1: <50% ChatGPT (black) -->
+        <rect x="50" y="56" width="620" height="46" fill="#000000"/>
+        <text x="68" y="87" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#ffffff">&lt;50%</text>
+        <text x="184" y="80" font-family="Georgia,serif" font-size="13" fill="#ffffff">ChatGPT's assistant market share — below half for the first time as Gemini &amp; Claude pull buyers</text>
+        <text x="184" y="96" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#c8c8c8">ChatGPT's market share slips below 50% · TechCrunch · the week's load-bearing market number</text>
+
+        <!-- Row 2: $60B SpaceX/Cursor (black) -->
+        <rect x="50" y="106" width="620" height="46" fill="#000000"/>
+        <text x="68" y="137" font-family="-apple-system,sans-serif" font-size="20" font-weight="700" fill="#ffffff">$60B</text>
+        <text x="172" y="130" font-family="Georgia,serif" font-size="13" fill="#ffffff">SpaceX's reported acquisition of Cursor — AI-driven software engineering priced as strategic infra</text>
+        <text x="172" y="146" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#c8c8c8">SpaceX to Acquire AI Startup Cursor for $60 Billion</text>
+
+        <!-- Row 3: GLM-5.2 long-horizon -->
+        <rect x="50" y="156" width="620" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="68" y="187" font-family="-apple-system,sans-serif" font-size="20" font-weight="700" fill="#000000">5.2</text>
+        <text x="150" y="180" font-family="Georgia,serif" font-size="13" fill="#000000">GLM-5.2, built explicitly for long-horizon tasks — the model-side bet on the loop, not the answer</text>
+        <text x="150" y="196" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">GLM-5.2: Built for Long-Horizon Tasks</text>
+
+        <!-- Row 4: Android 17 -->
+        <rect x="50" y="206" width="620" height="46" fill="#ffffff" stroke="#9a9a9a" stroke-width="1"/>
+        <text x="68" y="237" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">17</text>
+        <text x="138" y="230" font-family="Georgia,serif" font-size="13" fill="#000000">Android 17 ships — the platform substrate keeps advancing on schedule beneath the loop</text>
+        <text x="138" y="246" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Android Developers Blog: Android 17 is here</text>
+
+        <!-- Row 5: Python 3.15 -->
+        <rect x="50" y="256" width="620" height="46" fill="#ffffff" stroke="#9a9a9a" stroke-width="1"/>
+        <text x="68" y="287" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">3.15</text>
+        <text x="158" y="280" font-family="Georgia,serif" font-size="13" fill="#000000">Python 3.15 — practical upgrades &amp; performance milestones, the agent's most-used substrate</text>
+        <text x="158" y="296" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Python 3.15: Practical Upgrades and Performance Milestones</text>
+
+        <!-- Row 6: 1 IDE in Claude (black) -->
+        <rect x="50" y="306" width="620" height="46" fill="#000000"/>
+        <text x="68" y="337" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#ffffff">1</text>
+        <text x="120" y="330" font-family="Georgia,serif" font-size="13" fill="#ffffff">Replit becomes available inside Claude — the build loop embedded directly in the assistant</text>
+        <text x="120" y="346" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#c8c8c8">Replit — Replit is now available in Claude</text>
+
+        <!-- Row 7: 44 sources -->
+        <rect x="50" y="356" width="620" height="46" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="68" y="387" font-family="-apple-system,sans-serif" font-size="22" font-weight="700" fill="#000000">44</text>
+        <text x="138" y="380" font-family="Georgia,serif" font-size="13" fill="#000000">sources in the notebook across 7 themes — the largest cluster is the market, the heaviest is the loop</text>
+        <text x="138" y="396" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">NotebookLM Weekly Summary · June 15–19, 2026</text>
+
+        <!-- Summary band -->
+        <rect x="40" y="410" width="640" height="38" fill="#c8c8c8" stroke="#000000" stroke-width="1.2"/>
+        <text x="60" y="434" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#000000">44 · 7 · 10 · 5</text>
+        <text x="200" y="434" font-family="Georgia,serif" font-size="13" fill="#000000">sources in the notebook · themes · numbered sections · daily digests this week</text>
+      </svg>
+    </div>
+    <p class="figure-caption"><b>Figure 3</b> · The week in numbers, as labelled rows. The dark rows are the market-repricing side (ChatGPT below half, the $60B IDE buy, Replit-in-Claude); the light rows are the platform substrate that kept advancing underneath (GLM-5.2, Android 17, Python 3.15). The structural insight: every number the week produced measures either where the market moved or how the substrate advanced — and none of them measures the one quantity that would settle whether the loop is real, the verifier's actual catch rate.</p>
+
+    <p>What the numbers do <em>not</em> measure is the only figure that would resolve §1: how often the verify step inside an agentic loop actually catches a wrong answer. The week priced the channel, the IDE, and the substrate — but left the loop's true reliability a blank. That blank is the negative-space anchor of §9.</p>
+  </section>
+
+  <!-- =================== §8 VOCABULARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Vocabulary watch</span>Which terms gained ground this week</h2>
+
+    <p>Naming is a leading indicator: the terms that crystallise this week are the ones next week's pieces will argue inside of. Reading the vocabulary shift is a faster route to the structural change than reading the prose.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid of vocabulary terms by weekday, with filled circles marking the days each term was load-bearing in that day's argument, and a right-hand status flag for each term">
+        <rect x="0" y="0" width="720" height="470" fill="#ffffff"/>
+        <text x="360" y="24" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 4 · VOCABULARY WATCH · TERMS vs DAYS</text>
+        <text x="360" y="42" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Filled circle = load-bearing in that day's argument · right column flags the status change</text>
+
+        <!-- Day headers (Mon=June 15 ... Fri=June 19) -->
+        <text x="300" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">MON 15</text>
+        <text x="370" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">TUE 16</text>
+        <text x="440" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">WED 17</text>
+        <text x="510" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">THU 18</text>
+        <text x="580" y="66" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#4a4a4a">FRI 19</text>
+
+        <!-- guidelines -->
+        <line x1="300" y1="76" x2="300" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="370" y1="76" x2="370" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="440" y1="76" x2="440" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="510" y1="76" x2="510" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="580" y1="76" x2="580" y2="406" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 3"/>
+
+        <!-- Row: agentic loop -->
+        <text x="50" y="92" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">agentic loop (plan/verify/retry)</text>
+        <circle cx="440" cy="88" r="6" fill="#000000"/><circle cx="510" cy="88" r="6" fill="#000000"/><circle cx="580" cy="88" r="6" fill="#000000"/>
+        <text x="668" y="92" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">load-bearing phrase</text>
+
+        <!-- Row: long-horizon -->
+        <text x="50" y="120" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">long-horizon execution</text>
+        <circle cx="510" cy="116" r="6" fill="#000000"/>
+        <text x="668" y="120" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">new (GLM-5.2)</text>
+
+        <!-- Row: context layer -->
+        <text x="50" y="148" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">context layer</text>
+        <circle cx="370" cy="144" r="6" fill="#000000"/><circle cx="440" cy="144" r="6" fill="#000000"/>
+        <text x="668" y="148" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">crystallising (Spotify)</text>
+
+        <!-- Row: agentic verifier -->
+        <text x="50" y="176" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">agentic code verifier</text>
+        <circle cx="510" cy="172" r="6" fill="#000000"/><circle cx="580" cy="172" r="6" fill="#000000"/>
+        <text x="668" y="176" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">coined, landed</text>
+
+        <!-- Row: verification economy -->
+        <text x="50" y="204" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">verification economy</text>
+        <circle cx="510" cy="200" r="6" fill="#000000"/>
+        <text x="668" y="204" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">new this week</text>
+
+        <!-- Row: MCP -->
+        <text x="50" y="232" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">MCP (model context protocol)</text>
+        <circle cx="440" cy="228" r="6" fill="#000000"/>
+        <text x="668" y="232" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">becoming canonical</text>
+
+        <!-- Row: hardcoding the aesthetic -->
+        <text x="50" y="260" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">hardcoded design system</text>
+        <circle cx="300" cy="256" r="6" fill="#000000"/>
+        <text x="668" y="260" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">coined, landed</text>
+
+        <!-- Row: agent-month -->
+        <text x="50" y="288" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">the mythical agent-month</text>
+        <circle cx="370" cy="284" r="6" fill="#000000"/>
+        <text x="668" y="288" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">Brooks, revived</text>
+
+        <!-- Row: software factory -->
+        <text x="50" y="316" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">agent-native software factory</text>
+        <circle cx="440" cy="312" r="6" fill="#000000"/><circle cx="510" cy="312" r="6" fill="#000000"/>
+        <text x="668" y="316" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">scaling up</text>
+
+        <!-- Row: vibe coding -->
+        <text x="50" y="344" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">"AI doesn't make it easier"</text>
+        <circle cx="300" cy="340" r="6" fill="#000000"/><circle cx="440" cy="340" r="6" fill="#000000"/>
+        <text x="668" y="344" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">corrective, hardening</text>
+
+        <!-- Row: agents-as-share -->
+        <text x="50" y="372" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000">"share &lt; 50%"</text>
+        <circle cx="580" cy="368" r="6" fill="#000000"/>
+        <text x="668" y="372" text-anchor="end" font-family="-apple-system,sans-serif" font-size="10" font-style="italic" fill="#4a4a4a">new market framing</text>
+
+        <!-- Annotation band -->
+        <rect x="40" y="404" width="640" height="44" fill="#f1f1f1" stroke="#000000" stroke-width="0.8"/>
+        <text x="60" y="424" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#000000">CRYSTALLISED THIS WEEK</text>
+        <text x="60" y="440" font-family="-apple-system,sans-serif" font-size="11" fill="#000000">"agentic loop" · "agentic code verifier" · "verification economy" · "hardcoded design system" entered the working vocabulary.</text>
+      </svg>
+    </div>
+    <p class="figure-caption"><b>Figure 4</b> · Vocabulary watch. Four terms entered the working vocabulary this week, and they cluster around one idea: the move from chatbot to loop to verified loop. "Long-horizon execution" arrived attached to a model release, which is how a benchmark term becomes a category. The structural insight: "agentic loop" is the only term load-bearing on three <em>consecutive</em> days (Wed–Fri) — a sign it crossed from jargon into the default frame, not one piece quoting the next.</p>
+
+    <p>The losers are as telling as the winners. "Prompt engineering" appears this week only inside the word "loops" — the prompt is now a step in a loop, not the whole act. And the raw "vibe coding" optimism of late 2025 survives only as the thing the charity.wtf and Ravi Mehta pieces warn against. When a term survives only as a cautionary example, its moment is over.</p>
+  </section>
+
+  <!-- =================== §9 NEGATIVE SPACE =================== -->
+  <section>
+    <h2><span class="sec-num">§9 · The negative space</span>What the week didn't deliver</h2>
+
+    <p>The most informative end-of-week exercise is to list what <em>didn't</em> happen — what the structural story would have predicted but the coverage left blank. Five absences stood out.</p>
+
+    <p><strong>No measured catch rate for any verifier.</strong> The week coined "agentic code verifier" and "verification economy" and built §3 around them, and not one source put a number on how often a verifier actually catches a wrong answer it didn't also generate. The single figure that would tell us whether the loop is reliable or just self-consistent is the one nobody supplied. The structural story is being argued in architecture diagrams, not in a measured catch rate.</p>
+
+    <p><strong>No regulatory or antitrust reaction to a $60B IDE acquisition.</strong> SpaceX reportedly buying Cursor for $60 billion is exactly the kind of move that, in a normal market, draws an antitrust murmur within the week. The sources reported the price and largely moved on. Either the deal is early enough that scrutiny hasn't formed, or the developer-tools market is not yet legible to regulators as concentrated. Both are worth pricing.</p>
+
+    <p><strong>No second data point on ChatGPT's slip.</strong> "Below 50%" is a striking headline from a single measurement source, and the week produced no corroborating share figure, no breakdown by use case, no statement from OpenAI. One vendor's market-share number is a data point, not a trend; the absence of a second source is itself the signal that the framing is ahead of the evidence.</p>
+
+    <p><strong>No public failure of an agentic loop in production.</strong> Half the week's craft sources assume agents are now running multi-step work autonomously. No source reported a named, public incident — an agent loop that ran away, deleted the wrong thing, or shipped a verified-but-wrong change at scale. Either the loops are genuinely well-bounded, or the incidents are happening privately and not yet being written up. The verification theme is conspicuously theoretical given how much autonomy it assumes.</p>
+
+    <p><strong>No org-chart move toward the verifier role.</strong> The week argued the new load-bearing role is the verifier-who-checks, not the coder-who-types. No company announced a restructuring around it, no job title materialized. When one does — likely within a quarter — it will set the template. The structural argument is fully formed; the org charts have not caught up.</p>
+
+    <p>The pattern across all five is the same as the structural one all year: <strong>the argument is racing ahead of the official signals.</strong> The cleanest predictive bet is not that the structural story is wrong, but that the measured catch rates, the regulatory reactions, the corroborating numbers, and the reorganizations catch up to it within a quarter or two.</p>
+  </section>
+
+  <!-- =================== §10 LOOKING AHEAD =================== -->
+  <section>
+    <h2><span class="sec-num">§10 · Looking ahead to W26</span>Seven things to watch next week</h2>
+
+    <p>Seven concrete things to watch in the next seven days, in declining order of confidence.</p>
+
+    <p><strong>1. More "in [assistant]" embeddings of build tools.</strong> Replit-in-Claude is a template, and owning the developer's loop is the week's clearest strategy. Expect at least one more build, deploy, or IDE tool to announce embedding directly inside an assistant or agent surface within the next two weeks. Watch the partnership posts, not the model releases.</p>
+
+    <p><strong>2. A second source confirms or disputes the ChatGPT share number.</strong> A "below 50%" headline this big invites either corroboration or a rebuttal. Expect a competing analytics firm, or OpenAI itself, to publish a share figure within the next week or two — and watch whether it confirms the slip or reframes the denominator.</p>
+
+    <p><strong>3. Another model release leads with "long-horizon."</strong> GLM-5.2 made long-horizon execution a headline feature, and headline features are contagious. Expect at least one competing model release within the month to lead with long-horizon or multi-step-agent benchmarks rather than raw quality scores.</p>
+
+    <p><strong>4. The SpaceX–Cursor deal draws its first regulatory or competitive response.</strong> A $60B developer-tools acquisition rarely stays quiet. The falsifiable bet is that within the month there is either a regulatory comment, a competitor's defensive acquisition, or a public migration-away campaign from a rival IDE. If the month passes silent, the silence (§9) is the more interesting datum.</p>
+
+    <p><strong>5. A named "context layer" product ships outside Spotify and Dropbox.</strong> The context-layer pattern is proven by two platform-scale teams; the thesis becomes general when a smaller, recognizable company ships a named domain context layer. Watch for the first mid-sized vendor to productize "encode your domain expert," which would turn §2 from a big-company moat into a buyable component.</p>
+
+    <p><strong>6. The first measured verifier catch-rate appears.</strong> The verification economy was named this week without a number. The falsifiable prediction is that within the quarter someone publishes a measured catch rate — what fraction of wrong agent outputs the verifier actually intercepts. If the number is low, the loop thesis (§1) gets its first real stress test.</p>
+
+    <p><strong>7. Whether next Saturday's weekly notebook arrives.</strong> The pipeline that produced this 44-source weekly is itself a data point. If the cadence holds, this is the maturing series doing its job; if it slips, the upstream NotebookLM weekly-summary mechanism needs revisiting before the cadence can be relied on.</p>
+  </section>
+
+  <!-- =================== FROM THIS WEEK'S DAILY DIGESTS =================== -->
+  <section>
+    <h2><span class="sec-num">§ · Cross-reference</span>From this week's daily digests</h2>
+
+    <p>This weekly synthesises five daily digests from ISO week W25. Each contributed a distinct slab of the throughline:</p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-15-kindle.html">Mon · June 15 · The Context Premium</a> — opened the week on the context-and-taste threads: "AI doesn't make your job easier," the AI-ready design system, and the loading-states-as-taste argument all set up the "what's defensible?" question the rest of the week answered with "encoded judgment."</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-16-kindle.html">Tue · June 16 · The Context Era</a> — the context-layer day: Spotify's domain context, Semantic Search for LinkedIn's Hiring Assistant, "What is Agentic Engineering?," "The Mythical Agent-Month," and managing agentic AI costs. The backbone of §2 and §4.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-17-kindle.html">Wed · June 17 · The Review Gap</a> — the verification pivot: agentic code review, Dropbox's MCP, Factory 2.0, charity.wtf's discipline corrective, and NN/G's Context Architecture. The single richest source of §3 and the §4 corrective.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-18-kindle.html">Thu · June 18 · The Verification Economy</a> — the loop-and-market day: GLM-5.2's long-horizon release, the SpaceX–Cursor $60B move, Android 17, Rivian's planning piece, and the verification-economy framing. The backbone of §1 and §6.</span></p>
+
+    <p><span class="prev-ref"><a href="daily-tldr-digest-2026-06-19-kindle.html">Fri · June 19 · The Loop Standardises</a> — the consolidation day: agentic loops as a prompting method, MCP on the canvas, Vercel's eve, Replit-in-Claude, and ChatGPT slipping below 50%. Closed the week on the loop, the channel, and the market repricing.</span></p>
+
+    <p>The cross-day synthesis that holds across at least three of these dailies — June 17, 18, and 19 — and that no single day states in full: <strong>the agent stopped being a model you query and became a loop you engineer, and the value moved to whoever owns the context the loop reads, the verifier that closes it, and the channel it runs inside.</strong> Each day approached it from a different chair — context on Tuesday, verification on Wednesday, the market on Friday — and every one of them landed on the same primitive: the loop, not the model.</p>
+  </section>
+
+  <!-- =================== §11 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§11 · Practical takeaways</span>If you only do eight things this week</h2>
+
+    <ol>
+      <li><strong>Design the loop, not the prompt.</strong> Treat plan → execute → verify → retry as the unit you engineer. A single good generation is cheap and unreliable; a loop that checks its own output against a constraint and retries is the cheapest reliable thing you can ship. Spend your effort on the loop's shape, not on the wording inside it.</li>
+      <li><strong>Put a real floor under the verify step.</strong> A verifier that is just another model is a confidence amplifier, not a correctness one. Anchor it to something external — a test, a recorded log, a permission boundary, a typed contract — so the loop closes on a fact, not on a second opinion from the same model.</li>
+      <li><strong>Build the context layer before you shop for a bigger model.</strong> Spotify and Dropbox both won on the layer around the model, not the model. Encode your domain expertise and govern what the agent can reach; a generic model plus a specific context layer beats a better generic model alone.</li>
+      <li><strong>Make access an explicit, auditable policy (MCP-style).</strong> "What the agent can touch" should be a named, reviewable boundary, not an emergent accident. Decide it deliberately or inherit someone else's defaults — and someone else's blast radius.</li>
+      <li><strong>Hardcode your taste; don't write it as prose.</strong> A design system written as guidelines is a suggestion an agent will ignore. Compile it into tokens, components, and lint rules the agent physically cannot violate. The same move applies to architecture and domain rules: encode the judgment, don't document it.</li>
+      <li><strong>Raise the discipline as you raise the autonomy.</strong> More agent throughput demands more tests, more observability, more verification — not less. Re-read charity.wtf and Ravi Mehta before your next "AI will let us move faster" planning meeting.</li>
+      <li><strong>Don't add agents to a late project.</strong> The mythical agent-month is real: coordination and verification, not generation, are the constraint. More agents multiply the thing you're already short on — the capacity to check the output.</li>
+      <li><strong>Own the loop, not the model.</strong> The market repriced this week around who owns the channel the loop runs inside — the IDE, the deployment surface, the assistant. The base model is rented and substitutable; the loop developers work inside is not. Build or defend the loop, not a wrapper around someone else's endpoint.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §12 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§12 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Agentic loop</dt>
+        <dd>The week's dominant primitive: an agent that plans a task, executes a step, verifies the result against a constraint, and retries — rather than producing a single forward-pass answer. The unit of value moved from the answer to the loop that closes around it.</dd>
+
+        <dt>Long-horizon execution</dt>
+        <dd>The ability to carry a multi-step task across hours without losing coherence — staying on-thread long enough for an agentic loop to be more than a demo. GLM-5.2's headline feature and the week's clearest model-side bet on the loop.</dd>
+
+        <dt>Context layer</dt>
+        <dd>The specific, governed body of domain knowledge, data, and access policy a generic model reads before it acts — what makes a generic assistant answer like an expert. The week's proven moat, shipped by Spotify and Dropbox.</dd>
+
+        <dt>MCP (Model Context Protocol)</dt>
+        <dd>A standardized, controllable doorway through which an agent reaches external tools and data. Turns "what the agent can access" into an explicit, auditable policy with a permission boundary — the security-shaped face of the context layer.</dd>
+
+        <dt>Agentic code verifier</dt>
+        <dd>A machine whose whole job is to check another machine's code output before it lands — triage, intent reconstruction, constraint-checking. The role the week coined as the load-bearing step inside the loop, distinct from generation.</dd>
+
+        <dt>Verification economy</dt>
+        <dd>The framing that when generation is free, the scarce and paid activity is verification. The market shifts from charging for output to charging for trustworthy checking of output.</dd>
+
+        <dt>Hardcoded design system</dt>
+        <dd>A design system encoded as tokens, components, and enforceable rules an agent cannot violate, rather than prose guidelines it can ignore. The mechanism by which taste becomes a moat instead of a suggestion.</dd>
+
+        <dt>The mythical agent-month</dt>
+        <dd>The Brooks's-Law echo for agents: adding more agents to a late or complex task makes it later, because the binding constraint is coordination and verification, not generation speed.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Source</span>Original NotebookLM notebook · <em>Weekly Summary (June 15–19, 2026)</em> · 44 sources, with the Deep Dive audio overview on the week's chatbot-to-loop turn available in NotebookLM.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register · grouped by theme</div>
+    <h2>The week's 44 sources, by theme</h2>
+
+    <h3>Theme 1 · Agentic loops &amp; long-horizon execution</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · The New AI Prompting Method</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+New+AI+prompting+Method+Everyone+Is+Talking+About:+Loops%22">The New AI prompting Method Everyone Is Talking About: Loops</a></span>
+        <span class="src-note">The consumer-facing name for the week's whole thesis: the prompt is now a step in a loop, not the act itself. Read it for the framing, skip the listicle padding around it. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 19 — see <a href="daily-tldr-digest-2026-06-19-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Explainer · IBM</span>
+        <span class="src-title"><a href="https://www.ibm.com/think">What is Agentic Engineering?</a></span>
+        <span class="src-note">The disciplined definition of the loop, from a vendor that benefits from it sounding rigorous. Worth it for the clean plan/execute/verify framing; discount the enterprise-readiness gloss.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Architecting Intrinsic Advantage Through Learning Loops</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Architecting+Intrinsic+Advantage+Through+Learning+Loops%22">Architecting Intrinsic Advantage Through Learning Loops</a></span>
+        <span class="src-note">Pushes the loop to its end state — one that improves itself over time. The keeper idea is that a learning loop compounds; the open question it dodges is who verifies the improvements. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Model release · GLM-5.2</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22GLM-5.2:+Built+for+Long-Horizon+Tasks%22">GLM-5.2: Built for Long-Horizon Tasks</a></span>
+        <span class="src-note">The model-side evidence that the frontier moved from answer quality to staying-coherent-across-a-long-task. The headline feature is the tell: a model built for loops, not chats. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 18 — see <a href="daily-tldr-digest-2026-06-18-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Paper club · YC</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Self-Play+for+LLMs,+AI+for+Biology,+Formal+Verification%22+YC+Paper+Club">Self-Play for LLMs, AI for Biology, Formal Verification, and More — YC Paper Club</a></span>
+        <span class="src-note">The research-frontier read: self-play and formal verification are the academic backbone under the loop and its verifier. Skim for the formal-verification thread — it's the one with a real shot at giving the verify step a floor. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Post · Goku Mohandas on X</span>
+        <span class="src-title"><a href="https://t.co/X7Wtupv48Z">Goku Mohandas on X</a></span>
+        <span class="src-note">A practitioner thread in the agentic-loop vein. Worth the click for the framing of evaluation-as-part-of-the-loop; treat it as a pointer rather than a full argument.
+          <span class="prev-ref">Previously cited June 18 — see <a href="daily-tldr-digest-2026-06-18-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Post · Ishaan Sehgal on X</span>
+        <span class="src-title"><a href="https://t.co/lKK4Slx8zG">Ishaan Sehgal on X</a></span>
+        <span class="src-note">A short, high-signal take in the agentic-engineering vein. Read it as a data point on how practitioners are framing the loop, not as a position to defend.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+    </ol>
+
+    <h3>Theme 2 · Context layers, MCP &amp; contextual intelligence</h3>
+    <ol>
+      <li>
+        <span class="pub">Engineering blog · Spotify</span>
+        <span class="src-title"><a href="https://engineering.atspotify.com">Encoding Your Domain Expert: The Context Layer Behind Spotify's Data Assistant</a></span>
+        <span class="src-note">The week's cleanest worked example of the context-layer thesis: the win is encoded domain knowledge, not a better model. The piece to hand anyone who thinks "context is the moat" is a slogan rather than an engineering program.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Dropbox</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22How+Dropbox+uses+MCP+and+Dash+to+close+the+design-to-code+security+gap%22">How Dropbox uses MCP and Dash to close the design-to-code security gap</a></span>
+        <span class="src-note">The context layer with a permission boundary welded on. Read it for how MCP turns agent tool-access from an emergent accident into an auditable policy — the security plumbing the conceptual pieces gesture at but don't build. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Research · NN/G (Nielsen Norman Group)</span>
+        <span class="src-title"><a href="https://www.nngroup.com">Context Architecture</a></span>
+        <span class="src-note">The cleanest name for the discipline Spotify and Dropbox are practicing: design the environment, not the output. Reading it as information architecture for a non-human reader is what makes the engineering pieces click into one theme.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Architecture of Persistent AI Context</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Architecture+of+Persistent+AI+Context%22">The Architecture of Persistent AI Context</a></span>
+        <span class="src-note">The memory-side of the context layer: what the agent carries across sessions, not just within one. Useful for the framing that context is a durable asset; light on how you keep it from rotting. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Architectures of Contextual Intelligence</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Architectures+of+Contextual+Intelligence%22">The Architectures of Contextual Intelligence</a></span>
+        <span class="src-note">The most abstract of the context cluster — a taxonomy of how context gets structured. The value is the vocabulary; the risk is mistaking the map for the territory Spotify actually shipped. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · LinkedIn</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Semantic+Search+for+AI+Agents+at+Scale%22+%22LinkedIn%27s+Hiring+Assistant%22">Semantic Search for AI Agents at Scale: Retrieval and Ranking for LinkedIn's Hiring Assistant</a></span>
+        <span class="src-note">The retrieval-side of the context layer at production scale: what the agent can find is a ranked product decision, not plumbing. Read it as the §2 thesis shown working inside a real recruiting workflow. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Architecture of AI-Native Operational Systems</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Architecture+of+AI-Native+Operational+Systems%22">The Architecture of AI-Native Operational Systems</a></span>
+        <span class="src-note">The operations-side mirror of the context layer: the durable asset is the system that runs the agents, not any single agent's output. Bridges §2 and §5; somewhat schematic, but the framing earns its place. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Vicki Boykis (vickiboykis.com)</span>
+        <span class="src-title"><a href="https://vickiboykis.com">Running local models is good now</a></span>
+        <span class="src-note">The context-control instinct pushed all the way to the metal: own the substrate and the entire context, data path, and execution boundary are yours. The mundane "it works now" is the point — it makes governing the agent's world a default, not an enterprise project.
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+    </ol>
+
+    <h3>Theme 3 · Verification, review &amp; the agentic verifier</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · AddyOsmani.com</span>
+        <span class="src-title"><a href="https://addyosmani.com">Agentic Code Review</a></span>
+        <span class="src-note">The structural anchor of the verification theme. The keeper idea is intent reconstruction — review that recovers the "why" behind a diff nobody hand-wrote — which pure summarization tools miss. Hold its circularity problem (a model vouching for a model) next to §1's counter.
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Rise of the Agentic Code Verifier</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Rise+of+the+Agentic+Code+Verifier%22">The Rise of the Agentic Code Verifier</a></span>
+        <span class="src-note">Names the role the week was circling: a machine whose only job is to check another machine before it ships. Distinct from the daily's "verification economy" framing — same idea, different altitude — so listed on its own. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Engineering Shift in AI Customer Success</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Engineering+Shift+in+AI+Customer+Success%22">The Engineering Shift in AI Customer Success</a></span>
+        <span class="src-note">Generalizes verification past code: customer-success becomes engineering because someone has to verify the agent's answers to customers are right. The most useful non-code instance of the verify-step thesis. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · a16z (David Haber)</span>
+        <span class="src-title"><a href="https://a16z.com">Everything is Recorded Now</a></span>
+        <span class="src-note">The substrate under verification: when every action is logged, the verifier has an external fact to check against. Read it as the floor §3 keeps reaching for — recorded reality as the thing that breaks the model-vouching-for-a-model loop.
+          <span class="prev-ref">Previously cited June 15 — see <a href="daily-tldr-digest-2026-06-15-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Seven Patterns for Resilient and Senior Code Architecture</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Seven+Patterns+for+Resilient+and+Senior+Code+Architecture%22">Seven Patterns for Resilient and Senior Code Architecture</a></span>
+        <span class="src-note">The patterns that survive agent-scale output are the boring senior ones — small surfaces, clear boundaries, fail-closed design. Distinct from the daily's "boring code" piece; listed separately. Read it as what makes a verifier's job tractable. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+
+    <h3>Theme 4 · Discipline, expertise &amp; the shifting role</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · charity.wtf (Charity Majors)</span>
+        <span class="src-title"><a href="https://charity.wtf">AI demands more engineering discipline. Not less</a></span>
+        <span class="src-note">The corrective to the "AI lets you go fast and loose" fantasy. Read it for the inversion — more autonomy means more, not less, operational rigor — and skip the parts that just restate observability gospel you already hold.
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Ravi Mehta</span>
+        <span class="src-title"><a href="https://www.ravi-mehta.com">AI doesn't make your job easier.</a></span>
+        <span class="src-note">The product-leadership version of the discipline corrective: the work shifts from execution to judgment, and judgment is the harder half. Pair it with charity.wtf; together they're the §4 spine.
+          <span class="prev-ref">Previously cited June 15 — see <a href="daily-tldr-digest-2026-06-15-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Shift: Expertise and AI in the Software Industry</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Shift:+Expertise+and+AI+in+the+Software+Industry%22">The Shift: Expertise and AI in the Software Industry</a></span>
+        <span class="src-note">Argues the durable skill is the senior one — knowing what to ask for and when it's wrong. The clearest statement of the week's missing-middle worry, even if it doesn't solve it. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Mythical Agent-Month (Wes McKinney)</span>
+        <span class="src-title"><a href="https://wesmckinney.com">The Mythical Agent-Month</a></span>
+        <span class="src-note">The Brooks's-Law echo for agents: adding agents to a late project makes it later, because coordination and verification are the constraint. The McKinney imprimatur is the value; the analogy is the year's most useful warning against agent-headcount thinking.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Coverage · The Most AI-Pilled CEO We Know</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Most+AI-Pilled+CEO+We+Know%22">The Most AI-Pilled CEO We Know</a></span>
+        <span class="src-note">Read past the personality for the operating model: the most aggressive AI posture turns out to be the most disciplined one — autonomy bought with systems, not bravado. The §6 repricing seen from inside a single operator's head. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Post · Satya Nadella on X</span>
+        <span class="src-title"><a href="https://t.co/vLmiBKTtX3">Satya Nadella on X</a></span>
+        <span class="src-note">A platform-CEO data point on where the role is heading. Read it as evidence of the discipline-and-judgment framing reaching the very top of the org chart, then weigh it against §4's missing-middle counter.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Post · Lin Qiao on X</span>
+        <span class="src-title"><a href="https://t.co/rMVRgBvwEI">Lin Qiao on X</a></span>
+        <span class="src-note">A practitioner data point on the AI-native developer's shape, not an argument. Read it as evidence of the author-to-architect shift happening inside a real org; the framing matters more than any single claim.
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+    </ol>
+
+    <h3>Theme 5 · Design systems, taste &amp; the moat</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · Hardcoding the Aesthetic</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Hardcoding+the+Aesthetic:+Enforcing+Design+Systems+in+AI+Agents%22">Hardcoding the Aesthetic: Enforcing Design Systems in AI Agents</a></span>
+        <span class="src-note">The sharpest taste-as-moat piece: a design system written as prose is a suggestion an agent ignores; compiled into tokens and lint rules it's a wall. The §5 spine, and the design-side twin of §2's context layer. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Article · Smashing Magazine</span>
+        <span class="src-title"><a href="https://www.smashingmagazine.com">How To Make Your Design System AI-Ready</a></span>
+        <span class="src-note">The practical how-to for hardcoding the aesthetic: structure your tokens and components so an agent can consume them correctly. Conventional but well-aimed; the actionable companion to the Hardcoding piece.
+          <span class="prev-ref">Previously cited June 15 — see <a href="daily-tldr-digest-2026-06-15-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Architecture of AI Moats</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Architecture+of+AI+Moats%22">The Architecture of AI Moats</a></span>
+        <span class="src-note">Generalizes the taste argument: when capability is rented, the defensible thing is the constraint, the data, and the feedback loop specific to you. The conceptual frame for why §2 and §5 are the same moat. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · jjenzz</span>
+        <span class="src-title"><a href="https://jjenzz.com">The Best Loading States Are No Loading States</a></span>
+        <span class="src-note">Restraint-as-taste: the most refined design decision is often removing a state rather than animating it. A small, concrete piece that the §5 thesis needs — taste is judgment about what to leave out, not just what to add.
+          <span class="prev-ref">Previously cited June 15 — see <a href="daily-tldr-digest-2026-06-15-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Post · Thread by @morganlinton (Thread Reader)</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Thread+by+@morganlinton%22+Thread+Reader+App">Thread by @morganlinton on Thread Reader App</a></span>
+        <span class="src-note">A builder's thread on the practical edge of the moat-and-taste argument. Read it for the on-the-ground texture; treat the claims as one operator's read, not a benchmark. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 19 — see <a href="daily-tldr-digest-2026-06-19-kindle.html">archive</a>.</span></span>
+      </li>
+    </ol>
+
+    <h3>Theme 6 · Market, platforms &amp; corporate moves</h3>
+    <ol>
+      <li>
+        <span class="pub">News · TechCrunch</span>
+        <span class="src-title"><a href="https://techcrunch.com">ChatGPT's market share slips below 50% for first time</a></span>
+        <span class="src-note">The week's load-bearing market datum: the first mover's dominance cracked as buyers moved toward whoever wrapped the model in the better loop. Read it as a story about the loop, not the model — the share moved with the wrapper.
+          <span class="prev-ref">Previously cited June 19 — see <a href="daily-tldr-digest-2026-06-19-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">News · SpaceX to Acquire Cursor</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22SpaceX+to+Acquire+AI+Startup+Cursor+for+%2460+Billion%22">SpaceX to Acquire AI Startup Cursor for $60 Billion</a></span>
+        <span class="src-note">The capital-markets exclamation point: an AI-driven IDE priced like strategic infrastructure, because owning the loop developers work inside is owning the channel. The §9 silence on antitrust is as informative as the price. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 18 — see <a href="daily-tldr-digest-2026-06-18-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Announcement · Replit</span>
+        <span class="src-title"><a href="https://replit.com">Replit — Replit is now available in Claude</a></span>
+        <span class="src-note">The build loop embedded directly inside the assistant — the cleanest single instance of "own the loop, not the model." The strategic move is putting the agentic workflow where the developer already is.
+          <span class="prev-ref">Previously cited June 19 — see <a href="daily-tldr-digest-2026-06-19-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Announcement · Vercel</span>
+        <span class="src-title"><a href="https://vercel.com">Introducing eve</a></span>
+        <span class="src-note">Vercel's agentic build surface — the deployment platform reaching up into the loop. Read it next to Replit-in-Claude: two platforms racing to own the developer's loop from opposite ends of the stack.
+          <span class="prev-ref">Previously cited June 19 — see <a href="daily-tldr-digest-2026-06-19-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Android Developers</span>
+        <span class="src-title"><a href="https://android-developers.googleblog.com">Android Developers Blog: Android 17 is here</a></span>
+        <span class="src-note">The platform substrate advancing on schedule beneath the loop. Mostly here as evidence that the base tooling kept moving — which is exactly why differentiation migrated up to the loop, not the platform.
+          <span class="prev-ref">Previously cited June 18 — see <a href="daily-tldr-digest-2026-06-18-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Python 3.15</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Python+3.15:+Practical+Upgrades+and+Performance+Milestones%22">Python 3.15: Practical Upgrades and Performance Milestones</a></span>
+        <span class="src-note">The agent's most-used substrate getting faster and cleaner. Read for the performance milestones if you run agent workloads; the broader point is the same as Android 17 — the floor rose, so the contest moved up. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · Just a moment...</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Just+a+moment...%22+Cloudflare+block+page">Just a moment...</a></span>
+        <span class="src-note">A Cloudflare block-page artifact, not a real source — the underlying piece could not be identified with confidence, so no content is drawn from it. Listed for completeness only. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Vercel Security Checkpoint</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Vercel+Security+Checkpoint%22">Vercel Security Checkpoint</a></span>
+        <span class="src-note">A block-page artifact behind a security checkpoint; the underlying source was not loadable, so it is cited as a placeholder only, with no content inferred. Listed for completeness. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+
+    <h3>Theme 7 · The agent-native factory, costs &amp; planning</h3>
+    <ol>
+      <li>
+        <span class="pub">Essay · Factory.ai</span>
+        <span class="src-title"><a href="https://factory.ai">Factory 2.0: From coding agents to software factories</a></span>
+        <span class="src-note">Takes cheap generation to its end state — the factory, not the code, is the asset. Most useful read against its own overshoot: the premise is right; the unanswered question (which code is actually disposable) is where the real work hides.
+          <span class="prev-ref">Previously cited June 17 — see <a href="daily-tldr-digest-2026-06-17-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Rise of the Agent-Native Software Factory</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The+Rise+of+the+Agent-Native+Software+Factory%22">The Rise of the Agent-Native Software Factory</a></span>
+        <span class="src-note">The org-scale version of the loop: a company built so its primary worker is an agent, with verification baked into the pipeline. Read alongside Factory 2.0; this one is heavier on the org shape, lighter on the tooling. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Managing Agentic AI Costs at Scale</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Managing+Agentic+AI+Costs+at+Scale%22">Managing Agentic AI Costs at Scale</a></span>
+        <span class="src-note">The unglamorous constraint under the loop: a plan/execute/verify/retry loop burns tokens on every cycle, and the retry is the expensive part. The piece that prices the loop, not just praises it.
+          <span class="prev-ref">Previously cited June 16 — see <a href="daily-tldr-digest-2026-06-16-kindle.html">archive</a>.</span></span>
+      </li>
+      <li>
+        <span class="pub">Essay · How Rivian Plans for Stuff That Doesn't Exist Yet</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22How+Rivian+Plans+for+Stuff+That+Doesn%27t+Exist+Yet%22">How Rivian Plans for Stuff That Doesn't Exist Yet</a></span>
+        <span class="src-note">The planning-under-uncertainty piece, read here as the human-side complement to long-horizon execution: a loop needs a plan worth executing. Outside the AI core, but the planning discipline transfers. (No clean canonical URL surfaced; link is a title search.)
+          <span class="prev-ref">Previously cited June 18 — see <a href="daily-tldr-digest-2026-06-18-kindle.html">archive</a>.</span></span>
+      </li>
+    </ol>
+
+    <p style="font-size: 17px; color: #4a4a4a; font-style: italic; margin-top: 18px; padding-left: 0;">Two of the listed entries ("Just a moment..." and "Vercel Security Checkpoint") are block-page artifacts rather than real sources; they are recorded for completeness but no synthesis above draws on them, which is why the working source count is 44 including them as best-guess placeholders.</p>
+
+  </div>
+
+  <!-- =================== TONIGHT'S LISTEN =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Listen</span>NotebookLM's audio overview for this weekly walks the 44 sources in roughly 16–18 minutes, weighted toward the loop-and-context cluster (the load-bearing one). A good Saturday-morning listen before W26 opens. <a href="https://notebooklm.google.com/notebook/67ead481-9c00-47a3-9b35-22d6e6823928">▶ Open in NotebookLM</a>.
+  </div>
+
+  <!-- =================== READ THE FULL NOTEBOOK =================== -->
+  <section>
+    <h2><span class="sec-num">§ · Source</span>Read the full notebook</h2>
+    <p>For source-grounded chat answers, individual source content, the audio overview, and the auto-generated mind map, open the weekly notebook on NotebookLM.</p>
+    <p><a href="https://notebooklm.google.com/notebook/67ead481-9c00-47a3-9b35-22d6e6823928">→ Open the NotebookLM notebook</a></p>
+  </section>
+
+  <div class="footer">
+    <p>Auto-generated by <a href="index.html">Kindle Digest</a> · Weekly Summary · June 15–19, 2026 · 44 sources · 4 diagrams · 10 sections · ~37 min read. Opinions are the editor's, not the sources'. Volume II · The Weekly · ISO Week 25 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

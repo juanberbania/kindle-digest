@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 18, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 18, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 46</div>
+    <div class="rhs">Thursday · 18 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Long-Horizon Turn</p>
+  <h1>The Patient Machine</h1>
+  <p class="subtitle">Eight sources, one direction: the stack is re-tooling for AI that sustains a task across hours, not turns. Android 17 makes apps adaptive-first; GLM-5.2 holds a million tokens to grind through long engineering jobs; SpaceX buys Cursor to own the coding layer; Rivian builds slack into the factory before it needs it; and the practitioner consensus moves from clever prompting to context architecture and agentic verification.</p>
+
+  <div class="byline">
+    <span><b>8 sources</b> · 1 diagram · ~18 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The unit of work just got longer</h2>
+
+    <p class="lead">For a couple of years the working assumption was that AI is good at the <em>turn</em>: a prompt in, a plausible answer out, a human stitching the turns together. Today's eight sources read as a coordinated move past that. A model with a million-token window is built to stay on one engineering task for hours; an operating system reorganizes itself around AI-driven functions rather than fixed screens; a launch-vehicle company pays sixty billion dollars to own the surface where code gets written; and a vehicle maker plans capacity for products that don't exist yet. The connective tissue isn't any one release. It's a shift in the <strong>horizon</strong> of what the machine is expected to hold — and a matching shift in where the human adds value, from steering each step to architecting the context and the checks that let a long run finish without going off the rails.</p>
+
+    <p><em>The last two issues opened the context-architecture and agentic-verification thread by asking what the engineer owns once they stop managing each diff; today extends it past the diff to the whole task — if the machine can now sustain a long-horizon job on its own, is the human's real artifact the context it runs inside and the verification that decides whether the finished run is allowed to land?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Six agreements across today's sources</h4>
+    <ol>
+      <li><strong>The horizon is lengthening.</strong> From GLM-5.2's million-token context to Android's adaptive runtime, the sources assume AI that holds and sustains a task across time, not one that answers a single turn and stops.</li>
+      <li><strong>Platforms are re-tooling around AI functions, not features.</strong> Android 17's "adaptive-first" standard treats AI-driven behavior as the default surface; the app is increasingly something the system composes, not a fixed set of screens.</li>
+      <li><strong>Owning the coding layer is now strategic, not incidental.</strong> A sixty-billion-dollar acquisition of an AI coding tool says the place where software gets written is contested territory worth more than the tool's revenue.</li>
+      <li><strong>Capacity and context are bets you place before you need them.</strong> Rivian provisions manufacturing slack for products that don't exist yet; engineers provision context and constraints for runs that haven't happened yet. Same instinct, different substrate.</li>
+      <li><strong>The leverage moved from the prompt to the environment.</strong> The practitioner consensus is explicit: prompt engineering was a phase; context architecture — what the agent knows, may touch, and runs inside — is the durable skill.</li>
+      <li><strong>Autonomy is only as good as its verification.</strong> A longer leash demands a stronger check. Agentic verification — machines reviewing machine output against intent — is treated as the precondition for trusting any long run, not an afterthought.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 LONG-HORIZON MODELS =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The long-horizon turn</span>A million tokens is a bet on patience, not memory</h2>
+
+    <p>The most structural source of the day is the GLM-5.2 launch, and the headline number — a one-million-token context window — is easy to misread as "remembers more." The real claim is about <em>endurance</em>. A window that large is designed so a model can hold an entire codebase, a long specification, and the running state of a multi-step job in view at once, and keep working the same task across what used to be dozens of separate sessions. The pitch is "built for long-horizon tasks": complex, sustained engineering work that a turn-by-turn assistant fragments and forgets. Capacity here is not for recall; it is for <strong>staying on the problem.</strong></p>
+
+    <p>The synthesis worth keeping, present in no single source: <strong>context length is the new clock speed — the spec number that decides how long a task an agent can attempt before a human has to re-thread it.</strong> Just as raw GHz once gated what software felt possible, the window now gates the <em>horizon</em> of autonomy. And it reframes the rest of the day: if the machine can stay on a task for hours, the scarce human inputs become the two things that bound a long run — the context you load into that window before it starts, and the verification you run against what comes out. The bigger the window, the more those two decisions matter, because there is more unsupervised distance between them.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked timelines comparing turn-based AI, where a human re-threads the task at every step, with long-horizon AI, where a large context window lets the agent sustain one task across many steps bounded only by the context loaded in and the verification run at the end">
+      <rect x="0" y="0" width="720" height="430" fill="#ffffff"/>
+      <text x="360" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · WHAT A BIGGER WINDOW ACTUALLY BUYS</text>
+
+      <!-- TURN-BASED label -->
+      <text x="30" y="62" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">TURN-BASED · HUMAN RE-THREADS EVERY STEP</text>
+
+      <!-- turn-based: many small boxes with human handoffs between -->
+      <rect x="30" y="74" width="90" height="48" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="42" y="103" font-family="Georgia,serif" font-size="13" fill="#ffffff">turn</text>
+      <rect x="138" y="74" width="22" height="48" fill="#000000"/>
+      <text x="149" y="103" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">H</text>
+      <rect x="178" y="74" width="90" height="48" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="190" y="103" font-family="Georgia,serif" font-size="13" fill="#ffffff">turn</text>
+      <rect x="286" y="74" width="22" height="48" fill="#000000"/>
+      <text x="297" y="103" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">H</text>
+      <rect x="326" y="74" width="90" height="48" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="338" y="103" font-family="Georgia,serif" font-size="13" fill="#ffffff">turn</text>
+      <rect x="434" y="74" width="22" height="48" fill="#000000"/>
+      <text x="445" y="103" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#ffffff">H</text>
+      <rect x="474" y="74" width="90" height="48" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="486" y="103" font-family="Georgia,serif" font-size="13" fill="#ffffff">turn</text>
+      <text x="592" y="95" font-family="Georgia,serif" font-size="13" fill="#000000">H = human</text>
+      <text x="592" y="113" font-family="Georgia,serif" font-size="13" fill="#000000">re-threads</text>
+
+      <text x="30" y="148" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#000000">Context resets at every handoff. The task is only as long as the human's patience.</text>
+
+      <!-- divider -->
+      <line x1="30" y1="172" x2="690" y2="172" stroke="#000000" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- LONG-HORIZON label -->
+      <text x="30" y="208" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">LONG-HORIZON · ONE TASK, SUSTAINED</text>
+
+      <!-- the loaded context block -->
+      <rect x="30" y="220" width="120" height="62" fill="#000000"/>
+      <text x="42" y="244" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">CONTEXT</text>
+      <text x="42" y="262" font-family="Georgia,serif" font-size="12" fill="#ffffff">Loaded in</text>
+      <text x="42" y="278" font-family="Georgia,serif" font-size="12" fill="#ffffff">up front.</text>
+
+      <!-- the long sustained run -->
+      <rect x="158" y="220" width="402" height="62" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="176" y="244" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="1">ONE SUSTAINED RUN — 1M-TOKEN WINDOW HOLDS THE WHOLE TASK</text>
+      <text x="176" y="266" font-family="Georgia,serif" font-size="13" fill="#000000">No re-threading. The window is the working memory for hours of work.</text>
+
+      <!-- the verification gate at the end -->
+      <rect x="568" y="220" width="122" height="62" fill="#3a3a3a" stroke="#000000" stroke-width="0.6"/>
+      <text x="580" y="244" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">VERIFY</text>
+      <text x="580" y="262" font-family="Georgia,serif" font-size="12" fill="#ffffff">Checks the</text>
+      <text x="580" y="278" font-family="Georgia,serif" font-size="12" fill="#ffffff">finished run.</text>
+
+      <text x="30" y="312" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#000000">The human inputs collapse to two: what you load in, and what you check at the end.</text>
+
+      <text x="360" y="356" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">THE WINDOW REPLACED THE HANDOFFS — NOT THE HUMAN</text>
+      <text x="360" y="384" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">A longer horizon doesn't remove oversight; it moves it to the two ends of the run.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · Turn-based AI spends the human at every handoff; long-horizon AI spends a large context window instead, leaving the human only two jobs — load the context, verify the output. The bigger the window, the more weight those two ends carry, because the unsupervised middle is longer.</div>
+  </div>
+
+  <!-- =================== §3 PLATFORM RE-TOOLING =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The platform shift</span>Android 17 makes the app something the system composes</h2>
+
+    <p>Android 17's framing is "adaptive-first," and it is more than a marketing posture. The standard prioritizes AI-driven app functions and tightened privacy as the <em>default</em> shape of an app, rather than a feature bolted onto fixed screens. Read alongside the long-horizon model story, it is the same move at the platform layer: the operating system is preparing to host behavior that adapts at runtime — surfacing the right function for the moment, mediated by on-device intelligence — instead of shipping a static layout the user navigates. The privacy emphasis is the necessary other half: an OS that lets AI reach more of the app's surface has to make "what can be touched" an explicit, governed boundary, or the adaptiveness becomes a liability.</p>
+
+    <p>The synthesis neither the launch nor the model post states alone: <strong>"adaptive-first" is context architecture shipped as a platform default.</strong> What practitioners are hand-building for agents — curated context, bounded tool access, a privacy boundary around what's reachable — Android is standardizing into the runtime. That is the quiet significance of the release: it normalizes, for millions of apps, the idea that the durable design work is the rules and context the intelligence operates inside, not the screens. The platform is conceding that the app is increasingly an <em>output</em> the system composes per moment, and racing to govern that composition before it ships unsupervised.</p>
+  </section>
+
+  <!-- =================== §4 THE COMPETITIVE GRAB =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · The land grab</span>Sixty billion dollars for the place code gets written</h2>
+
+    <p>SpaceX acquiring Cursor for sixty billion dollars is the day's loudest signal, and the number only makes sense if you price the <em>position</em> rather than the product. Cursor's revenue, whatever it is, does not justify sixty billion; control of the surface where engineers and agents actually write software does. The AI coding market is being treated as strategic ground — the layer that sits between a long-horizon model and a shipped change — and an industrial company with no obvious need to sell developer tools is paying to own it. The move says the coding interface is where context gets assembled and verification gets enforced, and whoever owns that interface owns the chokepoint of agentic software production.</p>
+
+    <p>The synthesis across the day: <strong>the coding layer is being repriced from "tool" to "infrastructure" — the toll booth between cheap generation and trusted shipping.</strong> If §2 is right that the model can now sustain a long task, the contested value migrates to the place where that task is framed, watched, and approved. That is what sixty billion buys: not an editor, but the seam where context architecture and agentic verification both physically happen. The acquirer's identity — a company that builds rockets, not IDEs — is itself the tell: this is a bet on the layer, not on the category it came from.</p>
+
+    <p><span class="caflag">Counter</span><em>The strategic-layer reading can flatter a number that may just be late-cycle exuberance. Sixty billion for a coding tool is also exactly what a market top looks like — a price set by scarcity of plausible AI assets, not by defensibility. Coding interfaces have low switching costs and a history of being commoditized by the next model that ships its own; owning the seam is only valuable if the seam stays put, and nothing about an editor guarantees it does. The disciplined version: the layer is strategic, but "strategic" and "worth sixty billion" are not the same claim, and only one of them is supported here.</em></p>
+  </section>
+
+  <!-- =================== §5 PROVISIONING AHEAD =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · Provisioning ahead</span>Rivian, and the discipline of building slack you don't need yet</h2>
+
+    <p>Rivian's planning story sits oddly next to model launches until you read it as a parable about <em>horizon</em>. The piece describes designing manufacturing capacity for products that don't exist yet — provisioning flexible plant and tooling now so that future vehicles can be built without re-pouring the foundation, and treating that maximized, reusable capacity as the source of financial leverage. It is a bet placed before the thing it serves arrives: spend on slack today, harvest optionality tomorrow. The leverage comes precisely from having capacity in place when demand or a new product shows up, rather than scrambling to build it under pressure.</p>
+
+    <p>The synthesis that connects it to the rest: <strong>both the factory and the agent earn their leverage by provisioning the environment before the work arrives — capacity for Rivian, context and constraints for the engineer.</strong> A million-token window is unused slack until a long task fills it; a curated context and a set of guardrails are overhead until an agent runs inside them. In both cases the discipline is the same and counterintuitive: the valuable, durable investment is the <em>standing capacity to absorb work that hasn't happened yet</em>, not the work itself. Rivian provisions steel and floor space; the AI-native engineer provisions context windows and verification harnesses. The instinct — build the room before you need it — is identical.</p>
+  </section>
+
+  <!-- =================== §6 THE PRACTITIONER CONSENSUS =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The long view</span>From prompt engineering to context architecture and verification</h2>
+
+    <p>The two essays and the two practitioner posts converge on one claim sharply enough to read as a settled consensus rather than four opinions. <em>The Rise of Context Architecture</em> and Goku Mohandas' note make the constructive half: the skill that mattered briefly — phrasing a clever prompt — was a transitional artifact, and the durable discipline is <strong>context architecture</strong>, the deliberate design of what an agent knows, what it may reach, and the rules it operates under. <em>The Verification Economy</em> and Jesse Zhang's post make the defensive half: as agents take on longer, less-supervised runs, the binding constraint becomes <strong>agentic verification</strong> — machine review that checks machine output against intent before anyone trusts it. One says shape the input; the other says check the output; together they bracket the autonomous middle.</p>
+
+    <p>The honest reframing the day insists on: <strong>prompt engineering optimized the conversation; context architecture and agentic verification optimize the run.</strong> Once the model can sustain a long task on its own (§2), the conversation is no longer the unit of work — the run is, and a run has only two human-controlled ends. You decide what context it starts inside, and you decide what verification it must pass to be accepted. Everything the digest covered today — the platform composing apps, the sixty-billion bet on the coding seam, the factory provisioned ahead — is a variation on owning one of those two ends. The middle, increasingly, runs itself.</p>
+
+    <p><span class="caflag">Counter</span><em>"Prompt engineering is dead, long live context architecture" is a clean slogan that quietly assumes verification can keep pace with autonomy. It can't always. A million-token run that goes subtly wrong at hour two produces an enormous, plausible artifact that is far harder to verify than a single bad turn — the longer the horizon, the more expensive the check, and the easier it is to wave through a result nobody can fully re-derive. Context architecture and agentic verification are the right frame, but the verification economy's quiet bill is that trust gets cheaper to grant and more expensive to actually earn as the horizon grows. Nobody on this page prices that gap.</em></p>
+  </section>
+
+  <!-- =================== §7 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · Practical takeaways</span>If you only do seven things this week</h2>
+
+    <ol>
+      <li><strong>Read context length as a horizon spec, not a memory spec.</strong> When a model advertises a huge window, ask "how long a task can it now attempt unattended?" not "how much can it recall?" The window sets the leash; size your oversight to the leash.</li>
+      <li><strong>Invest in the two ends of the run.</strong> If agents now sustain long tasks, your leverage is the context you load up front and the verification you enforce at the end. Spend there; stop hand-tuning the middle.</li>
+      <li><strong>Treat "adaptive-first" as a portability signal.</strong> Platforms are standardizing AI-composed surfaces. Design your app's logic as functions the system can surface, with an explicit privacy boundary, rather than fixed screens — that is where the OS is heading.</li>
+      <li><strong>Price the layer, not the tool.</strong> When you evaluate (or buy, or build on) an AI coding surface, value its position in the generate→verify→ship path, and stress-test how durable that position is against the next model. Strategic and defensible are different questions.</li>
+      <li><strong>Provision capacity before you need it — but cap the bet.</strong> Standing context, guardrails, and verification harnesses are slack that pays off when work arrives. Build the room ahead of the work, the way a factory provisions a line, without over-building for demand that may not come.</li>
+      <li><strong>Make agentic verification a gate, not a vibe.</strong> A long unsupervised run needs an explicit pass/fail check against intent before it lands. Wire the verification in as a required step; never let "it looks done" be the approval for an artifact nobody re-derived.</li>
+      <li><strong>Budget for verification cost that grows with horizon.</strong> The longer the run, the larger and more plausible the output, and the more expensive it is to actually trust. Plan review effort to scale with task length, or you will rubber-stamp the big runs precisely because they're big.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §8 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Long-horizon task</dt>
+        <dd>A job an AI is expected to sustain across many steps and an extended span of time — refactoring a codebase, working a long spec — rather than answering a single prompt. The defining capability the day's model launch is built around.</dd>
+
+        <dt>Context window</dt>
+        <dd>The amount of text (measured in tokens) a model can hold in view at once. A one-million-token window is large enough to keep an entire codebase and the running state of a task in working memory, which is what makes long-horizon autonomy possible.</dd>
+
+        <dt>Adaptive-first</dt>
+        <dd>Android 17's design standard in which AI-driven, runtime-adaptive app functions — surfaced for the moment, governed by a privacy boundary — are the default shape of an app, rather than a feature added on top of fixed screens. Context architecture shipped as a platform default.</dd>
+
+        <dt>Context architecture</dt>
+        <dd>The deliberate design of the environment an autonomous agent operates within: what it knows, what it may touch, the tools it can reach, and the rules it runs under. The practitioner consensus names it as the durable skill that succeeds prompt engineering.</dd>
+
+        <dt>Agentic verification</dt>
+        <dd>Using AI systems to check AI output against the intended outcome before a human trusts it — the defensive half of the autonomy stack. As runs get longer and less supervised, verification, not generation, becomes the binding constraint on what can ship.</dd>
+
+        <dt>The verification economy</dt>
+        <dd>The framing that once generation is cheap and runs are long, the scarce, priced resource is trustworthy verification. Trust becomes the budget; the cost of earning it rises with the length of the run being checked.</dd>
+
+        <dt>Provisioning ahead</dt>
+        <dd>Building standing capacity — manufacturing slack, or context and guardrails — before the work that will use it arrives, so that leverage comes from being ready rather than from scrambling. Rivian's manufacturing posture and the AI-native engineer's context harness are the same instinct.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Listen</span><strong>Tonight's listen.</strong> The Deep Dive audio overview walks the same arc as this issue — the lengthening horizon of what AI is asked to hold, platforms re-tooling around adaptive functions, the sixty-billion bet on the coding seam, and the move from clever prompting to context architecture and verification. A good eighteen minutes for a walk if you'd rather hear the argument than read it: <a href="https://notebooklm.google.com/notebook/95fefa8f-6e8a-4c57-bce9-1d093b349db7">open the NotebookLM notebook →</a>.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The eight pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Release · GLM (Z.ai)</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22GLM-5.2%3A%20Built%20for%20Long-Horizon%20Tasks%22">GLM-5.2: Built for Long-Horizon Tasks</a></span>
+        <span class="src-note">The structural anchor of the issue. Read the million-token window as a horizon spec, not a memory spec — it sets how long a task can run unattended, which is the number the rest of the day orbits. Skip the benchmark table; keep the framing. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Developer blog · Android (Google)</span>
+        <span class="src-title"><a href="https://android-developers.googleblog.com">Android 17 is here</a></span>
+        <span class="src-note">The platform proof that "adaptive-first" is context architecture shipped as a default. Worth it for the move it normalizes — apps as something the system composes per moment, with privacy as the governed boundary — and not for the feature checklist, which you can read anywhere.</span>
+      </li>
+      <li>
+        <span class="pub">Report · SpaceX × Cursor</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22SpaceX%20Acquires%20AI%20Startup%20Cursor%20in%20%2460%20Billion%20Deal%22">SpaceX Acquires AI Startup Cursor in $60 Billion Deal</a></span>
+        <span class="src-note">The loudest signal of the day, and most useful read as a price on a position rather than a product. The keeper is the tell in the buyer's identity; the thing to distrust is whether "strategic seam" and "worth sixty billion" are actually the same claim — they're not. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Feature · Rivian</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22How%20Rivian%20Plans%20for%20Stuff%20That%20Doesn%27t%20Exist%20Yet%22">How Rivian Plans for Stuff That Doesn't Exist Yet</a></span>
+        <span class="src-note">Looks like an auto-industry profile; is actually the day's clearest parable about provisioning ahead. Read it for the leverage-from-slack instinct — capacity built before the product arrives — then map it onto context windows and verification harnesses. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Rise of Context Architecture</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Rise%20of%20Context%20Architecture%22">The Rise of Context Architecture</a></span>
+        <span class="src-note">The cleanest statement of the constructive half of the consensus: prompt engineering was transitional, context architecture is durable. The reframe that the environment, not the prompt, is the artifact is what makes the platform and coding-layer stories click into one thread. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Verification Economy</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Verification%20Economy%3A%20The%20Future%20of%20Agentic%20Code%20Review%22">The Verification Economy: The Future of Agentic Code Review</a></span>
+        <span class="src-note">The defensive half, and the right place to sit with the day's hardest unanswered question. Keep the claim that trust becomes the budget; press on the part it underplays — that the cost of earning that trust rises with the length of the run being checked. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Post · Goku Mohandas on X</span>
+        <span class="src-title"><a href="https://t.co/X7Wtupv48Z">Goku Mohandas on X</a></span>
+        <span class="src-note">A practitioner data point for the context-architecture half — read it as evidence the shift is happening in working practice, not just in essays. The framing matters more than any single line; weigh it next to §6's verification-cost objection.</span>
+      </li>
+      <li>
+        <span class="pub">Post · Jesse Zhang on X</span>
+        <span class="src-title"><a href="https://t.co/K4JhclmHMP">Jesse Zhang on X</a></span>
+        <span class="src-note">The practitioner voice on the verification half — useful as a field signal that agentic verification is being treated as a gate, not a nicety. Read it for the posture; don't expect it to price the cost-of-trust problem it implies.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 46 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

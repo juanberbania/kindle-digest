@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 22, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 22, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 48</div>
+    <div class="rhs">Monday · 22 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Meter Starts Running</p>
+  <h1>The Metered Turn</h1>
+  <p class="subtitle">Ten sources, one repricing: autonomous agents burn too much compute to live under flat-rate plans, so Copilot, Cursor, and Devin all move to usage-based billing in the same month; GPT-5.6 and Claude Fable 5 push reasoning and context past anything a subscription assumed; a new agentic architecture of persistent memory and multi-agent orchestration runs for days unattended; the frontier splits between total AI bans and gatekept elite access; and the floor opens up to non-technical builders even as Apple starts retiring the app itself.</p>
+
+  <div class="byline">
+    <span><b>10 sources</b> · 2 diagrams · ~20 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The bill arrives for the autonomy we asked for</h2>
+
+    <p class="lead">For two years the coding-AI business ran on a comfortable fiction: a flat $20 or $40 a month buys you all the model you can eat. That fiction held while the product was chat and autocomplete, where a query is cheap. It breaks the moment the product becomes an <strong>agent</strong> — a system that plans, calls tools, re-reads its own work, and grinds for hours against a task. In June 2026 the fiction broke in public: GitHub Copilot, Cursor, and Devin Desktop all shifted, within weeks of each other, from subscriptions to metered, usage-based pricing. The trigger is not greed; it is arithmetic. An autonomous agent consumes orders of magnitude more inference than a human typing prompts, and no all-you-can-eat plan survives a customer who can leave a fleet of agents running overnight. Today's ten sources are what that single repricing event radiates into.</p>
+
+    <p><em>The metered-pricing story has been circling this digest for a week — the June 12 price war, the June 10 token-routing squeeze — but those were skirmishes over margins; this is the structural admission underneath them. So the question to hold: once the meter is running, does usage-based pricing merely tax the agent era, or does it quietly decide who is allowed to build in it at all?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Six agreements across today's sources</h4>
+    <ol>
+      <li><strong>Agents broke the subscription model.</strong> Every pricing source agrees the move to metered billing is forced by inference cost, not strategy — autonomous agents consume far more compute than chat or completion, and flat rates can't absorb a workload that scales with ambition rather than headcount.</li>
+      <li><strong>The frontier is pulling away from the floor.</strong> GPT-5.6 and Claude Fable 5 add long-horizon reasoning and 1.5-million-token context — capabilities that assume an agent will run for hours or days, not answer a question. The model families are being built for the metered workload, not the chat one.</li>
+      <li><strong>Architecture is the new differentiator.</strong> Persistent memory layers and multi-agent orchestration — not raw model quality — are what let a system run unattended for days. The sources converge on the agent's <em>scaffolding</em> as the thing that actually ships.</li>
+      <li><strong>Access is bifurcating, hard.</strong> At one pole, organizations impose total AI bans over quality and trust concerns; at the other, vendors gatekeep frontier capability for elite partners. The middle — open, flat-rate, equal access — is the thing being squeezed out.</li>
+      <li><strong>The builder pool is widening and the interface is narrowing.</strong> "Mom-and-Pop SaaS" lets non-technical domain experts ship niche software, while Apple begins phasing out app UIs for intent-driven agents. More people can build; fewer of them build screens.</li>
+      <li><strong>Cost is now an architecture input, not a footnote.</strong> Across the set, what an agent is allowed to do is increasingly bounded by what its compute costs — economics has moved from the invoice into the design of the system itself.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 PRICING =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The repricing</span>Why the subscription died the month agents grew up</h2>
+
+    <p>The day's most structural source is the <em>AI Coding Tool Pricing Shake-Up</em> guide, because it documents the event the rest of the digest reacts to. Its plain finding: the synchronized move by Copilot, Cursor, and Devin to usage-based pricing is not a coordinated cartel and not a cash grab — it is the same cost wall hit at the same time by everyone shipping autonomous agents. A chat turn or a completion is a fixed, predictable sip of compute. An agent that plans a refactor, runs tests, reads failures, and tries again is an open-ended drink, and its appetite scales with the <em>difficulty of the task</em>, not the number of seats. Flat-rate pricing assumes consumption is bounded by human attention. Agents removed that bound, so the price had to find a new one.</p>
+
+    <p>The synthesis worth keeping, in no single source: <strong>metered pricing is the market discovering that the unit of value has moved from the seat to the task.</strong> You no longer pay for a person's access to a tool; you pay for the compute a goal consumes, however many agent-hours that takes. That reframing is why this is structural and not cyclical — it survives any price war, because it is the cost of the workload itself surfacing into the bill. The uncomfortable corollary, which §4 picks up: when the meter runs, the cheapest customer and the most ambitious customer are no longer the same person, and the platform has to decide which one it is built for.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked billing models comparing flat-rate subscription pricing, bounded by human attention, against metered usage-based pricing, bounded by task difficulty and agent compute">
+      <rect x="0" y="0" width="660" height="440" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · WHAT THE PRICE IS BOUND TO</text>
+
+      <!-- OLD model label -->
+      <text x="30" y="62" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PRE-AGENT · FLAT RATE, BOUNDED BY HUMAN ATTENTION</text>
+
+      <!-- old: seat fixed, usage small and capped -->
+      <rect x="30" y="74" width="150" height="58" fill="#000000"/>
+      <text x="46" y="100" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">THE SEAT</text>
+      <text x="46" y="120" font-family="Georgia,serif" font-size="13" fill="#ffffff">$20/mo, fixed.</text>
+
+      <rect x="188" y="74" width="190" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="204" y="100" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">CHAT + COMPLETION</text>
+      <text x="204" y="118" font-family="Georgia,serif" font-size="12" fill="#000000">A sip per query. Capped by typing.</text>
+
+      <rect x="386" y="74" width="244" height="58" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="402" y="100" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">MARGIN HOLDS</text>
+      <text x="402" y="118" font-family="Georgia,serif" font-size="12" fill="#000000">Usage can't outrun a human.</text>
+
+      <!-- divider -->
+      <line x1="30" y1="172" x2="630" y2="172" stroke="#000000" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- NEW model label -->
+      <text x="30" y="208" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">AGENT ERA · METERED, BOUNDED BY TASK DIFFICULTY</text>
+
+      <!-- new: seat tiny, usage huge -->
+      <rect x="30" y="220" width="100" height="58" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="44" y="246" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">THE SEAT</text>
+      <text x="44" y="264" font-family="Georgia,serif" font-size="11" fill="#000000">Now a footnote.</text>
+
+      <rect x="138" y="220" width="492" height="58" fill="#000000"/>
+      <text x="154" y="246" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">AGENT COMPUTE — PLAN · RUN TOOLS · RE-READ · RETRY</text>
+      <text x="154" y="266" font-family="Georgia,serif" font-size="13" fill="#ffffff">Open-ended. Scales with the goal, not the headcount.</text>
+
+      <!-- the meter -->
+      <rect x="138" y="290" width="492" height="46" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="154" y="312" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">THE METER — YOU PAY FOR THE TASK, NOT THE SEAT</text>
+      <text x="154" y="330" font-family="Georgia,serif" font-size="13" fill="#ffffff">The only bound that survives a fleet of agents running overnight.</text>
+
+      <text x="330" y="376" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">THE BLACK BAND IS WHAT THE PRICE IS BOUND TO</text>
+      <text x="330" y="404" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">When the bound moved from the seat to the task, the subscription had to die.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The same product, two pricing models. Under chat, usage was capped by how fast a human could type, so a flat seat fee held. Under agents, the cost band (black) detaches from the seat and tracks task difficulty instead — open-ended, scaling with ambition. Metered pricing is the only bound that survives that shift; the subscription was always borrowing against the assumption that humans are slow.</div>
+  </div>
+
+  <!-- =================== §3 MODELS =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The frontier</span>GPT-5.6 and Fable 5: models built for the meter</h2>
+
+    <p>Two releases define the upper end of the new pricing surface. OpenAI's preparation of the <em>GPT-5.6</em> family and Anthropic's <em>Claude Fable 5</em> are not incremental chat upgrades; both lead with <strong>long-horizon reasoning</strong> and context windows reaching 1.5 million tokens. Read those two specs together and they describe a model designed to be left running: enough working memory to hold an entire codebase or case file, and enough sustained reasoning to stay coherent across a task that unfolds over hours rather than seconds. These are agent engines first and chatbots second.</p>
+
+    <p>The synthesis neither release states: <strong>the model families and the pricing model are the same decision seen from two ends.</strong> A 1.5-million-token context is a feature you build precisely because the workload is now long, autonomous, and compute-hungry — which is exactly the workload that broke flat-rate billing. The frontier labs are not stumbling into expensive models; they are building for the metered era because that is where agents live. The competition between OpenAI and Anthropic is no longer "who answers better," but "whose model can be trusted to run unsupervised for the longest" — and that is a contest measured in coherence over time and tokens, both of which cost money to hold open.</p>
+  </section>
+
+  <!-- =================== §4 THE DIVIDE =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · The divide</span>Total bans on one side, gatekept frontier on the other</h2>
+
+    <p>The metering and the model leap together produce a split that two sources name from opposite edges. <em>The High Cost of Hype: The Total AI Ban</em> documents organizations that have banned AI outright — not from technophobia but from quality and trust concerns, judging the output not yet reliable enough to admit into their work. <em>The Great AI Divide: Gatekeeping the Frontier</em> describes the other pole: vendors reserving their best, most capable models for elite partners, so that frontier capability is rationed rather than sold. One side refuses the technology; the other is refused the best of it.</p>
+
+    <p>The synthesis worth keeping, present in neither piece: <strong>metered pricing is the mechanism that turns a capability gap into an access gap.</strong> When the most powerful agents are also the most expensive to run, "who can afford to leave them running" and "who is allowed the frontier model" start to coincide — and the open, flat-rate middle, where a solo builder and a Fortune 500 paid the same $20, stops existing. The ban camp and the gatekeeping camp look like opposites, but they are the same fracture: a world where AI capability is no longer a flat utility everyone taps equally, but a stratified resource you either reject, ration, or pay the meter for.</p>
+
+    <p><span class="caflag">Counter</span><em>The "stratification is permanent" read overshoots. Every prior compute wave — mainframes, cloud, GPUs — opened as a gatekept luxury and commoditized within a few years as the frontier moved on and last year's elite model became this year's cheap default. Today's gatekept Fable 5 is plausibly 2027's flat-rate baseline. The honest version is narrower: <strong>the frontier is always gatekept; the floor keeps rising.</strong> The access gap is real but moving, and treating a snapshot of June 2026 as the permanent shape of the market is the same mistake the flat-rate optimists made in the other direction.</em></p>
+  </section>
+
+  <!-- =================== §5 ARCHITECTURE =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The new artifact</span>Persistent memory and multi-agent orchestration</h2>
+
+    <p>If §3 is the engine, this is the chassis. The agentic architecture the overview points at — persistent <strong>memory layers</strong> and <strong>multi-agent orchestration</strong> — is what lets a system operate independently for days or weeks, and it is increasingly the real differentiator over raw model quality. Two practitioner posts in today's set are the ground-level evidence. Cam Wright's note and Dan Farrelly of Inngest are, read as data rather than personalities, two views of the same shift: the durable engineering is no longer the prompt, it is the <em>scaffolding around the model</em> — the memory that survives a context reset, the orchestration that hands work between specialized agents, the durable execution that lets a run resume after a crash hours in.</p>
+
+    <p>The Elasticsearch Labs piece on <em>agent memory via hybrid retrieval and document-level security</em> is the concrete mechanism. A persistent memory layer is not a vector store bolted on; it is hybrid retrieval (keyword plus semantic) governed by access control, so an agent running for a week recalls what it needs and is barred from what it shouldn't see. That last part matters more than it sounds: a long-running autonomous agent with unbounded memory is a security problem, and document-level security is how memory becomes safe to persist.</p>
+
+    <p>The synthesis worth keeping: <strong>the memory layer is where the agent economy and the agent's safety meet.</strong> Persistent memory is what makes a multi-day run possible — and therefore what makes the metered bill large — while access-controlled retrieval is what keeps that same long run from quietly becoming a data-exfiltration path. The architecture that justifies the meter is the same architecture that has to be governed; you cannot have the days-long autonomy without paying for both the compute and the controls.</p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A four-layer agentic architecture stack from the frontier model at the base through persistent memory and multi-agent orchestration to the metered economics that bounds the whole system at the top">
+      <rect x="0" y="0" width="660" height="390" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · THE AGENTIC STACK, AND WHAT EACH LAYER COSTS</text>
+
+      <!-- layer 4 top: economics -->
+      <rect x="30" y="48" width="600" height="64" fill="#000000"/>
+      <text x="48" y="72" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">METERED ECONOMICS — THE OUTER BOUND</text>
+      <text x="48" y="92" font-family="Georgia,serif" font-size="14" fill="#ffffff">What the agent is allowed to do is capped by what its compute costs.</text>
+      <text x="48" y="110" font-family="Georgia,serif" font-size="14" fill="#ffffff">Pricing has moved from the invoice into the design.</text>
+
+      <!-- layer 3: orchestration -->
+      <rect x="30" y="118" width="600" height="60" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="142" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">MULTI-AGENT ORCHESTRATION + DURABLE EXECUTION</text>
+      <text x="48" y="162" font-family="Georgia,serif" font-size="14" fill="#ffffff">Hands work between specialists; resumes a run after a crash. Runs for days.</text>
+
+      <!-- layer 2: memory -->
+      <rect x="30" y="184" width="600" height="60" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="208" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">PERSISTENT MEMORY — HYBRID RETRIEVAL + DOC-LEVEL SECURITY</text>
+      <text x="48" y="228" font-family="Georgia,serif" font-size="14" fill="#000000">Survives context resets; recalls what it needs, barred from what it shouldn't.</text>
+
+      <!-- layer 1 base: model -->
+      <rect x="30" y="250" width="600" height="62" fill="#c8c8c8" stroke="#000000" stroke-width="0.8"/>
+      <text x="48" y="274" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">FRONTIER MODEL — GPT-5.6 / FABLE 5</text>
+      <text x="48" y="294" font-family="Georgia,serif" font-size="14" fill="#000000">Long-horizon reasoning, 1.5M-token context. The engine, not the product.</text>
+
+      <text x="330" y="344" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The model is the cheap commodity at the base; the differentiation — and the bill — lives above it.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · The agentic stack, base to top, with cost rising as you climb. The frontier model sits at the bottom as a commoditizing engine; persistent memory and orchestration are the layers that actually let a system run for days — and therefore the layers that generate the metered bill. The claim: differentiation has migrated up off the model and onto the scaffolding, which is also where the economics now bites.</div>
+  </div>
+
+  <!-- =================== §6 THE LONG VIEW =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The long view</span>Mom-and-Pop SaaS and the disappearing app</h2>
+
+    <p>Pull §§2–5 together and a quieter consequence falls out at the edges of the market. Elena Verna's <em>The Mom-and-Pop SaaS era has arrived</em> describes the democratization of building: tools good enough that a non-technical domain expert — a dentist, a wedding planner, a niche logistics operator — can now create the specific software their corner of the world needs without an engineering team. The agent that costs a fortune to run at frontier scale is, at the small scale, the thing that finally lets ten-customer software exist economically. The same metering that gatekeeps the frontier opens the floor.</p>
+
+    <p>The counterweight is Apple's <em>Post-App Era</em>: a shift away from traditional app interfaces toward intent-driven agents — you state what you want, and a system assembles the result, rather than navigating a grid of icons to a screen built for the purpose. Read the two together and the trajectory is legible: <strong>more people can build software at the exact moment the software is stopping looking like software.</strong> The Mom-and-Pop builder may not ship an app at all in the old sense; they ship an intent their customers invoke. Authorship of the product is widening while the product's surface dissolves into the agent — the screen, like the subscription, turns out to have been a temporary shape.</p>
+
+    <p><span class="caflag">Counter</span><em>The "everyone builds, the app disappears" story papers over who runs the meter. A non-technical builder shipping intent-driven software is, by construction, renting their entire product from whoever owns the agent and the model — the same vendors §4 shows gatekeeping the frontier. Democratized building on metered infrastructure is not independence; it is tenancy. The dentist who "owns" their niche SaaS owns the idea and the customer relationship, and rents everything underneath at a price someone else sets. The floor opened, but it opened inside someone else's building.</em></p>
+  </section>
+
+  <!-- =================== §7 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · Practical takeaways</span>If you only do seven things this week</h2>
+
+    <ol>
+      <li><strong>Reprice your own AI spend around tasks, not seats.</strong> If you budget agent tooling by headcount, you will be surprised by the bill. Model your cost as compute-per-goal and find out what your most ambitious workflows actually consume before metering finds out for you.</li>
+      <li><strong>Treat the agent's compute budget as a design constraint.</strong> Decide up front how long an agent is allowed to run and how many retries it gets. "Run until done" is now a line item; bound it in the architecture, not on the invoice.</li>
+      <li><strong>Don't pay frontier prices for commodity work.</strong> GPT-5.6 / Fable 5 long-horizon reasoning is for tasks that need it. Route the cheap, short, bounded jobs to cheaper models and reserve the metered frontier for runs that genuinely need a million-token context.</li>
+      <li><strong>Invest in the memory layer, not just the prompt.</strong> The durable differentiator is persistent, access-controlled memory and orchestration — the scaffolding that survives a context reset. That is where a multi-day agent earns its keep, and where a model swap leaves your moat intact.</li>
+      <li><strong>Put document-level security on agent memory now.</strong> A long-running agent with unbounded recall is a data-exfiltration path. Govern what the memory layer can retrieve before you let an agent run for a week, not after.</li>
+      <li><strong>Decide your position on the divide deliberately.</strong> Banning AI and depending on gatekept frontier access are both real strategies with real costs. Pick yours on purpose — defaulting into either by inertia is how you end up on the wrong side of the access gap.</li>
+      <li><strong>If you build on agents, know whose meter you're on.</strong> Democratized, intent-driven building rents its substrate from the model vendors. Own the customer and the domain knowledge; assume the infrastructure underneath is rented at a price you don't control, and price your own product accordingly.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §8 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Usage-based (metered) pricing</dt>
+        <dd>Billing by the compute a task consumes rather than by a flat per-seat subscription. Adopted in June 2026 by Copilot, Cursor, and Devin because autonomous agents consume open-ended inference that no fixed fee can absorb. Shifts the unit of value from the seat to the task.</dd>
+
+        <dt>Autonomous agent</dt>
+        <dd>An AI system that plans, calls tools, evaluates its own output, and iterates toward a goal with little or no human turn-by-turn input — consuming far more inference than chat or code-completion, and capable of running unattended for hours, days, or weeks.</dd>
+
+        <dt>Long-horizon reasoning</dt>
+        <dd>A model's ability to stay coherent and on-task across a problem that unfolds over many steps and a long span of time, rather than answering a single isolated query. A lead capability of the GPT-5.6 and Claude Fable 5 families — the thing that makes a model trustworthy to leave running.</dd>
+
+        <dt>Context window</dt>
+        <dd>The amount of text (measured in tokens) a model can hold and reason over at once. The 2026 frontier reaches ~1.5 million tokens — enough to keep an entire codebase or case file in working memory, which is what an autonomous, long-running agent requires.</dd>
+
+        <dt>Persistent memory layer</dt>
+        <dd>Storage that lets an agent retain knowledge across context resets and sessions, typically via hybrid (keyword + semantic) retrieval. Paired with document-level security so a long-running agent recalls what it needs and is barred from what it shouldn't access. The durable differentiator over raw model quality.</dd>
+
+        <dt>Multi-agent orchestration</dt>
+        <dd>An architecture that coordinates several specialized agents — handing work between them and resuming runs after failures via durable execution — so a system can operate independently for days. The "chassis" around the model engine, increasingly where the real engineering and the metered cost both live.</dd>
+
+        <dt>Intent-driven interface</dt>
+        <dd>A model of software where the user states a goal and an agent assembles the result, rather than navigating a built-for-purpose screen. The direction of Apple's "post-app" shift — the product's surface dissolves into the agent, and the traditional app UI is phased out.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Listen</span><strong>Tonight's listen.</strong> The Deep Dive audio overview walks the same arc as this issue — agents breaking the subscription, the frontier pulling away under GPT-5.6 and Fable 5, the architecture that justifies the meter, and the access gap it opens. About twenty minutes, good for a walk if you'd rather hear the argument than read it: <a href="https://notebooklm.google.com/notebook/91023d21-adfd-454e-8cd2-be77dc57c616">open the NotebookLM notebook →</a>.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The ten pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Guide · AI Coding Tool Pricing</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22AI%20Coding%20Tool%20Pricing%20Shake-Up%3A%20The%20June%202026%20Guide%22">AI Coding Tool Pricing Shake-Up: The June 2026 Guide</a></span>
+        <span class="src-note">The structural anchor — the one piece that documents the event everything else reacts to. Read it for the arithmetic, not the vendor-by-vendor table: the synchronized move to metering is the cost of the agent workload surfacing into the bill, not a cartel. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Elasticsearch Labs</span>
+        <span class="src-title"><a href="https://www.elastic.co/search-labs">Agent memory on Elasticsearch: hybrid retrieval and DLS</a></span>
+        <span class="src-note">The most concrete mechanism on the page: how a persistent memory layer is actually built and, crucially, governed. The keeper idea is document-level security on agent memory — the part that turns a multi-day run from a data-exfiltration risk into something safe to leave running.</span>
+      </li>
+      <li>
+        <span class="pub">Post · Cam Wright on X</span>
+        <span class="src-title"><a href="https://t.co/WYhNoWYtS8">Cam Wright on X</a></span>
+        <span class="src-note">A practitioner data point, not an argument — read it as field evidence that the durable work has moved from the prompt to the scaffolding. The framing is the value; weigh it against §5 rather than mining it for a single claim.</span>
+      </li>
+      <li>
+        <span class="pub">Post · Dan Farrelly · Inngest.com on X</span>
+        <span class="src-title"><a href="https://t.co/hewvRXczwq">Dan Farrelly | Inngest.com on X</a></span>
+        <span class="src-note">The durable-execution angle on the same shift: agents that run for days need to survive crashes and resume mid-task. Read it for why orchestration and durability — not model quality — are what actually let a long run finish. Skip if you already think in workflow-engine terms.</span>
+      </li>
+      <li>
+        <span class="pub">Release · OpenAI</span>
+        <span class="src-title"><a href="https://openai.com">OpenAI prepares GPT-5.6 models for the upcoming release</a></span>
+        <span class="src-note">Read past the spec sheet for the intent: long-horizon reasoning plus a 1.5M-token context is a model built to be left running, not chatted with. The keeper is that the model family and the metered pricing are the same decision seen from two ends.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Great AI Divide</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Great%20AI%20Divide%3A%20Gatekeeping%20the%20Frontier%22">The Great AI Divide: Gatekeeping the Frontier</a></span>
+        <span class="src-note">One pole of the access split: frontier capability rationed to elite partners rather than sold flat. Useful held next to §4's counter — the frontier is always gatekept, but the floor keeps rising, so read this as a snapshot, not a destiny. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The High Cost of Hype</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20High%20Cost%20of%20Hype%3A%20The%20Total%20AI%20Ban%22">The High Cost of Hype: The Total AI Ban</a></span>
+        <span class="src-note">The opposite pole: organizations refusing AI outright over quality and trust, not technophobia. Worth it as the sober counter to the inevitability narrative — but note it argues a snapshot of today's reliability, which the frontier is actively moving. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · elenaverna.com (Elena Verna)</span>
+        <span class="src-title"><a href="https://www.elenaverna.com">The Mom-and-Pop SaaS era has arrived</a></span>
+        <span class="src-note">The democratization case, cleanly made: non-technical domain experts can finally ship niche software. Read it against §6's counter — the floor opened, but it opened inside someone else's metered building. The optimism is real; the tenancy it glosses over is the catch.</span>
+      </li>
+      <li>
+        <span class="pub">Talk · Luke Alvoeiro, Factory</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Multi-Agent%20Architecture%20That%20Actually%20Ships%22%20Luke%20Alvoeiro%20Factory">The Multi-Agent Architecture That Actually Ships — Luke Alvoeiro, Factory</a></span>
+        <span class="src-note">The chassis source: what multi-agent orchestration looks like when it has to survive production, not a demo. The keeper is the emphasis on "actually ships" — the differentiator is the scaffolding around the model, which is exactly Figure 2's claim. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Essay · The Post-App Era</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20Post-App%20Era%3A%20Apple%27s%20Shift%20to%20Intent-Driven%20Intelligence%22">The Post-App Era: Apple's Shift to Intent-Driven Intelligence</a></span>
+        <span class="src-note">The interface counterpart to the building story: as more people can make software, the software stops looking like an app. Read it next to the Mom-and-Pop piece for the full trajectory — authorship widens while the product's surface dissolves into the agent. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 48 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>

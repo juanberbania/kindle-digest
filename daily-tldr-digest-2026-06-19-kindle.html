@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Digest — June 19, 2026</title>
+<style>
+  :root {
+    /* Grayscale-only palette — Kindle is e-ink, color flattens to mid-gray. */
+    --cream:    #ffffff;   /* page background */
+    --paper:    #f1f1f1;   /* tinted blocks (pullbox, figures, glossary) */
+    --ink:      #000000;   /* primary text, headings, masthead rule */
+    --ink-soft: #1a1a1a;   /* body text, ink-soft */
+    --quiet:    #4a4a4a;   /* captions, meta, src-notes */
+    --ochre:    #000000;   /* former accent → pure black for emphasis on e-ink */
+    --ochre-dk: #000000;   /* former dark accent → pure black */
+    --rule:     #b0b0b0;   /* horizontal rules */
+    --rule-soft:#d4d4d4;   /* secondary rules */
+    --gray-1:   #000000;   /* SVG: heaviest fill */
+    --gray-2:   #3a3a3a;   /* SVG: heavy fill */
+    --gray-3:   #6a6a6a;   /* SVG: mid fill */
+    --gray-4:   #9a9a9a;   /* SVG: light fill */
+    --gray-5:   #c8c8c8;   /* SVG: very light fill */
+    --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono:  "IBM Plex Mono", "JetBrains Mono", "Menlo", "Consolas", monospace;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.7;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 96px 28px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0 14px 0;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .masthead .lhs { color: var(--ink); }
+  .masthead .rhs { color: var(--ochre-dk); }
+  .doc-meta { display: none; } /* legacy hook kept for the pipeline */
+
+  /* ============ TITLE BLOCK ============ */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin: 0 0 18px 0;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 18px 0;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 36em;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+    margin: 32px 0 48px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .byline b { color: var(--ink); font-weight: 700; }
+
+  /* ============ SECTION HEADINGS ============ */
+  section { margin-bottom: 8px; }
+  h2 {
+    font-size: 32px;
+    line-height: 1.18;
+    letter-spacing: -0.3px;
+    margin: 56px 0 18px 0;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2 .sec-num {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 36px 0 10px 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ============ BODY TEXT ============ */
+  p { margin: 0 0 18px 0; }
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  p.lead:first-letter {
+    font-family: var(--serif);
+    float: left;
+    font-size: 92px;
+    line-height: 0.82;
+    margin: 8px 14px 0 0;
+    padding: 0;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  ul, ol { margin: 0 0 20px 0; padding-left: 26px; }
+  li { margin-bottom: 10px; }
+  em { color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--ochre-dk); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--ochre-dk); }
+
+  blockquote {
+    margin: 30px 0 30px -8px;
+    padding: 6px 0 6px 26px;
+    border-left: 4px solid var(--ochre);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-top: 10px;
+  }
+
+  /* ============ PULLBOX ============ */
+  .pullbox {
+    background: var(--paper);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 28px 22px 28px;
+    margin: 40px 0 48px 0;
+    color: var(--ink);
+  }
+  .pullbox h4 {
+    margin: 0 0 16px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+  }
+  .pullbox ol { margin: 0; padding-left: 26px; counter-reset: pb; list-style: none; }
+  .pullbox li {
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.55;
+    padding-left: 8px;
+  }
+  .pullbox li::before {
+    counter-increment: pb;
+    content: counter(pb, decimal-leading-zero);
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--ochre);
+    font-weight: 700;
+  }
+  .pullbox li strong { color: var(--ink); }
+
+  /* ============ FIGURES ============ */
+  .figure {
+    margin: 36px -8px;
+    padding: 18px 10px 12px 10px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .figure-caption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    text-align: left;
+    margin-top: 14px;
+    padding: 10px 12px 4px 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .figure-caption b {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 26px 28px;
+    margin: 36px 0;
+  }
+  .glossary dt {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .glossary dt:first-of-type { margin-top: 0; }
+  .glossary dd {
+    margin: 6px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ============ AUDIO CTA ============ */
+  .audio-cta {
+    margin: 36px 0 30px 0;
+    padding: 16px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .caflag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 3px 9px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ============ SOURCES / BACKMATTER ============ */
+  .sources {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 4px solid var(--ink);
+  }
+  .sources .backmatter-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sources h2 {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+  .sources ol {
+    counter-reset: src;
+    list-style: none;
+    padding-left: 0;
+  }
+  .sources li {
+    counter-increment: src;
+    margin-bottom: 22px;
+    padding-left: 56px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .sources li::before {
+    content: counter(src, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ochre-dk);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 4px 8px;
+    min-width: 28px;
+    text-align: center;
+  }
+  .sources .pub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ochre-dk);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .sources .src-title { color: var(--ink); font-weight: 700; }
+  .sources .src-title a { color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .sources .src-note {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ============ PREV-REF ============ */
+  .prev-ref {
+    display: block;
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border-left: 3px solid var(--ochre);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .prev-ref a {
+    color: var(--ochre-dk);
+    border-bottom: 1px dotted var(--ochre-dk);
+  }
+  .prev-ref::before {
+    content: "↳ ";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--quiet);
+    line-height: 1.55;
+  }
+  .footer a { color: var(--ochre-dk); border-bottom: 1px solid var(--rule); }
+
+  /* ============ KINDLE-INVERT GUARDS ============ */
+  /* When Kindle inverts (dark mode), enforce readable contrast on tinted blocks */
+  @media (prefers-color-scheme: dark) {
+    .pullbox, .figure, .glossary, .audio-cta, .prev-ref, .sources li::before {
+      color: var(--ink);
+    }
+    .pullbox li, .glossary dd, .src-note, .audio-cta { color: var(--ink-soft) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- legacy hook for the pipeline -->
+  <div class="doc-meta">Kindle Digest · June 19, 2026</div>
+
+  <div class="masthead">
+    <div class="lhs">Kindle Digest · Issue No. 47</div>
+    <div class="rhs">Friday · 19 June 2026</div>
+  </div>
+
+  <p class="kicker">Volume II · The Loop Closes</p>
+  <h1>The Closed Loop</h1>
+  <p class="subtitle">Prompts give way to loops: Figma and Replit wire MCP into the design-to-code path, Vercel ships agents as structured directories with sandboxes and approvals built in, the "loops" method turns prompting into plan-execute-verify cycles, and the assistant market splinters as ChatGPT's share dips below half — all of it the same move from a single ask to a self-correcting machine.</p>
+
+  <div class="byline">
+    <span><b>7 sources</b> · 2 diagrams · ~17 min read</span>
+    <span>Distilled from NotebookLM · personal reading log</span>
+  </div>
+
+  <!-- =================== §1 ORIENTATION =================== -->
+  <section>
+    <h2><span class="sec-num">§1 · Orientation</span>The unit of work stopped being the prompt</h2>
+
+    <p class="lead">For two years the craft of working with models was prompt-shaped: you wrote a careful instruction, took back an answer, and judged it yourself. Today's sources mark the point where that frame breaks. The new unit is the <strong>loop</strong> — an agent that plans, acts, checks its own work against reality, and goes again, with the human stepping in only at the seams. Figma and Replit are wiring the Model Context Protocol straight into the design-to-code path so an agent can read the canvas and write the running app. Vercel ships agents as ordinary directories carrying their own sandbox and approval gates. And a prompting essay everyone is passing around quietly renames the whole practice: stop writing prompts, start engineering loops. The connective tissue is memory and iteration — the machine remembers what it tried and corrects, rather than waiting to be re-asked.</p>
+
+    <p><em>The running thread on this page has been agentic autonomy, MCP, and context as the real artifact; today asks the sharper version — if the loop now plans, executes, and verifies on its own, is the human's remaining job to author the loop's boundaries (its tools, its sandbox, its approval gates), or to keep being its memory?</em></p>
+  </section>
+
+  <!-- =================== PULLBOX =================== -->
+  <div class="pullbox">
+    <h4>Five agreements across today's sources</h4>
+    <ol>
+      <li><strong>The prompt is being replaced by the loop.</strong> Every builder-facing source assumes a cycle — plan, execute, verify, repeat — rather than a single request and a single answer. The interesting design question is the cycle, not the wording.</li>
+      <li><strong>MCP is becoming the standard doorway between an agent and the world.</strong> Figma exposes the canvas through it; Replit reaches a live coding environment through it from inside Claude. The protocol, not any one product, is the thing both bet on.</li>
+      <li><strong>Autonomy ships wrapped in guardrails, not without them.</strong> Vercel's agents arrive with sandboxes and human-in-the-loop approvals as defaults; nobody is selling "let it run free." The pitch is bounded autonomy, which is the only kind anyone will deploy.</li>
+      <li><strong>Memory is what makes a loop more than a retry.</strong> The difference between an agent that improves and one that merely repeats is whether it carries forward what it learned. The "learning loop" and the "loops" prompting method name the same engine.</li>
+      <li><strong>The assistant market is fragmenting toward the specialized.</strong> ChatGPT slipping below half is the demand-side mirror of the supply-side story: as work moves into specialized, high-retention loops, the single general chatbot stops being the default surface.</li>
+    </ol>
+  </div>
+
+  <!-- =================== §2 THE LOOP =================== -->
+  <section>
+    <h2><span class="sec-num">§2 · The new unit</span>From prompt to loop: plan, execute, verify, repeat</h2>
+
+    <p>The day's most structural source is the prompting essay making the rounds — the argument that the technique worth learning in 2026 is not a better one-shot instruction but a <em>loop</em>: give the agent a goal, let it draft a plan, execute a step, check the result against the actual state of the world, and feed that observation back into the next step. The reframing is small to say and large in consequence. A prompt is a bet placed once; a loop is a bet that gets corrected every round. The skill migrates from phrasing the perfect ask to designing the cycle — what counts as "done," what the agent is allowed to touch, and what it reads back to know whether the last step actually worked.</p>
+
+    <p>The synthesis worth keeping, in no single source: <strong>verification, not generation, is what makes a loop autonomous.</strong> Anything can generate a next step; what lets an agent run unattended is a cheap, trustworthy way to check whether the step it just took was right — a test that runs, a page that renders, a type that compiles. The loops that work in practice are the ones wired to a fast oracle of truth; the ones that drift are the ones generating confidently with nothing to check against. This is why the same pages that sell autonomy spend most of their words on sandboxes and approvals: the verify step is the load-bearing one, and it is the hardest to fake.</p>
+  </section>
+
+  <!-- =================== FIGURE 1 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked diagrams contrasting the one-shot prompt model, where a human writes a prompt and judges the answer, with the 2026 loop model, where an agent plans, executes, and verifies against the world with memory carrying state forward and the human present only at an approval gate">
+      <rect x="0" y="0" width="660" height="430" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 1 · FROM ONE-SHOT PROMPT TO SELF-CORRECTING LOOP</text>
+
+      <!-- OLD model label -->
+      <text x="30" y="62" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THE PROMPT MODEL · ONE BET, JUDGED BY HAND</text>
+
+      <rect x="30" y="74" width="150" height="52" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="42" y="98" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">HUMAN</text>
+      <text x="42" y="116" font-family="Georgia,serif" font-size="12" fill="#000000">Writes the ask.</text>
+
+      <rect x="255" y="74" width="150" height="52" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="267" y="98" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">MODEL</text>
+      <text x="267" y="116" font-family="Georgia,serif" font-size="12" fill="#ffffff">Answers once.</text>
+
+      <rect x="480" y="74" width="150" height="52" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="492" y="98" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">HUMAN</text>
+      <text x="492" y="116" font-family="Georgia,serif" font-size="12" fill="#000000">Checks it all.</text>
+
+      <line x1="180" y1="100" x2="253" y2="100" stroke="#000000" stroke-width="1.2"/>
+      <line x1="405" y1="100" x2="478" y2="100" stroke="#000000" stroke-width="1.2"/>
+      <text x="330" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-style="italic" fill="#000000">No return path. Correction is a whole new prompt, paid by the human.</text>
+
+      <!-- divider -->
+      <line x1="30" y1="170" x2="630" y2="170" stroke="#000000" stroke-width="1" stroke-dasharray="3 3"/>
+
+      <!-- NEW model label -->
+      <text x="30" y="206" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">THE LOOP MODEL · CORRECTED EVERY ROUND</text>
+
+      <!-- PLAN -->
+      <rect x="30" y="222" width="135" height="56" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="42" y="246" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">PLAN</text>
+      <text x="42" y="266" font-family="Georgia,serif" font-size="12" fill="#000000">Draft next step.</text>
+
+      <!-- EXECUTE -->
+      <rect x="195" y="222" width="135" height="56" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="207" y="246" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">EXECUTE</text>
+      <text x="207" y="266" font-family="Georgia,serif" font-size="12" fill="#ffffff">Act in sandbox.</text>
+
+      <!-- VERIFY -->
+      <rect x="360" y="222" width="135" height="56" fill="#000000"/>
+      <text x="372" y="246" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#ffffff" letter-spacing="1">VERIFY</text>
+      <text x="372" y="266" font-family="Georgia,serif" font-size="12" fill="#ffffff">Check vs world.</text>
+
+      <!-- GATE -->
+      <rect x="525" y="222" width="105" height="56" fill="#c8c8c8" stroke="#000000" stroke-width="0.6"/>
+      <text x="537" y="246" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">GATE</text>
+      <text x="537" y="266" font-family="Georgia,serif" font-size="11" fill="#000000">Human approves.</text>
+
+      <line x1="165" y1="250" x2="193" y2="250" stroke="#000000" stroke-width="1.2"/>
+      <line x1="330" y1="250" x2="358" y2="250" stroke="#000000" stroke-width="1.2"/>
+      <line x1="495" y1="250" x2="523" y2="250" stroke="#000000" stroke-width="1.2"/>
+
+      <!-- feedback path verify -> plan -->
+      <path d="M 380 278 L 380 330 L 97 330 L 97 278" fill="none" stroke="#000000" stroke-width="1.4"/>
+      <polygon points="97,278 92,290 102,290" fill="#000000"/>
+      <text x="238" y="322" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" font-weight="700" fill="#000000" letter-spacing="1">MEMORY CARRIES THE RESULT BACK INTO THE NEXT PLAN</text>
+
+      <text x="330" y="372" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="700" fill="#000000" letter-spacing="1">THE NEW ARROW IS THE ONE THAT TURNS BACK</text>
+      <text x="330" y="398" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">Verification feeding the next plan is what separates a loop from a louder retry.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 1</b> · The prompt model is a straight line a human must close by hand; the loop model closes itself, with verification feeding back into the next plan and memory carrying state across rounds. The structural change isn't more steps — it's the return arrow. The human moves from judging every answer to standing at a single approval gate.</div>
+  </div>
+
+  <!-- =================== §3 MCP DESIGN-TO-CODE =================== -->
+  <section>
+    <h2><span class="sec-num">§3 · The doorway</span>MCP closes the gap between the canvas and the running app</h2>
+
+    <p>Two product moves make the loop concrete by giving it a doorway into real tools. Figma's account of running its own MCP server describes the design surface becoming machine-addressable: an agent can read components, variables, and layout off the canvas directly, so the handoff from design to code stops being a human transcribing pixels into markup and becomes a tool call. Replit, now reachable from inside Claude, is the same idea from the other end — the agent gets a live environment where it can write, run, and see code execute without leaving the conversation. One end exposes the intent (the design); the other exposes the consequence (the running app). MCP is the shared protocol that lets a single loop touch both.</p>
+
+    <p>The synthesis neither states alone: <strong>MCP is quietly becoming the verify step's plumbing, not just the execute step's.</strong> The obvious read is that MCP lets an agent <em>do</em> things — reach the canvas, run the code. The more important read is that the same connection lets the agent <em>observe</em> the result: read back the rendered component, see the test output, confirm the app launched. A loop is only as autonomous as its ability to check itself, and a standardized doorway into design tools and execution environments is precisely what turns "the agent acted" into "the agent confirmed it worked." The protocol's real payoff is closing the feedback path, not opening the action path.</p>
+
+    <p><span class="caflag">Counter</span><em>A standard doorway is also a standard blast door left ajar. The same MCP connection that lets an agent read your canvas and run your code is, from a security view, a durable, authenticated path from a stochastic actor into your live tools and data. The design-to-code "gap" being closed is also a trust boundary being dissolved: every capability you expose to make the loop more autonomous is a capability an errored or hijacked loop now also holds. Figma and Replit both lean on sandboxes and scoped access for exactly this reason — but the convenience scales faster than the scoping does, and "it can reach everything" is the default failure mode, not the exception.</em></p>
+  </section>
+
+  <!-- =================== §4 AGENTS AS DIRECTORIES =================== -->
+  <section>
+    <h2><span class="sec-num">§4 · The container</span>eve: agents as structured directories with sandboxes built in</h2>
+
+    <p>Vercel's eve takes the loop and asks the unglamorous question: what <em>is</em> an agent, as a thing you store, version, and ship? Its answer is that an agent is a structured directory — files and folders with a defined shape — that carries its own sandbox for execution and its own human-in-the-loop approval points. The framing matters because it makes an agent a first-class, version-controllable artifact rather than a prompt living in someone's chat history. You can diff it, review it, roll it back, and reason about exactly what it is allowed to do, because its boundaries are written down in the directory rather than implied by a conversation.</p>
+
+    <p>The synthesis worth keeping: <strong>treating the agent as a directory is how autonomy becomes auditable.</strong> The recurring fear with loops is that an autonomous agent is an opaque process you can only watch, not inspect. Making the agent a structured set of files with declared tools, declared sandbox, and declared approval gates converts that opaque process into something with a reviewable surface — the same shift the rest of the thread keeps circling, where the durable artifact is the <em>environment and the rules</em> the agent runs inside, not the output it emits. An open-source framework that ships sandboxes and approvals as defaults is, underneath, an argument that bounded autonomy is the only autonomy worth distributing.</p>
+  </section>
+
+  <!-- =================== §5 MARKET SPLINTERS =================== -->
+  <section>
+    <h2><span class="sec-num">§5 · The demand side</span>ChatGPT below half: the market splinters toward the specialized</h2>
+
+    <p>TechCrunch's report that ChatGPT's market share has slipped below 50% for the first time is the demand-side reading of everything above. The story is not that the leader is collapsing — it remains the single largest assistant — but that users are migrating toward specialized, high-retention alternatives, with Claude and Gemini named as the gainers. Read as an isolated horse-race stat it is mildly interesting; read against the loop thesis it is the market expressing the same structural shift. When the valuable thing was a single clever answer, one general chatbot was a fine default. When the valuable thing is a loop wired into a specific workflow — code, design, a particular domain — the general surface loses its monopoly to tools that go deep on one job and keep you because the loop lives there.</p>
+
+    <p>The synthesis across §§2–5, present in no single source: <strong>fragmentation is what a loop economy looks like from the outside.</strong> Loops create retention — once an agent holds the memory, context, and verification path for your specific work, leaving means rebuilding all of it elsewhere, so the switching cost that a one-shot chatbot never had becomes the moat. The decline of the universal assistant and the rise of MCP-wired, sandboxed, directory-shaped agents are the same event seen from two distances: the defensible position is no longer "the smartest single model" but "the deepest loop in your workflow," and the share numbers are simply that defensibility showing up in the aggregate.</p>
+  </section>
+
+  <!-- =================== §6 THE MOAT =================== -->
+  <section>
+    <h2><span class="sec-num">§6 · The long view</span>Engineering the moat through learning loops</h2>
+
+    <p>Pull the day together and the strategy piece in the set — engineering a moat through learning loops — reads less like a separate argument than like the thesis stated plainly. Its claim: durable advantage no longer comes from a one-time model edge, which erodes the moment a competitor fine-tunes or a frontier lab ships, but from a <em>learning loop</em> — a system that improves with every use because it captures what happened, feeds it back, and gets measurably better at the specific job. The orchestrator agent that manages a marketing campaign, runs an e-commerce store, or drives a multi-step build is valuable not because any single run is brilliant but because the thousandth run is better than the first, and a competitor starting fresh inherits none of that accumulated correction.</p>
+
+    <p>The honest reframing the digest insists on: <strong>the moat is the memory, not the model.</strong> Everything on this page that looked like plumbing — MCP doorways, sandboxes, approval gates, agents-as-directories — is in service of one economic fact: a loop that remembers compounds, and compounding is the only advantage that survives contact with a faster competitor. The shift from prompting to loop engineering is, at the business layer, a shift from buying intelligence to <em>accumulating</em> it. The defensible asset is the trace of every plan-execute-verify cycle your system has run and learned from, which is exactly the thing a rival cannot copy by adopting the same underlying model.</p>
+
+    <p><span class="caflag">Counter</span><em>"Learning loops are a moat" quietly assumes the accumulated learning stays yours and stays relevant — both shaky. If the loop's memory lives in a vendor's MCP-connected platform, the compounding advantage may be accruing to the platform, not to you; you are renting the moat. And a learning loop tuned to today's workflow is a depreciating asset the moment the workflow, the tool, or the underlying model shifts under it — accumulated corrections for last quarter's process can be dead weight, not defensibility. The moat holds only where the loop learns something <em>specific and durable</em> to you (your data, your customers, your domain edge cases) rather than something generic the platform learns from everyone at once and resells.</em></p>
+  </section>
+
+  <!-- =================== FIGURE 2 =================== -->
+  <div class="figure">
+    <svg viewBox="0 0 660 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A four-layer stack of where defensibility comes from in a loop economy, from a generic model at the top that any competitor can match, down through MCP tool access and bounded autonomy, to accumulated loop memory at the base which is the only layer a rival cannot copy">
+      <rect x="0" y="0" width="660" height="400" fill="#ffffff"/>
+      <text x="330" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#000000" letter-spacing="2">FIGURE 2 · WHERE THE MOAT ACTUALLY SITS</text>
+
+      <!-- top: model edge -->
+      <rect x="30" y="48" width="600" height="64" fill="#c8c8c8" stroke="#000000" stroke-width="0.8"/>
+      <text x="48" y="72" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">MODEL EDGE</text>
+      <text x="48" y="92" font-family="Georgia,serif" font-size="14" fill="#000000">A smarter base model. Real, but rented and temporary —</text>
+      <text x="48" y="110" font-family="Georgia,serif" font-size="14" fill="#000000">a competitor matches it the next time a frontier lab ships.</text>
+
+      <!-- MCP access -->
+      <rect x="30" y="118" width="600" height="64" fill="#9a9a9a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="142" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#000000" letter-spacing="2">MCP TOOL ACCESS · DESIGN, CODE, DATA</text>
+      <text x="48" y="162" font-family="Georgia,serif" font-size="14" fill="#000000">Opens the action AND verify paths. Necessary for the loop —</text>
+      <text x="48" y="180" font-family="Georgia,serif" font-size="14" fill="#000000">but it's a shared protocol; everyone can wire the same doorway.</text>
+
+      <!-- bounded autonomy -->
+      <rect x="30" y="188" width="600" height="64" fill="#6a6a6a" stroke="#000000" stroke-width="0.6"/>
+      <text x="48" y="212" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">BOUNDED AUTONOMY · SANDBOX + APPROVAL GATES</text>
+      <text x="48" y="232" font-family="Georgia,serif" font-size="14" fill="#ffffff">Agents as directories: auditable, versioned, scoped.</text>
+      <text x="48" y="250" font-family="Georgia,serif" font-size="14" fill="#ffffff">The price of shipping autonomy — table stakes, not edge.</text>
+
+      <!-- base: accumulated memory -->
+      <rect x="30" y="258" width="600" height="66" fill="#000000"/>
+      <text x="48" y="282" font-family="-apple-system,sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2">ACCUMULATED LOOP MEMORY · YOUR TRACE</text>
+      <text x="48" y="302" font-family="Georgia,serif" font-size="14" fill="#ffffff">Every plan-execute-verify cycle your system learned from.</text>
+      <text x="48" y="320" font-family="Georgia,serif" font-size="14" fill="#ffffff">The only layer a rival on the same model cannot copy.</text>
+
+      <text x="330" y="356" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#000000">The top three layers are buyable; the moat is the bottom one, and only if it's yours.</text>
+    </svg>
+    <div class="figure-caption"><b>Figure 2</b> · Defensibility in a loop economy, ranked by how copyable each layer is. The model edge, MCP access, and bounded-autonomy tooling are all things a competitor can acquire; the only layer a rival running the same model cannot reproduce is the accumulated memory of your own loops. The moat is the trace, not the model — and the §6 counter applies: it only holds if that trace is yours and not the platform's.</div>
+  </div>
+
+  <!-- =================== §7 PRACTICAL =================== -->
+  <section>
+    <h2><span class="sec-num">§7 · Practical takeaways</span>If you only do seven things this week</h2>
+
+    <ol>
+      <li><strong>Design the loop, not the prompt.</strong> Spend your effort on what counts as "done," what the agent may touch, and how it checks the last step — not on wordsmithing a one-shot instruction. The cycle is the artifact now; the phrasing is a detail inside it.</li>
+      <li><strong>Wire a fast verify step before you widen autonomy.</strong> A loop is only as trustworthy as its check: a test that runs, a page that renders, a type that compiles. If the agent can act faster than you can verify, you have a confident drift machine, not an autonomous one.</li>
+      <li><strong>Use MCP for observation, not just action.</strong> When you connect an agent to a tool through MCP, ask what the agent can now <em>read back</em>, not only what it can do. The connection that lets it confirm its own work is worth more than the one that just lets it act.</li>
+      <li><strong>Scope the doorway as tightly as the capability.</strong> Every tool you expose to make the loop autonomous is a path an errored or hijacked loop also holds. Default to least privilege and a sandbox; treat "it can reach everything" as the failure you are designing against.</li>
+      <li><strong>Make your agents directories, not chat history.</strong> Store agents as structured, versioned files with declared tools, sandbox, and approval gates so you can diff, review, and roll them back. An agent you cannot inspect is an agent you cannot trust at scale.</li>
+      <li><strong>Keep a human at one gate, not every step.</strong> The point of the loop is to move the human from judging every answer to approving at the seams. Pick the few high-consequence gates that warrant a human, and let the verify step handle the rest.</li>
+      <li><strong>Invest in memory you actually own.</strong> The moat is the accumulated trace of your loops, but only if it's yours. Capture what your cycles learn into data and context you control, not into a vendor platform that learns from everyone and resells it.</li>
+    </ol>
+  </section>
+
+  <!-- =================== §8 GLOSSARY =================== -->
+  <section>
+    <h2><span class="sec-num">§8 · Glossary</span>Terms used above, briefly</h2>
+    <div class="glossary">
+      <dl>
+        <dt>Loop (agentic loop)</dt>
+        <dd>A working cycle in which an agent plans a step, executes it, verifies the result against the real state of the world, and feeds that observation into the next plan — repeating until done. Replaces the one-shot prompt as the basic unit of working with models; its defining feature is the return arrow from verify back to plan.</dd>
+
+        <dt>Verify step</dt>
+        <dd>The part of a loop that checks whether the last action actually worked — a passing test, a rendered page, a compiling type. The load-bearing step: an agent is only as autonomous as its ability to check itself, and loops without a cheap, trustworthy verify step drift confidently rather than converge.</dd>
+
+        <dt>MCP (Model Context Protocol)</dt>
+        <dd>A standardized doorway through which an agent reaches external tools and data — and, crucially, reads results back. Here it lets a single loop touch both the design canvas (Figma) and a live execution environment (Replit), opening the action path and the verification path at once.</dd>
+
+        <dt>Agent-as-directory</dt>
+        <dd>Vercel eve's framing of an agent as a structured set of files and folders — carrying its own sandbox and approval gates — rather than a prompt living in a chat. Makes an agent versionable, reviewable, and rollback-able, turning an opaque autonomous process into an auditable artifact.</dd>
+
+        <dt>Human-in-the-loop approval</dt>
+        <dd>A gate where an autonomous loop pauses for a person to approve a consequential action before proceeding. The mechanism that makes autonomy deployable: it moves the human from judging every step to approving at a few high-consequence seams, rather than removing the human entirely.</dd>
+
+        <dt>Learning loop</dt>
+        <dd>A loop whose memory accumulates across runs, so the system measurably improves at a specific job over time. The strategic version of the loop idea: the durable advantage is the accumulated trace of corrections, which a competitor on the same base model cannot copy.</dd>
+
+        <dt>Orchestrator agent</dt>
+        <dd>A higher-level agent that manages a complex, multi-step workflow — a marketing campaign, an e-commerce store, a build — by coordinating sub-steps and tools inside a loop. The unit that turns a single learning loop into a managed business process with minimal manual oversight.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- =================== AUDIO CTA =================== -->
+  <div class="audio-cta">
+    <span class="caflag">Listen</span><strong>Tonight's listen.</strong> The Deep Dive audio overview walks the same arc as this issue — the move from prompts to loops, MCP as the doorway that closes the feedback path, agents shipped as auditable directories, and the argument that the real moat is accumulated loop memory rather than the model. About seventeen minutes, good for a walk if you'd rather hear the argument than read it: <a href="https://notebooklm.google.com/notebook/d32094ee-f142-4293-97d6-24acbe8a6c25">open the NotebookLM notebook →</a>.
+  </div>
+
+  <!-- =================== SOURCES / BACKMATTER =================== -->
+  <div class="sources">
+    <div class="backmatter-label">Backmatter · Source register</div>
+    <h2>The seven pieces today's digest is built on</h2>
+    <ol>
+      <li>
+        <span class="pub">Essay · The Loops Prompting Method</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22The%20New%20AI%20Prompting%20Method%20Everyone%20Is%20Talking%20About%3A%20Loops%22">The New AI Prompting Method Everyone Is Talking About: Loops (And How To Use Them)</a></span>
+        <span class="src-note">The structural anchor of the issue and the cleanest statement of the shift: the technique to learn isn't a better prompt, it's the plan-execute-verify cycle. Read it for the reframe; supply the verification-is-the-hard-part point yourself, because the piece undersells it. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Engineering blog · Figma</span>
+        <span class="src-title"><a href="https://www.figma.com/blog">4 Ways We're Using Our MCP Server at Figma</a></span>
+        <span class="src-note">The concrete design-side proof that the canvas is becoming machine-addressable. Read it for how MCP turns the design-to-code handoff into a tool call — and note the more interesting move is that the same connection lets the agent read results back, not just act.</span>
+      </li>
+      <li>
+        <span class="pub">Product · Replit</span>
+        <span class="src-title"><a href="https://replit.com">Replit is now available in Claude</a></span>
+        <span class="src-note">The execution end of the same protocol story: an agent gets a live environment to write, run, and observe code without leaving the conversation. Thin on argument, but it's the consequence half of §3 — the place the loop's verify step actually lands.</span>
+      </li>
+      <li>
+        <span class="pub">Product · Vercel</span>
+        <span class="src-title"><a href="https://vercel.com">Introducing eve</a></span>
+        <span class="src-note">The best answer on the page to "what is an agent as a thing you store and ship": a structured directory with sandbox and approvals built in. Read it for the auditability argument — bounded autonomy as a default, not an add-on — and skip the framework tour.</span>
+      </li>
+      <li>
+        <span class="pub">News · TechCrunch</span>
+        <span class="src-title"><a href="https://techcrunch.com">ChatGPT's market share slips below 50% for first time</a></span>
+        <span class="src-note">Mildly interesting as a horse-race stat; load-bearing as the demand-side mirror of the loop thesis. Read the migration toward specialized, high-retention assistants as fragmentation being what a loop economy looks like from the outside — not as a leader collapsing.</span>
+      </li>
+      <li>
+        <span class="pub">Essay · Engineering the Moat</span>
+        <span class="src-title"><a href="https://www.google.com/search?q=%22Engineering%20the%20Moat%20Through%20Learning%20Loops%22">Engineering the Moat Through Learning Loops</a></span>
+        <span class="src-note">The day's thesis stated plainly: the durable advantage is the learning loop's accumulated memory, not a temporary model edge. Worth it for the "compounding is the only moat that survives a faster competitor" frame — then hold it against §6's counter that the memory may be the platform's, not yours. (No clean canonical URL surfaced; link is a title search.)</span>
+      </li>
+      <li>
+        <span class="pub">Thread · Thread Reader App (@morganlinton)</span>
+        <span class="src-title"><a href="https://threadreaderapp.com">Thread by @morganlinton on Thread Reader App</a></span>
+        <span class="src-note">A practitioner data point, not an argument — read it as field evidence of the prompts-to-loops and assistant-fragmentation shift being felt by people building day to day, then weigh it against the harder sources. The framing is the value; no single claim is load-bearing.</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <p>Kindle Digest · personal-learning reading log · distilled from the daily NotebookLM digest pipeline. Opinions are the editor's, not the sources'. Volume II · Issue No. 47 · <a href="index.html">All digests →</a></p>
+  </div>
+
+</div>
+</body>
+</html>
